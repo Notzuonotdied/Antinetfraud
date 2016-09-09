@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="header_titile">网络诈骗防范科普网</string>
+    <string name="setting">设置</string>
+    <string name="action_settings">Settings</string>
+    <string name="app_name">网络诈骗防范科普网</string>
+    <string name="loadingText">欢迎使用网络诈骗防范\n科普网APP\n希望能帮到您！</string>
+    <string name="welcome1">欢迎使用网络诈骗防范</string>
+    <string name="welcome2">科普网APP</string>
+    <string name="welcome3">希望能帮到您！</string>
+    
+    <string name="main_tab">主页</string>
+    <string name="main_hot">热点</string>
+    <string name="main_search">搜索</string>
+    <string name="main_my">我的</string>
+</resources>

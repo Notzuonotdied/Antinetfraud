@@ -1,0 +1,14 @@
+<resources>
+
+    <attr name="tab_count" format="integer" />
+    <attr name="COLOR_TEXT_NORMAL" format="color" />
+    <attr name="COLOR_TEXT_HIGHLIGHTCOLOR" format="color" />
+    <attr name="IndicatorTextSize" format="dimension" />
+
+    <declare-styleable name="MyTabPageIndicator">
+        <attr name="tab_count" />
+        <attr name="COLOR_TEXT_NORMAL" />
+        <attr name="COLOR_TEXT_HIGHLIGHTCOLOR" />
+    </declare-styleable>
+
+</resources>

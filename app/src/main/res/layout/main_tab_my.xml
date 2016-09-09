@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/ly_main_weixin"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_white"
+    android:orientation="vertical">
+
+    <!--android:background="#fcfcfc"-->
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/lc_holder_image"
+        android:layout_width="80dp"
+        android:layout_height="match_parent"
+        android:alpha="100"
+        fresco:fadeDuration="100"
+        fresco:placeholderImage="@mipmap/ic_launcher"
+        fresco:roundWithOverlayColor="@color/color_white"
+        fresco:roundedCornerRadius="12dp"
+        fresco:roundingBorderColor="@color/color_white"
+        fresco:roundingBorderWidth="3dp" />
+
+</LinearLayout>
