@@ -6,6 +6,7 @@
     <color name="colorAccent">#FF4081</color>
     <!--<color name="color_header">#8CB1E6</color>-->
     <color name="color_header">#00BDD0</color>
+    <color name="color_setting_radius">#3600BDD0</color>
     <color name="color_bottom">#F0F0F0</color>
     <!--<color name="color_bottom">#00BDD0</color>-->
     <color name="color_white">#ffffffff</color>
@@ -15,5 +16,7 @@
     <color name="color_title">#af000000</color>
     <color name="color_content">#66000000</color>
     <color name="color_vpbackground">#E2E2E2</color>
+    <color name="color_setting_header">#ff888888</color>
+    <color name="color_article_info">#888</color>
 
 </resources>

@@ -41,12 +41,17 @@
     <style name="listContent_style">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">88dp</item>
-        <!--<item name="android:background">@drawable/listtencontshape</item>-->
+        <!--<item name="android:background">@drawable/list_cencont_shape</item>-->
         <item name="android:orientation">vertical</item>
         <item name="android:layout_marginLeft">@dimen/listContent_margin</item>
         <item name="android:layout_marginBottom">@dimen/listContent_margin</item>
         <item name="android:layout_marginRight">@dimen/listContent_margin</item>
         <item name="android:padding">@dimen/listContent_padding</item>
+    </style>
+
+
+    <style name="setting_piece">
+
     </style>
 
 </resources>

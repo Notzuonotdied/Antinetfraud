@@ -87,13 +87,12 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:shadowColor="#55000000"
-                        android:shadowDx="6"
-                        android:shadowDy="6"
-                        android:shadowRadius="10"
+                        android:shadowDx="3"
+                        android:shadowDy="3"
+                        android:shadowRadius="3"
                         android:text="@string/welcome1"
                         android:textColor="#d0000000"
-                        android:textSize="20sp"
-                        android:textStyle="bold" />
+                        android:textSize="20sp" />
 
                     <!--发布时间-->
                     <TextView
@@ -102,7 +101,7 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:text="@string/welcome2"
-                        android:textColor="#f0000000"
+                        android:textColor="@color/color_article_info"
                         android:textSize="13sp" />
 
                     <!--阅读量,点击量-->
@@ -112,7 +111,7 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:text="@string/welcome3"
-                        android:textColor="#f0000000"
+                        android:textColor="@color/color_article_info"
                         android:textSize="13sp" />
 
 
