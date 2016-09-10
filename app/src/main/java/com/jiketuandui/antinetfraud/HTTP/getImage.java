@@ -31,7 +31,7 @@ public class getImage {
      * The constant photoPath.
      */
     private static String photoPath = Environment.getExternalStorageDirectory()
-            .getPath() + "/AntiNETFraud/images/";
+            .getPath() + "/AntiNETFraud/cache/";
 
     /**
      * Gets bitmap.

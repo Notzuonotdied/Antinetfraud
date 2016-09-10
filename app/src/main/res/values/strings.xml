@@ -13,4 +13,22 @@
     <string name="main_hot">热点</string>
     <string name="main_search">搜索</string>
     <string name="main_my">我的</string>
+    
+    <string name="setting_person">个人</string>
+    <string name="setting_person_account_name">账户名</string>
+    <string name="setting_person_level">等级</string>
+    <string name="setting_person_discuss">评论</string>
+    <string name="setting_person_collect">收藏</string>
+
+    <string name="setting_person_account">账户设置</string>
+    <string name="setting_person_browsing">浏览记录</string>
+    <string name="setting_person_collection">我的收藏</string>
+    <string name="setting_person_discusstion">我的评论</string>
+
+    <string name="setting_comment">通用</string>
+    <string name="setting_comment_setting">设置</string>
+    <string name="setting_comment_delete">清空缓存</string>
+    <string name="setting_comment_idea">意见反馈</string>
+    <string name="setting_comment_update">检测更新</string>
+    <string name="setting_comment_about">关于</string>
 </resources>
