@@ -28,6 +28,7 @@
     <string name="setting_comment">通用</string>
     <string name="setting_comment_setting">设置</string>
     <string name="setting_comment_delete">清空缓存</string>
+    <string name="setting_comment_Cache_size">0.0B</string>
     <string name="setting_comment_idea">意见反馈</string>
     <string name="setting_comment_update">检测更新</string>
     <string name="setting_comment_about">关于</string>
