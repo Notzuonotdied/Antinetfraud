@@ -41,7 +41,8 @@ public class MainTabMy extends Fragment {
         setting_pieces_delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getActivity(), CacheCleanManage.CleanImageCache() ? "缓存清除成功" :
+                boolean isSuccess = CacheCleanManage.CleanImageCache();
+                Toast.makeText(getActivity(), isSuccess ? "缓存清除成功" :
                         "缓存清除失败", Toast.LENGTH_SHORT).show();
                 setting_cache_size.setText(CacheCleanManage.getCacheSize(new File(getImage.photoPath)));
             }

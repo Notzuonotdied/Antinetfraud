@@ -33,8 +33,6 @@ public class CacheCleanManage {
                     return false;
                 }
             }
-        } else {
-            return true;
         }
         return dir.delete();
     }
