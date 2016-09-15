@@ -12,7 +12,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.SearchView;
-import android.widget.TextView;
 
 import com.cjj.MaterialRefreshLayout;
 import com.cjj.MaterialRefreshListener;
@@ -48,7 +47,7 @@ public class MainTabSearch extends Fragment {
 
     /**
      * 判断搜索是否加载完成
-     * */
+     */
     private boolean isSearched = false;
 
     @Override
@@ -65,26 +64,15 @@ public class MainTabSearch extends Fragment {
     }
 
 
-
     /**
      * 初始化控件
      */
     private void initView() {
         readPage = 1;
-        /**
-         * Adapter：使用RecyclerView之前，你需要一个继承自RecyclerView.Adapter的适配器，
-         * 作用是将数据与每一个item的界面进行绑定。
-         * */
         mListContentAdapter = new ListContentAdapter(getActivity(), mListContents);
-        /**
-         * LayoutManager：用来确定每一个item如何进行排列摆放，何时展示和隐藏。
-         * 回收或重用一个View的时候，LayoutManager会向适配器请求新的数据来替换旧的数据，
-         * 这种机制避免了创建过多的View和频繁的调用findViewById方法（与ListView原理类似）。
-         * */
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(),
                 LinearLayoutManager.VERTICAL, false));
         mRecyclerView.setAdapter(mListContentAdapter);
-
         search_appBar_Layout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
             @Override
             public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
@@ -105,7 +93,7 @@ public class MainTabSearch extends Fragment {
      *
      * @param heightOffset 高度变化值
      * @param total_Height 总高度
-     * */
+     */
     private int changAlpha(int heightOffset, int total_Height) {
         float alpha = heightOffset * 255 / total_Height;
         alpha += 188;
@@ -119,34 +107,6 @@ public class MainTabSearch extends Fragment {
         new initBannerTask().execute();
     }
 
-    /**
-     * 刷新数据
-     */
-    class initBannerTask extends AsyncTask<Void, Void, List<ListContent>> {
-
-        @Override
-        protected List<ListContent> doInBackground(Void... voids) {
-            return getConnect.setContentURL(getConnect.UrlContentHot,
-                    "1", "3");
-        }
-
-        @Override
-        protected void onPostExecute(List<ListContent> mListContents) {
-            super.onPostExecute(mListContents);
-            if (mListContents != null) {
-                BannerBaseView banner = new MainBannerView(getActivity());
-                List<BaseBannerBean> list = new ArrayList<>();
-                for (int i = 0;i < 3; i++) {
-                    list.add(new BaseBannerBean(mListContents.get(i).getImagelink()));
-                    bannerTitle.add(mListContents.get(i).getTitle());
-                }
-                bannerContent.addView(banner);
-                banner.setBannerTitle(bannerTitle);
-                banner.update(list);
-            }
-        }
-    }
-
     private void initListener() {
         materialRefreshLayout.setMaterialRefreshListener(new MaterialRefreshListener() {
             @Override
@@ -155,7 +115,7 @@ public class MainTabSearch extends Fragment {
                 if (isSearched) {
                     new RefreshDataTask().execute();
                 } else {
-                   materialRefreshLayout.finishRefresh();
+                    materialRefreshLayout.finishRefresh();
                 }
             }
 
@@ -192,10 +152,37 @@ public class MainTabSearch extends Fragment {
         });
     }
 
+    /**
+     * 刷新数据
+     */
+    class initBannerTask extends AsyncTask<Void, Void, List<ListContent>> {
+
+        @Override
+        protected List<ListContent> doInBackground(Void... voids) {
+            return getConnect.setContentURL(getConnect.UrlContentHot,
+                    "1", "3");
+        }
+
+        @Override
+        protected void onPostExecute(List<ListContent> mListContents) {
+            super.onPostExecute(mListContents);
+            if (mListContents != null) {
+                BannerBaseView banner = new MainBannerView(getActivity());
+                List<BaseBannerBean> list = new ArrayList<>();
+                for (int i = 0; i < 3; i++) {
+                    list.add(new BaseBannerBean(mListContents.get(i).getImagelink()));
+                    bannerTitle.add(mListContents.get(i).getTitle());
+                }
+                bannerContent.addView(banner);
+                banner.setBannerTitle(bannerTitle);
+                banner.update(list);
+            }
+        }
+    }
 
     /**
      * 点击搜索获取数据
-     * */
+     */
     class SearchDataTask extends AsyncTask<String, Void, List<ListContent>> {
 
         @Override
@@ -265,7 +252,7 @@ public class MainTabSearch extends Fragment {
                 materialRefreshLayout.finishRefreshLoadMore();
                 return;
             }
-            if (!Constant.isContainLists(mListContentAdapter,ListContents)) {
+            if (!Constant.isContainLists(mListContentAdapter, ListContents)) {
                 mListContentAdapter.addData(ListContents);
                 mListContentAdapter.notifyDataSetChanged();
             }

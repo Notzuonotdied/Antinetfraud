@@ -8,7 +8,6 @@ import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
@@ -24,7 +23,7 @@ import java.util.List;
 public class BannerBaseView extends RelativeLayout implements BannerViewBehavior {
 
     /**
-     * banner默认高宽比  height/width = 420/640
+     * banner默认高宽比
      */
     private static final float BANNER_RATIO_DEFAULT = 0.618f;
 
@@ -226,7 +225,7 @@ public class BannerBaseView extends RelativeLayout implements BannerViewBehavior
 
             TextView banner_search_title = new TextView(getContext());
             banner_search_title.setText(bannerTitle.get(position));
-            banner_search_title.setBackgroundColor(0x88000000);
+            banner_search_title.setBackgroundColor(0x66000000);
             banner_search_title.setTextColor(0xffffffff);
             banner_search_title.setLayoutParams(new FrameLayout.LayoutParams(
                     FrameLayout.LayoutParams.MATCH_PARENT,
