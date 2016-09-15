@@ -1,15 +1,18 @@
 package com.jiketuandui.antinetfraud.View;
 
+import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.design.widget.AppBarLayout;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.SearchView;
-import android.widget.Toast;
+import android.widget.TextView;
 
 import com.cjj.MaterialRefreshLayout;
 import com.cjj.MaterialRefreshListener;
@@ -18,6 +21,9 @@ import com.jiketuandui.antinetfraud.Bean.ListContent;
 import com.jiketuandui.antinetfraud.HTTP.getConnect;
 import com.jiketuandui.antinetfraud.R;
 import com.jiketuandui.antinetfraud.Util.Constant;
+import com.jiketuandui.antinetfraud.banner.BannerBaseView;
+import com.jiketuandui.antinetfraud.banner.MainBannerView;
+import com.jiketuandui.antinetfraud.banner.bean.BaseBannerBean;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,10 +38,13 @@ public class MainTabSearch extends Fragment {
     private RecyclerView mRecyclerView;
     private ListContentAdapter mListContentAdapter;
     private String inputString;
+    private RelativeLayout bannerContent;
+    private AppBarLayout search_appBar_Layout;
     /**
      * 当前页面的各个Item的数据存放容器
      */
     private List<ListContent> mListContents = new ArrayList<>();
+    private List<String> bannerTitle = new ArrayList<>();
 
     /**
      * 判断搜索是否加载完成
@@ -45,13 +54,17 @@ public class MainTabSearch extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.main_tab_search, container, false);
-        searchView = (SearchView) view.findViewById(R.id.maintab_search_searchview);
+        searchView = (SearchView) view.findViewById(R.id.mainTab_search_searchView);
         materialRefreshLayout = (MaterialRefreshLayout) view.findViewById
                 (R.id.maintab_search_refresh);
         mRecyclerView = (RecyclerView) view.findViewById(R.id.maintab_search_recyclerView);
+        bannerContent = (RelativeLayout) view.findViewById(R.id.search_banner_cont);
+        search_appBar_Layout = (AppBarLayout) view.findViewById(R.id.search_appBar_Layout);
         initView();
         return view;
     }
+
+
 
     /**
      * 初始化控件
@@ -72,7 +85,66 @@ public class MainTabSearch extends Fragment {
                 LinearLayoutManager.VERTICAL, false));
         mRecyclerView.setAdapter(mListContentAdapter);
 
+        search_appBar_Layout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
+            @Override
+            public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
+                int total_Height = -search_appBar_Layout.getHeight() + searchView.getHeight();
+                if (verticalOffset > total_Height) {
+                    Drawable drawable = searchView.getBackground();
+                    drawable.setAlpha(changAlpha(Math.abs(verticalOffset), Math.abs(total_Height)));
+                }
+            }
+        });
+
+        initbanner();
         initListener();
+    }
+
+    /**
+     * 渐变透明度
+     *
+     * @param heightOffset 高度变化值
+     * @param total_Height 总高度
+     * */
+    private int changAlpha(int heightOffset, int total_Height) {
+        float alpha = heightOffset * 255 / total_Height;
+        alpha += 188;
+        if (alpha > 255) {
+            alpha = 255;
+        }
+        return (int) alpha;
+    }
+
+    private void initbanner() {
+        new initBannerTask().execute();
+    }
+
+    /**
+     * 刷新数据
+     */
+    class initBannerTask extends AsyncTask<Void, Void, List<ListContent>> {
+
+        @Override
+        protected List<ListContent> doInBackground(Void... voids) {
+            return getConnect.setContentURL(getConnect.UrlContentHot,
+                    "1", "3");
+        }
+
+        @Override
+        protected void onPostExecute(List<ListContent> mListContents) {
+            super.onPostExecute(mListContents);
+            if (mListContents != null) {
+                BannerBaseView banner = new MainBannerView(getActivity());
+                List<BaseBannerBean> list = new ArrayList<>();
+                for (int i = 0;i < 3; i++) {
+                    list.add(new BaseBannerBean(mListContents.get(i).getImagelink()));
+                    bannerTitle.add(mListContents.get(i).getTitle());
+                }
+                bannerContent.addView(banner);
+                banner.setBannerTitle(bannerTitle);
+                banner.update(list);
+            }
+        }
     }
 
     private void initListener() {
@@ -119,6 +191,7 @@ public class MainTabSearch extends Fragment {
             }
         });
     }
+
 
     /**
      * 点击搜索获取数据

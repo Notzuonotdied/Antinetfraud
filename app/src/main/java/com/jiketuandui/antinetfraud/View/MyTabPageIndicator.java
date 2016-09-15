@@ -49,7 +49,7 @@ public class MyTabPageIndicator extends LinearLayout {
     /**
      * 单位是sp
      * */
-    private int IndicatorTextSize = 16;
+    private int IndicatorTextSize = 14;
     /**
      * 绘制三角形的画笔
      */

@@ -22,7 +22,6 @@ public class ListContentHolder extends RecyclerView.ViewHolder implements View.O
 
     public TextView Holder_title;
     public TextView Holder_tip;
-    //public ImageView Holder_image;
     public SimpleDraweeView Holder_image;
     public TextView Holder_source;
 
@@ -38,7 +37,6 @@ public class ListContentHolder extends RecyclerView.ViewHolder implements View.O
     private void initView(View v) {
         this.Holder_title = (TextView) v.findViewById(R.id.lc_holder_tittle);
         this.Holder_tip = (TextView) v.findViewById(R.id.lc_holder_tip);
-        //this.Holder_image = (ImageView) v.findViewById(R.id.lc_holder_image);
         this.Holder_image = (SimpleDraweeView) v.findViewById(R.id.lc_holder_image);
         this.Holder_source = (TextView) v.findViewById(R.id.lc_holder_source);
     }

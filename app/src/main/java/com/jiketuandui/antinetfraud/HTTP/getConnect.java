@@ -32,9 +32,9 @@ public class getConnect {
     //public static String myUrl = "http://127.0.0.1";
     //public static String myUrl = "http://10.0.3.2";
     //public static String myUrl = "http://192.168.0.149";
-//    public static String myUrl = "http://192.168.0.100";
+    public static String myUrl = "http://192.168.0.102";
 
-    public static String myUrl = "http://mlen.ittun.com";
+    //public static String myUrl = "http://mlen.ittun.com";
     /**
      * 常量,简介内容链接头部
      */
@@ -320,6 +320,23 @@ public class getConnect {
     public static List<ListContent> setContentURL(String UrlHead, String UrlTail) {
         try {
             return getListContents(UrlHead + UrlTail + "/8");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    /**
+     * 设置链接并返回数据
+     *
+     * @param UrlTail the url tail
+     * @param pager 页数
+     * @return List<ListContent>
+     */
+    @Nullable
+    public static List<ListContent> setContentURL(String UrlHead, String UrlTail, String pager) {
+        try {
+            return getListContents(UrlHead + UrlTail + "/" + pager);
         } catch (IOException e) {
             e.printStackTrace();
         }
