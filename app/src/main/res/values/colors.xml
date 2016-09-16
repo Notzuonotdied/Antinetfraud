@@ -19,5 +19,6 @@
     <color name="color_setting_item">#272636</color>
     <color name="color_setting_header">#ff888888</color>
     <color name="color_article_info">#888</color>
+    <color name="color_setting_items">#ff333333</color>
 
 </resources>

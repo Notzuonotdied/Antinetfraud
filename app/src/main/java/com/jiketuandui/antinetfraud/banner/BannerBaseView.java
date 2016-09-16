@@ -223,14 +223,18 @@ public class BannerBaseView extends RelativeLayout implements BannerViewBehavior
 
             imageView.setImageURI(d.getUrl());
 
+
+            FrameLayout.LayoutParams FL_tv = new FrameLayout.LayoutParams(
+                    FrameLayout.LayoutParams.MATCH_PARENT,
+                    FrameLayout.LayoutParams.WRAP_CONTENT
+            );
+            FL_tv.gravity = Gravity.BOTTOM;
+
             TextView banner_search_title = new TextView(getContext());
             banner_search_title.setText(bannerTitle.get(position));
             banner_search_title.setBackgroundColor(0x66000000);
             banner_search_title.setTextColor(0xffffffff);
-            banner_search_title.setLayoutParams(new FrameLayout.LayoutParams(
-                    FrameLayout.LayoutParams.MATCH_PARENT,
-                    FrameLayout.LayoutParams.WRAP_CONTENT
-            ));
+            banner_search_title.setLayoutParams(FL_tv);
             banner_search_title.setGravity(Gravity.CENTER);
             banner_search_title.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20);
             banner_search_title.setMaxLines(1);

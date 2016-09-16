@@ -133,7 +133,7 @@ public class ArticleContentActivity extends AppCompatActivity {
      *
      * @param heightOffset 高度变化值
      * @param total_Height 总高度
-     * */
+     */
     private int changAlpha(int heightOffset, int total_Height) {
         float alpha = heightOffset * 255 / total_Height;
         if (alpha > 255) {

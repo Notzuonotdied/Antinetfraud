@@ -1,67 +1,149 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/color_white">
+    android:background="@color/color_white"
+    android:orientation="vertical">
 
-    <!-- 这是最上面的部分-->
-    <android.support.design.widget.AppBarLayout
-        android:id="@+id/search_appBar_Layout"
+    <SearchView
+        android:id="@+id/mainTab_search_searchView"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_gravity="top"
+        android:background="@color/color_white"
+        android:iconifiedByDefault="false" />
+
+    <TextView
+        android:id="@+id/search_null"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fitsSystemWindows="true">
+        android:layout_margin="16dp"
+        android:gravity="center"
+        android:padding="16dp"
+        android:text="@string/search_null"
+        android:textColor="@color/color_title"
+        android:visibility="gone"
+        android:textSize="16sp" />
 
-        <android.support.design.widget.CollapsingToolbarLayout
+    <ScrollView
+        android:id="@+id/search_scroll"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:visibility="visible">
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:fitsSystemWindows="true"
-            android:minHeight="?attr/actionBarSize"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-            <RelativeLayout
-                android:id="@+id/search_banner_cont"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_collapseMode="parallax"
-                app:layout_collapseParallaxMultiplier="0.8">
+                android:orientation="vertical">
 
-            </RelativeLayout>
+                <!--这个是头部显示-->
+                <TextView
+                    style="@style/setting_header"
+                    android:text="@string/search_news" />
 
-            <SearchView
-                android:id="@+id/mainTab_search_searchView"
+                <!--框内显示-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/setting_shape"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:id="@+id/setting_pieces_collection"
+                        style="@style/setting_row">
+
+                        <TextView
+                            android:id="@+id/tv_01"
+                            style="@style/search_item"
+                            android:background="#6699FF"
+                            android:text="@string/setting_person_collection" />
+
+                        <TextView
+                            android:id="@+id/tv_02"
+                            style="@style/search_item"
+                            android:background="#FFCC00"
+                            android:text="@string/setting_person_collection" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/setting_pieces_history"
+                        style="@style/setting_row">
+
+                        <TextView
+                            android:id="@+id/tv_03"
+                            style="@style/search_item"
+                            android:background="#FF6600"
+                            android:text="@string/setting_person_browsing" />
+
+                        <TextView
+                            android:id="@+id/tv_04"
+                            style="@style/search_item"
+                            android:background="#00cc00"
+                            android:text="@string/setting_person_browsing" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                android:iconifiedByDefault="false"
-                android:layout_gravity="bottom"
-                android:background="@color/color_white"/>
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-        </android.support.design.widget.CollapsingToolbarLayout>
-    </android.support.design.widget.AppBarLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <!--这个是头部显示-->
+                    <TextView
+                        style="@style/search_header"
+                        android:text="@string/search_history" />
 
-    <android.support.v4.widget.NestedScrollView
+                    <!--清除历史-->
+                    <TextView
+                        android:id="@+id/search_clear"
+                        style="@style/search_header"
+                        android:layout_marginRight="16dp"
+                        android:gravity="end"
+                        android:text="@string/search_clear" />
+
+                </LinearLayout>
+
+                <!--框内显示-->
+                <com.jiketuandui.antinetfraud.View.MyListView
+                    android:id="@+id/search_listView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/setting_shape" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <com.cjj.MaterialRefreshLayout
+        android:id="@+id/maintab_search_refresh"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:visibility="gone"
+        app:isLoadMore="true"
+        app:overlay="true"
+        app:progress_colors="@array/material_colors"
+        app:wave_color="#2600BDD0"
+        app:wave_show="true">
 
-        <com.cjj.MaterialRefreshLayout
-            android:id="@+id/maintab_search_refresh"
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/maintab_search_recyclerView"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            app:overlay="true"
-            app:progress_colors="@array/material_colors"
-            app:wave_height_type="higher"
-            app:wave_show="true">
+            android:layout_height="match_parent">
 
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/maintab_search_recyclerView"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+        </android.support.v7.widget.RecyclerView>
 
-            </android.support.v7.widget.RecyclerView>
+    </com.cjj.MaterialRefreshLayout>
 
-        </com.cjj.MaterialRefreshLayout>
-    </android.support.v4.widget.NestedScrollView>
-
-</android.support.design.widget.CoordinatorLayout>
+</LinearLayout>
