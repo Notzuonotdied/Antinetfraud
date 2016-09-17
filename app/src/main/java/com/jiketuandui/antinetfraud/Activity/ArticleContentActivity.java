@@ -18,6 +18,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
+import com.facebook.drawee.view.SimpleDraweeView;
 import com.jiketuandui.antinetfraud.Bean.ArticleContent;
 import com.jiketuandui.antinetfraud.HTTP.getConnect;
 import com.jiketuandui.antinetfraud.HTTP.getImage;
@@ -39,6 +40,7 @@ public class ArticleContentActivity extends AppCompatActivity {
     private RadioGroup radioGroup;
     private ArticleContent mArticleContent;
     private LinearLayout head_layout;
+    //private SimpleDraweeView head_layout;
     private LinearLayout head_info;
     private CollapsingToolbarLayout mCollapsingToolbarLayout;
     private boolean isLessThan;
@@ -73,6 +75,7 @@ public class ArticleContentActivity extends AppCompatActivity {
         radioGroup = (RadioGroup) findViewById(R.id.article_radiogroup);
         head_info = (LinearLayout) findViewById(R.id.head_info);
         head_layout = (LinearLayout) findViewById(R.id.head_layout);
+        //head_layout = (SimpleDraweeView) findViewById(R.id.head_layout);
 
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);
@@ -103,6 +106,7 @@ public class ArticleContentActivity extends AppCompatActivity {
                 int total_Height = -mCollapsingToolbarLayout.getHeight() + mToolbar.getHeight();
                 if (verticalOffset <= total_Height) {
                     mCollapsingToolbarLayout.setTitle(mArticleContent.getTitle());
+
                     head_info.setVisibility(View.GONE);
                     if (!isLessThan) {
                         mCollapsingToolbarLayout.setContentScrim(drawable_head);
@@ -110,6 +114,7 @@ public class ArticleContentActivity extends AppCompatActivity {
                     isLessThan = true;
                 } else {
                     mCollapsingToolbarLayout.setTitle("");
+
                     head_info.setVisibility(View.VISIBLE);
                     Drawable drawable = head_info.getBackground();
                     drawable.setAlpha(changAlpha(Math.abs(verticalOffset), Math.abs(total_Height)));
@@ -182,6 +187,7 @@ public class ArticleContentActivity extends AppCompatActivity {
 
         article_markdownView.loadMarkdown(articleContent.getContent());
 
+ //       head_layout.setImageURI(mArticleContent.getAllImagelink());
         // 设置头图
         if (Build.VERSION.SDK_INT >= 16) {
             head_layout.setBackground(new BitmapDrawable(
@@ -194,37 +200,16 @@ public class ArticleContentActivity extends AppCompatActivity {
         drawable_head = Build.VERSION.SDK_INT > 16 ? new BitmapDrawable(
                 BlurUtilForHighAPI.Highblur(mArticleContent.getBitmap(),
                         25f, ArticleContentActivity.this)) : new BitmapDrawable(
-                BlurUtil.fastblur(mArticleContent.getBitmap(), 36));
+                BlurUtil.fastblur(mArticleContent.getBitmap(), 66));
         mCollapsingToolbarLayout.setContentScrim(drawable_head);
-
-        // 设置标题栏的图片背景
-//        if (Build.VERSION.SDK_INT > 16) {
-//            mCollapsingToolbarLayout.setContentScrim(new BitmapDrawable(
-//                    BlurUtilForHighAPI.Highblur(mArticleContent.getBitmap(),
-//                            25f, ArticleContentActivity.this)));
-//        } else {
-//            mCollapsingToolbarLayout.setContentScrim(new BitmapDrawable(
-//                    BlurUtil.fastblur(mArticleContent.getBitmap(), 36)));
-//        }
-
-
-//        // 设置头图
-//        if (Build.VERSION.SDK_INT >= 16) {
-//            head_layout.setBackground(new BitmapDrawable(
-//                    BlurUtilForHighAPI.Highblur(mArticleContent.getBitmap(),
-//                            25f, ArticleContentActivity.this)));
-//        } else {
-//            head_layout.setBackgroundDrawable(new BitmapDrawable(
-//                    BlurUtil.fastblur(mArticleContent.getBitmap(), 36)));
-//        }
-
     }
 
     @Override
     protected void onStop() {
-        if (head_layout != null && head_layout.getDrawingCache() != null) {
+        if (head_layout != null && head_layout.getDrawingCache() != null ||
+                mCollapsingToolbarLayout != null && mCollapsingToolbarLayout.getDrawingCache() != null) {
             Bitmap bitmap = head_layout.getDrawingCache();
-            Bitmap bitmap_coo = head_layout.getDrawingCache();
+            Bitmap bitmap_coo = mCollapsingToolbarLayout.getDrawingCache();
             if (Build.VERSION.SDK_INT >= 16) {
                 head_layout.setBackground(null);
             } else {
@@ -247,9 +232,10 @@ public class ArticleContentActivity extends AppCompatActivity {
      */
     @Override
     protected void onDestroy() {
-        if (head_layout != null && head_layout.getDrawingCache() != null) {
+        if (head_layout != null && head_layout.getDrawingCache() != null ||
+                mCollapsingToolbarLayout != null && mCollapsingToolbarLayout.getDrawingCache() != null) {
             Bitmap bitmap = head_layout.getDrawingCache();
-            Bitmap bitmap_coo = head_layout.getDrawingCache();
+            Bitmap bitmap_coo = mCollapsingToolbarLayout.getDrawingCache();
             if (Build.VERSION.SDK_INT >= 16) {
                 head_layout.setBackground(null);
             } else {

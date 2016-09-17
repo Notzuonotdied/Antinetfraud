@@ -40,7 +40,7 @@ public class BlurUtilForHighAPI {
             scriptIntrinsicBlur.forEach(output);
             output.copyTo(bitmap);
         } else {
-            bitmap = BlurUtil.fastblur(sentBitmap, 36);
+            bitmap = BlurUtil.fastblur(sentBitmap, 66);
         }
         return bitmap;
     }

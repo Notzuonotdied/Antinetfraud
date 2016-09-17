@@ -23,14 +23,15 @@
         android:padding="16dp"
         android:text="@string/search_null"
         android:textColor="@color/color_title"
-        android:visibility="gone"
-        android:textSize="16sp" />
+        android:textSize="16sp"
+        android:visibility="gone" />
 
     <ScrollView
         android:id="@+id/search_scroll"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
+        android:scrollbars="none"
         android:visibility="visible">
 
         <LinearLayout

@@ -2,6 +2,7 @@ package com.jiketuandui.antinetfraud.Bean;
 
 import android.graphics.Bitmap;
 
+import com.jiketuandui.antinetfraud.HTTP.getConnect;
 import com.jiketuandui.antinetfraud.Util.transTime;
 
 import java.util.List;
@@ -121,6 +122,10 @@ public class ArticleContent {
 
     public String getImagelink() {
         return imagelink;
+    }
+
+    public String getAllImagelink() {
+        return getConnect.myUrl + imagelink;
     }
 
     public String getSource() {
