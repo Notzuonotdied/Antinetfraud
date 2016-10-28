@@ -8,12 +8,12 @@
     <string name="welcome1">欢迎使用网络诈骗防范</string>
     <string name="welcome2">科普网APP</string>
     <string name="welcome3">希望能帮到您！</string>
-    
+
     <string name="main_tab">主页</string>
     <string name="main_hot">热点</string>
     <string name="main_search">搜索</string>
     <string name="main_my">我的</string>
-    
+
     <string name="setting_person">个人</string>
     <string name="setting_person_account_name">账户名</string>
     <string name="setting_person_level">等级</string>
@@ -37,4 +37,8 @@
     <string name="search_history">搜索历史</string>
     <string name="search_clear">清除历史</string>
     <string name="search_null">没有搜索到案例~</string>
+    <string name="search_tint">请输入信息搜索案例~</string>
+
+    <string name="search_flash">Flash</string>
+    <string name="search_classical">经典案例</string>
 </resources>

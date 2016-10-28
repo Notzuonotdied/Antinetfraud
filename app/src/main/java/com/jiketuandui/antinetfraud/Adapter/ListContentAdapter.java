@@ -46,6 +46,7 @@ public class ListContentAdapter extends RecyclerView.Adapter<ListContentHolder> 
      */
     private LayoutInflater mLayoutInflater;
     private Context context;
+    private View view;
 
     /**
      * Instantiates a new List content adapter.
@@ -96,7 +97,7 @@ public class ListContentAdapter extends RecyclerView.Adapter<ListContentHolder> 
          * 创建了一个ViewHolder实例后,onBindViewHolder将会被调用,负责将数据与ViewHolder绑定
          * 载入ListContent的布局文件,并返回
          * */
-        View view = mLayoutInflater.inflate(R.layout.list_content_holder, parent, false);
+        view = mLayoutInflater.inflate(R.layout.list_content_holder, parent, false);
         return new ListContentHolder(view);
     }
 
@@ -119,8 +120,10 @@ public class ListContentAdapter extends RecyclerView.Adapter<ListContentHolder> 
      * 设置列表项的响应事件
      */
     private ListConentOnClickListener mListListener = new ListConentOnClickListener() {
+
         @Override
         public void OnItemClickListener(int position) {
+
             Intent intent = new Intent(context, ArticleContentActivity.class);
             Bundle mBundle = new Bundle();
             mBundle.putInt(Constant.CONTENTID,Integer.valueOf(mListContents.get(position).getId()));

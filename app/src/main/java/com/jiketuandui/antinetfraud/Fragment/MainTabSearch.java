@@ -1,34 +1,30 @@
 package com.jiketuandui.antinetfraud.Fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.CursorAdapter;
 import android.support.v4.widget.SimpleCursorAdapter;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
-import android.widget.RelativeLayout;
-import android.widget.ScrollView;
-import android.widget.SearchView;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import com.cjj.MaterialRefreshLayout;
-import com.cjj.MaterialRefreshListener;
-import com.jiketuandui.antinetfraud.Adapter.ListContentAdapter;
+import com.jiketuandui.antinetfraud.Activity.SearchActivity;
 import com.jiketuandui.antinetfraud.Bean.ListContent;
 import com.jiketuandui.antinetfraud.HTTP.getConnect;
 import com.jiketuandui.antinetfraud.R;
 import com.jiketuandui.antinetfraud.SQL.RecordSQLiteOpenHelper;
 import com.jiketuandui.antinetfraud.Util.Constant;
 import com.jiketuandui.antinetfraud.View.MyListView;
+import com.jiketuandui.antinetfraud.View.MySearchView;
 import com.jiketuandui.antinetfraud.banner.BannerBaseView;
 import com.jiketuandui.antinetfraud.banner.MainBannerView;
 import com.jiketuandui.antinetfraud.banner.bean.BaseBannerBean;
@@ -39,21 +35,14 @@ import java.util.List;
 
 public class MainTabSearch extends Fragment {
 
-    private SearchView searchView;
-
-    private int readPage;
-    private MaterialRefreshLayout materialRefreshLayout;
-    private RecyclerView mRecyclerView;
-    private ListContentAdapter mListContentAdapter;
-    private String inputString;
-    private RelativeLayout bannerContent;
-    private ScrollView search_scroll;
+    private MySearchView my_search_view;
+    private MainBannerView bannerContent;
     private TextView search_clear;
     private RecordSQLiteOpenHelper helper;
     private MyListView search_listView;
     private BaseAdapter adapter;
-    private TextView search_null;
     private TextView tv_01;
+    private TextView tv_02;
 
     /**
      * 当前页面的各个Item的数据存放容器
@@ -61,11 +50,19 @@ public class MainTabSearch extends Fragment {
     private List<ListContent> mListContents = new ArrayList<>();
     private List<String> bannerTitle = new ArrayList<>();
 
-    /**
-     * 判断搜索是否加载完成
-     */
-    private boolean isSearched = false;
-    private boolean isNull = true;
+    private View.OnClickListener tvListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            switch (view.getId()) {
+                case R.id.tv_01:
+                    Toast.makeText(getContext(), "正在抓紧开发中~", Toast.LENGTH_SHORT).show();
+                    break;
+                case R.id.tv_02:
+                    Toast.makeText(getContext(), "正在抓紧开发中~", Toast.LENGTH_SHORT).show();
+                    break;
+            }
+        }
+    };
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -78,23 +75,19 @@ public class MainTabSearch extends Fragment {
     }
 
     private void initAllView(View view) {
-        this.searchView = (SearchView) view.findViewById(R.id.mainTab_search_searchView);
-        this.materialRefreshLayout = (MaterialRefreshLayout) view.findViewById
-                (R.id.maintab_search_refresh);
-        this.mRecyclerView = (RecyclerView) view.findViewById(R.id.maintab_search_recyclerView);
-        this.search_scroll = (ScrollView) view.findViewById(R.id.search_scroll);
+        this.my_search_view = (MySearchView) view.findViewById(R.id.my_search_view);
         //    bannerContent = (RelativeLayout) view.findViewById(R.id.search_banner_cont);
         this.search_clear = (TextView) view.findViewById(R.id.search_clear);
         this.search_listView = (MyListView) view.findViewById(R.id.search_listView);
-        this.search_null = (TextView) view.findViewById(R.id.search_null);
 
         this.tv_01 = (TextView) view.findViewById(R.id.tv_01);
+        this.tv_02 = (TextView) view.findViewById(R.id.tv_02);
     }
 
     private void updateAdapter(String name) {
         Cursor cursor = helper.queryData(name);
         adapter = new SimpleCursorAdapter(getContext(),
-                R.layout.my_list_view,
+                R.layout.search_history_list,
                 cursor,
                 new String[]{"name"},
                 new int[]{R.id.text_history},
@@ -108,120 +101,37 @@ public class MainTabSearch extends Fragment {
      * 初始化控件
      */
     private void initView() {
-        readPage = 1;
-        mListContentAdapter = new ListContentAdapter(getActivity(), mListContents);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(),
-                LinearLayoutManager.VERTICAL, false));
-        mRecyclerView.setAdapter(mListContentAdapter);
-
         //init_banner();
         initListener();
         updateAdapter("");
     }
-
-    /**
-     * 渐变透明度
-     *
-     * @param heightOffset 高度变化值
-     * @param total_Height 总高度
-     */
-    private int changAlpha(int heightOffset, int total_Height) {
-        float alpha = heightOffset * 255 / total_Height;
-        alpha += 108;
-        if (alpha > 255) {
-            alpha = 255;
-        }
-        return (int) alpha;
-    }
-
 
     private void init_banner() {
         new initBannerTask().execute();
     }
 
     private void initListener() {
-        materialRefreshLayout.setMaterialRefreshListener(new MaterialRefreshListener() {
+        tv_01.setOnClickListener(tvListener);
+        tv_02.setOnClickListener(tvListener);
+
+
+        my_search_view.setSearchViewListener(new MySearchView.SearchViewListener() {
             @Override
-            public void onRefresh(MaterialRefreshLayout materialRefreshLayout) {
-                materialRefreshLayout.finishRefreshLoadMore();
-                if (isSearched) {
-                    new RefreshDataTask().execute();
-                } else {
-                    materialRefreshLayout.finishRefresh();
-                }
+            public void onSearch(String text) {
+                searchfunction(text);
             }
 
             @Override
-            public void onRefreshLoadMore(MaterialRefreshLayout materialRefreshLayout) {
-                materialRefreshLayout.finishRefresh();
-                if (isSearched) {
-                    new LoadMoreDataTask().execute();
-                } else {
-                    materialRefreshLayout.finishRefreshLoadMore();
-                }
+            public void onQueryTextSubmit(String text) {
+                searchfunction(text);
+            }
+
+            @Override
+            public void onQueryTextChange(String text) {
+
             }
         });
 
-        searchView.setSubmitButtonEnabled(true);
-        searchView.setQueryHint("请输入您要查找的信息");
-
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override// 单击搜索按钮时激活该方法
-            public boolean onQueryTextSubmit(String s) {
-                inputString = s;
-                mListContents.clear();
-                mListContentAdapter.clearData();
-                readPage = 1;
-                materialRefreshLayout.autoRefresh();
-
-                new SearchDataTask().execute(s);
-
-                if (s.equals(" ") || s.equals("")) {
-                    search_scroll.setVisibility(View.VISIBLE);
-                    search_null.setVisibility(View.GONE);
-                    materialRefreshLayout.setVisibility(View.GONE);
-                } else {
-                    if (isNull) {
-                        search_null.setVisibility(View.VISIBLE);
-                        search_scroll.setVisibility(View.GONE);
-                        materialRefreshLayout.setVisibility(View.GONE);
-                    } else {
-                        materialRefreshLayout.setVisibility(View.VISIBLE);
-                        search_scroll.setVisibility(View.GONE);
-                        search_null.setVisibility(View.GONE);
-                    }
-                }
-
-                InputMethodManager imm = (InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
-                imm.toggleSoftInput(0, InputMethodManager.HIDE_NOT_ALWAYS);
-
-                isSearched = false;
-                searchView.clearFocus();
-                // 按完搜索键后将当前查询的关键字保存起来,如果该关键字已经存在就不执行保存
-                boolean hasData = helper.hasData(s.trim());
-                if (!hasData) {
-                    helper.insertData(s.trim());
-                    updateAdapter("");
-                }
-
-                return false;
-            }
-
-            @Override// 当用户输入字符时激发该方法
-            public boolean onQueryTextChange(String s) {
-                if (s.equals("")) {
-                    search_null.setVisibility(View.GONE);
-                    search_scroll.setVisibility(View.VISIBLE);
-                    materialRefreshLayout.setVisibility(View.GONE);
-                }
-                //else {
-//                    search_scroll.setVisibility(View.GONE);
-//                    materialRefreshLayout.setVisibility(View.VISIBLE);
-//                }
-
-                return true;
-            }
-        });
 
         search_clear.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -235,10 +145,30 @@ public class MainTabSearch extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 TextView tv = (TextView) view.findViewById(R.id.text_history);
-                String name = tv.getText().toString();
-                searchView.setQuery(name, false);
+                my_search_view.setInputString(tv.getText().toString());
             }
         });
+    }
+
+    /**
+     * 搜索的动作
+     * */
+    private void searchfunction(String text) {
+        if(!text.equals("")) {
+            closeIME();
+            // 按完搜索键后将当前查询的关键字保存起来,如果该关键字已经存在就不执行保存
+            boolean hasData = helper.hasData(text.trim());
+            if (!hasData) {
+                helper.insertData(text.trim());
+                updateAdapter("");
+            }
+
+            Intent intent = new Intent(getActivity(), SearchActivity.class);
+            Bundle mbundle = new Bundle();
+            mbundle.putString(Constant.SEARCHSTRING, text);
+            intent.putExtras(mbundle);
+            startActivity(intent);
+        }
     }
 
     /**
@@ -269,86 +199,8 @@ public class MainTabSearch extends Fragment {
         }
     }
 
-    /**
-     * 点击搜索获取数据
-     */
-    class SearchDataTask extends AsyncTask<String, Void, List<ListContent>> {
-
-        @Override
-        protected List<ListContent> doInBackground(String... strings) {
-            List<ListContent> listContents = getConnect.setContentPost(String.valueOf(readPage),
-                    inputString);
-            readPage++;
-            return listContents;
-        }
-
-        @Override
-        protected void onPostExecute(List<ListContent> mListContents) {
-            super.onPostExecute(mListContents);
-            if (mListContents != null) {
-                mListContentAdapter.setData(mListContents);
-                mListContentAdapter.notifyDataSetChanged();
-                isNull = false;
-            } else {
-                isNull = true;
-            }
-            isSearched = true;
-            materialRefreshLayout.finishRefresh();
-        }
-    }
-
-    /**
-     * 刷新数据
-     */
-    class RefreshDataTask extends AsyncTask<Void, Void, List<ListContent>> {
-
-        @Override
-        protected List<ListContent> doInBackground(Void... voids) {
-            List<ListContent> listContents = getConnect.setContentPost(String.valueOf(readPage),
-                    inputString);
-            readPage++;
-            return listContents;
-        }
-
-        @Override
-        protected void onPostExecute(List<ListContent> mListContents) {
-            super.onPostExecute(mListContents);
-            if (mListContents != null) {
-                mListContentAdapter.setData(mListContents);
-                mListContentAdapter.notifyDataSetChanged();
-            }
-            materialRefreshLayout.finishRefresh();
-        }
-    }
-
-    /**
-     * 加载更多数据
-     */
-    class LoadMoreDataTask extends AsyncTask<Void, Void, List<ListContent>> {
-
-        @Override
-        protected List<ListContent> doInBackground(Void... voids) {
-            if (mListContentAdapter.getData().size() == 0) {
-                return null;
-            }
-            List<ListContent> listContents = getConnect.setContentPost(String.valueOf(readPage),
-                    inputString);
-            readPage++;
-            return listContents;
-        }
-
-        @Override
-        protected void onPostExecute(List<ListContent> ListContents) {
-            super.onPostExecute(ListContents);
-            if (ListContents == null) {
-                materialRefreshLayout.finishRefreshLoadMore();
-                return;
-            }
-            if (!Constant.isContainLists(mListContentAdapter, ListContents)) {
-                mListContentAdapter.addData(ListContents);
-                mListContentAdapter.notifyDataSetChanged();
-            }
-            materialRefreshLayout.finishRefreshLoadMore();
-        }
+    private void closeIME() {
+        InputMethodManager imm = (InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.toggleSoftInput(0, InputMethodManager.HIDE_NOT_ALWAYS);
     }
 }

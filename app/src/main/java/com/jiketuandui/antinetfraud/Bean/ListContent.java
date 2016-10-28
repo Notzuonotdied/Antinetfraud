@@ -149,7 +149,7 @@ public class ListContent {
 
     public String getImagelink() {
 
-        return getConnect.myUrl + imagelink;
+        return imagelink;
     }
 
     public String getSource() {

@@ -6,7 +6,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 import com.jiketuandui.antinetfraud.Util.Constant;
-import com.jiketuandui.antinetfraud.View.MainTabHot_news;
+import com.jiketuandui.antinetfraud.Fragment.MainTabHot_news;
 
 
 /**

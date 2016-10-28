@@ -13,6 +13,7 @@ import android.widget.Toast;
 import com.cjj.MaterialRefreshLayout;
 import com.cjj.MaterialRefreshListener;
 import com.jiketuandui.antinetfraud.Adapter.ListContentAdapter;
+import com.jiketuandui.antinetfraud.Adapter.ListContentHotAdapter;
 import com.jiketuandui.antinetfraud.Bean.ListContent;
 import com.jiketuandui.antinetfraud.HTTP.getConnect;
 import com.jiketuandui.antinetfraud.Holder.MyItemDecoration;
@@ -36,7 +37,7 @@ public class MainTabHot_news extends Fragment {
 
     private MaterialRefreshLayout materialRefreshLayout;
     private RecyclerView mRecyclerView;
-    private ListContentAdapter mListContentAdapter;
+    private ListContentHotAdapter mListContentAdapter;
     /**
      * 当前页面的各个Item的数据存放容器
      */
@@ -70,7 +71,7 @@ public class MainTabHot_news extends Fragment {
          * Adapter：使用RecyclerView之前，你需要一个继承自RecyclerView.Adapter的适配器，
          * 作用是将数据与每一个item的界面进行绑定。
          * */
-        mListContentAdapter = new ListContentAdapter(getActivity(), mListContents);
+        mListContentAdapter = new ListContentHotAdapter(getActivity(), mListContents);
         /**
          * LayoutManager：用来确定每一个item如何进行排列摆放，何时展示和隐藏。
          * 回收或重用一个View的时候，LayoutManager会向适配器请求新的数据来替换旧的数据，

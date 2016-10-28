@@ -32,9 +32,9 @@ public class getConnect {
     //public static String myUrl = "http://127.0.0.1";
     //public static String myUrl = "http://10.0.3.2";
     //public static String myUrl = "http://192.168.0.149";
-    //public static String myUrl = "http://192.168.0.102";
-    public static String myUrl = "http://119.29.220.221";
-    //public static String myUrl = "http://mlen.ittun.com";
+    public static String myUrl = "http://192.168.0.103";
+    //public static String myUrl = "http://127.0.0.1";
+    //public static String myUrl = "http://119.29.220.221";
     /**
      * 常量,简介内容链接头部
      */
@@ -97,6 +97,19 @@ public class getConnect {
             while ((line = reader.readLine()) != null) {
                 stringBuffer.append(line);
             }
+//            System.out.println(stringBuffer.toString());
+//            File storeDir = new File("C:/Users/Notzuonotdied/Desktop/theAntiNETFraud");
+//            if(!(storeDir.exists() && storeDir.isDirectory())){
+//                storeDir.mkdirs();
+//            }
+//            BufferedOutputStream stream = null;
+//            File file = null;
+//            file = new File("C:/Users/Notzuonotdied/Desktop/theAntiNETFraud/newsData.json");
+//            FileOutputStream fstream = new FileOutputStream(file);
+//            stream = new BufferedOutputStream(fstream);
+//            stream.write(stringBuffer.toString().getBytes());
+//            stream.close();
+//            fstream.close();
         } catch (MalformedURLException e) {
             e.printStackTrace();
         } finally {
@@ -118,6 +131,7 @@ public class getConnect {
 
     /**
      * 将用户搜索的数据提交到服务器并获取服务器返回的数据
+     * getListContentsBydoPost(UrlContentSearch + readingPage + "/8", inputString);
      *
      * @param mURL        地址
      * @param inputString 搜索的内容
@@ -330,7 +344,7 @@ public class getConnect {
      * 设置链接并返回数据
      *
      * @param UrlTail the url tail
-     * @param pager 页数
+     * @param pager   页数
      * @return List<ListContent>
      */
     @Nullable

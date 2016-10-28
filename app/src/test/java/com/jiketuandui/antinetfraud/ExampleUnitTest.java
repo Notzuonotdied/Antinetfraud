@@ -34,7 +34,7 @@ public class ExampleUnitTest {
 //        for (ListContent listContent : newListContents) {
 //            System.out.println("id=" + listContent.getId() + ",imageLink=" +
 //                    listContent.getImagelink());
-            //System.out.println(listContent.toString());
+//            System.out.println(listContent.toString());
 //        }
 //        System.out.println("size:" + newListContents.size());
 
@@ -44,6 +44,7 @@ public class ExampleUnitTest {
 
 //        String str = getConnect.doPost("http://127.0.0.1/?/api/search", "神灵武士");
 //        System.out.println(str);
-
+//        getConnect.setContentURLByTagId(getConnect.UrlContentHot,
+//                "1", String.valueOf(1));
     }
 }

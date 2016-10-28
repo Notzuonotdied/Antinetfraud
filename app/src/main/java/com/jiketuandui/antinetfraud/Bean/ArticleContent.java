@@ -2,7 +2,6 @@ package com.jiketuandui.antinetfraud.Bean;
 
 import android.graphics.Bitmap;
 
-import com.jiketuandui.antinetfraud.HTTP.getConnect;
 import com.jiketuandui.antinetfraud.Util.transTime;
 
 import java.util.List;
@@ -48,59 +47,31 @@ public class ArticleContent {
     }
 
     public String getInfo() {
-        return "阅读:"+getReading()+"次,点赞:"+getPraise()+"次";
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
-
-    public void setCreatetime(String createtime) {
-        this.createtime = createtime;
-    }
-
-    public void setTagid(String tagid) {
-        this.tagid = tagid;
-    }
-
-    public void setReading(String reading) {
-        this.reading = reading;
-    }
-
-    public void setPraise(String praise) {
-        this.praise = praise;
-    }
-
-    public void setImagelink(String imagelink) {
-        this.imagelink = imagelink;
-    }
-
-    public void setSource(String source) {
-        this.source = source;
-    }
-
-    public void setTags(List<TagInfo> tags) {
-        this.tags = tags;
+        return "阅读:" + getReading() + "次,点赞:" + getPraise() + "次";
     }
 
     public String getId() {
         return id;
     }
 
+    public void setId(String id) {
+        this.id = id;
+    }
+
     public String getTitle() {
         return title;
     }
 
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
     public String getContent() {
         return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
     }
 
     public String getCreatetime() {
@@ -108,31 +79,55 @@ public class ArticleContent {
         return transTime.TimeStamp2Date(createtime, "yyyy-MM-dd");
     }
 
+    public void setCreatetime(String createtime) {
+        this.createtime = createtime;
+    }
+
     public String getTagid() {
         return tagid;
+    }
+
+    public void setTagid(String tagid) {
+        this.tagid = tagid;
     }
 
     public String getReading() {
         return reading;
     }
 
+    public void setReading(String reading) {
+        this.reading = reading;
+    }
+
     public String getPraise() {
         return praise;
+    }
+
+    public void setPraise(String praise) {
+        this.praise = praise;
     }
 
     public String getImagelink() {
         return imagelink;
     }
 
-    public String getAllImagelink() {
-        return getConnect.myUrl + imagelink;
+    public void setImagelink(String imagelink) {
+        this.imagelink = imagelink;
     }
 
     public String getSource() {
         return source;
     }
 
+    public void setSource(String source) {
+        this.source = source;
+    }
+
     public List<TagInfo> getTags() {
         return tags;
+    }
+
+    public void setTags(List<TagInfo> tags) {
+        this.tags = tags;
     }
 }

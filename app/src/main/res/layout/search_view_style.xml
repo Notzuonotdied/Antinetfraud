@@ -1,6 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="?attr/actionBarSize"
+    android:orientation="horizontal"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp">
+
+    <FrameLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="6dp"
+        android:layout_marginTop="6dp"
+        android:layout_weight="1">
+
+        <EditText
+            android:id="@+id/search_et_input"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/search_shape"
+            android:drawableLeft="@mipmap/search"
+            android:drawablePadding="5dp"
+            android:hint="@string/search_tint"
+            android:imeOptions="actionSearch"
+            android:inputType="text"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:id="@+id/search_iv_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right|center_vertical"
+            android:layout_marginRight="5dp"
+            android:src="@mipmap/delete"
+            android:visibility="gone" />
+    </FrameLayout>
+
+    <Button
+        android:id="@+id/search_btn"
+        android:layout_width="50dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_vertical"
+        android:layout_marginBottom="6dp"
+        android:layout_marginTop="6dp"
+        android:gravity="center"
+        android:alpha="88"
+        android:paddingRight="7dp"
+        android:background="@drawable/search_shape_right"
+        android:text="@string/main_search"
+        android:textColor="@color/color_header_title"
+        android:textSize="14sp" />
 
 </LinearLayout>

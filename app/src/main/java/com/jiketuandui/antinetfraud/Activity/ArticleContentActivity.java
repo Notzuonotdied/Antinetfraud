@@ -39,8 +39,8 @@ public class ArticleContentActivity extends AppCompatActivity {
     private MarkdownView article_markdownView;
     private RadioGroup radioGroup;
     private ArticleContent mArticleContent;
-    private LinearLayout head_layout;
-    //private SimpleDraweeView head_layout;
+    //private LinearLayout head_layout;
+    private SimpleDraweeView head_layout;
     private LinearLayout head_info;
     private CollapsingToolbarLayout mCollapsingToolbarLayout;
     private boolean isLessThan;
@@ -74,8 +74,8 @@ public class ArticleContentActivity extends AppCompatActivity {
         article_markdownView = (MarkdownView) findViewById(R.id.article_markdownView);
         radioGroup = (RadioGroup) findViewById(R.id.article_radiogroup);
         head_info = (LinearLayout) findViewById(R.id.head_info);
-        head_layout = (LinearLayout) findViewById(R.id.head_layout);
-        //head_layout = (SimpleDraweeView) findViewById(R.id.head_layout);
+        //head_layout = (LinearLayout) findViewById(R.id.head_layout);
+        head_layout = (SimpleDraweeView) findViewById(R.id.head_layout);
 
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);
@@ -109,7 +109,9 @@ public class ArticleContentActivity extends AppCompatActivity {
 
                     head_info.setVisibility(View.GONE);
                     if (!isLessThan) {
-                        mCollapsingToolbarLayout.setContentScrim(drawable_head);
+                        mCollapsingToolbarLayout.setContentScrimColor(0xffffffff);
+                        mCollapsingToolbarLayout.setCollapsedTitleTextColor(0xff717171);
+                        //mCollapsingToolbarLayout.setContentScrim(drawable_head);
                     }
                     isLessThan = true;
                 } else {
@@ -118,6 +120,8 @@ public class ArticleContentActivity extends AppCompatActivity {
                     head_info.setVisibility(View.VISIBLE);
                     Drawable drawable = head_info.getBackground();
                     drawable.setAlpha(changAlpha(Math.abs(verticalOffset), Math.abs(total_Height)));
+
+
                     // 设置头图
                     if (Build.VERSION.SDK_INT >= 16) {
                         head_info.setBackground(drawable);
@@ -151,7 +155,7 @@ public class ArticleContentActivity extends AppCompatActivity {
      * 获取文章内容
      */
     private void LoadingArticle() {
-        mProgressBar = (ProgressBar) findViewById(R.id.article_progress);
+        //mProgressBar = (ProgressBar) findViewById(R.id.article_progress);
 
         // 根据ID获取文章的内容
         int articleId = this.getIntent().getExtras().getInt(Constant.CONTENTID);
@@ -187,44 +191,23 @@ public class ArticleContentActivity extends AppCompatActivity {
 
         article_markdownView.loadMarkdown(articleContent.getContent());
 
- //       head_layout.setImageURI(mArticleContent.getAllImagelink());
+        //       head_layout.setImageURI(mArticleContent.getAllImagelink());
         // 设置头图
         if (Build.VERSION.SDK_INT >= 16) {
-            head_layout.setBackground(new BitmapDrawable(
-                    mArticleContent.getBitmap()));
+            head_layout.setImageURI(mArticleContent.getImagelink());
+//            head_layout.setBackground(new BitmapDrawable(
+//                    mArticleContent.getBitmap()));
         } else {
-            head_layout.setBackgroundDrawable(new BitmapDrawable(
-                    mArticleContent.getBitmap()));
+            head_layout.setImageURI(mArticleContent.getImagelink());
+//            head_layout.setBackgroundDrawable(new BitmapDrawable(
+//                    mArticleContent.getBitmap()));
         }
 
-        drawable_head = Build.VERSION.SDK_INT > 16 ? new BitmapDrawable(
-                BlurUtilForHighAPI.Highblur(mArticleContent.getBitmap(),
-                        25f, ArticleContentActivity.this)) : new BitmapDrawable(
-                BlurUtil.fastblur(mArticleContent.getBitmap(), 66));
-        mCollapsingToolbarLayout.setContentScrim(drawable_head);
-    }
-
-    @Override
-    protected void onStop() {
-        if (head_layout != null && head_layout.getDrawingCache() != null ||
-                mCollapsingToolbarLayout != null && mCollapsingToolbarLayout.getDrawingCache() != null) {
-            Bitmap bitmap = head_layout.getDrawingCache();
-            Bitmap bitmap_coo = mCollapsingToolbarLayout.getDrawingCache();
-            if (Build.VERSION.SDK_INT >= 16) {
-                head_layout.setBackground(null);
-            } else {
-                head_layout.setBackgroundDrawable(null);
-            }
-            mCollapsingToolbarLayout.setContentScrim(null);
-            if (bitmap != null && !bitmap.isRecycled()) {
-                bitmap.recycle();
-            }
-            if (bitmap_coo != null && !bitmap_coo.isRecycled()) {
-                bitmap_coo.recycle();
-            }
-            System.gc();
-        }
-        super.onStop();
+//        drawable_head = Build.VERSION.SDK_INT > 16 ? new BitmapDrawable(
+//                BlurUtilForHighAPI.Highblur(mArticleContent.getBitmap(),
+//                        25f, ArticleContentActivity.this)) : new BitmapDrawable(
+//                BlurUtil.fastblur(mArticleContent.getBitmap(), 66));
+//        mCollapsingToolbarLayout.setContentScrim(drawable_head);
     }
 
     /**
@@ -257,13 +240,13 @@ public class ArticleContentActivity extends AppCompatActivity {
 
         @Override
         protected void onProgressUpdate(Integer... values) {
-            mProgressBar.setProgress(values[0]);// 每次更新进度条
+            //mProgressBar.setProgress(values[0]);// 每次更新进度条
         }
 
         @Override
         protected void onPreExecute() {
 
-            mProgressBar.setVisibility(View.VISIBLE);
+            //mProgressBar.setVisibility(View.VISIBLE);
         }
 
         @Override// 在子线程执行
@@ -279,7 +262,7 @@ public class ArticleContentActivity extends AppCompatActivity {
 
         @Override// 在主线程执行
         protected void onPostExecute(ArticleContent articleContent) {
-            mProgressBar.setVisibility(View.GONE);
+            //mProgressBar.setVisibility(View.GONE);
             initAppBarLayout(articleContent);
         }
     }

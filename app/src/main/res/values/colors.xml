@@ -5,20 +5,27 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <!--<color name="color_header">#8CB1E6</color>-->
-    <color name="color_header">#00BDD0</color>
+    <!--<color name="color_header">#00BDD0</color>-->
+    <color name="color_header">#FFFFFF</color>
+    <!--<color name="color_header_title">#F0FFFFFF</color>-->
+    <!--<color name="color_header_title_shadow">#90000000</color>-->
+    <color name="color_start">#00BDD0</color>
+    <color name="color_header_title">#00BDD0</color>
+    <color name="color_header_title_shadow">#f6f6f6</color>
     <color name="color_setting_radius">#3600BDD0</color>
-    <color name="color_bottom">#F0F0F0</color>
-    <!--<color name="color_bottom">#00BDD0</color>-->
+    <!--<color name="color_bottom">#F0F0F0</color>-->
+    <!--<color name="color_bottom">#f6f6f6</color>-->
+    <color name="color_bottom">#FFFFFF</color>
     <color name="color_white">#ffffffff</color>
     <color name="color_loading">#42506B</color>
     <color name="color_black">#cf000000</color>
-    <color name="color_background">#eceff2</color>
+    <color name="color_background">#f6f6f6</color>
     <color name="color_title">#af000000</color>
     <color name="color_content">#66000000</color>
     <color name="color_vpbackground">#E2E2E2</color>
     <color name="color_setting_item">#272636</color>
     <color name="color_setting_header">#ff888888</color>
     <color name="color_article_info">#888</color>
-    <color name="color_setting_items">#ff333333</color>
+    <color name="color_setting_items">#717171</color>
 
 </resources>

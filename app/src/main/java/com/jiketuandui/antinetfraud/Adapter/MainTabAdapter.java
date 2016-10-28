@@ -1,13 +1,12 @@
 package com.jiketuandui.antinetfraud.Adapter;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 import com.jiketuandui.antinetfraud.Util.Constant;
-import com.jiketuandui.antinetfraud.View.MainTab_news;
+import com.jiketuandui.antinetfraud.Fragment.MainTab_news;
 
 
 /**

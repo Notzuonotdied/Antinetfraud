@@ -6,25 +6,12 @@
     android:background="@color/color_white"
     android:orientation="vertical">
 
-    <SearchView
-        android:id="@+id/mainTab_search_searchView"
+    <!--搜索-->
+    <com.jiketuandui.antinetfraud.View.MySearchView
+        android:id="@+id/my_search_view"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
         android:layout_gravity="top"
-        android:background="@color/color_white"
-        android:iconifiedByDefault="false" />
-
-    <TextView
-        android:id="@+id/search_null"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:gravity="center"
-        android:padding="16dp"
-        android:text="@string/search_null"
-        android:textColor="@color/color_title"
-        android:textSize="16sp"
-        android:visibility="gone" />
+        android:layout_height="?attr/actionBarSize"/>
 
     <ScrollView
         android:id="@+id/search_scroll"
@@ -34,117 +21,7 @@
         android:scrollbars="none"
         android:visibility="visible">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <!--这个是头部显示-->
-                <TextView
-                    style="@style/setting_header"
-                    android:text="@string/search_news" />
-
-                <!--框内显示-->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/setting_shape"
-                    android:orientation="vertical">
-
-                    <LinearLayout
-                        android:id="@+id/setting_pieces_collection"
-                        style="@style/setting_row">
-
-                        <TextView
-                            android:id="@+id/tv_01"
-                            style="@style/search_item"
-                            android:background="#6699FF"
-                            android:text="@string/setting_person_collection" />
-
-                        <TextView
-                            android:id="@+id/tv_02"
-                            style="@style/search_item"
-                            android:background="#FFCC00"
-                            android:text="@string/setting_person_collection" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/setting_pieces_history"
-                        style="@style/setting_row">
-
-                        <TextView
-                            android:id="@+id/tv_03"
-                            style="@style/search_item"
-                            android:background="#FF6600"
-                            android:text="@string/setting_person_browsing" />
-
-                        <TextView
-                            android:id="@+id/tv_04"
-                            style="@style/search_item"
-                            android:background="#00cc00"
-                            android:text="@string/setting_person_browsing" />
-                    </LinearLayout>
-                </LinearLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                    <!--这个是头部显示-->
-                    <TextView
-                        style="@style/search_header"
-                        android:text="@string/search_history" />
-
-                    <!--清除历史-->
-                    <TextView
-                        android:id="@+id/search_clear"
-                        style="@style/search_header"
-                        android:layout_marginRight="16dp"
-                        android:gravity="end"
-                        android:text="@string/search_clear" />
-
-                </LinearLayout>
-
-                <!--框内显示-->
-                <com.jiketuandui.antinetfraud.View.MyListView
-                    android:id="@+id/search_listView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/setting_shape" />
-            </LinearLayout>
-        </LinearLayout>
+        <include layout="@layout/search_content" />
     </ScrollView>
-
-    <com.cjj.MaterialRefreshLayout
-        android:id="@+id/maintab_search_refresh"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:visibility="gone"
-        app:isLoadMore="true"
-        app:overlay="true"
-        app:progress_colors="@array/material_colors"
-        app:wave_color="#2600BDD0"
-        app:wave_show="true">
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/maintab_search_recyclerView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-        </android.support.v7.widget.RecyclerView>
-
-    </com.cjj.MaterialRefreshLayout>
 
 </LinearLayout>

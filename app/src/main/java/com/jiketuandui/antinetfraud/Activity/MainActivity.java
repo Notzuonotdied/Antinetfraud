@@ -12,12 +12,12 @@ import android.widget.Toast;
 
 import com.jiketuandui.antinetfraud.R;
 import com.jiketuandui.antinetfraud.Util.Constant;
-import com.jiketuandui.antinetfraud.View.CFontTextView;
+import com.jiketuandui.antinetfraud.View.CFontTitleTextView;
 import com.jiketuandui.antinetfraud.View.ContentViewPager;
-import com.jiketuandui.antinetfraud.View.MainTab;
-import com.jiketuandui.antinetfraud.View.MainTabMy;
-import com.jiketuandui.antinetfraud.View.MainTabSearch;
-import com.jiketuandui.antinetfraud.View.MainTabHot;
+import com.jiketuandui.antinetfraud.Fragment.MainTab;
+import com.jiketuandui.antinetfraud.Fragment.MainTabMy;
+import com.jiketuandui.antinetfraud.Fragment.MainTabSearch;
+import com.jiketuandui.antinetfraud.Fragment.MainTabHot;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,7 +30,7 @@ public class MainActivity extends FragmentActivity {
      */
     private List<Fragment> content_list = null;
     private ContentViewPager mContentViewPager;
-    private CFontTextView cFontTextView;
+    private CFontTitleTextView cFontTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -117,7 +117,7 @@ public class MainActivity extends FragmentActivity {
         mTabSearchTextView.setOnClickListener(listener);
         mTabMyTextView.setOnClickListener(listener);
 
-        cFontTextView = (CFontTextView) findViewById(R.id.header_tv);
+        cFontTextView = (CFontTitleTextView) findViewById(R.id.header_tv);
     }
 
     /**

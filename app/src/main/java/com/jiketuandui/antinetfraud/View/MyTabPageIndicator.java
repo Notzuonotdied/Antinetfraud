@@ -41,11 +41,12 @@ public class MyTabPageIndicator extends LinearLayout {
     /**
      * 标题正常的时候的颜色
      */
-    private static int COLOR_TEXT_NORMAL = 0xaaffffff;
+//    private static int COLOR_TEXT_NORMAL = 0xaaffffff;
+    private static int COLOR_TEXT_NORMAL = 0xff999999;
     /**
      * 标题选中的时候的颜色
      */
-    private static int COLOR_TEXT_HIGHLIGHTCOLOR = 0xffffffff;
+    private static int COLOR_TEXT_HIGHLIGHTCOLOR = 0xff00BDD0;
     /**
      * 单位是sp
      * */
@@ -155,7 +156,7 @@ public class MyTabPageIndicator extends LinearLayout {
         // 设置是否使用抗锯齿功能，会消耗较大资源，绘制图形速度会变慢。
         mPaint.setAntiAlias(true);
         // 设置绘制的颜色
-        mPaint.setColor(Color.parseColor("#FFFFFF"));
+        mPaint.setColor(Color.parseColor("#00BDD0"));
         // 设置画笔的样式，为FILL，FILL_OR_STROKE，或STROKE
         mPaint.setStyle(Paint.Style.FILL);
         // 设定是否使用图像抖动处理，会使绘制出来的图片颜色更加平滑和饱满，图像更加清晰
