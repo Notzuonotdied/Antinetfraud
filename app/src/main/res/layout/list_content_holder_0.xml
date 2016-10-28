@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    style="@style/listContent_style">
+
+    <!--这个是contentHolder的布局文件-->
+
+    <!--图片-->
+    <!--<ImageView-->
+    <!--android:id="@+id/lc_holder_image"-->
+    <!--android:layout_width="100dp"-->
+    <!--android:layout_height="100dp"-->
+    <!--android:adjustViewBounds="true"-->
+    <!--android:alpha="166"-->
+    <!--android:scaleType="fitXY"-->
+    <!--android:src="@mipmap/ic_launcher" />-->
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/lc_holder_image"
+        android:layout_width="80dp"
+        android:layout_height="match_parent"
+        android:alpha="100"
+        fresco:fadeDuration="100"
+        fresco:placeholderImage="@mipmap/ic_launcher"
+        fresco:roundWithOverlayColor="@color/color_white"
+        fresco:roundedCornerRadius="12dp"
+        fresco:roundingBorderColor="@color/color_white"
+        fresco:roundingBorderWidth="3dp" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_toRightOf="@id/lc_holder_image"
+        android:orientation="vertical"
+        android:paddingLeft="5dp">
+
+        <!--标题-->
+        <TextView
+            android:id="@+id/lc_holder_tittle"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="@string/header_titile"
+            android:textColor="@color/color_title"
+            android:textSize="16sp" />
+
+        <LinearLayout
+            android:gravity="bottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <!--来源-->
+            <TextView
+                android:id="@+id/lc_holder_source"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@string/header_titile"
+                android:textColor="@color/color_content"
+                android:textSize="12sp" />
+
+            <!--发布时间,阅读量,点赞量-->
+            <TextView
+                android:id="@+id/lc_holder_tip"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/header_titile"
+                android:textColor="@color/color_content"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</RelativeLayout>

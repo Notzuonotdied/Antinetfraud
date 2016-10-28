@@ -1,4 +1,4 @@
-package com.jiketuandui.antinetfraud.View;
+package com.jiketuandui.antinetfraud.Fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 
 import com.jiketuandui.antinetfraud.Adapter.MainTabHotAdapter;
 import com.jiketuandui.antinetfraud.R;
+import com.jiketuandui.antinetfraud.View.MyTabPageIndicator;
 
 import java.lang.reflect.Field;
 

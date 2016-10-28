@@ -1,5 +1,6 @@
-package com.jiketuandui.antinetfraud.View;
+package com.jiketuandui.antinetfraud.Fragment;
 
+import android.content.Context;
 import android.database.Cursor;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -11,6 +12,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.RelativeLayout;
@@ -26,6 +28,7 @@ import com.jiketuandui.antinetfraud.HTTP.getConnect;
 import com.jiketuandui.antinetfraud.R;
 import com.jiketuandui.antinetfraud.SQL.RecordSQLiteOpenHelper;
 import com.jiketuandui.antinetfraud.Util.Constant;
+import com.jiketuandui.antinetfraud.View.MyListView;
 import com.jiketuandui.antinetfraud.banner.BannerBaseView;
 import com.jiketuandui.antinetfraud.banner.MainBannerView;
 import com.jiketuandui.antinetfraud.banner.bean.BaseBannerBean;
@@ -51,9 +54,7 @@ public class MainTabSearch extends Fragment {
     private BaseAdapter adapter;
     private TextView search_null;
     private TextView tv_01;
-    private TextView tv_02;
-    private TextView tv_03;
-    private TextView tv_04;
+
     /**
      * 当前页面的各个Item的数据存放容器
      */
@@ -71,6 +72,12 @@ public class MainTabSearch extends Fragment {
         helper = new RecordSQLiteOpenHelper(getActivity());
 
         View view = inflater.inflate(R.layout.main_tab_search, container, false);
+        initAllView(view);
+        initView();
+        return view;
+    }
+
+    private void initAllView(View view) {
         this.searchView = (SearchView) view.findViewById(R.id.mainTab_search_searchView);
         this.materialRefreshLayout = (MaterialRefreshLayout) view.findViewById
                 (R.id.maintab_search_refresh);
@@ -80,12 +87,8 @@ public class MainTabSearch extends Fragment {
         this.search_clear = (TextView) view.findViewById(R.id.search_clear);
         this.search_listView = (MyListView) view.findViewById(R.id.search_listView);
         this.search_null = (TextView) view.findViewById(R.id.search_null);
-        this.tv_04 = (TextView) view.findViewById(R.id.tv_04);
-        this.tv_03 = (TextView) view.findViewById(R.id.tv_03);
-        this.tv_02 = (TextView) view.findViewById(R.id.tv_02);
+
         this.tv_01 = (TextView) view.findViewById(R.id.tv_01);
-        initView();
-        return view;
     }
 
     private void updateAdapter(String name) {
@@ -173,7 +176,7 @@ public class MainTabSearch extends Fragment {
 
                 new SearchDataTask().execute(s);
 
-                if (s.equals("")) {
+                if (s.equals(" ") || s.equals("")) {
                     search_scroll.setVisibility(View.VISIBLE);
                     search_null.setVisibility(View.GONE);
                     materialRefreshLayout.setVisibility(View.GONE);
@@ -181,12 +184,16 @@ public class MainTabSearch extends Fragment {
                     if (isNull) {
                         search_null.setVisibility(View.VISIBLE);
                         search_scroll.setVisibility(View.GONE);
+                        materialRefreshLayout.setVisibility(View.GONE);
                     } else {
-                        search_scroll.setVisibility(View.VISIBLE);
+                        materialRefreshLayout.setVisibility(View.VISIBLE);
+                        search_scroll.setVisibility(View.GONE);
                         search_null.setVisibility(View.GONE);
                     }
-                    materialRefreshLayout.setVisibility(View.VISIBLE);
                 }
+
+                InputMethodManager imm = (InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.toggleSoftInput(0, InputMethodManager.HIDE_NOT_ALWAYS);
 
                 isSearched = false;
                 searchView.clearFocus();

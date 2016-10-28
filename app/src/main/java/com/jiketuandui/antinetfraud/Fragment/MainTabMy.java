@@ -1,4 +1,4 @@
-package com.jiketuandui.antinetfraud.View;
+package com.jiketuandui.antinetfraud.Fragment;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
