@@ -1,7 +1,6 @@
 package com.jiketuandui.antinetfraud.Util;
 
 import com.jiketuandui.antinetfraud.Adapter.ListContentAdapter;
-import com.jiketuandui.antinetfraud.Adapter.ListContentHotAdapter;
 import com.jiketuandui.antinetfraud.Bean.ListContent;
 
 import java.util.List;
@@ -18,6 +17,8 @@ public class Constant {
     public static String MAINPAGEPOSITON = "mainpageposition";
     public static String MAINPAGEPOSITONHOT = "mainpagepositionhot";
     public static String SEARCHSTRING = "searchstring";
+    public static String TAGSID = "tagsid";
+    public static String CATEGORY = "category";
     /**
      * 当前的Content的id
      */
@@ -46,15 +47,4 @@ public class Constant {
         return false;
     }
 
-    public static boolean isContainLists(ListContentHotAdapter mListContentAdapter,
-                                         List<ListContent> ListContents) {
-        for (ListContent ml : ListContents) {
-            for (int i = 0; i < mListContentAdapter.getData().size(); i++) {
-                if (mListContentAdapter.getData().get(i).getId().equals(ml.getId())) {
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
 }

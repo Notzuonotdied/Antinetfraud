@@ -6,4 +6,5 @@ package com.jiketuandui.antinetfraud.Util;
  */
 public interface ListConentOnClickListener {
      void OnItemClickListener(int position);
+     void TOPOnClickLinstener(int position);
 }

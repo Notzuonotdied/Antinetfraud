@@ -13,10 +13,8 @@ import android.widget.Toast;
 import com.cjj.MaterialRefreshLayout;
 import com.cjj.MaterialRefreshListener;
 import com.jiketuandui.antinetfraud.Adapter.ListContentAdapter;
-import com.jiketuandui.antinetfraud.Adapter.ListContentHotAdapter;
 import com.jiketuandui.antinetfraud.Bean.ListContent;
 import com.jiketuandui.antinetfraud.HTTP.getConnect;
-import com.jiketuandui.antinetfraud.Holder.MyItemDecoration;
 import com.jiketuandui.antinetfraud.R;
 import com.jiketuandui.antinetfraud.Util.Constant;
 
@@ -37,7 +35,7 @@ public class MainTabHot_news extends Fragment {
 
     private MaterialRefreshLayout materialRefreshLayout;
     private RecyclerView mRecyclerView;
-    private ListContentHotAdapter mListContentAdapter;
+    private ListContentAdapter mListContentAdapter;
     /**
      * 当前页面的各个Item的数据存放容器
      */
@@ -48,11 +46,13 @@ public class MainTabHot_news extends Fragment {
      */
     private boolean isFirstRefresh = true;
     private boolean isNeedtoRefresh = false;
+    private boolean isOpenTop = true;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // 获取当前Item的下标
         this.position = getArguments().getInt(Constant.MAINPAGEPOSITONHOT);
+        isOpenTop = position == 0;
 
         View view = inflater.inflate(R.layout.main_tab_hot_news, null);
         this.materialRefreshLayout = (MaterialRefreshLayout) view.findViewById(R.id.maintab_hot_refresh);
@@ -71,7 +71,7 @@ public class MainTabHot_news extends Fragment {
          * Adapter：使用RecyclerView之前，你需要一个继承自RecyclerView.Adapter的适配器，
          * 作用是将数据与每一个item的界面进行绑定。
          * */
-        mListContentAdapter = new ListContentHotAdapter(getActivity(), mListContents);
+        mListContentAdapter = new ListContentAdapter(getActivity(), mListContents, isOpenTop, 2);
         /**
          * LayoutManager：用来确定每一个item如何进行排列摆放，何时展示和隐藏。
          * 回收或重用一个View的时候，LayoutManager会向适配器请求新的数据来替换旧的数据，
@@ -80,7 +80,7 @@ public class MainTabHot_news extends Fragment {
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(),
                 LinearLayoutManager.VERTICAL, false));
         mRecyclerView.setAdapter(mListContentAdapter);
-        mRecyclerView.addItemDecoration(new MyItemDecoration());
+        //mRecyclerView.addItemDecoration(new MyItemDecoration());
 
         // 如果是第一次刷新就启动一次刷新
         if (isFirstRefresh) {

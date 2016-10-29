@@ -47,11 +47,13 @@ public class MainTab_news extends Fragment {
      */
     private boolean isFirstRefresh = true;
     private boolean isNeedtoRefresh = false;
+    private boolean isOpenTop = true;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // 获取当前Item的下标
         this.position = getArguments().getInt(Constant.MAINPAGEPOSITON);
+        isOpenTop = position == 0;
 
         View view = inflater.inflate(R.layout.main_tab_news, null);
         this.materialRefreshLayout = (MaterialRefreshLayout) view.findViewById(R.id.maintab_news_refresh);
@@ -70,7 +72,7 @@ public class MainTab_news extends Fragment {
          * Adapter：使用RecyclerView之前，你需要一个继承自RecyclerView.Adapter的适配器，
          * 作用是将数据与每一个item的界面进行绑定。
          * */
-        mListContentAdapter = new ListContentAdapter(getActivity(), mListContents);
+        mListContentAdapter = new ListContentAdapter(getActivity(), mListContents ,isOpenTop,1);
         /**
          * LayoutManager：用来确定每一个item如何进行排列摆放，何时展示和隐藏。
          * 回收或重用一个View的时候，LayoutManager会向适配器请求新的数据来替换旧的数据，
@@ -86,7 +88,6 @@ public class MainTab_news extends Fragment {
             materialRefreshLayout.autoRefresh();
             isFirstRefresh = false;
         }
-
 
 
         materialRefreshLayout.setMaterialRefreshListener(new MaterialRefreshListener() {
@@ -111,16 +112,9 @@ public class MainTab_news extends Fragment {
 
         @Override
         protected List<ListContent> doInBackground(Integer... params) {
-            List<ListContent> listContents;
             readPage = 1;
-            if (position == 0) {
-                listContents = getConnect.setContentURL(getConnect.UrlContentHead,
-                        String.valueOf(readPage));
-            } else {
-                // 这里是设置"电信诈骗","网络诈骗","混合诈骗"这三个页面的
-                listContents = getConnect.setContentURLByTagId(getConnect.UrlContentHead,
-                        String.valueOf(readPage), String.valueOf(params[0]));
-            }
+            List<ListContent> listContents = getConnect.setContentURLByTagId(getConnect.UrlContentHead,
+                    String.valueOf(readPage), String.valueOf(params[0]));
             return listContents;
         }
 
@@ -146,18 +140,11 @@ public class MainTab_news extends Fragment {
             if (mListContentAdapter.getData().size() == 0) {
                 return null;
             }
-            // 0是第一个"最新消息",只写了第一个,其他的由于数据库尚未编写,所以没写
-            if (params[0] == 0) {
-                ListContents = getConnect.setContentURL(getConnect.UrlContentHead,
-                        String.valueOf(readPage));
-                readPage++;
-                isNeedtoRefresh = true;
-            } else {
-                ListContents = getConnect.setContentURLByTagId(getConnect.UrlContentHead,
-                        String.valueOf(readPage), String.valueOf(params[0]));
-                readPage++;
-                isNeedtoRefresh = true;
-            }
+            ListContents = getConnect.setContentURLByTagId(getConnect.UrlContentHead,
+                    String.valueOf(readPage), String.valueOf(params[0]));
+            readPage++;
+            isNeedtoRefresh = true;
+
             return ListContents;
         }
 
@@ -174,7 +161,7 @@ public class MainTab_news extends Fragment {
                 materialRefreshLayout.finishRefreshLoadMore();
                 return;
             }
-           if (!Constant.isContainLists(mListContentAdapter, ListContents)) {
+            if (!Constant.isContainLists(mListContentAdapter, ListContents)) {
                 mListContentAdapter.addData(ListContents);
                 mListContentAdapter.notifyDataSetChanged();
             }

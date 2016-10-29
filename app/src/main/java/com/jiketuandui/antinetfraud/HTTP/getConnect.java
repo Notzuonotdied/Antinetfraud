@@ -32,9 +32,9 @@ public class getConnect {
     //public static String myUrl = "http://127.0.0.1";
     //public static String myUrl = "http://10.0.3.2";
     //public static String myUrl = "http://192.168.0.149";
-    public static String myUrl = "http://192.168.0.103";
+    //public static String myUrl = "http://192.168.0.103";
     //public static String myUrl = "http://127.0.0.1";
-    //public static String myUrl = "http://119.29.220.221";
+    public static String myUrl = "http://119.29.220.221";
     /**
      * 常量,简介内容链接头部
      */

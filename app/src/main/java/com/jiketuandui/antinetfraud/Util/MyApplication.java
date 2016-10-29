@@ -28,6 +28,13 @@ public class MyApplication extends Application {
          * 初始化获取屏幕的宽度和高度
          * */
         initScreenWidth();
+        /**
+         * 初始化Tag标签列表
+         * */
+        initTagsList();
+    }
+
+    private void initTagsList() {
 
     }
 

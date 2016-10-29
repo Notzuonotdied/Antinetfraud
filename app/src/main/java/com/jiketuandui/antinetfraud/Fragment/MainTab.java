@@ -1,6 +1,8 @@
 package com.jiketuandui.antinetfraud.Fragment;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -10,6 +12,7 @@ import android.view.ViewGroup;
 
 import com.jiketuandui.antinetfraud.Adapter.MainTabAdapter;
 import com.jiketuandui.antinetfraud.R;
+import com.jiketuandui.antinetfraud.Util.Constant;
 import com.jiketuandui.antinetfraud.View.MyTabPageIndicator;
 
 import java.lang.reflect.Field;

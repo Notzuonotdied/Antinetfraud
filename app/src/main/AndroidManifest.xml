@@ -24,7 +24,8 @@
         </activity>
         <activity android:name=".Activity.ArticleContentActivity" />
         <activity android:name=".Activity.MainActivity" />
-        <activity android:name=".Activity.SearchActivity"></activity>
+        <activity android:name=".Activity.SearchActivity" />
+        <activity android:name=".Activity.ToTagsListActivity"></activity>
     </application>
 
 </manifest>

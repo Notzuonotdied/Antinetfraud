@@ -5,18 +5,18 @@
     <solid android:color="@color/color_white" />
 
     <!--圆角-->
-    <corners android:radius="8dp" />
+    <corners android:radius="6dp" />
 
     <!--padding-->
     <padding
         android:bottom="8dp"
-        android:left="10dp"
-        android:right="10dp"
-        android:top="8dp" />
+        android:right="13dp" />
 
     <!--描边-->
     <stroke
-        android:width="2dp"
+        android:width="3dp"
         android:color="@color/color_background" />
+
+
 
 </shape>
