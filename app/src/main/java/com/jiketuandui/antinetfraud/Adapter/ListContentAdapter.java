@@ -17,6 +17,7 @@ import com.jiketuandui.antinetfraud.Holder.ListContentHolder;
 import com.jiketuandui.antinetfraud.R;
 import com.jiketuandui.antinetfraud.Util.Constant;
 import com.jiketuandui.antinetfraud.Util.ListConentOnClickListener;
+import com.jiketuandui.antinetfraud.Util.NetWorkUtils;
 
 import java.util.List;
 
@@ -41,23 +42,27 @@ public class ListContentAdapter extends RecyclerView.Adapter<ListContentHolder> 
     private ListConentOnClickListener mListListener = new ListConentOnClickListener() {
         @Override
         public void OnItemClickListener(int position) {
-            Intent intent = new Intent(context, ArticleContentActivity.class);
-            Bundle mBundle = new Bundle();
-            mBundle.putInt(Constant.CONTENTID, Integer.valueOf(mListContents.get(position).getId()));
-            intent.putExtras(mBundle);
-            context.startActivity(intent);
+            if (NetWorkUtils.isConnectNET(context)) {
+                Intent intent = new Intent(context, ArticleContentActivity.class);
+                Bundle mBundle = new Bundle();
+                mBundle.putInt(Constant.CONTENTID, Integer.valueOf(mListContents.get(position).getId()));
+                intent.putExtras(mBundle);
+                context.startActivity(intent);
+            }
         }
 
         @Override
         public void TOPOnClickLinstener(int position) {
-            Intent intent = new Intent(context, ToTagsListActivity.class);
-            Bundle mBundle = new Bundle();
-            mBundle.putInt(Constant.TAGSID, Integer.valueOf(mListContents.get(position).getTagid()));
-            if (category!=0) {
-                mBundle.putInt(Constant.CATEGORY, category);
+            if (NetWorkUtils.isConnectNET(context)) {
+                Intent intent = new Intent(context, ToTagsListActivity.class);
+                Bundle mBundle = new Bundle();
+                mBundle.putInt(Constant.TAGSID, Integer.valueOf(mListContents.get(position).getTagid()));
+                if (category != 0) {
+                    mBundle.putInt(Constant.CATEGORY, category);
+                }
+                intent.putExtras(mBundle);
+                context.startActivity(intent);
             }
-            intent.putExtras(mBundle);
-            context.startActivity(intent);
         }
     };
 

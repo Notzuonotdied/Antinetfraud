@@ -9,6 +9,7 @@ import android.widget.TextView;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.jiketuandui.antinetfraud.R;
 import com.jiketuandui.antinetfraud.Util.ListConentOnClickListener;
+import com.jiketuandui.antinetfraud.Util.NetWorkUtils;
 
 import org.w3c.dom.Text;
 

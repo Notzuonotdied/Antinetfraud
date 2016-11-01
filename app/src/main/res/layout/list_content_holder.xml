@@ -10,23 +10,23 @@
         android:id="@+id/top"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:visibility="visible"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:visibility="visible">
 
         <com.facebook.drawee.view.SimpleDraweeView
             android:id="@+id/top_icon"
             android:layout_width="20dp"
             android:layout_height="20dp"
+            android:layout_gravity="center_vertical"
             android:layout_marginLeft="10dp"
             android:alpha="18"
             fresco:fadeDuration="100"
-            android:layout_gravity="center_vertical"
             fresco:placeholderImage="@mipmap/ic_launcher"
             fresco:roundWithOverlayColor="@color/color_white"
             fresco:roundedCornerRadius="10dp"
             fresco:roundingBorderColor="@color/color_background"
             fresco:roundingBorderWidth="3dp" />
-
+        <!--fresco:placeholderImage="@mipmap/ic_launcher"-->
         <TextView
             android:id="@+id/top_tag"
             android:layout_width="match_parent"
@@ -51,7 +51,6 @@
             android:layout_height="match_parent"
             android:alpha="100"
             fresco:fadeDuration="100"
-            fresco:placeholderImage="@mipmap/ic_launcher"
             fresco:roundWithOverlayColor="@color/color_white"
             fresco:roundedCornerRadius="12dp"
             fresco:roundingBorderColor="@color/color_white"

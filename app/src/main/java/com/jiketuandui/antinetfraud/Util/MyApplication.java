@@ -2,11 +2,14 @@ package com.jiketuandui.antinetfraud.Util;
 
 import android.app.Application;
 import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.graphics.Typeface;
 import android.util.DisplayMetrics;
 import android.view.WindowManager;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
+import com.jiketuandui.antinetfraud.Service.NetworkStateService;
 
 /**
  * Created by Notzuonotdied on 2016/8/6.
@@ -16,6 +19,7 @@ import com.facebook.drawee.backends.pipeline.Fresco;
 public class MyApplication extends Application {
     private int myScreenWidth;
     private int myScreenHeight;
+    private static MyApplication myApplication;
 
     @Override
     public void onCreate() {
@@ -34,8 +38,20 @@ public class MyApplication extends Application {
         initTagsList();
     }
 
+    /**
+     * 初始化Service进行监听网络
+     * */
+    public void initNETService() {
+        Intent i=new Intent(this,NetworkStateService.class);
+        startService(i);
+    }
+
     private void initTagsList() {
 
+    }
+
+    public static MyApplication getInstance() {
+        return myApplication;
     }
 
     /**

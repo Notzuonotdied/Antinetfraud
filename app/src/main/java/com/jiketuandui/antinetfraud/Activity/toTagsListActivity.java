@@ -17,6 +17,7 @@ import com.jiketuandui.antinetfraud.Bean.ListContent;
 import com.jiketuandui.antinetfraud.HTTP.getConnect;
 import com.jiketuandui.antinetfraud.R;
 import com.jiketuandui.antinetfraud.Util.Constant;
+import com.jiketuandui.antinetfraud.Util.NetWorkUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -58,13 +59,21 @@ public class ToTagsListActivity extends Activity {
             @Override
             public void onRefresh(MaterialRefreshLayout materialRefreshLayout) {
                 materialRefreshLayout.finishRefreshLoadMore();
-                new RefreshDataTask().execute();
+                if (NetWorkUtils.isConnectNET(ToTagsListActivity.this)) {
+                    new RefreshDataTask().execute();
+                } else {
+                    materialRefreshLayout.finishRefresh();
+                }
             }
 
             @Override
             public void onRefreshLoadMore(MaterialRefreshLayout materialRefreshLayout) {
                 materialRefreshLayout.finishRefresh();
-                new LoadMoreDataTask().execute();
+                if (NetWorkUtils.isConnectNET(ToTagsListActivity.this)) {
+                    new LoadMoreDataTask().execute();
+                } else {
+                    materialRefreshLayout.finishRefreshLoadMore();
+                }
             }
         });
     }

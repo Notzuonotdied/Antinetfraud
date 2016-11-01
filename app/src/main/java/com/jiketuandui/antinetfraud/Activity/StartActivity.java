@@ -9,6 +9,7 @@ import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 
 import com.jiketuandui.antinetfraud.R;
+import com.jiketuandui.antinetfraud.Util.MyApplication;
 
 /**
  * Created by Notzuonotdied on 2016/8/9.
@@ -56,6 +57,7 @@ public class StartActivity extends Activity {
      * 进入MainAcitvity
      * */
     private void gotoMainActivity() {
+        ((MyApplication)getApplication()).initNETService();
         Intent intent = new Intent(this,MainActivity.class);
         startActivity(intent);
         this.finish();

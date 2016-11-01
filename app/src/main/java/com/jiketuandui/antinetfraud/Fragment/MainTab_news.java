@@ -18,6 +18,7 @@ import com.jiketuandui.antinetfraud.HTTP.getConnect;
 import com.jiketuandui.antinetfraud.Holder.MyItemDecoration;
 import com.jiketuandui.antinetfraud.R;
 import com.jiketuandui.antinetfraud.Util.Constant;
+import com.jiketuandui.antinetfraud.Util.NetWorkUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -63,6 +64,15 @@ public class MainTab_news extends Fragment {
         return view;
     }
 
+    @Override
+    public void onResume() {
+        // 如果是第一次刷新就启动一次刷新
+        if (isFirstRefresh && NetWorkUtils.isConnectNET(getContext())) {
+            materialRefreshLayout.autoRefresh();
+        }
+        super.onResume();
+    }
+
     /**
      * 初始化控件
      */
@@ -72,7 +82,7 @@ public class MainTab_news extends Fragment {
          * Adapter：使用RecyclerView之前，你需要一个继承自RecyclerView.Adapter的适配器，
          * 作用是将数据与每一个item的界面进行绑定。
          * */
-        mListContentAdapter = new ListContentAdapter(getActivity(), mListContents ,isOpenTop,1);
+        mListContentAdapter = new ListContentAdapter(getActivity(), mListContents, isOpenTop, 1);
         /**
          * LayoutManager：用来确定每一个item如何进行排列摆放，何时展示和隐藏。
          * 回收或重用一个View的时候，LayoutManager会向适配器请求新的数据来替换旧的数据，
@@ -84,7 +94,7 @@ public class MainTab_news extends Fragment {
         mRecyclerView.addItemDecoration(new MyItemDecoration());
 
         // 如果是第一次刷新就启动一次刷新
-        if (isFirstRefresh) {
+        if (isFirstRefresh && NetWorkUtils.isConnectNET(getContext())) {
             materialRefreshLayout.autoRefresh();
             isFirstRefresh = false;
         }
@@ -94,13 +104,22 @@ public class MainTab_news extends Fragment {
             @Override
             public void onRefresh(MaterialRefreshLayout materialRefreshLayout) {
                 materialRefreshLayout.finishRefreshLoadMore();
-                new RefreshDataTask().execute(position);
+                if (NetWorkUtils.isConnectNET(getContext())) {
+                    new RefreshDataTask().execute(position);
+                } else {
+                    materialRefreshLayout.finishRefresh();
+                    isFirstRefresh = true;
+                }
             }
 
             @Override
             public void onRefreshLoadMore(MaterialRefreshLayout materialRefreshLayout) {
                 materialRefreshLayout.finishRefresh();
-                new LoadMoreDataTask().execute(position);
+                if (NetWorkUtils.isConnectNET(getContext())) {
+                    new LoadMoreDataTask().execute(position);
+                } else {
+                    materialRefreshLayout.finishRefreshLoadMore();
+                }
             }
         });
     }

@@ -5,6 +5,7 @@
     <!-- 权限设定 -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:name=".Util.MyApplication"
@@ -25,7 +26,12 @@
         <activity android:name=".Activity.ArticleContentActivity" />
         <activity android:name=".Activity.MainActivity" />
         <activity android:name=".Activity.SearchActivity" />
-        <activity android:name=".Activity.ToTagsListActivity"></activity>
+        <activity android:name=".Activity.ToTagsListActivity" />
+        <activity android:name=".Activity.NetWorkErrorActivity" />
+
+        <service
+            android:name=".Service.NetworkStateService"
+            android:enabled="true" />
     </application>
 
 </manifest>

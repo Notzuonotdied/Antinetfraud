@@ -19,6 +19,7 @@ import com.jiketuandui.antinetfraud.HTTP.getConnect;
 import com.jiketuandui.antinetfraud.R;
 import com.jiketuandui.antinetfraud.SQL.RecordSQLiteOpenHelper;
 import com.jiketuandui.antinetfraud.Util.Constant;
+import com.jiketuandui.antinetfraud.Util.NetWorkUtils;
 import com.jiketuandui.antinetfraud.View.MySearchView;
 
 import java.util.ArrayList;
@@ -36,7 +37,6 @@ public class SearchActivity extends AppCompatActivity {
     private RecordSQLiteOpenHelper helper;
     private List<ListContent> mListContents = new ArrayList<>();
     private boolean isNull = false;
-    private boolean isOpenTop = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,13 +84,21 @@ public class SearchActivity extends AppCompatActivity {
             @Override
             public void onRefresh(MaterialRefreshLayout materialRefreshLayout) {
                 materialRefreshLayout.finishRefreshLoadMore();
-                new RefreshDataTask().execute();
+                if (NetWorkUtils.isConnectNET(SearchActivity.this)) {
+                    new RefreshDataTask().execute();
+                } else {
+                    materialRefreshLayout.finishRefresh();
+                }
             }
 
             @Override
             public void onRefreshLoadMore(MaterialRefreshLayout materialRefreshLayout) {
                 materialRefreshLayout.finishRefresh();
-                new LoadMoreDataTask().execute();
+                if (NetWorkUtils.isConnectNET(SearchActivity.this)) {
+                    new LoadMoreDataTask().execute();
+                } else {
+                    materialRefreshLayout.finishRefreshLoadMore();
+                }
             }
         });
     }
@@ -103,7 +111,6 @@ public class SearchActivity extends AppCompatActivity {
         mListContents.clear();
         mListContentAdapter.notifyDataSetChanged();
         readPage = 1;
-        //materialRefreshLayout.autoRefresh();
         new SearchDataTask().execute(text);
 
         if (!text.equals("")) {

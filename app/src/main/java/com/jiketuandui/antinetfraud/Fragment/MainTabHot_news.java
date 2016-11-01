@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +18,7 @@ import com.jiketuandui.antinetfraud.Bean.ListContent;
 import com.jiketuandui.antinetfraud.HTTP.getConnect;
 import com.jiketuandui.antinetfraud.R;
 import com.jiketuandui.antinetfraud.Util.Constant;
+import com.jiketuandui.antinetfraud.Util.NetWorkUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -62,6 +64,15 @@ public class MainTabHot_news extends Fragment {
         return view;
     }
 
+    @Override
+    public void onResume() {
+        // 如果是第一次刷新就启动一次刷新
+        if (isFirstRefresh && NetWorkUtils.isConnectNET(getContext())) {
+            materialRefreshLayout.autoRefresh();
+        }
+        super.onResume();
+    }
+
     /**
      * 初始化控件
      */
@@ -83,7 +94,7 @@ public class MainTabHot_news extends Fragment {
         //mRecyclerView.addItemDecoration(new MyItemDecoration());
 
         // 如果是第一次刷新就启动一次刷新
-        if (isFirstRefresh) {
+        if (isFirstRefresh && NetWorkUtils.isConnectNET(getContext())) {
             materialRefreshLayout.autoRefresh();
             isFirstRefresh = false;
         }
@@ -92,13 +103,21 @@ public class MainTabHot_news extends Fragment {
             @Override
             public void onRefresh(MaterialRefreshLayout materialRefreshLayout) {
                 materialRefreshLayout.finishRefreshLoadMore();
-                new RefreshDataTask().execute(position);
+                if (NetWorkUtils.isConnectNET(getContext())) {
+                    new RefreshDataTask().execute(position);
+                } else {
+                    materialRefreshLayout.finishRefresh();
+                }
             }
 
             @Override
             public void onRefreshLoadMore(MaterialRefreshLayout materialRefreshLayout) {
                 materialRefreshLayout.finishRefresh();
-                new LoadMoreDataTask().execute(position);
+                if (NetWorkUtils.isConnectNET(getContext())) {
+                    new LoadMoreDataTask().execute(position);
+                } else {
+                    materialRefreshLayout.finishRefreshLoadMore();
+                }
             }
         });
     }
