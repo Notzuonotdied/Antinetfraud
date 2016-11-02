@@ -10,6 +10,7 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.jiketuandui.antinetfraud.Fragment.MainTabHot_news;
 import com.jiketuandui.antinetfraud.R;
 import com.jiketuandui.antinetfraud.Util.Constant;
 import com.jiketuandui.antinetfraud.View.CFontTitleTextView;
@@ -48,7 +49,8 @@ public class MainActivity extends FragmentActivity {
         content_list = new ArrayList<>();
         MainTab mainTab = new MainTab();
         content_list.add(mainTab);// 主页
-        content_list.add(new MainTabHot());// 热点
+        //content_list.add(new MainTabHot());// 热点
+        content_list.add(new MainTabHot_news());// 热点
         content_list.add(new MainTabSearch());// 搜索
         content_list.add(new MainTabMy());// 我的
 

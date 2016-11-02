@@ -52,7 +52,8 @@ public class MainTabHot_news extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // 获取当前Item的下标
-        this.position = getArguments().getInt(Constant.MAINPAGEPOSITONHOT);
+        //this.position = getArguments().getInt(Constant.MAINPAGEPOSITONHOT);
+        this.position = 0;
         isOpenTop = position == 0;
 
         View view = inflater.inflate(R.layout.main_tab_hot_news, null);
