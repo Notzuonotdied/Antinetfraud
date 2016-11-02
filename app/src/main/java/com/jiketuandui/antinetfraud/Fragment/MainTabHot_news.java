@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -67,8 +66,13 @@ public class MainTabHot_news extends Fragment {
     @Override
     public void onResume() {
         // 如果是第一次刷新就启动一次刷新
-        if (isFirstRefresh && NetWorkUtils.isConnectNET(getContext())) {
-            materialRefreshLayout.autoRefresh();
+        if (isFirstRefresh) {
+            if (NetWorkUtils.isConnectNET(getContext())) {
+                materialRefreshLayout.autoRefresh();
+                isFirstRefresh = false;
+            } else {
+                isFirstRefresh = true;
+            }
         }
         super.onResume();
     }
@@ -94,10 +98,15 @@ public class MainTabHot_news extends Fragment {
         //mRecyclerView.addItemDecoration(new MyItemDecoration());
 
         // 如果是第一次刷新就启动一次刷新
-        if (isFirstRefresh && NetWorkUtils.isConnectNET(getContext())) {
-            materialRefreshLayout.autoRefresh();
-            isFirstRefresh = false;
+        if (isFirstRefresh) {
+            if (NetWorkUtils.isConnectNET(getContext())) {
+                materialRefreshLayout.autoRefresh();
+                isFirstRefresh = false;
+            } else {
+                isFirstRefresh = true;
+            }
         }
+
 
         materialRefreshLayout.setMaterialRefreshListener(new MaterialRefreshListener() {
             @Override
