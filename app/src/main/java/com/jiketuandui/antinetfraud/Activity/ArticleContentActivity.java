@@ -1,7 +1,6 @@
 package com.jiketuandui.antinetfraud.Activity;
 
 import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Build;
@@ -14,17 +13,15 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.TextView;
 
+import com.facebook.drawee.backends.pipeline.Fresco;
+import com.facebook.drawee.interfaces.DraweeController;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.jiketuandui.antinetfraud.Bean.ArticleContent;
 import com.jiketuandui.antinetfraud.HTTP.getConnect;
 import com.jiketuandui.antinetfraud.HTTP.getImage;
 import com.jiketuandui.antinetfraud.R;
-import com.jiketuandui.antinetfraud.Util.BlurUtil;
-import com.jiketuandui.antinetfraud.Util.BlurUtilForHighAPI;
 import com.jiketuandui.antinetfraud.Util.Constant;
 import com.jiketuandui.antinetfraud.Util.MyApplication;
 import com.jiketuandui.antinetfraud.View.MarkdownView;
@@ -35,18 +32,17 @@ public class ArticleContentActivity extends AppCompatActivity {
     private TextView article_title;
     private TextView article_info;
     private TextView article_time;
-    private Toolbar mToolbar;
     private MarkdownView article_markdownView;
-    private RadioGroup radioGroup;
     private ArticleContent mArticleContent;
     //private LinearLayout head_layout;
     private SimpleDraweeView head_layout;
     private LinearLayout head_info;
     private CollapsingToolbarLayout mCollapsingToolbarLayout;
     private boolean isLessThan;
+    private AppBarLayout app_bar_layout;
+    private Toolbar mToolbar;
     // 定义进度条
     private ProgressBar mProgressBar;
-
     private Drawable drawable_head;
 
 
@@ -59,24 +55,10 @@ public class ArticleContentActivity extends AppCompatActivity {
         LoadingArticle();
         // 初始化View
         initView();
-        // 设置响应事件
         initListener();
     }
 
-    /**
-     * 这里包含了标签的部分,暂时未实现
-     */
-    private void initView() {
-        article_title = (TextView) findViewById(R.id.article_title);
-        article_info = (TextView) findViewById(R.id.article_info);
-        article_time = (TextView) findViewById(R.id.article_time);
-
-        article_markdownView = (MarkdownView) findViewById(R.id.article_markdownView);
-        radioGroup = (RadioGroup) findViewById(R.id.article_radiogroup);
-        head_info = (LinearLayout) findViewById(R.id.head_info);
-        //head_layout = (LinearLayout) findViewById(R.id.head_layout);
-        head_layout = (SimpleDraweeView) findViewById(R.id.head_layout);
-
+    private void initListener() {
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);
         ActionBar actionBar = getSupportActionBar();
@@ -92,13 +74,7 @@ public class ArticleContentActivity extends AppCompatActivity {
         });
         reHeight = head_layout.getHeight();
         isLessThan = false;
-
-        // 定义收缩栏
-        final AppBarLayout app_bar_layout = (AppBarLayout) findViewById(R.id.app_bar_layout);
-        mCollapsingToolbarLayout = (CollapsingToolbarLayout)
-                findViewById(R.id.collapsing_toolbar_layout);
         mCollapsingToolbarLayout.setCollapsedTitleTextColor(getResources().getColor(R.color.color_white));
-
         // 设置标题
         app_bar_layout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
             @Override
@@ -106,22 +82,17 @@ public class ArticleContentActivity extends AppCompatActivity {
                 int total_Height = -mCollapsingToolbarLayout.getHeight() + mToolbar.getHeight();
                 if (verticalOffset <= total_Height) {
                     mCollapsingToolbarLayout.setTitle(mArticleContent.getTitle());
-
                     head_info.setVisibility(View.GONE);
                     if (!isLessThan) {
                         mCollapsingToolbarLayout.setContentScrimColor(0xffffffff);
                         mCollapsingToolbarLayout.setCollapsedTitleTextColor(0xff717171);
-                        //mCollapsingToolbarLayout.setContentScrim(drawable_head);
                     }
                     isLessThan = true;
                 } else {
                     mCollapsingToolbarLayout.setTitle("");
-
                     head_info.setVisibility(View.VISIBLE);
                     Drawable drawable = head_info.getBackground();
                     drawable.setAlpha(changAlpha(Math.abs(verticalOffset), Math.abs(total_Height)));
-
-
                     // 设置头图
                     if (Build.VERSION.SDK_INT >= 16) {
                         head_info.setBackground(drawable);
@@ -135,6 +106,23 @@ public class ArticleContentActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    /**
+     * 这里包含了标签的部分,暂时未实现
+     */
+    private void initView() {
+        article_title = (TextView) findViewById(R.id.article_title);
+        article_info = (TextView) findViewById(R.id.article_info);
+        article_time = (TextView) findViewById(R.id.article_time);
+        mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        article_markdownView = (MarkdownView) findViewById(R.id.article_markdownView);
+        head_info = (LinearLayout) findViewById(R.id.head_info);
+        //head_layout = (LinearLayout) findViewById(R.id.head_layout);
+        head_layout = (SimpleDraweeView) findViewById(R.id.head_layout);
+        // 定义收缩栏
+        app_bar_layout = (AppBarLayout) findViewById(R.id.app_bar_layout);
+        mCollapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar_layout);
     }
 
     /**
@@ -163,24 +151,6 @@ public class ArticleContentActivity extends AppCompatActivity {
     }
 
     /**
-     * 初始化响应事件
-     */
-    private void initListener() {
-        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup radioGroup, int i) {
-                RadioButton radioButton = (RadioButton) radioGroup.findViewById(i);
-                radioButton.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-
-                    }
-                });
-            }
-        });
-    }
-
-    /**
      * 设置View一些内容
      */
     private void initAppBarLayout(ArticleContent articleContent) {
@@ -194,11 +164,21 @@ public class ArticleContentActivity extends AppCompatActivity {
         //       head_layout.setImageURI(mArticleContent.getAllImagelink());
         // 设置头图
         if (Build.VERSION.SDK_INT >= 16) {
-            head_layout.setImageURI(mArticleContent.getImagelink());
+            DraweeController controller = Fresco.newDraweeControllerBuilder()
+                    .setUri(mArticleContent.getImagelink())
+                    .setTapToRetryEnabled(true)
+                    .setOldController(head_layout.getController())
+                    .build();
+            head_layout.setController(controller);
 //            head_layout.setBackground(new BitmapDrawable(
 //                    mArticleContent.getBitmap()));
         } else {
-            head_layout.setImageURI(mArticleContent.getImagelink());
+            DraweeController controller = Fresco.newDraweeControllerBuilder()
+                    .setUri(mArticleContent.getImagelink())
+                    .setTapToRetryEnabled(true)
+                    .setOldController(head_layout.getController())
+                    .build();
+            head_layout.setController(controller);
 //            head_layout.setBackgroundDrawable(new BitmapDrawable(
 //                    mArticleContent.getBitmap()));
         }

@@ -6,6 +6,8 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.facebook.drawee.backends.pipeline.Fresco;
+import com.facebook.drawee.interfaces.DraweeController;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.jiketuandui.antinetfraud.R;
 import com.jiketuandui.antinetfraud.Util.ListConentOnClickListener;
@@ -24,7 +26,7 @@ public class ListContentHolder extends RecyclerView.ViewHolder implements View.O
     public TextView Holder_tip;
     public SimpleDraweeView Holder_image;
     public TextView Holder_source;
-    private RelativeLayout bottom;
+    private LinearLayout bottom;
     private LinearLayout top;
     public SimpleDraweeView top_icon;
     public TextView top_tag;
@@ -45,9 +47,8 @@ public class ListContentHolder extends RecyclerView.ViewHolder implements View.O
         this.Holder_source = (TextView) v.findViewById(R.id.lc_holder_source);
         this.top_icon = (SimpleDraweeView) v.findViewById(R.id.top_icon);
         this.top_tag = (TextView) v.findViewById(R.id.top_tag);
-
         // 设置响应事件
-        this.bottom = (RelativeLayout) v.findViewById(R.id.bottom);
+        this.bottom = (LinearLayout) v.findViewById(R.id.bottom);
         this.top = (LinearLayout) v.findViewById(R.id.top);
         bottom.setOnClickListener(this);
         top.setOnClickListener(this);

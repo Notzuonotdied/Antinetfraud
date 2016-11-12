@@ -9,10 +9,28 @@
     <string name="welcome2">科普网APP</string>
     <string name="welcome3">希望能帮到您！</string>
 
+    <string name="version_unknown">版本错误</string>
+
     <string name="main_tab">主页</string>
     <string name="main_hot">热点</string>
     <string name="main_search">搜索</string>
     <string name="main_my">我的</string>
+
+    <string name="login">欢迎登陆</string>
+    <string name="about">关于</string>
+    <string name="share">分享经历</string>
+    <string name="title">标题：</string>
+    <string name="title_hint">Name of article</string>
+    <string name="nick_name">简称：</string>
+    <string name="nick_name_hint">How we call you</string>
+    <string name="type">类型：</string>
+    <string name="type_hint">请选择类型</string>
+    <string-array name="type_spinner">
+        <item>电信诈骗</item>
+        <item>网络诈骗</item>
+    </string-array>
+    <string name="edit_hint">\u3000What you want to say</string>
+    <string name="submit">提交</string>
 
     <string name="setting_person">个人</string>
     <string name="setting_person_account_name">账户名</string>
@@ -30,6 +48,7 @@
     <string name="setting_comment_delete">清空缓存</string>
     <string name="setting_comment_Cache_size">0.0B</string>
     <string name="setting_comment_idea">意见反馈</string>
+    <string name="setting_comment_share">分享经历</string>
     <string name="setting_comment_update">检测更新</string>
     <string name="setting_comment_about">关于</string>
 
@@ -41,4 +60,57 @@
 
     <string name="search_flash">Flash</string>
     <string name="search_classical">经典案例</string>
+    <string name="title_activity_login">Login Title</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_account">账户</string>
+    <string name="prompt_password">密码</string>
+    <string name="action_sign_in">登陆</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
+
+    <string name="about_found_background">创立背景</string>
+    <string name="about_content" formatted="false">\u3000\u3000网络诈骗，是以非法占有为目的，利用网络公共平台，
+        采用虚构事实或者隐瞒事实真相的方法，骗取数额较大的公私财物的行为。它与其他类型的诈骗行为相比，具有取得财物方式特殊、
+        手段简便、成本低廉、范围不定、危害巨大等特点。随着互联网在我国的快速推广和进一步发展，网络诈骗具有越演越烈的趋势。
+        \n\u3000\u30002015年7月23日，中国互联网络信息中心（CNNIC）在京发布第36次《中国互联网络发展状况统计报告》显示，
+        截至2015年6月，我国网民规模达6.68亿，网民人数高居世界第一。《中国网民权益保护调查报告（2013）》指出，在过去的一年
+        里，23.4%的网民损失在100元至300元之间，13.4%的网民金钱损失在600元以上。2014年360网购先赔服务共收到全国用户有
+        效理赔申请报案38785例，网络诈骗类为23051起，占比59.4%，人均损失增加42.9%，其中广东是这类案件的重灾区；2014年
+        上半年，网络兼职类诈骗的报案人数为5904人，占报案总量的46.1%，是报案数量最多的网络诈骗类型，报案金额超过940万元，
+        占报案总金额的37.2%。据中国互联网络信息中心CNNIC数据显示，截至2014年6月，我国网络购物用户规模达到3.32亿，为全球
+        各国网购人群规模之最。与此同时，网购交易中的欺诈犯罪也在急剧上升，2014年上半年仅广东省网民被骗金额就高达278.45万
+        元，居全国第一，人均损失1809元。截至2014年底，我国60岁以上老年人口已经达到2.12亿，占总人口的15.5%。2014年网络
+        诈骗仅在湖南省就有2000多名老人被骗，骗去金额2600多万，真是触目惊心。网络诈骗成为公众受到的主要侵害方式，损失如此
+        严重，可是挽回损失却困难重重。
+        \n\u3000\u3000网络诈骗犯罪的手段在不断地翻新，如果不对其予以关注和重视并及时地研究有关预防和控制的对策，那必将对
+        我国的经济建设、道德建设和法治建设产生较大的危害。防止网络诈骗犯罪发生的最经济有效的手段还是在于提高民众的防范意识，
+        这就有赖于有关反网络诈骗知识的传授和宣传。要加强反网络诈骗的宣传，使得越来越多的公众了解这种诈骗形式并了解它的主要
+        诈骗手段。这样可以提高网络诈骗的公众知晓度，公众对此了解多了自然而然地对其防范水平也会有所提高。此外，在加大网络诈
+        骗宣传的同时还要注意拓宽各种宣传渠道。
+        \n\u3000\u3000因此，开发一个网络诈骗安全防范的移动科普平台不仅对维护广大网民的财产安全有十分重要的意义，而且对进
+        一步打击网络诈骗犯罪和维护社会秩序都具有极为重大的社会现实意义。</string>
+    <string name="about_society">社会效益</string>
+    <string name="about_content_s" formatted="false">\u3000\u3000刚刚公布的一项调查显示，近六成的中国青少年网民，
+        对互联网非常依赖或比较依赖，超过六成的青少年网民信任互联网上的信息，超过五成的青少年网民认为中国网络环境安全，比例均
+        高于中国网民的总体水平。通过网络诈骗安全防范的宣传，促使青少年对网络诈骗知识及相关法律知识得到同时普及，进一步降低计
+        算机网络诈骗中青少年的比例。防止网络诈骗案件的发生有利于校园的和谐稳定，同时也能更好的建设和谐校园和文明校园，为青少
+        年的学习生活创造一个更加美好的环境。
+        \n\u3000\u3000中国城乡老年家庭空巢率超过50%以上，大中城市达到70%以上。许多老年人独居空巢，子女又长期不在身边，
+        感到心里空虚，迫切需要交流，很容易被骗子的花言巧语所蛊惑。老年人一旦被骗，遭受的往往是财产和精神的双重打击，有的甚
+        至走上自杀的道路。因此，无论是老年人自身或是他们的家人以及我们整个社会，都应关注老年人上当受骗的问题，应向广大老年
+        人普及防诈骗知识与技巧，提高老年人自我防范意识与能力，切实保障老年人的合法权益，提高老年人晚年的生活生命质量。
+        \n\u3000\u3000本站通过创建典型案例库、移动科普平台建设以及科普宣教活动的开展，能够让广大公众更直观地了解各种网络
+        诈骗的形式和它的主要诈骗手段，以及相应的防范措施，提高网络诈骗的公众知晓度，从而提高公众自身的防范意识和防范水平。
+        通过科普推广活动的深入开展，充分利用移动互联网技术的便捷性、精准性、互动性等优势，能够进一步拓展反网络诈骗的科普教
+        育活动的广度和深度，提高广大公众的积极性，促进我国科普教育事业的不断发展。本项目创作的的科普作品将面向广大公众、面
+        向青少年和老年人，大力宣传推广网络诈骗与安全防范知识。通过本项目的建设，对提高公众的自身防范意识、推动科普事业发展
+        都具有十分重要的社会现实意义。</string>
+
 </resources>

@@ -61,15 +61,31 @@
     </style>
 
     <style name="setting_item">
+        <item name="android:textColor">@drawable/select_selector</item>
         <item name="android:layout_height">match_parent</item>
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_weight">1</item>
         <item name="android:gravity">center_vertical</item>
-        <item name="android:paddingLeft">17dp</item>
+        <item name="android:paddingLeft">6dp</item>
         <item name="android:includeFontPadding">false</item>
-        <item name="android:textColor">#ff333333</item>
         <item name="android:textSize">14sp</item>
         <item name="android:drawablePadding">10dp</item>
+    </style>
+
+
+    <style name="setting_item_single">
+        <item name="android:background">@drawable/select_background</item>
+        <item name="android:clickable">true</item>
+        <item name="android:textColor">@drawable/select_selector</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:paddingLeft">17dp</item>
+        <item name="android:paddingRight">22dp</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:drawablePadding">10dp</item>
+        <item name="android:drawableRight">@mipmap/ic_arrow</item>
     </style>
 
     <style name="setting_right_image">
@@ -81,6 +97,7 @@
     </style>
 
     <style name="setting_row">
+        <item name="android:background">@drawable/select_background</item>
         <item name="android:orientation">horizontal</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">50dp</item>

@@ -7,6 +7,11 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
+    <!-- To auto-complete the email text field in the login form with the user's emails -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.READ_PROFILE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+
     <application
         android:name=".Util.MyApplication"
         android:allowBackup="true"
@@ -25,13 +30,26 @@
         </activity>
         <activity android:name=".Activity.ArticleContentActivity" />
         <activity android:name=".Activity.MainActivity" />
-        <activity android:name=".Activity.SearchActivity" />
+        <activity
+            android:name=".Activity.SearchActivity"
+            android:windowSoftInputMode="stateHidden|stateAlwaysHidden" />
         <activity android:name=".Activity.ToTagsListActivity" />
         <activity android:name=".Activity.NetWorkErrorActivity" />
 
         <service
             android:name=".Service.NetworkStateService"
             android:enabled="true" />
+
+        <activity
+            android:name=".Activity.LoginActivity"
+            android:label="@string/title_activity_login" />
+        <activity android:name=".Activity.AboutActivity" />
+        <activity
+            android:name=".Activity.ShareActivity"
+            android:windowSoftInputMode="stateHidden|stateAlwaysHidden" />
+        <activity
+            android:name=".Activity.FeedbackActivity"
+            android:windowSoftInputMode="stateHidden|stateAlwaysHidden" />
     </application>
 
 </manifest>

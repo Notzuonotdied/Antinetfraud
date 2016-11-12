@@ -32,7 +32,7 @@ public class MarkdownView extends WebView {
      */
     public void loadMarkdown(String json) {
         // 第二个参数是样式
-        loadMarkdownToView(json, "file:///android_asset/paperwhite_normal.css");
+        loadMarkdownToView(json, "file:///android_asset/paperwhite_nromal.css");
     }
 
     public void loadMarkdown(String json,String cssFileUrl) {
@@ -40,11 +40,11 @@ public class MarkdownView extends WebView {
         loadMarkdownToView(json, cssFileUrl);
     }
 
-    private void loadMarkdownToView(String json, String cssFileUrl) {
-        MarkdownProcessor m = new MarkdownProcessor();
-        String html = m.markdown(json);
+    private void loadMarkdownToView(String html, String cssFileUrl) {
+//        MarkdownProcessor m = new MarkdownProcessor();
+//        String html = m.markdown(json);
         if (cssFileUrl != null) {
-            html = 	"<link rel='stylesheet' type='text/css' href='"+ cssFileUrl +"' />" + html;
+            //html = 	"<link rel='stylesheet' type='text/css' href='"+ cssFileUrl +"' />" + html;
         }
         loadDataWithBaseURL("fake://", html, "text/html", "UTF-8", null);
     }

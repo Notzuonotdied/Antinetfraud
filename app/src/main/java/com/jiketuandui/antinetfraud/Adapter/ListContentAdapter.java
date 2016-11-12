@@ -10,6 +10,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
+import com.facebook.drawee.backends.pipeline.Fresco;
+import com.facebook.drawee.generic.GenericDraweeHierarchy;
+import com.facebook.drawee.interfaces.DraweeController;
 import com.jiketuandui.antinetfraud.Activity.ArticleContentActivity;
 import com.jiketuandui.antinetfraud.Activity.ToTagsListActivity;
 import com.jiketuandui.antinetfraud.Bean.ListContent;
@@ -145,7 +148,25 @@ public class ListContentAdapter extends RecyclerView.Adapter<ListContentHolder> 
         // 设置博文的信息
         holder.Holder_tip.setText(mListContents.get(position).getTip());
         // 设置博文的图片
-        holder.Holder_image.setImageURI(Uri.parse(mListContents.get(position).getImagelink()));
+        DraweeController controller = Fresco.newDraweeControllerBuilder()
+                .setUri(Uri.parse(mListContents.get(position).getImagelink()))
+                .setTapToRetryEnabled(true)
+                .setOldController(holder.Holder_image.getController())
+                .build();
+        holder.Holder_image.setController(controller);
+        // 设置顶部类型图标
+        GenericDraweeHierarchy hierarchy = holder.top_icon.getHierarchy();
+        switch (Integer.valueOf(mListContents.get(position).getTagid())) {
+            case 1:
+                hierarchy.setPlaceholderImage(R.mipmap.tel_fraud);
+                break;
+            case 2:
+                hierarchy.setPlaceholderImage(R.mipmap.net_fraud);
+                break;
+            case 3:
+                hierarchy.setPlaceholderImage(R.mipmap.booklet);
+                break;
+        }
         // 设置来源
         holder.Holder_source.setText(mListContents.get(position).getSource());
         // 设置顶部的标签

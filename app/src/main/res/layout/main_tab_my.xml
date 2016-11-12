@@ -45,8 +45,8 @@
                             android:id="@+id/lc_holder_image"
                             android:layout_width="46dp"
                             android:layout_height="46dp"
-                            android:background="@color/color_white"
                             android:layout_marginRight="10dp"
+                            android:background="@color/color_white"
                             fresco:fadeDuration="100"
                             fresco:placeholderImage="@mipmap/account"
                             fresco:roundWithOverlayColor="@color/color_white"
@@ -58,30 +58,23 @@
 
                     </LinearLayout>
 
-                    <LinearLayout
+                    <TextView
                         android:id="@+id/setting_pieces_collection"
-                        style="@style/setting_row">
+                        style="@style/setting_item_single"
+                        android:text="@string/setting_person_collection" />
 
-                        <TextView
-                            style="@style/setting_item"
-                            android:text="@string/setting_person_collection" />
-
-                        <ImageView style="@style/setting_right_image" />
-                    </LinearLayout>
-
-                    <LinearLayout
+                    <TextView
                         android:id="@+id/setting_pieces_history"
-                        style="@style/setting_row">
+                        style="@style/setting_item_single"
+                        android:text="@string/setting_person_browsing" />
 
-                        <TextView
-                            style="@style/setting_item"
-                            android:text="@string/setting_person_browsing" />
-
-                        <ImageView style="@style/setting_right_image" />
-                    </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
 
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="28dp" />
+            
             <TextView
                 style="@style/setting_header"
                 android:text="@string/setting_comment" />
@@ -93,16 +86,10 @@
                 android:background="@drawable/setting_shape"
                 android:orientation="vertical">
 
-                <LinearLayout
+                <TextView
                     android:id="@+id/setting_pieces_setting"
-                    style="@style/setting_row">
-
-                    <TextView
-                        style="@style/setting_item"
-                        android:text="@string/setting_comment_setting" />
-
-                    <ImageView style="@style/setting_right_image" />
-                </LinearLayout>
+                    style="@style/setting_item_single"
+                    android:text="@string/setting_comment_setting" />
 
                 <LinearLayout
                     android:id="@+id/setting_pieces_delete"
@@ -125,38 +112,26 @@
                     <ImageView style="@style/setting_right_image" />
                 </LinearLayout>
 
-                <LinearLayout
+                <TextView
                     android:id="@+id/setting_pieces_idea"
-                    style="@style/setting_row">
+                    style="@style/setting_item_single"
+                    android:text="@string/setting_comment_idea" />
 
-                    <TextView
-                        style="@style/setting_item"
-                        android:text="@string/setting_comment_idea" />
+                <TextView
+                    android:id="@+id/setting_share"
+                    style="@style/setting_item_single"
+                    android:text="@string/setting_comment_share" />
 
-                    <ImageView style="@style/setting_right_image" />
-                </LinearLayout>
-
-                <LinearLayout
+                <TextView
                     android:id="@+id/setting_pieces_update"
-                    style="@style/setting_row">
+                    style="@style/setting_item_single"
+                    android:text="@string/setting_comment_update" />
 
-                    <TextView
-                        style="@style/setting_item"
-                        android:text="@string/setting_comment_update" />
-
-                    <ImageView style="@style/setting_right_image" />
-                </LinearLayout>
-
-                <LinearLayout
+                <TextView
                     android:id="@+id/setting_pieces_about"
-                    style="@style/setting_row">
+                    style="@style/setting_item_single"
+                    android:text="@string/setting_comment_about" />
 
-                    <TextView
-                        style="@style/setting_item"
-                        android:text="@string/setting_comment_about" />
-
-                    <ImageView style="@style/setting_right_image" />
-                </LinearLayout>
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

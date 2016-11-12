@@ -19,8 +19,7 @@
             android:layout_height="20dp"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="10dp"
-            android:alpha="18"
-            fresco:fadeDuration="100"
+            fresco:fadeDuration="1000"
             fresco:placeholderImage="@mipmap/ic_launcher"
             fresco:roundWithOverlayColor="@color/color_white"
             fresco:roundedCornerRadius="10dp"
@@ -41,16 +40,23 @@
     </LinearLayout>
 
     <RelativeLayout
-        android:id="@+id/bottom"
         style="@style/listContent_style"
         android:layout_below="@id/top">
 
         <com.facebook.drawee.view.SimpleDraweeView
             android:id="@+id/lc_holder_image"
             android:layout_width="80dp"
-            android:layout_height="match_parent"
-            android:alpha="100"
-            fresco:fadeDuration="100"
+            android:layout_height="88dp"
+            fresco:actualImageScaleType="focusCrop"
+            fresco:backgroundImage="@color/color_white"
+            fresco:fadeDuration="3000"
+            fresco:failureImage="@mipmap/loading_error"
+            fresco:failureImageScaleType="centerInside"
+            fresco:progressBarAutoRotateInterval="1000"
+            fresco:progressBarImage="@mipmap/progress_bar"
+            fresco:progressBarImageScaleType="centerInside"
+            fresco:retryImage="@mipmap/reloading"
+            fresco:retryImageScaleType="centerInside"
             fresco:roundWithOverlayColor="@color/color_white"
             fresco:roundedCornerRadius="12dp"
             fresco:roundingBorderColor="@color/color_white"
@@ -58,6 +64,7 @@
 
 
         <LinearLayout
+            android:id="@+id/bottom"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_toRightOf="@id/lc_holder_image"

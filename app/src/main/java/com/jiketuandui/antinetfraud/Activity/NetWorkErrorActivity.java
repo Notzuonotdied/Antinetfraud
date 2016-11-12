@@ -4,7 +4,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.jiketuandui.antinetfraud.R;
-
+/**
+ * 2016年11月2日 20:58:20
+ * 作为错误提示显示的Activity
+ * */
 public class NetWorkErrorActivity extends AppCompatActivity {
 
     @Override

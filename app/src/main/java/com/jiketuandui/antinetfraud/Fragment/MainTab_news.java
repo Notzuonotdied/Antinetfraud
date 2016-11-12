@@ -2,7 +2,6 @@ package com.jiketuandui.antinetfraud.Fragment;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -68,8 +67,8 @@ public class MainTab_news extends Fragment {
     @Override
     public void onResume() {
         // 如果是第一次刷新就启动一次刷新
-        if (isFirstRefresh ) {
-            if(NetWorkUtils.isConnectNET(getContext())) {
+        if (isFirstRefresh) {
+            if (NetWorkUtils.isConnectNET(getContext())) {
                 materialRefreshLayout.autoRefresh();
                 isFirstRefresh = false;
             } else {
@@ -100,8 +99,8 @@ public class MainTab_news extends Fragment {
         mRecyclerView.addItemDecoration(new MyItemDecoration());
 
         // 如果是第一次刷新就启动一次刷新
-        if (isFirstRefresh ) {
-            if(NetWorkUtils.isConnectNET(getContext())) {
+        if (isFirstRefresh) {
+            if (NetWorkUtils.isConnectNET(getContext())) {
                 materialRefreshLayout.autoRefresh();
                 isFirstRefresh = false;
             } else {

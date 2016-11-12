@@ -141,7 +141,7 @@ public class SearchActivity extends AppCompatActivity {
         this.mRecyclerView = (RecyclerView) findViewById(R.id.maintab_search_recyclerView);
         this.searchnull = (TextView) findViewById(R.id.search_null);
         this.back = (FrameLayout) findViewById(R.id.back);
-        mListContentAdapter = new ListContentAdapter(SearchActivity.this, mListContents, false);
+        mListContentAdapter = new ListContentAdapter(SearchActivity.this, mListContents, true, 1);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(SearchActivity.this,
                 LinearLayoutManager.VERTICAL, false));
         mRecyclerView.setAdapter(mListContentAdapter);
