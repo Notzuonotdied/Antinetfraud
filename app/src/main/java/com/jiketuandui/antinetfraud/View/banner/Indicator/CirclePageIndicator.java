@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.jiketuandui.antinetfraud.banner;
+package com.jiketuandui.antinetfraud.View.banner.Indicator;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -181,19 +181,19 @@ public class CirclePageIndicator extends View implements PageIndicator {
     public void setSelectedRadius(float selectedRadius) {
     	mSelectedRadius = selectedRadius;
     }
-    
+
     public float getSelectedRadius() {
         return mSelectedRadius;
     }
-    
+
     public float getRadius() {
         return mRadius;
     }
-    
+
     public void setRadius(float radius) {
         mRadius = radius;
     }
-    
+
     public void setSnap(boolean snap) {
         mSnap = snap;
         invalidate();

@@ -42,8 +42,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:button="@null"
-            android:drawableTop="@drawable/content_search_selector"
-            android:text="@string/main_search" />
+            android:drawableTop="@drawable/content_classic_selector"
+            android:text="@string/main_classical" />
 
         <com.jiketuandui.antinetfraud.View.CFontRadioButton
             android:id="@+id/id_bottom_my"

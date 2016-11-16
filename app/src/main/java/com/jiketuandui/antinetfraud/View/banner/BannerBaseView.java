@@ -1,4 +1,4 @@
-package com.jiketuandui.antinetfraud.banner;
+package com.jiketuandui.antinetfraud.View.banner;
 
 import android.content.Context;
 import android.os.Handler;
@@ -16,7 +16,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.facebook.drawee.view.SimpleDraweeView;
-import com.jiketuandui.antinetfraud.banner.bean.BaseBannerBean;
+import com.jiketuandui.antinetfraud.View.banner.Indicator.CirclePageIndicator;
+import com.jiketuandui.antinetfraud.View.banner.Indicator.LoopViewPager;
+import com.jiketuandui.antinetfraud.View.banner.bean.BaseBannerBean;
 
 import java.util.List;
 
@@ -35,7 +37,12 @@ public class BannerBaseView extends RelativeLayout implements BannerViewBehavior
     /**
      * banner默认自动切换的时间
      */
-    private static final int BANNER_CUT_TIME_DEFAULT = 5555;
+    private static final int BANNER_CUT_TIME_DEFAULT = 3000;
+
+    /**
+     * 设置BannerTitle的字体大小--单位SP
+     */
+    private static final int BANNER_TITLE_TEXTSIZE = 20;
 
     private LoopViewPager mViewPager;
     // FIXME 当首页banner数据多于1条时，再添加页码指示器
@@ -88,10 +95,19 @@ public class BannerBaseView extends RelativeLayout implements BannerViewBehavior
 
         mIndicator.setOnPageChangeListener(new BannerCutListener());
         LayoutParams indicatorParams = new LayoutParams(LayoutParams.MATCH_PARENT, indicatorHeight);
-
-        indicatorParams.bottomMargin = 6;
+        // 修改指示栏的位置为BannerTitle的上方
+        indicatorParams.bottomMargin = sp2px(BANNER_TITLE_TEXTSIZE) +
+                indicatorHeight / 3;
         indicatorParams.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
         this.addView(mIndicator, indicatorParams);
+    }
+
+    /**
+     * 将SP转为px
+     * */
+    public int sp2px(float spValue) {
+        final float fontScale = getContext().getResources().getDisplayMetrics().scaledDensity;
+        return (int) (spValue * fontScale + 0.5f);
     }
 
     public void onDestroy() {
@@ -169,8 +185,8 @@ public class BannerBaseView extends RelativeLayout implements BannerViewBehavior
         mIndicator.setPadding(0, indicatorHeight / 4, 0, 0);
         mIndicator.setRadius(indicatorHeight / 4);
         mIndicator.setPageColor(0x00FFFFFF);
-        mIndicator.setFillColor(0xFFFFFFFF);
-        mIndicator.setStrokeColor(0x66FFFFFF);
+        mIndicator.setFillColor(0xFF00BDD0);
+        mIndicator.setStrokeColor(0x7700BDD0);
         mIndicator.setStrokeWidth(2);
         mIndicator.setSelectedRadius(indicatorHeight / 4 + 1);
         indicator.setCentered(true);
@@ -210,7 +226,7 @@ public class BannerBaseView extends RelativeLayout implements BannerViewBehavior
         }
 
         @Override
-        public Object instantiateItem(ViewGroup container, int position) {
+        public Object instantiateItem(ViewGroup container, final int position) {
             FrameLayout.LayoutParams FL = new FrameLayout.LayoutParams(
                     FrameLayout.LayoutParams.MATCH_PARENT,
                     FrameLayout.LayoutParams.MATCH_PARENT
@@ -218,11 +234,10 @@ public class BannerBaseView extends RelativeLayout implements BannerViewBehavior
             FrameLayout frameLayout = new FrameLayout(getContext());
             frameLayout.setLayoutParams(FL);
 
-            SimpleDraweeView imageView = new SimpleDraweeView(getContext());
+            SimpleDraweeView simpleDraweeView = new SimpleDraweeView(getContext());
             final BaseBannerBean d = datas.get(position);
 
-            imageView.setImageURI(d.getUrl());
-
+            simpleDraweeView.setImageURI(d.getUrl());
 
             FrameLayout.LayoutParams FL_tv = new FrameLayout.LayoutParams(
                     FrameLayout.LayoutParams.MATCH_PARENT,
@@ -232,23 +247,25 @@ public class BannerBaseView extends RelativeLayout implements BannerViewBehavior
 
             TextView banner_search_title = new TextView(getContext());
             banner_search_title.setText(bannerTitle.get(position));
-            banner_search_title.setBackgroundColor(0x66000000);
-            banner_search_title.setTextColor(0xffffffff);
+            banner_search_title.setBackgroundColor(0x88ffffff);
+            banner_search_title.setTextColor(0xcf000000);
             banner_search_title.setLayoutParams(FL_tv);
             banner_search_title.setGravity(Gravity.CENTER);
-            banner_search_title.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20);
+            banner_search_title.setTextSize(TypedValue.COMPLEX_UNIT_SP, BANNER_TITLE_TEXTSIZE);
             banner_search_title.setMaxLines(1);
             banner_search_title.setSingleLine();
+            banner_search_title.setFocusable(true);
+            banner_search_title.setFocusableInTouchMode(true);
             banner_search_title.setEllipsize(TextUtils.TruncateAt.MARQUEE);
 
-            frameLayout.addView(imageView);
+            frameLayout.addView(simpleDraweeView);
             frameLayout.addView(banner_search_title);
             container.addView(frameLayout);
-
-            imageView.setOnClickListener(new OnClickListener() {
+            // 添加响应事件
+            frameLayout.setOnClickListener(new OnClickListener() {
                 @Override
-                public void onClick(View v) {
-                    Toast.makeText(context, d.getUrl(), Toast.LENGTH_SHORT).show();
+                public void onClick(View view) {
+                    bannerViewOnClickListener.BannerOnClickListener(position);
                 }
             });
 
@@ -266,4 +283,9 @@ public class BannerBaseView extends RelativeLayout implements BannerViewBehavior
         }
     }
 
+    private BannerViewOnClickListener bannerViewOnClickListener;
+
+    public void setBannerViewOnClickListener(BannerViewOnClickListener bannerViewOnClickListener) {
+        this.bannerViewOnClickListener = bannerViewOnClickListener;
+    }
 }

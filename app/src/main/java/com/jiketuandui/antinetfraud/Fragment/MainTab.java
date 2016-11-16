@@ -1,18 +1,20 @@
 package com.jiketuandui.antinetfraud.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 
+import com.jiketuandui.antinetfraud.Activity.SearchActivity;
+import com.jiketuandui.antinetfraud.Activity.SearchDetailActivity;
 import com.jiketuandui.antinetfraud.Adapter.MainTabAdapter;
 import com.jiketuandui.antinetfraud.R;
-import com.jiketuandui.antinetfraud.Util.Constant;
+import com.jiketuandui.antinetfraud.View.CFontTitleTextView;
 import com.jiketuandui.antinetfraud.View.MyTabPageIndicator;
 
 import java.lang.reflect.Field;
@@ -66,6 +68,16 @@ public class MainTab extends Fragment {
          * */
         mViewPager.setAdapter(mainTabAdapter);
         myTabPageIndicator.setViewPager(mViewPager, 0);
+
+
+        ImageButton imageButton = (ImageButton) v.findViewById(R.id.gotoSearch);
+        imageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), SearchActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
 

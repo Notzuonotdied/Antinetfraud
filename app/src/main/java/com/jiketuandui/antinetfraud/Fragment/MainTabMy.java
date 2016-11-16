@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -68,6 +69,9 @@ public class MainTabMy extends Fragment {
                 case R.id.setting_pieces_update:
                     new NeedRefreshTask().execute();
                     break;
+                case R.id.setting_pieces_account:
+                    Log.i("Notzuonotdied", "account");
+                    break;
             }
         }
     };
@@ -102,6 +106,7 @@ public class MainTabMy extends Fragment {
         settingpiecesidea.setOnClickListener(listener);
         settingshare.setOnClickListener(listener);
         settingpiecesupdate.setOnClickListener(listener);
+        settingpiecesaccount.setOnClickListener(listener);
     }
 
     /**
@@ -115,8 +120,8 @@ public class MainTabMy extends Fragment {
     @Override
     public void onHiddenChanged(boolean hidden) {
         super.onHiddenChanged(hidden);
-        setting_cache_size.setText(!hidden ? CacheCleanManage.getCacheSize(new File(getImage.photoPath))
-                : "0.0B");
+//        setting_cache_size.setText(!hidden ? CacheCleanManage.getCacheSize(new File(getImage.photoPath))
+//                : "0.0B");
     }
 
     //显示是否要更新的对话框
@@ -165,7 +170,10 @@ public class MainTabMy extends Fragment {
 
         @Override
         protected void onPostExecute(String string) {
-            if (string != null) {
+            if ("null".equals(string) ||string == null || string.length() <= 0 ||
+                    string.isEmpty() || "".equals(string)) {
+                Toast.makeText(getActivity(),"已经是最新版了~",Toast.LENGTH_SHORT).show();
+            } else {
                 mUrl = getConnect.UrlgetApp + string.split("/")[4].replace("\"", "");
                 showUpdateDialog();
             }

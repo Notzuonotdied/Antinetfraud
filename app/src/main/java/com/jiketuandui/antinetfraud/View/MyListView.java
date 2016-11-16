@@ -8,7 +8,8 @@ import android.widget.ListView;
 
 /**
  * Created by Notzuonotdied on 2016/9/16.
- * ListView
+ *
+ * 重写ListView，达到使ListView适应ScrollView的效果
  */
 public class MyListView extends ListView {
     public MyListView(Context context) {
@@ -28,7 +29,7 @@ public class MyListView extends ListView {
         super(context, attrs, defStyleAttr, defStyleRes);
     }
 
-    @Override
+    @Override//重写该方法，达到使ListView适应ScrollView的效果
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         int expandSpec = MeasureSpec.makeMeasureSpec(Integer.MAX_VALUE >> 2,
                 MeasureSpec.AT_MOST);

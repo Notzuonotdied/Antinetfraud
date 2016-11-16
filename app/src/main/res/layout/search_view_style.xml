@@ -46,7 +46,7 @@
         android:gravity="center"
         android:alpha="88"
         android:paddingRight="7dp"
-        android:background="@drawable/search_shape_right"
+        android:background="@drawable/search_button_background_selector"
         android:text="@string/main_search"
         android:textColor="@color/color_header_title"
         android:textSize="14sp" />

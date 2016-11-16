@@ -19,7 +19,7 @@ public class ExampleUnitTest {
     @Test
     public void addition_isCorrect() throws Exception {
         //assertEquals(4, 2 + 2);
-
+        System.out.printf(String.valueOf(System.currentTimeMillis()));
         /**
          * 测试通过
          * */

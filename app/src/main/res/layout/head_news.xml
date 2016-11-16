@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="52dp"
+    android:paddingLeft="8dp"
+    android:background="@color/color_header"
+    android:orientation="horizontal">
+
+    <com.jiketuandui.antinetfraud.View.CFontTitleTextView
+        android:id="@+id/main_header_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:typeface="monospace"
+        android:gravity="center"
+        android:layout_centerInParent="true"
+        android:text="@string/header_titile"
+        android:textColor="@color/color_header_title"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:shadowColor="@color/color_header_title_shadow"
+        android:shadowDx="6"
+        android:shadowDy="6"
+        android:shadowRadius="10"/>
+
+    <ImageButton
+        android:id="@+id/gotoSearch"
+        android:layout_alignParentRight="true"
+        android:layout_width="?attr/actionBarSize"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/color_white"
+        android:src="@drawable/content_search_selector"/>
+
+</RelativeLayout>

@@ -1,4 +1,4 @@
-package com.jiketuandui.antinetfraud.banner;
+package com.jiketuandui.antinetfraud.View.banner.Indicator;
 
 /*
  * Copyright (C) 2013 Leszek Mzyk

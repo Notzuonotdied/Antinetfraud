@@ -7,7 +7,7 @@
     <!--这里是主界面的Layout布局文件-->
 
     <!--这里是导航栏的设置,定义为一个线性布局-->
-    <include layout="@layout/header" />
+    <!--<include layout="@layout/header" />-->
 
     <com.jiketuandui.antinetfraud.View.ContentViewPager
         android:id="@+id/id_viewpager"

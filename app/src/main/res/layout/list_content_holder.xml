@@ -11,6 +11,8 @@
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:orientation="horizontal"
+        android:alpha="66"
+        android:background="@drawable/holder_top_selector"
         android:visibility="visible">
 
         <com.facebook.drawee.view.SimpleDraweeView

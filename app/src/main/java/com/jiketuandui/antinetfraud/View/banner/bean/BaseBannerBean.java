@@ -1,4 +1,4 @@
-package com.jiketuandui.antinetfraud.banner.bean;
+package com.jiketuandui.antinetfraud.View.banner.bean;
 
 /**
  * Created by Administrator on 2015/8/28 0028.

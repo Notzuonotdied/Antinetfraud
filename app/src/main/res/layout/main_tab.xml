@@ -4,6 +4,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <include layout="@layout/head_news" />
+
     <com.jiketuandui.antinetfraud.View.MyTabPageIndicator
         android:id="@+id/mainTab_indicator"
         android:layout_width="match_parent"
