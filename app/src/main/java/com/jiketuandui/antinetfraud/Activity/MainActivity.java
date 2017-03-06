@@ -11,9 +11,10 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.jiketuandui.antinetfraud.Fragment.MainTab;
-import com.jiketuandui.antinetfraud.Fragment.MainTabClasscial;
+import com.jiketuandui.antinetfraud.Fragment.MainTab_classcial;
 import com.jiketuandui.antinetfraud.Fragment.MainTabHot_news;
-import com.jiketuandui.antinetfraud.Fragment.MainTabMy;
+import com.jiketuandui.antinetfraud.Fragment.MainTab_setting;
+import com.jiketuandui.antinetfraud.HTTP.getAppUpdate;
 import com.jiketuandui.antinetfraud.R;
 import com.jiketuandui.antinetfraud.View.ContentViewPager;
 
@@ -66,6 +67,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         initFragment();
         initView();
+        getAppUpdate update = new getAppUpdate(MainActivity.this, false);
+        update.startUpdate();
     }
 
     /**
@@ -75,10 +78,10 @@ public class MainActivity extends AppCompatActivity {
         content_list = new ArrayList<>();
         MainTab mainTab = new MainTab();
         content_list.add(mainTab);// 主页
-        //content_list.add(new MainTabHot());// 热点
+        //content_list.add(new MainTab_hot());// 热点
         content_list.add(new MainTabHot_news());// 热点
-        content_list.add(new MainTabClasscial());// 搜索
-        content_list.add(new MainTabMy());// 我的
+        content_list.add(new MainTab_classcial());// 搜索
+        content_list.add(new MainTab_setting());// 我的
 
         mContentViewPager = (ContentViewPager) findViewById(R.id.id_viewpager);
         // 预加载一页的内容

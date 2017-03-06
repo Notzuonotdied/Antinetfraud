@@ -38,6 +38,7 @@ public class MyApplication extends Application {
         initTagsList();
     }
 
+
     /**
      * 初始化Service进行监听网络
      * */

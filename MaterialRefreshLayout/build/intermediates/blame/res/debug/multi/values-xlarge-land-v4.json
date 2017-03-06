@@ -1,0 +1,26 @@
+[
+    {
+        "outputFile": "D:\\Android\\AndroidStudioProjects\\AntiNETFraud\\MaterialRefreshLayout\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-xlarge-land-v4\\values-xlarge-land-v4.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 63,
+                    "endOffset": 114
+                },
+                "from": {
+                    "file": "C:\\Users\\Notzuonotdied\\.android\\build-cache\\68862c59e9b7965731c9123ab15ffb0e5831df0d\\output\\res\\values-xlarge-land\\values-xlarge-land.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 237,
+                        "endColumn": 63,
+                        "endOffset": 296
+                    }
+                }
+            }
+        ]
+    }
+]

@@ -5,16 +5,17 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import com.jiketuandui.antinetfraud.Activity.SearchActivity;
-import com.jiketuandui.antinetfraud.Activity.SearchDetailActivity;
 import com.jiketuandui.antinetfraud.Adapter.MainTabAdapter;
 import com.jiketuandui.antinetfraud.R;
-import com.jiketuandui.antinetfraud.View.CFontTitleTextView;
 import com.jiketuandui.antinetfraud.View.MyTabPageIndicator;
 
 import java.lang.reflect.Field;
@@ -78,6 +79,13 @@ public class MainTab extends Fragment {
                 startActivity(intent);
             }
         });
+        ImageButton imageButton_a = (ImageButton) v.findViewById(R.id.announcement);
+        imageButton_a.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showAnnouncmentDialog();
+            }
+        });
     }
 
 
@@ -97,5 +105,19 @@ public class MainTab extends Fragment {
         } catch (IllegalAccessException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    /**
+     * 显示公告
+     */
+    private void showAnnouncmentDialog() {
+        AlertDialog alertDialog = new AlertDialog.Builder(getContext()).create();
+        alertDialog.show();
+        Window window = alertDialog.getWindow();
+        window.setContentView(R.layout.announcement);
+        TextView tv_title = (TextView) window.findViewById(R.id.tv_dialog_title);
+        tv_title.setText("网站公告");
+        TextView tv_message = (TextView) window.findViewById(R.id.tv_dialog_message);
+        tv_message.setText("\u3000\u3000希望我们能够帮助到您！\n\u3000\u3000声明：本网站的案例来源与网络，如有侵犯，请及时联系本站删除案例！");
     }
 }

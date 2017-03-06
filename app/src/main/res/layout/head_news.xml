@@ -2,9 +2,15 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="52dp"
-    android:paddingLeft="8dp"
-    android:background="@color/color_header"
-    android:orientation="horizontal">
+    android:background="@color/color_header">
+
+    <ImageButton
+        android:id="@+id/announcement"
+        android:layout_alignParentLeft="true"
+        android:layout_width="?attr/actionBarSize"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/color_white"
+        android:src="@drawable/content_home_announcement"/>
 
     <com.jiketuandui.antinetfraud.View.CFontTitleTextView
         android:id="@+id/main_header_tv"

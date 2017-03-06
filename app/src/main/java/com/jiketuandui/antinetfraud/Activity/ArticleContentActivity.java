@@ -1,6 +1,5 @@
 package com.jiketuandui.antinetfraud.Activity;
 
-import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Build;
@@ -11,9 +10,11 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.drawee.interfaces.DraweeController;
@@ -41,6 +42,7 @@ public class ArticleContentActivity extends AppCompatActivity {
     private boolean isLessThan;
     private AppBarLayout app_bar_layout;
     private Toolbar mToolbar;
+    private ImageButton praise;
     // 定义进度条
     private ProgressBar mProgressBar;
     private Drawable drawable_head;
@@ -106,12 +108,20 @@ public class ArticleContentActivity extends AppCompatActivity {
                 }
             }
         });
+
+        praise.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new setPraise().execute(mArticleContent.getId());
+            }
+        });
     }
 
     /**
      * 这里包含了标签的部分,暂时未实现
      */
     private void initView() {
+        praise = (ImageButton) findViewById(R.id.praise);
         article_title = (TextView) findViewById(R.id.article_title);
         article_info = (TextView) findViewById(R.id.article_info);
         article_time = (TextView) findViewById(R.id.article_time);
@@ -190,31 +200,31 @@ public class ArticleContentActivity extends AppCompatActivity {
 //        mCollapsingToolbarLayout.setContentScrim(drawable_head);
     }
 
-    /**
-     * 回收内存
-     */
-    @Override
-    protected void onDestroy() {
-        if (head_layout != null && head_layout.getDrawingCache() != null ||
-                mCollapsingToolbarLayout != null && mCollapsingToolbarLayout.getDrawingCache() != null) {
-            Bitmap bitmap = head_layout.getDrawingCache();
-            Bitmap bitmap_coo = mCollapsingToolbarLayout.getDrawingCache();
-            if (Build.VERSION.SDK_INT >= 16) {
-                head_layout.setBackground(null);
-            } else {
-                head_layout.setBackgroundDrawable(null);
-            }
-            mCollapsingToolbarLayout.setContentScrim(null);
-            if (bitmap != null && !bitmap.isRecycled()) {
-                bitmap.recycle();
-            }
-            if (bitmap_coo != null && !bitmap_coo.isRecycled()) {
-                bitmap_coo.recycle();
-            }
-            System.gc();
-        }
-        super.onDestroy();
-    }
+//    /**
+//     * 回收内存
+//     */
+//    @Override
+//    protected void onDestroy() {
+//        if (head_layout != null && head_layout.getDrawingCache() != null ||
+//                mCollapsingToolbarLayout != null && mCollapsingToolbarLayout.getDrawingCache() != null) {
+//            Bitmap bitmap = head_layout.getDrawingCache();
+//            Bitmap bitmap_coo = mCollapsingToolbarLayout.getDrawingCache();
+//            if (Build.VERSION.SDK_INT >= 16) {
+//                head_layout.setBackground(null);
+//            } else {
+//                head_layout.setBackgroundDrawable(null);
+//            }
+//            mCollapsingToolbarLayout.setContentScrim(null);
+//            if (bitmap != null && !bitmap.isRecycled()) {
+//                bitmap.recycle();
+//            }
+//            if (bitmap_coo != null && !bitmap_coo.isRecycled()) {
+//                bitmap_coo.recycle();
+//            }
+//            System.gc();
+//        }
+//        super.onDestroy();
+//    }
 
     class LoadArticle extends AsyncTask<Integer, Integer, ArticleContent> {
 
@@ -244,6 +254,24 @@ public class ArticleContentActivity extends AppCompatActivity {
         protected void onPostExecute(ArticleContent articleContent) {
             //mProgressBar.setVisibility(View.GONE);
             initAppBarLayout(articleContent);
+        }
+    }
+
+
+    class setPraise extends AsyncTask<String, Void, Boolean> {
+        @Override
+        protected Boolean doInBackground(String... strings) {
+            return getConnect.setPraiseGet(strings[0]);
+        }
+
+        @Override
+        protected void onPostExecute(Boolean aBoolean) {
+            if (aBoolean) {
+                mArticleContent.setPraise(String.valueOf(Integer.valueOf(mArticleContent.getPraise()) + 1));
+                article_info.setText(mArticleContent.getInfo());
+                Toast.makeText(ArticleContentActivity.this, "点赞成功~", Toast.LENGTH_SHORT).show();
+            }
+            super.onPostExecute(aBoolean);
         }
     }
 }

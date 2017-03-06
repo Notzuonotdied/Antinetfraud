@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="false"
+        jar="C:\Users\Notzuonotdied\.android\build-cache\59e8b31f3924e6402b53a76eda1a8ee4eee9eba2\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="a540784239c611ea490593e2053a5e2890675c68">
+        <dex dex="D:\Android\AndroidStudioProjects\AntiNETFraud\app\build\intermediates\pre-dexed\debug\classes_900c5e59636cce003b074582a3abb305b6fd2514.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Notzuonotdied\.android\build-cache\43bc10b1cc82be970cbc631487fe278495d0d3da\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="5ee6f3750abc2947b67bfbdf2061e26b0def1735">
+        <dex dex="D:\Android\AndroidStudioProjects\AntiNETFraud\app\build\intermediates\pre-dexed\debug\classes_5d34953e5e94dc9bcfa8720c6f62180e7435db32.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Notzuonotdied\.gradle\caches\modules-2\files-2.1\com.nineoldandroids\library\2.4.0\e9b63380f3a242dbdbf103a2355ad7e43bad17cb\library-2.4.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="e9b63380f3a242dbdbf103a2355ad7e43bad17cb">
+        <dex dex="D:\Android\AndroidStudioProjects\AntiNETFraud\app\build\intermediates\pre-dexed\debug\library-2.4.0_584c89969916064a3cd61d859ac62c2bc16ad3da.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Notzuonotdied\.android\build-cache\a30809c84f760e678b94f4c3056ae2e96e8d93c6\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="0562efaffe940ea2da9383096ddea9281585c052">
+        <dex dex="D:\Android\AndroidStudioProjects\AntiNETFraud\app\build\intermediates\pre-dexed\debug\classes_cbe573c6fa90f5f418d3ec4050251cb4ea880b66.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Notzuonotdied\.android\build-cache\db031daf41d4e66695f52b6e2b06418278fb8883\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="e195bd694d5389acfba27ff4fdfa64c4c65b2c05">
+        <dex dex="D:\Android\AndroidStudioProjects\AntiNETFraud\app\build\intermediates\pre-dexed\debug\classes_63622f2d2ac9bed3ee6579fe8c96a7cd6ae4c9c7.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Notzuonotdied\.android\build-cache\796d1956b47b7f80b680a47a74777b6e300ba19e\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="1e346707e4770db216049a532ab3eb5e317cf82a">
+        <dex dex="D:\Android\AndroidStudioProjects\AntiNETFraud\app\build\intermediates\pre-dexed\debug\classes_f1ad00c066a594ab521e53e08bc762a96c73ea95.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Notzuonotdied\.android\build-cache\269b4d0b7ddf0ba9ba469c35c162a5283bec7d10\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="145da27a459a63ea0c4e318930365cf0a8b8e891">
+        <dex dex="D:\Android\AndroidStudioProjects\AntiNETFraud\app\build\intermediates\pre-dexed\debug\classes_ab7b79a8026afe953857984abb5143df1a823fa0.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Notzuonotdied\.android\build-cache\caae5e2b9e21ab168bf46e8420905520f1cdc0f8\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="6d7d803871e3203465f71a163e7af104f807b446">
+        <dex dex="D:\Android\AndroidStudioProjects\AntiNETFraud\app\build\intermediates\pre-dexed\debug\classes_2148a4d0c4143c15e9c8febdbd110f0d6006cf70.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Notzuonotdied\.android\build-cache\cf9e8445023a0d8a48a0194e340541a9e121ba74\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="40e5cb8708fc25fe57cb403cc82e9ef98376b648">
+        <dex dex="D:\Android\AndroidStudioProjects\AntiNETFraud\app\build\intermediates\pre-dexed\debug\classes_ee4cefb752c8b258e1f7e4fd973ee7b5dfd278fa.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Notzuonotdied\.android\build-cache\e2af8af36eddd7f79cae47462070909b44301b3b\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="c9a86e6bc8300fc00c191949ac61a2f7165e35c7">
+        <dex dex="D:\Android\AndroidStudioProjects\AntiNETFraud\app\build\intermediates\pre-dexed\debug\classes_4bdaa591470ad76e93d366002daad0e6846cc23c.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\Android\AndroidStudioProjects\AntiNETFraud\MaterialRefreshLayout\build\intermediates\bundles\default\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="89f651a94b183931e7699f3a329627d5e4cc7c1a">
+        <dex dex="D:\Android\AndroidStudioProjects\AntiNETFraud\app\build\intermediates\pre-dexed\debug\classes_63ea1edfd28dc631b930ff90e7ad150e9fb053bf.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Notzuonotdied\.gradle\caches\modules-2\files-2.1\com.squareup.picasso\picasso\2.5.1\8453703164e230cce848b387f6b8c06f10a22d59\picasso-2.5.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="8453703164e230cce848b387f6b8c06f10a22d59">
+        <dex dex="D:\Android\AndroidStudioProjects\AntiNETFraud\app\build\intermediates\pre-dexed\debug\picasso-2.5.1_417cad7438a4ab395c5793b7e06e06d896d25f4c.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\24.1.1\support-annotations-24.1.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="3af19f153122737b372622fa6c81dd11a1c6b999">
+        <dex dex="D:\Android\AndroidStudioProjects\AntiNETFraud\app\build\intermediates\pre-dexed\debug\support-annotations-24.1.1_3bf9a314fdfe5dd4e81fb78d39ac80f5acac90fa.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Notzuonotdied\.android\build-cache\a2782a64d05a9ba4e01a4504075067799ba992dc\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="1256c10604bb098490eab070d76754ac5ceab35c">
+        <dex dex="D:\Android\AndroidStudioProjects\AntiNETFraud\app\build\intermediates\pre-dexed\debug\classes_edc2baa09196f240cd56296f85eb54026f6dafca.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Notzuonotdied\.gradle\caches\modules-2\files-2.1\com.parse.bolts\bolts-tasks\1.4.0\d85884acf6810a3bbbecb587f239005cbc846dc4\bolts-tasks-1.4.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="d85884acf6810a3bbbecb587f239005cbc846dc4">
+        <dex dex="D:\Android\AndroidStudioProjects\AntiNETFraud\app\build\intermediates\pre-dexed\debug\bolts-tasks-1.4.0_8beee5ebcc40c895d9f745872f48585961ad7e39.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Notzuonotdied\.android\build-cache\244b475be9899a06ba05d874a34cf05dbea5edf4\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="d6a0998f61ebb488e6a3198fa20c851a137cd9b3">
+        <dex dex="D:\Android\AndroidStudioProjects\AntiNETFraud\app\build\intermediates\pre-dexed\debug\classes_5a8b7f8c582b3fdb420b60d79ec5497ec86fc5ff.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Notzuonotdied\.android\build-cache\dcce334cecb15cde20a710206352a319bcb64bb8\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="ca24ddf3784c094578d634df395bcb97952a737c">
+        <dex dex="D:\Android\AndroidStudioProjects\AntiNETFraud\app\build\intermediates\pre-dexed\debug\classes_bf4e8d7b77c21bdf0588b446a6e569f8657cba11.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Notzuonotdied\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.6.2\f1bc476cc167b18e66c297df599b2377131a8947\gson-2.6.2.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="f1bc476cc167b18e66c297df599b2377131a8947">
+        <dex dex="D:\Android\AndroidStudioProjects\AntiNETFraud\app\build\intermediates\pre-dexed\debug\gson-2.6.2_72665e5c17b4cacd7838b5ab9ba3d272945b15c8.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Notzuonotdied\.android\build-cache\caae5e2b9e21ab168bf46e8420905520f1cdc0f8\output\jars\libs\internal_impl-24.1.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="f78c2f395cb096f9dc1dc07e729922b8fcd3c4f5">
+        <dex dex="D:\Android\AndroidStudioProjects\AntiNETFraud\app\build\intermediates\pre-dexed\debug\internal_impl-24.1.1_f914e82131fecfcf9f6b3f6c01afed1a09fb7cab.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Notzuonotdied\.android\build-cache\842a7cac44d4dbc80b42ad1f6b6b91498cc3b57b\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="f62e763609f65e47dc6c498760a4accf02776788">
+        <dex dex="D:\Android\AndroidStudioProjects\AntiNETFraud\app\build\intermediates\pre-dexed\debug\classes_54a79189b9d985b2de2a567cdfca9dd4184f00a1.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Notzuonotdied\.android\build-cache\bf8a352538ab112b4a21025e237e902e14059582\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="787871951412550519b0222aba3c9df4cea49875">
+        <dex dex="D:\Android\AndroidStudioProjects\AntiNETFraud\app\build\intermediates\pre-dexed\debug\classes_bd96e912240aa52ec701c93fb2a9b29e41cd79bc.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Notzuonotdied\.gradle\caches\modules-2\files-2.1\org.markdownj\markdownj-core\0.4\7dab17c3d4d492a2b776d25eb50e2320995de24c\markdownj-core-0.4.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="7dab17c3d4d492a2b776d25eb50e2320995de24c">
+        <dex dex="D:\Android\AndroidStudioProjects\AntiNETFraud\app\build\intermediates\pre-dexed\debug\markdownj-core-0.4_2d7b45bb3e3c3f23d1ccee5e2e8201dce3d1e132.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Notzuonotdied\.android\build-cache\4d1ff233646956a7ca1212e5bdb6069a264bc47a\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="c936c1bd42f0c018c18920c7bec619ef056b24f8">
+        <dex dex="D:\Android\AndroidStudioProjects\AntiNETFraud\app\build\intermediates\pre-dexed\debug\classes_b6c8677ce657310119aa2232241e283d3e62fb25.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Notzuonotdied\.android\build-cache\42e6934d28d0b00f970c49ee720570dd775adc88\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="883eb9c3bde63636505e42fc6cad790f4739b0d3">
+        <dex dex="D:\Android\AndroidStudioProjects\AntiNETFraud\app\build\intermediates\pre-dexed\debug\classes_44dec4c66c5642b9656ff6afacff7c519953d14b.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Notzuonotdied\.android\build-cache\00506d804c0b913a68173191e95708303d6bf56c\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="a13789ec9e884e49740bb970550fabcb340466c1">
+        <dex dex="D:\Android\AndroidStudioProjects\AntiNETFraud\app\build\intermediates\pre-dexed\debug\classes_9070c9aec0e35fe07f8278652217e5085283bed8.jar" />
+    </item>
+
+</items>

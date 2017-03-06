@@ -18,33 +18,8 @@ import java.util.List;
 public class ExampleUnitTest {
     @Test
     public void addition_isCorrect() throws Exception {
-        //assertEquals(4, 2 + 2);
-        System.out.printf(String.valueOf(System.currentTimeMillis()));
-        /**
-         * 测试通过
-         * */
-//        String str= getConnect.doGet("http://127.0.0.1/?/api/article_list/1/2/1");
-//        System.out.println(str);
-
-
-//        List<ListContent> newListContents = getConnect.setContentURL(getConnect.UrlContentHead,"1");
-//        if (newListContents.isEmpty()) {
-//            System.out.println("空");
-//        }
-//        for (ListContent listContent : newListContents) {
-//            System.out.println("id=" + listContent.getId() + ",imageLink=" +
-//                    listContent.getImagelink());
-//            System.out.println(listContent.toString());
-//        }
-//        System.out.println("size:" + newListContents.size());
-
-
-//        ArticleContent articleContent = getConnect.setArticleURL(88);
-//        System.out.println("size:" + articleContent.getTags().size());
-
-//        String str = getConnect.doPost("http://127.0.0.1/?/api/search", "神灵武士");
-//        System.out.println(str);
-//        getConnect.setContentURLByTagId(getConnect.UrlContentHot,
-//                "1", String.valueOf(1));
+        //System.out.printf(String.valueOf(getConnect.setPraise(String.valueOf(73))));
+        //System.out.printf(getConnect.setContentPost("1","微信").get(0).getId());
+        System.out.printf(String.valueOf(getConnect.doPraiseGet("http://119.29.220.221/?/api/praise/73")));
     }
 }

@@ -47,8 +47,8 @@ public class ListContent {
     }
 
     public String getTip() {
-        return transTime.TimeStamp2Date(createtime, "yyyy-MM-dd") +
-                " 阅读(" + reading + ")点赞(" + praise + ")";
+        return transTime.TimeStamp2Date(createtime, "yyyy-MM-dd")
+               /* + " 阅读(" + reading + ")点赞(" + praise + ")"*/;
     }
 
     @Override

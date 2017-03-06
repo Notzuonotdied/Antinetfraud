@@ -4,7 +4,6 @@ import android.content.Context;
 import android.os.Environment;
 import android.support.annotation.Nullable;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
@@ -12,7 +11,6 @@ import com.google.gson.reflect.TypeToken;
 import com.jiketuandui.antinetfraud.Bean.ArticleContent;
 import com.jiketuandui.antinetfraud.Bean.ListContent;
 import com.jiketuandui.antinetfraud.Bean.TagInfo;
-import com.jiketuandui.antinetfraud.Util.MyApplication;
 import com.jiketuandui.antinetfraud.Util.getVersion;
 
 import java.io.BufferedReader;
@@ -58,6 +56,10 @@ public class getConnect {
      * 常量,搜索的简介内容链接头部
      */
     private static String UrlContentSearch = myUrl + "/?/api/search/";
+    /**
+     * 常量,点赞的链接头部
+     */
+    private static String UrlPraise = myUrl + "/?/api/praise/";
 
     /**
      * 获取Json数组
@@ -95,22 +97,18 @@ public class getConnect {
             httpURLConnection.setRequestProperty("Accept-Charset", "utf-8");
             httpURLConnection.setConnectTimeout(3000);
             httpURLConnection.setRequestMethod("GET");    //使用的http的get方法
-            if (httpURLConnection.getResponseCode() == 200) {
-                //要是conn.getResponseCode()的值为200，再进行后面的操作。
-                // 数据流
-                inputStream = httpURLConnection.getInputStream();
-                inputStreamReader = new InputStreamReader(inputStream);
-                reader = new BufferedReader(inputStreamReader);
-                stringBuffer = new StringBuffer();
+            //要是conn.getResponseCode()的值为200，再进行后面的操作。
+            // 数据流
+            inputStream = httpURLConnection.getInputStream();
+            inputStreamReader = new InputStreamReader(inputStream);
+            reader = new BufferedReader(inputStreamReader);
+            stringBuffer = new StringBuffer();
 
-                String line;
-                while ((line = reader.readLine()) != null) {
-                    stringBuffer.append(line);
-                }
-            } else {
-                Toast.makeText(MyApplication.getInstance().getApplicationContext(),
-                        "网络不畅通~",Toast.LENGTH_SHORT).show();
+            String line;
+            while ((line = reader.readLine()) != null) {
+                stringBuffer.append(line);
             }
+
 
 //            System.out.println(stringBuffer.toString());
 //            File storeDir = new File("C:/Users/Notzuonotdied/Desktop/theAntiNETFraud");
@@ -142,6 +140,52 @@ public class getConnect {
             return null;
         }
         return stringBuffer.toString();
+    }
+
+    /**
+     * 点赞并获取返回结果
+     *
+     * @param mURL 地址
+     * @return boolean 返回结果-是否成功
+     * @throws IOException the io exception
+     */
+    public static boolean doPraiseGet(String mURL) throws IOException {
+        URL url;
+        URLConnection urlConnection;
+        HttpURLConnection httpURLConnection;
+        InputStream inputStream = null;
+        InputStreamReader inputStreamReader = null;
+        BufferedReader reader = null;
+        StringBuffer stringBuffer = null;
+        try {
+            url = new URL(mURL);
+            urlConnection = url.openConnection();
+            httpURLConnection = (HttpURLConnection) urlConnection;
+            httpURLConnection.setRequestProperty("Accept-Charset", "utf-8");
+            httpURLConnection.setConnectTimeout(3000);
+            httpURLConnection.setRequestMethod("GET");
+            inputStream = httpURLConnection.getInputStream();
+            inputStreamReader = new InputStreamReader(inputStream);
+            reader = new BufferedReader(inputStreamReader);
+            stringBuffer = new StringBuffer();
+            String line;
+            while ((line = reader.readLine()) != null) {
+                stringBuffer.append(line);
+            }
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } finally {
+            if (reader != null) {
+                reader.close();
+            }
+            if (inputStreamReader != null) {
+                inputStreamReader.close();
+            }
+            if (inputStream != null) {
+                inputStream.close();
+            }
+        }
+        return stringBuffer != null && stringBuffer.toString().equals("true");
     }
 
     /**
@@ -186,10 +230,8 @@ public class getConnect {
             // 设定请求的方法为"POST"，默认是GET
             httpURLConnection.setRequestMethod("POST");
             httpURLConnection.setRequestProperty("Accept-Charset", "utf-8");
-            httpURLConnection.setRequestProperty("connection", "Keep-Alive");
-            httpURLConnection.setRequestProperty("accept", "*/*");
-            // 配置本次连接的Content-type，配置为application/x-www-form-urlencoded的
             httpURLConnection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+            httpURLConnection.setConnectTimeout(3000);
             httpURLConnection.connect();
 /*
             OutputStream outStrm = httpURLConnection.getOutputStream();
@@ -203,29 +245,27 @@ public class getConnect {
             // 在调用下边的getInputStream()函数的时候才把准备好的http请求正式发送到服务器
             objectOutputStream.close();
 */
+            PrintWriter out = new PrintWriter(httpURLConnection.getOutputStream());
+//            if (httpURLConnection.getResponseCode() == 200) {
+            inputString = new String(inputString.getBytes(), "UTF-8");
+            out.print("value=" + inputString);
+            out.close();
 
-            httpURLConnection.setConnectTimeout(3000);
-            if (httpURLConnection.getResponseCode() == 200) {
-                PrintWriter out = new PrintWriter(httpURLConnection.getOutputStream());
-                inputString = new String(inputString.getBytes(), "UTF-8");
-                out.print("value=" + inputString);
-                out.close();
-
-                // 数据流
-                // 调用HttpURLConnection连接对象的getInputStream()函数,
-                // 将内存缓冲区中封装好的完整的HTTP请求电文发送到服务端。
-                inputStream = httpURLConnection.getInputStream();//<===注意，实际发送请求的代码段就在这里
-                inputStreamReader = new InputStreamReader(inputStream);
-                reader = new BufferedReader(inputStreamReader);
-                stringBuffer = new StringBuffer();
-                String line;
-                while ((line = reader.readLine()) != null) {
-                    stringBuffer.append(line);
-                }
-            } else {
-                Toast.makeText(MyApplication.getInstance().getApplicationContext(),
-                        "网络不畅通~",Toast.LENGTH_SHORT).show();
+            // 数据流
+            // 调用HttpURLConnection连接对象的getInputStream()函数,
+            // 将内存缓冲区中封装好的完整的HTTP请求电文发送到服务端。
+            inputStream = httpURLConnection.getInputStream();//<===注意，实际发送请求的代码段就在这里
+            inputStreamReader = new InputStreamReader(inputStream);
+            reader = new BufferedReader(inputStreamReader);
+            stringBuffer = new StringBuffer();
+            String line;
+            while ((line = reader.readLine()) != null) {
+                stringBuffer.append(line);
             }
+//            } else {
+//                Toast.makeText(MyApplication.getInstance().getApplicationContext(),
+//                        "网络不畅通~", Toast.LENGTH_SHORT).show();
+            //   }
 
         } catch (MalformedURLException e) {
             e.printStackTrace();
@@ -247,6 +287,53 @@ public class getConnect {
     }
 
     /**
+     * 将点赞提交到服务器并获取服务器返回的结果
+     *
+     * @param mURL      地址
+     * @param articleId 点赞文章Id
+     */
+    private static Boolean doPraise(String mURL, String articleId) throws IOException {
+        URL url;
+        URLConnection urlConnection;
+        HttpURLConnection httpURLConnection;
+        InputStreamReader inputStreamReader = null;
+        BufferedReader reader = null;
+        String line = null;
+        try {
+            url = new URL(mURL);
+            urlConnection = url.openConnection();
+            httpURLConnection = (HttpURLConnection) urlConnection;
+            httpURLConnection.setDoOutput(true);
+            httpURLConnection.setDoInput(true);
+            httpURLConnection.setRequestMethod("POST");
+            httpURLConnection.setRequestProperty("Accept-Charset", "utf-8");
+            httpURLConnection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+            httpURLConnection.setConnectTimeout(3000);
+            httpURLConnection.connect();
+
+            PrintWriter out = new PrintWriter(httpURLConnection.getOutputStream());
+            articleId = new String(articleId.getBytes(), "UTF-8");
+            out.print("id=" + articleId);
+            out.close();
+            inputStreamReader = new InputStreamReader(httpURLConnection.getInputStream());
+            reader = new BufferedReader(inputStreamReader);
+            while ((line = reader.readLine()) != null) {
+                line += line;
+            }
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } finally {
+            if (reader != null) {
+                reader.close();
+            }
+            if (inputStreamReader != null) {
+                inputStreamReader.close();
+            }
+        }
+        return line != null && line.equals("true");
+    }
+
+    /**
      * 通过网址获取APP
      *
      * @param mURL App下载链接
@@ -264,26 +351,20 @@ public class getConnect {
             httpURLConnection.setConnectTimeout(3000);
             httpURLConnection.setReadTimeout(5000);
             is = httpURLConnection.getInputStream();
-            if (httpURLConnection.getResponseCode() == 200) {
-                FileOutputStream fileOutputStream;
-                if (is != null) {
-                    file = new File(
-                            Environment.getExternalStorageDirectory().getPath(),
-                            "网络诈骗防范科普网.apk");
-                    fileOutputStream = new FileOutputStream(file);
-                    byte[] buf = new byte[512];
-                    int ch = -1;
-                    while ((ch = is.read(buf)) != -1) {
-                        fileOutputStream.write(buf, 0, ch);
-                    }
-                    fileOutputStream.flush();
-                    fileOutputStream.close();
+            FileOutputStream fileOutputStream;
+            if (is != null) {
+                file = new File(
+                        Environment.getExternalStorageDirectory().getPath(),
+                        "网络诈骗防范科普网.apk");
+                fileOutputStream = new FileOutputStream(file);
+                byte[] buf = new byte[512];
+                int ch = -1;
+                while ((ch = is.read(buf)) != -1) {
+                    fileOutputStream.write(buf, 0, ch);
                 }
-            } else {
-                Toast.makeText(MyApplication.getInstance().getApplicationContext(),
-                        "网络不畅通~",Toast.LENGTH_SHORT).show();
+                fileOutputStream.flush();
+                fileOutputStream.close();
             }
-
 
         } catch (FileNotFoundException e1) {
             e1.printStackTrace();
@@ -326,14 +407,10 @@ public class getConnect {
             urlConnection.setReadTimeout(5000);
             reader = new BufferedReader(new InputStreamReader(
                     urlConnection.getInputStream()));
-            if (urlConnection.getResponseCode() == 200) {
-                while ((line = reader.readLine()) != null) {
-                    sb.append(line);
-                }
-            } else {
-                Toast.makeText(MyApplication.getInstance().getApplicationContext(),
-                        "网络不畅通~",Toast.LENGTH_SHORT).show();
+            while ((line = reader.readLine()) != null) {
+                sb.append(line);
             }
+
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -536,4 +613,37 @@ public class getConnect {
         }
         return null;
     }
+
+    /**
+     * 设置链接,Post服务器并返回数据
+     *
+     * @param articleId 点赞的文章的ID
+     * @return boolean    点赞成功返回true，反之，false
+     */
+    public static boolean setPraise(String articleId) {
+        boolean isSuccess = true;
+        try {
+            isSuccess = doPraise(UrlPraise, articleId);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return isSuccess;
+    }
+
+    /**
+     * 设置链接,Post服务器并返回数据
+     *
+     * @param articleId 点赞的文章的ID
+     * @return boolean    点赞成功返回true，反之，false
+     */
+    public static boolean setPraiseGet(String articleId) {
+        boolean isSuccess = true;
+        try {
+            isSuccess = doPraiseGet(UrlPraise + articleId);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return isSuccess;
+    }
+
 }
