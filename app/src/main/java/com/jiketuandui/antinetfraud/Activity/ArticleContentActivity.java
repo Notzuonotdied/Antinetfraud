@@ -10,7 +10,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -20,12 +20,14 @@ import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.drawee.interfaces.DraweeController;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.jiketuandui.antinetfraud.Bean.ArticleContent;
-import com.jiketuandui.antinetfraud.HTTP.getConnect;
 import com.jiketuandui.antinetfraud.HTTP.getImage;
 import com.jiketuandui.antinetfraud.R;
 import com.jiketuandui.antinetfraud.Util.Constant;
 import com.jiketuandui.antinetfraud.Util.MyApplication;
 import com.jiketuandui.antinetfraud.View.MarkdownView;
+import com.oguzdev.circularfloatingactionmenu.library.FloatingActionButton;
+import com.oguzdev.circularfloatingactionmenu.library.FloatingActionMenu;
+import com.oguzdev.circularfloatingactionmenu.library.SubActionButton;
 
 public class ArticleContentActivity extends AppCompatActivity {
 
@@ -35,14 +37,13 @@ public class ArticleContentActivity extends AppCompatActivity {
     private TextView article_time;
     private MarkdownView article_markdownView;
     private ArticleContent mArticleContent;
-    //private LinearLayout head_layout;
     private SimpleDraweeView head_layout;
     private LinearLayout head_info;
     private CollapsingToolbarLayout mCollapsingToolbarLayout;
     private boolean isLessThan;
     private AppBarLayout app_bar_layout;
     private Toolbar mToolbar;
-    private ImageButton praise;
+    //private ImageButton praise;
     // 定义进度条
     private ProgressBar mProgressBar;
     private Drawable drawable_head;
@@ -109,19 +110,19 @@ public class ArticleContentActivity extends AppCompatActivity {
             }
         });
 
-        praise.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                new setPraise().execute(mArticleContent.getId());
-            }
-        });
+//        praise.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                new AsynPraise().execute(mArticleContent.getId());
+//            }
+//        });
     }
 
     /**
      * 这里包含了标签的部分,暂时未实现
      */
     private void initView() {
-        praise = (ImageButton) findViewById(R.id.praise);
+        //praise = (ImageButton) findViewById(R.id.praise);
         article_title = (TextView) findViewById(R.id.article_title);
         article_info = (TextView) findViewById(R.id.article_info);
         article_time = (TextView) findViewById(R.id.article_time);
@@ -133,6 +134,28 @@ public class ArticleContentActivity extends AppCompatActivity {
         // 定义收缩栏
         app_bar_layout = (AppBarLayout) findViewById(R.id.app_bar_layout);
         mCollapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar_layout);
+
+        // in Activity Context
+        ImageView icon = new ImageView(this); // Create an icon
+        icon.setImageResource(R.mipmap.home);
+        FloatingActionButton actionButton = new FloatingActionButton.Builder(this)
+                .setContentView(icon)
+                .build();
+        SubActionButton.Builder itemBuilder = new SubActionButton.Builder(this);
+
+        ImageView itemIcon = new ImageView(this);
+        itemIcon.setImageResource(R.drawable.button_praise_selector);
+        SubActionButton button1 = itemBuilder.setContentView(itemIcon).build();
+        button1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new AsynPraise().execute(mArticleContent.getId());
+            }
+        });
+        FloatingActionMenu actionMenu = new FloatingActionMenu.Builder(this)
+                .addSubActionView(button1)
+                .attachTo(actionButton)
+                .build();
     }
 
     /**
@@ -226,7 +249,7 @@ public class ArticleContentActivity extends AppCompatActivity {
 //        super.onDestroy();
 //    }
 
-    class LoadArticle extends AsyncTask<Integer, Integer, ArticleContent> {
+    private class LoadArticle extends AsyncTask<Integer, Integer, ArticleContent> {
 
         @Override
         protected void onProgressUpdate(Integer... values) {
@@ -241,7 +264,7 @@ public class ArticleContentActivity extends AppCompatActivity {
 
         @Override// 在子线程执行
         protected ArticleContent doInBackground(Integer... integers) {
-            ArticleContent mAContent = getConnect.setArticleURL(integers[0]);
+            ArticleContent mAContent = ((MyApplication) getApplication()).instanceConnect().setArticleURL(integers[0]);
             if (mAContent != null) {
                 mAContent.setBitmap(getImage.getBitmap(mAContent,
                         ((MyApplication) getApplication()).getMyScreenWidth(),
@@ -258,10 +281,10 @@ public class ArticleContentActivity extends AppCompatActivity {
     }
 
 
-    class setPraise extends AsyncTask<String, Void, Boolean> {
+    private class AsynPraise extends AsyncTask<String, Void, Boolean> {
         @Override
         protected Boolean doInBackground(String... strings) {
-            return getConnect.setPraiseGet(strings[0]);
+            return ((MyApplication)getApplication()).instancePraise().setPraiseGet(strings[0]);
         }
 
         @Override

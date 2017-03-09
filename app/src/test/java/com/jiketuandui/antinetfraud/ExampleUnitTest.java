@@ -1,16 +1,10 @@
 package com.jiketuandui.antinetfraud;
 
-import android.content.Context;
-
-import com.jiketuandui.antinetfraud.Activity.MainActivity;
-import com.jiketuandui.antinetfraud.Bean.ArticleContent;
-import com.jiketuandui.antinetfraud.Bean.ListContent;
-import com.jiketuandui.antinetfraud.HTTP.getConnect;
-import com.jiketuandui.antinetfraud.Util.getWindowsWidth;
+import com.jiketuandui.antinetfraud.HTTP.getAnnouncement;
+import com.jiketuandui.antinetfraud.HTTP.getPraise;
+import com.jiketuandui.antinetfraud.HTTP.postShareContent;
 
 import org.junit.Test;
-
-import java.util.List;
 
 /**
  * To work on unit tests, switch the Test Artifact in the Build Variants view.
@@ -18,8 +12,16 @@ import java.util.List;
 public class ExampleUnitTest {
     @Test
     public void addition_isCorrect() throws Exception {
-        //System.out.printf(String.valueOf(getConnect.setPraise(String.valueOf(73))));
-        //System.out.printf(getConnect.setContentPost("1","微信").get(0).getId());
-        System.out.printf(String.valueOf(getConnect.doPraiseGet("http://119.29.220.221/?/api/praise/73")));
+        //System.out.printf(String.valueOf(instanceConnect.setPraise(String.valueOf(73))));
+        //System.out.printf(instanceConnect.setContentPost("1","微信").get(0).getId());
+        //System.out.printf(String.valueOf(instanceConnect.doPraiseGet("http://119.29.220.221/?/api/praise/73")));
+//        postShareContent postSC = new postShareContent();
+//        System.out.printf(String.valueOf(
+//                postSC.post("title=Test&&type=1&&content=111~"))
+//        );
+        getAnnouncement postSC = new getAnnouncement();
+        System.out.printf(String.valueOf(
+                postSC.getAnnounce("2"))
+        );
     }
 }

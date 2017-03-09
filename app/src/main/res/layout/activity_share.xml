@@ -43,7 +43,8 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:scrollbars="none">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -67,25 +68,10 @@
                         android:textSize="18sp" />
 
                     <EditText
+                        android:id="@+id/share_title"
                         android:layout_width="match_parent"
                         android:layout_height="?attr/actionBarSize"
                         android:hint="@string/title_hint" />
-                </TableRow>
-
-                <TableRow>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="?attr/actionBarSize"
-                        android:gravity="center"
-                        android:text="@string/nick_name"
-                        android:textColor="@color/color_content"
-                        android:textSize="18sp" />
-
-                    <EditText
-                        android:layout_width="match_parent"
-                        android:layout_height="?attr/actionBarSize"
-                        android:hint="@string/nick_name_hint" />
                 </TableRow>
 
                 <TableRow>
@@ -99,6 +85,7 @@
                         android:textSize="18sp" />
 
                     <Spinner
+                        android:id="@+id/share_type"
                         android:layout_width="match_parent"
                         android:layout_height="?attr/actionBarSize"
                         android:background="@drawable/shape_drop_down_normal"
@@ -109,6 +96,7 @@
             </TableLayout>
 
             <EditText
+                android:id="@+id/share_content"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/list_holder_shape"
@@ -122,6 +110,7 @@
                 android:scrollbars="vertical" />
 
             <Button
+                android:id="@+id/post"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"

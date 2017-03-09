@@ -17,6 +17,7 @@ import com.jiketuandui.antinetfraud.Bean.ListContent;
 import com.jiketuandui.antinetfraud.HTTP.getConnect;
 import com.jiketuandui.antinetfraud.R;
 import com.jiketuandui.antinetfraud.Util.Constant;
+import com.jiketuandui.antinetfraud.Util.MyApplication;
 import com.jiketuandui.antinetfraud.Util.NetWorkUtils;
 
 import java.util.ArrayList;
@@ -105,11 +106,11 @@ public class ToTagsListActivity extends Activity {
             readPage = 1;
             switch (category) {
                 case 1:
-                    mListContents = getConnect.setContentURLByTagId(getConnect.UrlContentHead,
+                    mListContents = ((MyApplication) getApplication()).instanceConnect().setContentURLByTagId(getConnect.UrlContentHead,
                             String.valueOf(readPage), String.valueOf(tagId));
                     break;
                 case 2:
-                    mListContents = getConnect.setContentURLByTagId(getConnect.UrlContentHot,
+                    mListContents = ((MyApplication) getApplication()).instanceConnect().setContentURLByTagId(getConnect.UrlContentHot,
                             String.valueOf(readPage), String.valueOf(tagId));
                     break;
             }
@@ -132,7 +133,7 @@ public class ToTagsListActivity extends Activity {
     /**
      * 加载更多数据
      */
-    class LoadMoreDataTask extends AsyncTask<Void, Void, List<ListContent>> {
+    private class LoadMoreDataTask extends AsyncTask<Void, Void, List<ListContent>> {
 
         @Override
         protected List<ListContent> doInBackground(Void... voids) {
@@ -144,11 +145,11 @@ public class ToTagsListActivity extends Activity {
             isNeedtoRefresh = true;
             switch (category) {
                 case 1:
-                    ListContents = getConnect.setContentURLByTagId(getConnect.UrlContentHead,
+                    ListContents = ((MyApplication) getApplication()).instanceConnect().setContentURLByTagId(getConnect.UrlContentHead,
                             String.valueOf(readPage), String.valueOf(tagId));
                     break;
                 case 2:
-                    ListContents = getConnect.setContentURLByTagId(getConnect.UrlContentHot,
+                    ListContents = ((MyApplication) getApplication()).instanceConnect().setContentURLByTagId(getConnect.UrlContentHot,
                             String.valueOf(readPage), String.valueOf(tagId));
                     break;
             }

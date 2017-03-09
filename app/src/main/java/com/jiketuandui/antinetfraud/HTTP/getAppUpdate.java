@@ -84,7 +84,7 @@ public class getAppUpdate {
     private class NeedRefreshTask extends AsyncTask<Void, Void, String> {
         @Override
         protected String doInBackground(Void... voids) {
-            return getConnect.getUpdateInfo(context);
+            return getUpdate.getUpdateInfo(context);
         }
 
         @Override
@@ -95,7 +95,7 @@ public class getAppUpdate {
                     showAnnouncmentDialog("\u3000已经是最新版了~", false);
                 }
             } else {
-                mUrl = getConnect.UrlgetApp + string.split("/")[4].replace("\"", "");
+                mUrl = getUpdate.UrlgetApp + string.split("/")[4].replace("\"", "");
                 showAnnouncmentDialog("\u3000有最新版可以下载~", true);
             }
             super.onPostExecute(string);
@@ -106,7 +106,7 @@ public class getAppUpdate {
 
         @Override
         protected Boolean doInBackground(String... strings) {
-            return getConnect.getAPP(strings[0]);
+            return getUpdate.getAPP(strings[0]);
         }
 
         @Override

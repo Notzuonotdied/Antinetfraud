@@ -20,15 +20,13 @@ public class StartActivity extends Activity {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         View view = getLayoutInflater().inflate(R.layout.activity_start, null);
-        /**
+        /* *
          * 自定义启动页面的特效
          * AlphaAnimation(float fromAlpha, float toAlpha)
          * 透明度从0.3f渐变到1.0f
          * */
         AlphaAnimation animation = new AlphaAnimation(0.4f, 9.0f);
-        /**
-         * 持续时间
-         * */
+        // 持续时间
         animation.setDuration(1000);
         animation.setAnimationListener(new Animation.AnimationListener() {
             @Override

@@ -104,12 +104,12 @@
         "source": "C:\\Users\\Notzuonotdied\\.android\\build-cache\\68862c59e9b7965731c9123ab15ffb0e5831df0d\\output\\res\\drawable-hdpi\\abc_textfield_activated_mtrl_alpha.9.png"
     },
     {
-        "merged": "D:\\Android\\AndroidStudioProjects\\AntiNETFraud\\MaterialRefreshLayout\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi\\abc_ic_menu_copy_mtrl_am_alpha.png",
-        "source": "C:\\Users\\Notzuonotdied\\.android\\build-cache\\68862c59e9b7965731c9123ab15ffb0e5831df0d\\output\\res\\drawable-hdpi\\abc_ic_menu_copy_mtrl_am_alpha.png"
-    },
-    {
         "merged": "D:\\Android\\AndroidStudioProjects\\AntiNETFraud\\MaterialRefreshLayout\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi\\abc_list_pressed_holo_dark.9.png",
         "source": "C:\\Users\\Notzuonotdied\\.android\\build-cache\\68862c59e9b7965731c9123ab15ffb0e5831df0d\\output\\res\\drawable-hdpi\\abc_list_pressed_holo_dark.9.png"
+    },
+    {
+        "merged": "D:\\Android\\AndroidStudioProjects\\AntiNETFraud\\MaterialRefreshLayout\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi\\abc_ic_menu_copy_mtrl_am_alpha.png",
+        "source": "C:\\Users\\Notzuonotdied\\.android\\build-cache\\68862c59e9b7965731c9123ab15ffb0e5831df0d\\output\\res\\drawable-hdpi\\abc_ic_menu_copy_mtrl_am_alpha.png"
     },
     {
         "merged": "D:\\Android\\AndroidStudioProjects\\AntiNETFraud\\MaterialRefreshLayout\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi\\abc_scrubber_track_mtrl_alpha.9.png",

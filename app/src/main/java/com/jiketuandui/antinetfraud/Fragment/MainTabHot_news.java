@@ -17,6 +17,7 @@ import com.jiketuandui.antinetfraud.Bean.ListContent;
 import com.jiketuandui.antinetfraud.HTTP.getConnect;
 import com.jiketuandui.antinetfraud.R;
 import com.jiketuandui.antinetfraud.Util.Constant;
+import com.jiketuandui.antinetfraud.Util.MyApplication;
 import com.jiketuandui.antinetfraud.Util.NetWorkUtils;
 
 import java.util.ArrayList;
@@ -83,12 +84,12 @@ public class MainTabHot_news extends Fragment {
      */
     private void initView() {
         readPage = 1;
-        /**
+        /* *
          * Adapter：使用RecyclerView之前，你需要一个继承自RecyclerView.Adapter的适配器，
          * 作用是将数据与每一个item的界面进行绑定。
          * */
         mListContentAdapter = new ListContentAdapter(getActivity(), mListContents, isOpenTop, 2);
-        /**
+        /* *
          * LayoutManager：用来确定每一个item如何进行排列摆放，何时展示和隐藏。
          * 回收或重用一个View的时候，LayoutManager会向适配器请求新的数据来替换旧的数据，
          * 这种机制避免了创建过多的View和频繁的调用findViewById方法（与ListView原理类似）。
@@ -135,13 +136,13 @@ public class MainTabHot_news extends Fragment {
     /**
      * 刷新数据
      */
-    class RefreshDataTask extends AsyncTask<Integer, Void, List<ListContent>> {
+    private class RefreshDataTask extends AsyncTask<Integer, Void, List<ListContent>> {
 
         @Override
         protected List<ListContent> doInBackground(Integer... params) {
             readPage = 1;
             isNeedtoRefresh = true;
-            return getConnect.setContentURLByTagId(getConnect.UrlContentHot,
+            return ((MyApplication) getActivity().getApplication()).instanceConnect().setContentURLByTagId(getConnect.UrlContentHot,
                     String.valueOf(readPage), String.valueOf(params[0]));
         }
 
@@ -159,14 +160,14 @@ public class MainTabHot_news extends Fragment {
     /**
      * 加载更多数据
      */
-    class LoadMoreDataTask extends AsyncTask<Integer, Void, List<ListContent>> {
+    private class LoadMoreDataTask extends AsyncTask<Integer, Void, List<ListContent>> {
 
         @Override
         protected List<ListContent> doInBackground(Integer... params) {
             if (mListContentAdapter.getData().size() == 0) {
                 return null;
             }
-            List<ListContent> ListContents = getConnect.setContentURLByTagId(getConnect.UrlContentHot,
+            List<ListContent> ListContents = ((MyApplication) getActivity().getApplication()).instanceConnect().setContentURLByTagId(getConnect.UrlContentHot,
                     String.valueOf(readPage), String.valueOf(params[0]));
             readPage++;
             isNeedtoRefresh = true;

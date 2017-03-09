@@ -3,21 +3,15 @@ package com.jiketuandui.antinetfraud.Holder;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.facebook.drawee.backends.pipeline.Fresco;
-import com.facebook.drawee.interfaces.DraweeController;
 import com.facebook.drawee.view.SimpleDraweeView;
+import com.jiketuandui.antinetfraud.Interface.ListContentOnClickListener;
 import com.jiketuandui.antinetfraud.R;
-import com.jiketuandui.antinetfraud.Util.ListConentOnClickListener;
-import com.jiketuandui.antinetfraud.Util.NetWorkUtils;
-
-import org.w3c.dom.Text;
 
 /**
  * Created by Notzuonotdied on 2016/8/1.
- *
+ * <p>
  * 这是为了MainTab_news中的RecyclerView中的MaterialRefreshLayout中的适配器中所需的Holder
  */
 public class ListContentHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -26,10 +20,11 @@ public class ListContentHolder extends RecyclerView.ViewHolder implements View.O
     public TextView Holder_tip;
     public SimpleDraweeView Holder_image;
     public TextView Holder_source;
-    private LinearLayout bottom;
-    private LinearLayout top;
     public SimpleDraweeView top_icon;
     public TextView top_tag;
+    private LinearLayout bottom;
+    private LinearLayout top;
+    private ListContentOnClickListener listContentOnClickListener;
 
     public ListContentHolder(View itemView) {
         super(itemView);
@@ -39,7 +34,7 @@ public class ListContentHolder extends RecyclerView.ViewHolder implements View.O
 
     /**
      * 初始化控件
-     * */
+     */
     private void initView(View v) {
         this.Holder_title = (TextView) v.findViewById(R.id.lc_holder_tittle);
         this.Holder_tip = (TextView) v.findViewById(R.id.lc_holder_tip);
@@ -54,30 +49,27 @@ public class ListContentHolder extends RecyclerView.ViewHolder implements View.O
         top.setOnClickListener(this);
     }
 
-
-    public ListConentOnClickListener listConentOnClickListener;
-
     /**
      * 设置响应事件
-     * */
-    public void setItemOnClickListener(ListConentOnClickListener listConentOnClickListener) {
-        this.listConentOnClickListener = listConentOnClickListener;
+     */
+    public void setItemOnClickListener(ListContentOnClickListener listContentOnClickListener) {
+        this.listContentOnClickListener = listContentOnClickListener;
     }
 
     /**
      * 响应
-     * */
+     */
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.top:
-                if (listConentOnClickListener != null) {
-                    listConentOnClickListener.TOPOnClickLinstener(getAdapterPosition());
+                if (listContentOnClickListener != null) {
+                    listContentOnClickListener.TOPOnClickLinstener(getAdapterPosition());
                 }
                 break;
             case R.id.bottom:
-                if (listConentOnClickListener != null) {
-                    listConentOnClickListener.OnItemClickListener(getAdapterPosition());
+                if (listContentOnClickListener != null) {
+                    listContentOnClickListener.OnItemClickListener(getAdapterPosition());
                 }
                 break;
         }

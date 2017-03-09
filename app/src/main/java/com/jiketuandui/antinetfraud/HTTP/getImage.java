@@ -22,7 +22,6 @@ import java.util.List;
 
 /**
  * Created by Notzuonotdied on 2016/8/15.
- * <p>
  * 获取头图
  */
 public class getImage {
@@ -139,7 +138,7 @@ public class getImage {
      * @param reId        要求的图片的Id
      */
     private static String downloadIntoFile(String reImageLink, String reId) {
-        String imageLink = getConnect.myUrl + reImageLink;
+        String imageLink = reImageLink;
         Environment.getExternalStoragePublicDirectory(photoPath);
         File fileDirectory = new File(photoPath);
         if (!fileDirectory.exists()) {

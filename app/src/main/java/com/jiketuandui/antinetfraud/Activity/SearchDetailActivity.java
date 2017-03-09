@@ -15,10 +15,10 @@ import com.cjj.MaterialRefreshLayout;
 import com.cjj.MaterialRefreshListener;
 import com.jiketuandui.antinetfraud.Adapter.ListContentAdapter;
 import com.jiketuandui.antinetfraud.Bean.ListContent;
-import com.jiketuandui.antinetfraud.HTTP.getConnect;
 import com.jiketuandui.antinetfraud.R;
 import com.jiketuandui.antinetfraud.SQL.RecordSQLiteOpenHelper;
 import com.jiketuandui.antinetfraud.Util.Constant;
+import com.jiketuandui.antinetfraud.Util.MyApplication;
 import com.jiketuandui.antinetfraud.Util.NetWorkUtils;
 import com.jiketuandui.antinetfraud.View.MySearchView;
 
@@ -30,7 +30,6 @@ public class SearchDetailActivity extends AppCompatActivity {
     private MySearchView mySearchView;
     private android.widget.FrameLayout back;
     private android.widget.TextView searchnull;
-    private android.support.v7.widget.RecyclerView mRecyclerView;
     private com.cjj.MaterialRefreshLayout materialRefreshLayout;
     private ListContentAdapter mListContentAdapter;
     private String inputString;
@@ -138,7 +137,7 @@ public class SearchDetailActivity extends AppCompatActivity {
     private void initView() {
         this.mySearchView = (MySearchView) findViewById(R.id.my_search_view);
         this.materialRefreshLayout = (MaterialRefreshLayout) findViewById(R.id.maintab_search_refresh);
-        this.mRecyclerView = (RecyclerView) findViewById(R.id.maintab_search_recyclerView);
+        RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.maintab_search_recyclerView);
         this.searchnull = (TextView) findViewById(R.id.search_null);
         this.back = (FrameLayout) findViewById(R.id.back);
         mListContentAdapter = new ListContentAdapter(SearchDetailActivity.this, mListContents, true, 1);
@@ -155,11 +154,11 @@ public class SearchDetailActivity extends AppCompatActivity {
     /**
      * 点击搜索获取数据
      */
-    class SearchDataTask extends AsyncTask<String, Void, List<ListContent>> {
+    private class SearchDataTask extends AsyncTask<String, Void, List<ListContent>> {
 
         @Override
         protected List<ListContent> doInBackground(String... strings) {
-            List<ListContent> listContents = getConnect.setContentPost(String.valueOf(readPage),
+            List<ListContent> listContents = ((MyApplication) getApplication()).instanceConnect().setContentPost(String.valueOf(readPage),
                     inputString);
             readPage++;
             return listContents;
@@ -182,11 +181,11 @@ public class SearchDetailActivity extends AppCompatActivity {
     /**
      * 刷新数据
      */
-    class RefreshDataTask extends AsyncTask<Void, Void, List<ListContent>> {
+    private class RefreshDataTask extends AsyncTask<Void, Void, List<ListContent>> {
 
         @Override
         protected List<ListContent> doInBackground(Void... voids) {
-            List<ListContent> listContents = getConnect.setContentPost(String.valueOf(readPage),
+            List<ListContent> listContents = ((MyApplication) getApplication()).instanceConnect().setContentPost(String.valueOf(readPage),
                     inputString);
             readPage++;
             return listContents;
@@ -206,14 +205,14 @@ public class SearchDetailActivity extends AppCompatActivity {
     /**
      * 加载更多数据
      */
-    class LoadMoreDataTask extends AsyncTask<Void, Void, List<ListContent>> {
+    private class LoadMoreDataTask extends AsyncTask<Void, Void, List<ListContent>> {
 
         @Override
         protected List<ListContent> doInBackground(Void... voids) {
             if (mListContentAdapter.getData().size() == 0) {
                 return null;
             }
-            List<ListContent> listContents = getConnect.setContentPost(String.valueOf(readPage),
+            List<ListContent> listContents = ((MyApplication) getApplication()).instanceConnect().setContentPost(String.valueOf(readPage),
                     inputString);
             readPage++;
             return listContents;

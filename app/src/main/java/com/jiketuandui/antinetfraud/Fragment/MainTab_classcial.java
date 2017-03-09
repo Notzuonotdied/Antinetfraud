@@ -17,6 +17,7 @@ import com.jiketuandui.antinetfraud.Bean.ListContent;
 import com.jiketuandui.antinetfraud.HTTP.getConnect;
 import com.jiketuandui.antinetfraud.R;
 import com.jiketuandui.antinetfraud.Util.Constant;
+import com.jiketuandui.antinetfraud.Util.MyApplication;
 import com.jiketuandui.antinetfraud.Util.NetWorkUtils;
 import com.jiketuandui.antinetfraud.Adapter.VideoListAdapter;
 import com.jiketuandui.antinetfraud.View.MyListView;
@@ -118,7 +119,7 @@ public class MainTab_classcial extends Fragment {
 
         @Override
         protected List<ListContent> doInBackground(Void... voids) {
-            return getConnect.setContentURL(getConnect.UrlContentHead,
+            return ((MyApplication) getActivity().getApplication()).instanceConnect().setContentURL(getConnect.UrlContentHead,
                     "1", "3");
         }
 

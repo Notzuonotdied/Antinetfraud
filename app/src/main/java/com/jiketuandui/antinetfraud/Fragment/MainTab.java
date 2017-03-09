@@ -1,6 +1,8 @@
 package com.jiketuandui.antinetfraud.Fragment;
 
 import android.content.Intent;
+import android.graphics.Paint;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -12,16 +14,23 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.jiketuandui.antinetfraud.Activity.AnnounceActivity;
 import com.jiketuandui.antinetfraud.Activity.SearchActivity;
 import com.jiketuandui.antinetfraud.Adapter.MainTabAdapter;
+import com.jiketuandui.antinetfraud.Bean.AnnounceContent;
 import com.jiketuandui.antinetfraud.R;
+import com.jiketuandui.antinetfraud.Util.MyApplication;
 import com.jiketuandui.antinetfraud.View.MyTabPageIndicator;
 
 import java.lang.reflect.Field;
+import java.util.List;
 
 
 public class MainTab extends Fragment {
+
+    private TextView tv_message;
 
     public MainTab() {
         super();
@@ -38,7 +47,7 @@ public class MainTab extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        /**
+        /* *
          * 使用LayoutInflate将main_tab.xml的加载进来之后,为TabPageIndicator,
          * ViewPager进行初始化
          * */
@@ -51,7 +60,7 @@ public class MainTab extends Fragment {
      * 初始化一些变量
      */
     private void initData(View v) {
-        /**
+        /* *
          * 先实例化ViewPager,然后实例化TabPageIndicator，
          * 并且要设置TabPageIndicator和ViewPager关联，
          * 就是调用TabPageIndicator的setViewPager(ViewPager view)方法，
@@ -64,9 +73,7 @@ public class MainTab extends Fragment {
         ViewPager mViewPager = (ViewPager) v.findViewById(R.id.mainTab_viewpager);
         mViewPager.setOffscreenPageLimit(2);
         MainTabAdapter mainTabAdapter = new MainTabAdapter(getChildFragmentManager());
-        /**
-         * 绑定
-         * */
+        /*绑定*/
         mViewPager.setAdapter(mainTabAdapter);
         myTabPageIndicator.setViewPager(mViewPager, 0);
 
@@ -87,7 +94,6 @@ public class MainTab extends Fragment {
             }
         });
     }
-
 
     /**
      * 这段可以解决fragment嵌套fragment会崩溃的问题
@@ -115,9 +121,40 @@ public class MainTab extends Fragment {
         alertDialog.show();
         Window window = alertDialog.getWindow();
         window.setContentView(R.layout.announcement);
+        // 网站公告
         TextView tv_title = (TextView) window.findViewById(R.id.tv_dialog_title);
         tv_title.setText("网站公告");
-        TextView tv_message = (TextView) window.findViewById(R.id.tv_dialog_message);
-        tv_message.setText("\u3000\u3000希望我们能够帮助到您！\n\u3000\u3000声明：本网站的案例来源与网络，如有侵犯，请及时联系本站删除案例！");
+        tv_message = (TextView) window.findViewById(R.id.tv_dialog_message);
+        //tv_message.setText("\u3000\u3000希望我们能够帮助到您！\n\u3000\u3000声明：本网站的案例来源与网络，如有侵犯，请及时联系本站删除案例！");
+        new AsynAnnounce().execute("/api/noticelist");
+        // 更多
+        TextView tv_more = (TextView) window.findViewById(R.id.tv_dialog_more);
+        tv_more.setText("更多");
+        tv_more.getPaint().setFlags(Paint.UNDERLINE_TEXT_FLAG );
+        tv_more.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Toast.makeText(getActivity(),"哈哈",Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getActivity(), AnnounceActivity.class);
+                getContext().startActivity(intent);
+            }
+        });
     }
+
+    private class AsynAnnounce extends AsyncTask<String, Void, List<AnnounceContent>> {
+        @Override
+        protected List<AnnounceContent> doInBackground(String... params) {
+            return ((MyApplication) getActivity().getApplication())
+                    .instanceAnnouncement().getAnnounceList();
+        }
+
+        @Override
+        protected void onPostExecute(List<AnnounceContent> announceContents) {
+            tv_message.setText(announceContents.get(0).getTitle() + ":" +
+                    announceContents.get(0).getCreated_at() + "\n\u3000\u3000" +
+                    announceContents.get(0).getContent() + "\n\u3000\u3000");
+            super.onPostExecute(announceContents);
+        }
+    }
+
 }

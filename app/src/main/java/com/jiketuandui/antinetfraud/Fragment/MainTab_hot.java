@@ -21,11 +21,6 @@ public class MainTab_hot extends Fragment {
         super();
     }
 
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-
     /**
      * 因为要在Fragment中嵌套使用ViewPager,所以需要进行初始化一些变量
      */

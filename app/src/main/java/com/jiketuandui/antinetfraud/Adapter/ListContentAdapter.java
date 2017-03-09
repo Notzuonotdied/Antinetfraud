@@ -19,7 +19,7 @@ import com.jiketuandui.antinetfraud.Bean.ListContent;
 import com.jiketuandui.antinetfraud.Holder.ListContentHolder;
 import com.jiketuandui.antinetfraud.R;
 import com.jiketuandui.antinetfraud.Util.Constant;
-import com.jiketuandui.antinetfraud.Util.ListConentOnClickListener;
+import com.jiketuandui.antinetfraud.Interface.ListContentOnClickListener;
 import com.jiketuandui.antinetfraud.Util.NetWorkUtils;
 
 import java.util.List;
@@ -27,7 +27,6 @@ import java.util.List;
 /**
  * Created by Notzuonotdied on 2016/8/1.
  * 自定义的ViewHolder，持有每个Item的的所有界面元素
- * <p>
  * 介绍:ListView是使用ViewHolder来提升性能的,ViewHolder通过保存item中使用到的空间的引用来
  * 减少findViewById的调用,以此使得ListView更加顺畅.
  * 在任何的ViewHolder被实例化的时候-->OnCreateViewHolder被触发-->onBindViewHolder被触发
@@ -42,7 +41,7 @@ public class ListContentAdapter extends RecyclerView.Adapter<ListContentHolder> 
     /**
      * 设置列表项的响应事件
      */
-    private ListConentOnClickListener mListListener = new ListConentOnClickListener() {
+    private ListContentOnClickListener mListListener = new ListContentOnClickListener() {
         @Override
         public void OnItemClickListener(int position) {
             if (NetWorkUtils.isConnectNET(context)) {

@@ -18,6 +18,7 @@ import com.jiketuandui.antinetfraud.HTTP.getConnect;
 import com.jiketuandui.antinetfraud.Holder.MyItemDecoration;
 import com.jiketuandui.antinetfraud.R;
 import com.jiketuandui.antinetfraud.Util.Constant;
+import com.jiketuandui.antinetfraud.Util.MyApplication;
 import com.jiketuandui.antinetfraud.Util.NetWorkUtils;
 
 import java.util.ArrayList;
@@ -61,7 +62,12 @@ public class MainTab_news extends Fragment {
         this.mRecyclerView = (RecyclerView) view.findViewById(R.id.maintab_news_recyclerView);
 
         initView();
+        initData();
         return view;
+    }
+
+    private void initData() {
+
     }
 
     @Override
@@ -136,14 +142,14 @@ public class MainTab_news extends Fragment {
     /**
      * 刷新数据
      */
-    class RefreshDataTask extends AsyncTask<Integer, Void, List<ListContent>> {
+    private class RefreshDataTask extends AsyncTask<Integer, Void, List<ListContent>> {
 
         @Override
         protected List<ListContent> doInBackground(Integer... params) {
             readPage = 1;
-            List<ListContent> listContents = getConnect.setContentURLByTagId(getConnect.UrlContentHead,
-                    String.valueOf(readPage), String.valueOf(params[0]));
-            return listContents;
+            return ((MyApplication) getActivity().getApplication())
+                    .instanceConnect().setContentURLByTagId(getConnect.UrlContentHead,
+                            String.valueOf(readPage), String.valueOf(params[0]));
         }
 
         @Override
@@ -161,15 +167,16 @@ public class MainTab_news extends Fragment {
     /**
      * 加载更多数据
      */
-    class LoadMoreDataTask extends AsyncTask<Integer, Void, List<ListContent>> {
+    private class LoadMoreDataTask extends AsyncTask<Integer, Void, List<ListContent>> {
         @Override
         protected List<ListContent> doInBackground(Integer... params) {
             List<ListContent> ListContents;
             if (mListContentAdapter.getData().size() == 0) {
                 return null;
             }
-            ListContents = getConnect.setContentURLByTagId(getConnect.UrlContentHead,
-                    String.valueOf(readPage), String.valueOf(params[0]));
+            ListContents = ((MyApplication) getActivity().getApplication())
+                    .instanceConnect().setContentURLByTagId(getConnect.UrlContentHead,
+                            String.valueOf(readPage), String.valueOf(params[0]));
             readPage++;
             isNeedtoRefresh = true;
 
@@ -196,5 +203,6 @@ public class MainTab_news extends Fragment {
             materialRefreshLayout.finishRefreshLoadMore();
         }
     }
+
 
 }

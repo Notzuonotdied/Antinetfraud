@@ -18,8 +18,8 @@
         <android.support.design.widget.CollapsingToolbarLayout
             android:id="@+id/collapsing_toolbar_layout"
             android:layout_width="match_parent"
-            android:alpha="255"
             android:layout_height="match_parent"
+            android:alpha="255"
             android:fitsSystemWindows="true"
             android:minHeight="?attr/actionBarSize"
             app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
@@ -47,34 +47,6 @@
                 fresco:roundedCornerRadius="12dp"
                 fresco:roundingBorderColor="@color/color_white"
                 fresco:roundingBorderWidth="3dp" />
-
-            <!--<LinearLayout-->
-            <!--android:id="@+id/head_layout"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="180dp"-->
-            <!--android:gravity="bottom|center_horizontal"-->
-            <!--android:orientation="vertical"-->
-            <!--app:layout_collapseMode="parallax"-->
-            <!--app:layout_collapseParallaxMultiplier="0.3">-->
-
-            <!--<ProgressBar-->
-            <!--android:id="@+id/article_progress"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="50dp"-->
-            <!--android:layout_gravity="center"-->
-            <!--android:indeterminate="true"-->
-            <!--android:indeterminateBehavior="repeat"-->
-            <!--android:visibility="gone" />-->
-
-            <!--<Button-->
-            <!--android:layout_width="38dp"-->
-            <!--android:layout_height="38dp"-->
-            <!--android:layout_gravity="end"-->
-            <!--android:layout_margin="8dp"-->
-            <!--android:background="@mipmap/praise"-->
-            <!--android:gravity="end" />-->
-
-            <!--</LinearLayout>-->
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -142,7 +114,6 @@
 
             </LinearLayout>
 
-            <!-- 点赞 -->
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
@@ -151,6 +122,17 @@
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
         </android.support.design.widget.CollapsingToolbarLayout>
+
+        <!--选项卡-->
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tabLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:tabIndicatorColor="@color/colorAccent"
+            app:tabMode="scrollable"
+            app:tabSelectedTextColor="@color/colorAccent"
+            app:tabTextColor="@android:color/black" />
+
     </android.support.design.widget.AppBarLayout>
 
     <android.support.v4.widget.NestedScrollView
@@ -159,29 +141,14 @@
         android:background="@color/color_white"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <LinearLayout
+        <com.jiketuandui.antinetfraud.View.MarkdownView
+            android:id="@+id/article_markdownView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
-            <!--内容-->
-            <!--这里使用的是基于WebView的MarkDownView-->
-            <com.jiketuandui.antinetfraud.View.MarkdownView
-                android:id="@+id/article_markdownView"
-                android:layout_width="match_parent"
-                android:minHeight="500dp"
-                android:layout_height="match_parent">
+            android:minHeight="500dp">
 
-            </com.jiketuandui.antinetfraud.View.MarkdownView>
+        </com.jiketuandui.antinetfraud.View.MarkdownView>
 
-            <ImageButton
-                android:id="@+id/praise"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:layout_gravity="center_horizontal"
-                android:background="@drawable/button_praise_selector" />
-
-
-        </LinearLayout>
 
     </android.support.v4.widget.NestedScrollView>
 
