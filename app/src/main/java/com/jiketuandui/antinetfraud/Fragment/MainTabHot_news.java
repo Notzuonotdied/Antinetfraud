@@ -16,6 +16,7 @@ import com.jiketuandui.antinetfraud.Adapter.ListContentAdapter;
 import com.jiketuandui.antinetfraud.Bean.ListContent;
 import com.jiketuandui.antinetfraud.HTTP.getConnect;
 import com.jiketuandui.antinetfraud.R;
+import com.jiketuandui.antinetfraud.Service.NetBroadcastReceiver;
 import com.jiketuandui.antinetfraud.Util.Constant;
 import com.jiketuandui.antinetfraud.Util.MyApplication;
 import com.jiketuandui.antinetfraud.Util.NetWorkUtils;
@@ -24,7 +25,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class MainTabHot_news extends Fragment {
+public class MainTabHot_news extends Fragment implements NetBroadcastReceiver.netEventHandler{
 
     /**
      * 定义当前的ViewIndication的位置
@@ -60,6 +61,9 @@ public class MainTabHot_news extends Fragment {
         View view = inflater.inflate(R.layout.main_tab_hot_news, null);
         this.materialRefreshLayout = (MaterialRefreshLayout) view.findViewById(R.id.maintab_hot_refresh);
         this.mRecyclerView = (RecyclerView) view.findViewById(R.id.maintab_hot_recyclerView);
+
+        // 注册
+        NetBroadcastReceiver.mListeners.add(this);
 
         initView();
         return view;
@@ -131,6 +135,14 @@ public class MainTabHot_news extends Fragment {
                 }
             }
         });
+    }
+
+    @Override
+    public void onNetChange() {
+        if (MyApplication.mNetWorkState != NetWorkUtils.NET_TYPE_NO_NETWORK &&
+                mListContents != null && mListContents.size() == 0) {
+            materialRefreshLayout.autoRefresh();
+        }
     }
 
     /**

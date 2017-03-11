@@ -29,7 +29,7 @@
 
     <style name="listContent_style">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">88dp</item>
+        <item name="android:layout_height">@dimen/x88</item>
         <item name="android:layout_marginLeft">@dimen/listContent_margin</item>
         <item name="android:layout_marginBottom">@dimen/listContent_margin</item>
         <item name="android:layout_marginRight">@dimen/listContent_margin</item>
@@ -77,14 +77,14 @@
         <item name="android:background">@drawable/select_background</item>
         <item name="android:clickable">true</item>
         <item name="android:textColor">@drawable/select_selector</item>
-        <item name="android:layout_height">50dp</item>
+        <item name="android:layout_height">@dimen/x50</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:gravity">center_vertical</item>
-        <item name="android:paddingLeft">17dp</item>
-        <item name="android:paddingRight">22dp</item>
+        <item name="android:paddingLeft">@dimen/x17</item>
+        <item name="android:paddingRight">@dimen/x22</item>
         <item name="android:includeFontPadding">false</item>
         <item name="android:textSize">14sp</item>
-        <item name="android:drawablePadding">10dp</item>
+        <item name="android:drawablePadding">@dimen/x10</item>
         <item name="android:drawableRight">@mipmap/ic_arrow</item>
     </style>
 
@@ -100,7 +100,7 @@
         <item name="android:background">@drawable/select_background</item>
         <item name="android:orientation">horizontal</item>
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">50dp</item>
+        <item name="android:layout_height">@dimen/x50</item>
         <item name="android:layout_marginLeft">2dp</item>
         <item name="android:layout_marginRight">2dp</item>
     </style>
@@ -115,17 +115,30 @@
 
     <style name="setting_textView">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">50dp</item>
+        <item name="android:layout_height">@dimen/x50</item>
         <item name="android:layout_marginLeft">2dp</item>
         <item name="android:layout_marginRight">2dp</item>
-        <item name="android:paddingRight">20dp</item>
-        <item name="android:paddingLeft">17dp</item>
+        <item name="android:paddingRight">@dimen/x20</item>
+        <item name="android:paddingLeft">@dimen/x17</item>
         <item name="android:includeFontPadding">false</item>
         <item name="android:textColor">@color/color_black</item>
         <item name="android:textSize">16sp</item>
         <item name="android:drawablePadding">10dp</item>
         <item name="android:gravity">center_vertical</item>
         <item name="android:drawableRight">@mipmap/ic_arrow</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.NoActionBar.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <!--LoadingProgressDialog -->
+    <style name="Progress.Dialog" parent="@android:style/Theme.Holo.Light.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
+        <!--<item name="android:windowNoTitle">true</item>-->
+        <!--<item name="android:windowIsFloating">true</item>-->
+        <!--<item name="android:backgroundDimEnabled">true</item>-->
     </style>
 
 </resources>

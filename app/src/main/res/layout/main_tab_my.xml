@@ -47,9 +47,9 @@
 
                         <com.facebook.drawee.view.SimpleDraweeView
                             android:id="@+id/lc_holder_image"
-                            android:layout_width="46dp"
-                            android:layout_height="46dp"
-                            android:layout_marginRight="10dp"
+                            android:layout_width="@dimen/x46"
+                            android:layout_height="@dimen/x46"
+                            android:layout_marginRight="@dimen/x10"
                             android:background="@color/color_white"
                             fresco:fadeDuration="100"
                             fresco:placeholderImage="@mipmap/account"
@@ -77,7 +77,7 @@
 
             <Space
                 android:layout_width="match_parent"
-                android:layout_height="28dp" />
+                android:layout_height="@dimen/x28" />
             
             <TextView
                 style="@style/setting_header"

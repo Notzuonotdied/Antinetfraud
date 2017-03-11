@@ -2,8 +2,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/shape_announcement"
-    android:minHeight="180dp"
-    android:minWidth="290dp"
+    android:minHeight="@dimen/x180"
+    android:minWidth="@dimen/x290"
     android:orientation="vertical">
 
     <LinearLayout

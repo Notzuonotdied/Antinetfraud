@@ -22,6 +22,7 @@ public class MyApplication extends Application {
     private static MyApplication myApplication;
     private int myScreenWidth;
     private int myScreenHeight;
+    public static int mNetWorkState;
 
     public static MyApplication getInstance() {
         return myApplication;
@@ -36,14 +37,16 @@ public class MyApplication extends Application {
         initScreenWidth();
         /*初始化Tag标签列表*/
         initTagsList();
+        initNETService();
     }
 
     /**
      * 初始化Service进行监听网络
      */
     public void initNETService() {
-        Intent i = new Intent(this, NetworkStateService.class);
-        startService(i);
+//        Intent i = new Intent(this, NetworkStateService.class);
+//        startService(i);
+        mNetWorkState = NetWorkUtils.getNetWorkState(MyApplication.this);
     }
 
     private void initTagsList() {

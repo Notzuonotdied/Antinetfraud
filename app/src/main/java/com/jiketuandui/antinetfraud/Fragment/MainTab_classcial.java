@@ -13,13 +13,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.jiketuandui.antinetfraud.Activity.ArticleContentActivity;
+import com.jiketuandui.antinetfraud.Adapter.VideoListAdapter;
 import com.jiketuandui.antinetfraud.Bean.ListContent;
 import com.jiketuandui.antinetfraud.HTTP.getConnect;
 import com.jiketuandui.antinetfraud.R;
+import com.jiketuandui.antinetfraud.Service.NetBroadcastReceiver;
 import com.jiketuandui.antinetfraud.Util.Constant;
 import com.jiketuandui.antinetfraud.Util.MyApplication;
 import com.jiketuandui.antinetfraud.Util.NetWorkUtils;
-import com.jiketuandui.antinetfraud.Adapter.VideoListAdapter;
 import com.jiketuandui.antinetfraud.View.MyListView;
 import com.jiketuandui.antinetfraud.View.banner.BannerBaseView;
 import com.jiketuandui.antinetfraud.View.banner.BannerViewOnClickListener;
@@ -32,7 +33,7 @@ import java.util.List;
 import fm.jiecao.jcvideoplayer_lib.JCVideoPlayer;
 
 
-public class MainTab_classcial extends Fragment {
+public class MainTab_classcial extends Fragment implements NetBroadcastReceiver.netEventHandler {
 
     private RelativeLayout bannerContent;
     private TextView tv_01;
@@ -43,7 +44,7 @@ public class MainTab_classcial extends Fragment {
     /**
      * 当前页面的各个Item的数据存放容器
      */
-    private List<ListContent> mListContents = new ArrayList<>();
+    private List<ListContent> bannerListContents = new ArrayList<>();
     private List<String> bannerTitle = new ArrayList<>();
 
     private View.OnClickListener tvListener = new View.OnClickListener() {
@@ -65,6 +66,9 @@ public class MainTab_classcial extends Fragment {
         View view = inflater.inflate(R.layout.main_tab_classcial, container, false);
         initAllView(view);
         initView();
+        // 注册
+        NetBroadcastReceiver.mListeners.add(this);
+
         return view;
     }
 
@@ -112,10 +116,18 @@ public class MainTab_classcial extends Fragment {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onNetChange() {
+        if (MyApplication.mNetWorkState != NetWorkUtils.NET_TYPE_NO_NETWORK &&
+                bannerListContents != null && bannerListContents.size() == 0) {
+            init_banner();
+        }
+    }
+
     /**
      * 刷新数据
      */
-    class initBannerTask extends AsyncTask<Void, Void, List<ListContent>> {
+    private class initBannerTask extends AsyncTask<Void, Void, List<ListContent>> {
 
         @Override
         protected List<ListContent> doInBackground(Void... voids) {
@@ -126,6 +138,7 @@ public class MainTab_classcial extends Fragment {
         @Override
         protected void onPostExecute(final List<ListContent> mListContents) {
             super.onPostExecute(mListContents);
+            bannerListContents = mListContents;
             if (mListContents != null) {
                 BannerBaseView banner = new MainBannerView(getActivity());
                 List<BaseBannerBean> list = new ArrayList<>();

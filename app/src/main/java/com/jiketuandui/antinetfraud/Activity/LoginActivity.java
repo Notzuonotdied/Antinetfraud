@@ -7,7 +7,6 @@ import android.app.Activity;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.View;
@@ -16,6 +15,7 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import com.jiketuandui.antinetfraud.R;
@@ -36,15 +36,34 @@ public class LoginActivity extends Activity {
     private EditText mPasswordView;
     private View mProgressView;
     private View mLoginFormView;
+    private Button mSignInButton;
+    private Button mRegisterButton;
+    private OnClickListener listener = new OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            switch (v.getId()) {
+                case R.id.register_in_button:
+
+                    break;
+                case R.id.sign_in_button:
+                    attemptLogin();
+                    break;
+            }
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        // Set up the login form.
-        mAccountView = (AutoCompleteTextView) findViewById(R.id.account);
 
-        mPasswordView = (EditText) findViewById(R.id.password);
+        initView();
+        initListener();
+        inittagsback();
+    }
+
+    private void initListener() {
+        mSignInButton.setOnClickListener(listener);
         mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
@@ -55,17 +74,27 @@ public class LoginActivity extends Activity {
                 return false;
             }
         });
+        mRegisterButton.setOnClickListener(listener);
+    }
 
-        Button mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
-        mEmailSignInButton.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                attemptLogin();
-            }
-        });
-
+    private void initView() {
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
+        mAccountView = (AutoCompleteTextView) findViewById(R.id.account);
+        mPasswordView = (EditText) findViewById(R.id.password);
+        mSignInButton = (Button) findViewById(R.id.sign_in_button);
+        mRegisterButton = (Button) findViewById(R.id.register_in_button);
+    }
+
+    // 返回键
+    private void inittagsback() {
+        FrameLayout tagsback = (FrameLayout) findViewById(R.id.back);
+        tagsback.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
     }
 
     /**
@@ -83,7 +112,7 @@ public class LoginActivity extends Activity {
         mPasswordView.setError(null);
 
         // Store values at the time of the login attempt.
-        String email = mAccountView.getText().toString();
+        String account = mAccountView.getText().toString();
         String password = mPasswordView.getText().toString();
 
         boolean cancel = false;
@@ -97,11 +126,11 @@ public class LoginActivity extends Activity {
         }
 
         // Check for a valid email address.
-        if (TextUtils.isEmpty(email)) {
+        if (TextUtils.isEmpty(account)) {
             mAccountView.setError(getString(R.string.error_field_required));
             focusView = mAccountView;
             cancel = true;
-        } else if (!isEmailValid(email)) {
+        } else if (!isEmailValid(account)) {
             mAccountView.setError(getString(R.string.error_invalid_email));
             focusView = mAccountView;
             cancel = true;
@@ -115,7 +144,7 @@ public class LoginActivity extends Activity {
             // Show a progress spinner, and kick off a background task to
             // perform the user login attempt.
             showProgress(true);
-            mAuthTask = new UserLoginTask(email, password);
+            mAuthTask = new UserLoginTask(account, password);
             mAuthTask.execute((Void) null);
         }
     }
@@ -166,20 +195,10 @@ public class LoginActivity extends Activity {
         }
     }
 
-    private interface ProfileQuery {
-        String[] PROJECTION = {
-                ContactsContract.CommonDataKinds.Email.ADDRESS,
-                ContactsContract.CommonDataKinds.Email.IS_PRIMARY,
-        };
-
-        int ADDRESS = 0;
-        int IS_PRIMARY = 1;
-    }
-
     /**
      * 异步登陆或者注册
      */
-    public class UserLoginTask extends AsyncTask<Void, Void, Boolean> {
+    private class UserLoginTask extends AsyncTask<Void, Void, Boolean> {
 
         private final String mAccount;
         private final String mPassword;

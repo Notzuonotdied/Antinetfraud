@@ -14,23 +14,25 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.jiketuandui.antinetfraud.Activity.AnnounceActivity;
 import com.jiketuandui.antinetfraud.Activity.SearchActivity;
 import com.jiketuandui.antinetfraud.Adapter.MainTabAdapter;
 import com.jiketuandui.antinetfraud.Bean.AnnounceContent;
 import com.jiketuandui.antinetfraud.R;
+import com.jiketuandui.antinetfraud.Service.NetBroadcastReceiver;
 import com.jiketuandui.antinetfraud.Util.MyApplication;
+import com.jiketuandui.antinetfraud.Util.NetWorkUtils;
 import com.jiketuandui.antinetfraud.View.MyTabPageIndicator;
 
 import java.lang.reflect.Field;
 import java.util.List;
 
 
-public class MainTab extends Fragment {
+public class MainTab extends Fragment implements NetBroadcastReceiver.netEventHandler {
 
     private TextView tv_message;
+    private boolean isAvailable;
 
     public MainTab() {
         super();
@@ -60,6 +62,7 @@ public class MainTab extends Fragment {
      * 初始化一些变量
      */
     private void initData(View v) {
+        isAvailable = true;
         /* *
          * 先实例化ViewPager,然后实例化TabPageIndicator，
          * 并且要设置TabPageIndicator和ViewPager关联，
@@ -126,11 +129,13 @@ public class MainTab extends Fragment {
         tv_title.setText("网站公告");
         tv_message = (TextView) window.findViewById(R.id.tv_dialog_message);
         //tv_message.setText("\u3000\u3000希望我们能够帮助到您！\n\u3000\u3000声明：本网站的案例来源与网络，如有侵犯，请及时联系本站删除案例！");
-        new AsynAnnounce().execute("/api/noticelist");
+        if (isAvailable) {
+            new AsynAnnounce().execute("/api/noticelist");
+        }
         // 更多
         TextView tv_more = (TextView) window.findViewById(R.id.tv_dialog_more);
         tv_more.setText("更多");
-        tv_more.getPaint().setFlags(Paint.UNDERLINE_TEXT_FLAG );
+        tv_more.getPaint().setFlags(Paint.UNDERLINE_TEXT_FLAG);
         tv_more.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -139,6 +144,11 @@ public class MainTab extends Fragment {
                 getContext().startActivity(intent);
             }
         });
+    }
+
+    @Override
+    public void onNetChange() {
+        isAvailable = NetWorkUtils.getNetWorkState(getActivity()) == NetWorkUtils.NET_TYPE_NO_NETWORK;
     }
 
     private class AsynAnnounce extends AsyncTask<String, Void, List<AnnounceContent>> {
@@ -150,9 +160,11 @@ public class MainTab extends Fragment {
 
         @Override
         protected void onPostExecute(List<AnnounceContent> announceContents) {
-            tv_message.setText(announceContents.get(0).getTitle() + ":" +
-                    announceContents.get(0).getCreated_at() + "\n\u3000\u3000" +
-                    announceContents.get(0).getContent() + "\n\u3000\u3000");
+            if (announceContents != null) {
+                tv_message.setText(announceContents.get(0).getTitle() + ":" +
+                        announceContents.get(0).getCreated_at() + "\n\u3000\u3000" +
+                        announceContents.get(0).getContent() + "\n\u3000\u3000");
+            }
             super.onPostExecute(announceContents);
         }
     }

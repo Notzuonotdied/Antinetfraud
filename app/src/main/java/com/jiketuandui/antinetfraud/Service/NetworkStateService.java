@@ -18,8 +18,6 @@ import com.jiketuandui.antinetfraud.Activity.NetWorkErrorActivity;
  */
 public class NetworkStateService extends Service {
     private static final String tag = "Notzuonotdied";
-    private ConnectivityManager connectivityManager;
-    private NetworkInfo info;
 
     private BroadcastReceiver mReceiver = new BroadcastReceiver() {
 
@@ -28,8 +26,9 @@ public class NetworkStateService extends Service {
             String action = intent.getAction();
             if (action.equals(ConnectivityManager.CONNECTIVITY_ACTION)) {
                 Log.d(tag, "网络状态已经改变");
-                connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-                info = connectivityManager.getActiveNetworkInfo();
+                ConnectivityManager connectivityManager =
+                        (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+                NetworkInfo info = connectivityManager.getActiveNetworkInfo();
                 if (info != null && info.isAvailable()) {
                     String name = info.getTypeName();
                     Log.d(tag, "当前网络名称：" + name);

@@ -17,6 +17,7 @@ import com.jiketuandui.antinetfraud.Adapter.ListContentAdapter;
 import com.jiketuandui.antinetfraud.Bean.ListContent;
 import com.jiketuandui.antinetfraud.R;
 import com.jiketuandui.antinetfraud.SQL.RecordSQLiteOpenHelper;
+import com.jiketuandui.antinetfraud.Service.NetBroadcastReceiver;
 import com.jiketuandui.antinetfraud.Util.Constant;
 import com.jiketuandui.antinetfraud.Util.MyApplication;
 import com.jiketuandui.antinetfraud.Util.NetWorkUtils;
@@ -25,7 +26,7 @@ import com.jiketuandui.antinetfraud.View.MySearchView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SearchDetailActivity extends AppCompatActivity {
+public class SearchDetailActivity extends AppCompatActivity implements NetBroadcastReceiver.netEventHandler {
     private int readPage;
     private MySearchView mySearchView;
     private android.widget.FrameLayout back;
@@ -41,6 +42,9 @@ public class SearchDetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_search);
+        // 注册
+        NetBroadcastReceiver.mListeners.add(this);
+
         helper = new RecordSQLiteOpenHelper(SearchDetailActivity.this);
         inputString = getIntent().getExtras().getString(Constant.SEARCHSTRING);
         readPage = 1;
@@ -149,6 +153,14 @@ public class SearchDetailActivity extends AppCompatActivity {
     private void closeIME() {
         InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.toggleSoftInput(0, InputMethodManager.HIDE_NOT_ALWAYS);
+    }
+
+    @Override
+    public void onNetChange() {
+        if (MyApplication.mNetWorkState != NetWorkUtils.NET_TYPE_NO_NETWORK &&
+                mListContents != null && mListContents.size() == 0 && inputString != null) {
+            materialRefreshLayout.autoRefresh();
+        }
     }
 
     /**

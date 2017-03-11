@@ -6,12 +6,9 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.VIBRATE" />
 
-    <!-- To auto-complete the email text field in the login form with the user's emails -->
-    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
-    <uses-permission android:name="android.permission.READ_PROFILE" />
-    <uses-permission android:name="android.permission.READ_CONTACTS" />
 
     <application
         android:name=".Util.MyApplication"
@@ -39,11 +36,6 @@
         <activity android:name=".Activity.ToTagsListActivity" />
         <activity android:name=".Activity.NetWorkErrorActivity" />
         <activity android:name=".Activity.ArticleContentActivity" />
-
-        <service
-            android:name=".Service.NetworkStateService"
-            android:enabled="true" />
-
         <activity
             android:name=".Activity.LoginActivity"
             android:label="@string/title_activity_login" />
@@ -60,7 +52,21 @@
         <activity
             android:name=".Activity.AnnounceActivity"
             android:windowSoftInputMode="stateHidden|stateAlwaysHidden" />
-        <activity android:name=".Activity.AnnounceDetailActivity"></activity>
+        <activity android:name=".Activity.AnnounceDetailActivity" />
+
+        <receiver
+            android:name=".Service.NetBroadcastReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name=".Service.NetworkStateService"
+            android:enabled="true" />
+
     </application>
 
 </manifest>

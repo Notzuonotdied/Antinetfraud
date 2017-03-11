@@ -15,7 +15,7 @@
         android:orientation="horizontal">
 
         <FrameLayout
-            android:id="@+id/tags_back"
+            android:id="@+id/back"
             android:layout_width="50dp"
             android:layout_height="match_parent">
 
@@ -93,17 +93,38 @@
 
             </android.support.design.widget.TextInputLayout>
 
-            <Button
-                android:id="@+id/email_sign_in_button"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:gravity="center"
-                android:background="@color/color_background"
-                android:text="@string/action_sign_in"
-                android:textColor="@color/color_header_title"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/register_in_button"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_weight="1"
+                    android:background="@color/color_background"
+                    android:gravity="center"
+                    android:text="@string/action_register"
+                    android:textColor="@color/color_header_title"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/sign_in_button"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_weight="1"
+                    android:background="@color/color_header_title"
+                    android:gravity="center"
+                    android:text="@string/action_sign_in"
+                    android:textColor="@color/color_background"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
 
         </LinearLayout>
     </ScrollView>

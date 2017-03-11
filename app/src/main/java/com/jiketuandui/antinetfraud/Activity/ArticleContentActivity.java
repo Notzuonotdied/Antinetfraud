@@ -1,5 +1,6 @@
 package com.jiketuandui.antinetfraud.Activity;
 
+import android.app.Activity;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Build;
@@ -9,7 +10,10 @@ import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -22,14 +26,16 @@ import com.facebook.drawee.view.SimpleDraweeView;
 import com.jiketuandui.antinetfraud.Bean.ArticleContent;
 import com.jiketuandui.antinetfraud.HTTP.getImage;
 import com.jiketuandui.antinetfraud.R;
+import com.jiketuandui.antinetfraud.Service.NetBroadcastReceiver;
 import com.jiketuandui.antinetfraud.Util.Constant;
 import com.jiketuandui.antinetfraud.Util.MyApplication;
+import com.jiketuandui.antinetfraud.Util.NetWorkUtils;
 import com.jiketuandui.antinetfraud.View.MarkdownView;
 import com.oguzdev.circularfloatingactionmenu.library.FloatingActionButton;
 import com.oguzdev.circularfloatingactionmenu.library.FloatingActionMenu;
 import com.oguzdev.circularfloatingactionmenu.library.SubActionButton;
 
-public class ArticleContentActivity extends AppCompatActivity {
+public class ArticleContentActivity extends AppCompatActivity implements NetBroadcastReceiver.netEventHandler {
 
     private int reHeight;
     private TextView article_title;
@@ -43,15 +49,13 @@ public class ArticleContentActivity extends AppCompatActivity {
     private boolean isLessThan;
     private AppBarLayout app_bar_layout;
     private Toolbar mToolbar;
-    //private ImageButton praise;
-    // 定义进度条
     private ProgressBar mProgressBar;
-    private Drawable drawable_head;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // drawable参数设为null，表示小菊花的样式随系统默认
+        mProgressBar = createProgressBar(ArticleContentActivity.this,null);
         setContentView(R.layout.activity_article_content);
 
         // 读取文章
@@ -59,6 +63,14 @@ public class ArticleContentActivity extends AppCompatActivity {
         // 初始化View
         initView();
         initListener();
+    }
+
+    @Override
+    public void onNetChange() {
+        if (MyApplication.mNetWorkState != NetWorkUtils.NET_TYPE_NO_NETWORK &&
+                mArticleContent == null) {
+            LoadingArticle();
+        }
     }
 
     private void initListener() {
@@ -84,7 +96,9 @@ public class ArticleContentActivity extends AppCompatActivity {
             public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
                 int total_Height = -mCollapsingToolbarLayout.getHeight() + mToolbar.getHeight();
                 if (verticalOffset <= total_Height) {
-                    mCollapsingToolbarLayout.setTitle(mArticleContent.getTitle());
+                    if (mArticleContent != null) {
+                        mCollapsingToolbarLayout.setTitle(mArticleContent.getTitle());
+                    }
                     head_info.setVisibility(View.GONE);
                     if (!isLessThan) {
                         mCollapsingToolbarLayout.setContentScrimColor(0xffffffff);
@@ -109,20 +123,12 @@ public class ArticleContentActivity extends AppCompatActivity {
                 }
             }
         });
-
-//        praise.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                new AsynPraise().execute(mArticleContent.getId());
-//            }
-//        });
     }
 
     /**
      * 这里包含了标签的部分,暂时未实现
      */
     private void initView() {
-        //praise = (ImageButton) findViewById(R.id.praise);
         article_title = (TextView) findViewById(R.id.article_title);
         article_info = (TextView) findViewById(R.id.article_info);
         article_time = (TextView) findViewById(R.id.article_time);
@@ -135,7 +141,7 @@ public class ArticleContentActivity extends AppCompatActivity {
         app_bar_layout = (AppBarLayout) findViewById(R.id.app_bar_layout);
         mCollapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar_layout);
 
-        // in Activity Context
+        // 悬浮按钮
         ImageView icon = new ImageView(this); // Create an icon
         icon.setImageResource(R.mipmap.home);
         FloatingActionButton actionButton = new FloatingActionButton.Builder(this)
@@ -187,11 +193,13 @@ public class ArticleContentActivity extends AppCompatActivity {
      * 设置View一些内容
      */
     private void initAppBarLayout(ArticleContent articleContent) {
+        if (articleContent == null) {
+            return;
+        }
         mArticleContent = articleContent;
         article_title.setText(mArticleContent.getTitle());
         article_info.setText(mArticleContent.getInfo());
         article_time.setText(mArticleContent.getCreatetime());
-
         article_markdownView.loadMarkdown(articleContent.getContent());
 
         //       head_layout.setImageURI(mArticleContent.getAllImagelink());
@@ -249,6 +257,7 @@ public class ArticleContentActivity extends AppCompatActivity {
 //        super.onDestroy();
 //    }
 
+
     private class LoadArticle extends AsyncTask<Integer, Integer, ArticleContent> {
 
         @Override
@@ -259,7 +268,7 @@ public class ArticleContentActivity extends AppCompatActivity {
         @Override
         protected void onPreExecute() {
 
-            //mProgressBar.setVisibility(View.VISIBLE);
+            mProgressBar.setVisibility(View.VISIBLE);
         }
 
         @Override// 在子线程执行
@@ -275,16 +284,15 @@ public class ArticleContentActivity extends AppCompatActivity {
 
         @Override// 在主线程执行
         protected void onPostExecute(ArticleContent articleContent) {
-            //mProgressBar.setVisibility(View.GONE);
+            mProgressBar.setVisibility(View.GONE);
             initAppBarLayout(articleContent);
         }
     }
 
-
     private class AsynPraise extends AsyncTask<String, Void, Boolean> {
         @Override
         protected Boolean doInBackground(String... strings) {
-            return ((MyApplication)getApplication()).instancePraise().setPraiseGet(strings[0]);
+            return ((MyApplication) getApplication()).instancePraise().setPraiseGet(strings[0]);
         }
 
         @Override
@@ -293,8 +301,39 @@ public class ArticleContentActivity extends AppCompatActivity {
                 mArticleContent.setPraise(String.valueOf(Integer.valueOf(mArticleContent.getPraise()) + 1));
                 article_info.setText(mArticleContent.getInfo());
                 Toast.makeText(ArticleContentActivity.this, "点赞成功~", Toast.LENGTH_SHORT).show();
+
             }
             super.onPostExecute(aBoolean);
         }
+    }
+
+    /**
+     * 在屏幕上添加一个转动的小菊花（传说中的Loading），默认为隐藏状态
+     * 注意：务必保证此方法在setContentView()方法后调用，否则小菊花将会处于最底层，被屏幕其他View给覆盖
+     *
+     * @param activity                    需要添加菊花的Activity
+     * @param customIndeterminateDrawable 自定义的菊花图片，可以为null，此时为系统默认菊花
+     * @return {ProgressBar}    菊花对象
+     */
+    private ProgressBar createProgressBar(Activity activity, Drawable customIndeterminateDrawable) {
+        // activity根部的ViewGroup，其实是一个FrameLayout
+        FrameLayout rootContainer = (FrameLayout) activity.findViewById(android.R.id.content);
+        // 给progressbar准备一个FrameLayout的LayoutParams
+        FrameLayout.LayoutParams lp = new FrameLayout.LayoutParams(
+                ViewGroup.LayoutParams.WRAP_CONTENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT);
+        // 设置对其方式为：屏幕居中对其
+        lp.gravity = Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL;
+
+        ProgressBar progressBar = new ProgressBar(activity);
+        progressBar.setVisibility(View.GONE);
+        progressBar.setLayoutParams(lp);
+        // 自定义小菊花
+        if (customIndeterminateDrawable != null) {
+            progressBar.setIndeterminateDrawable(customIndeterminateDrawable);
+        }
+        // 将菊花添加到FrameLayout中
+        rootContainer.addView(progressBar);
+        return progressBar;
     }
 }

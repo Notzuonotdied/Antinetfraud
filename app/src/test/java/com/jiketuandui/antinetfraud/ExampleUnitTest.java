@@ -15,13 +15,10 @@ public class ExampleUnitTest {
         //System.out.printf(String.valueOf(instanceConnect.setPraise(String.valueOf(73))));
         //System.out.printf(instanceConnect.setContentPost("1","微信").get(0).getId());
         //System.out.printf(String.valueOf(instanceConnect.doPraiseGet("http://119.29.220.221/?/api/praise/73")));
-//        postShareContent postSC = new postShareContent();
-//        System.out.printf(String.valueOf(
-//                postSC.post("title=Test&&type=1&&content=111~"))
-//        );
-        getAnnouncement postSC = new getAnnouncement();
+        postShareContent postSC = new postShareContent();
         System.out.printf(String.valueOf(
-                postSC.getAnnounce("2"))
+                postSC.post("title=Test&&type=1&&content=111~"))
         );
+
     }
 }

@@ -48,13 +48,13 @@
                 <RelativeLayout
                     android:id="@+id/search_banner_cont"
                     android:layout_width="match_parent"
-                    android:layout_height="180dp">
+                    android:layout_height="@dimen/x180">
 
                 </RelativeLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="44dp"
+                    android:layout_height="@dimen/x44"
                     android:orientation="horizontal">
 
                     <TextView

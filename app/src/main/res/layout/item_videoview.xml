@@ -9,7 +9,7 @@
     <com.facebook.drawee.view.SimpleDraweeView
         android:id="@+id/videoplayer"
         android:layout_width="match_parent"
-        android:layout_height="180dp"
+        android:layout_height="@dimen/x180"
         android:background="@drawable/setting_shape" />
 
     <TextView
@@ -31,8 +31,8 @@
         android:textSize="20sp" />
 
     <ImageView
-        android:layout_width="66dp"
-        android:layout_height="66dp"
+        android:layout_width="@dimen/x40"
+        android:layout_height="@dimen/x40"
         android:src="@mipmap/play"
         android:layout_gravity="center"/>
 

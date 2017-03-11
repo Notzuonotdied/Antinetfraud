@@ -17,6 +17,7 @@ import com.jiketuandui.antinetfraud.Bean.ListContent;
 import com.jiketuandui.antinetfraud.HTTP.getConnect;
 import com.jiketuandui.antinetfraud.Holder.MyItemDecoration;
 import com.jiketuandui.antinetfraud.R;
+import com.jiketuandui.antinetfraud.Service.NetBroadcastReceiver;
 import com.jiketuandui.antinetfraud.Util.Constant;
 import com.jiketuandui.antinetfraud.Util.MyApplication;
 import com.jiketuandui.antinetfraud.Util.NetWorkUtils;
@@ -28,7 +29,7 @@ import java.util.List;
  * Created by Notzuonotdied on 2016/8/1.
  * 这个是放置主页新闻ViewPage的内容的
  */
-public class MainTab_news extends Fragment {
+public class MainTab_news extends Fragment  implements NetBroadcastReceiver.netEventHandler {
 
     /**
      * 定义当前的ViewIndication的位置
@@ -63,6 +64,10 @@ public class MainTab_news extends Fragment {
 
         initView();
         initData();
+
+        // 注册
+        NetBroadcastReceiver.mListeners.add(this);
+
         return view;
     }
 
@@ -137,6 +142,14 @@ public class MainTab_news extends Fragment {
                 }
             }
         });
+    }
+
+    @Override
+    public void onNetChange() {
+        if (MyApplication.mNetWorkState != NetWorkUtils.NET_TYPE_NO_NETWORK &&
+                mListContents != null && mListContents.size() == 0) {
+            materialRefreshLayout.autoRefresh();
+        }
     }
 
     /**
