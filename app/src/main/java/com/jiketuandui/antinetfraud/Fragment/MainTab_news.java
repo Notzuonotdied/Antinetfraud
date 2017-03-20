@@ -18,7 +18,6 @@ import com.jiketuandui.antinetfraud.HTTP.getConnect;
 import com.jiketuandui.antinetfraud.Holder.MyItemDecoration;
 import com.jiketuandui.antinetfraud.R;
 import com.jiketuandui.antinetfraud.Service.NetBroadcastReceiver;
-import com.jiketuandui.antinetfraud.Util.Constant;
 import com.jiketuandui.antinetfraud.Util.MyApplication;
 import com.jiketuandui.antinetfraud.Util.NetWorkUtils;
 
@@ -55,7 +54,7 @@ public class MainTab_news extends Fragment  implements NetBroadcastReceiver.netE
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // 获取当前Item的下标
-        this.position = getArguments().getInt(Constant.MAINPAGEPOSITON);
+        this.position = getArguments().getInt(MyApplication.MAINPAGEPOSITON);
         isOpenTop = position == 0;
 
         View view = inflater.inflate(R.layout.main_tab_news, null);
@@ -209,7 +208,7 @@ public class MainTab_news extends Fragment  implements NetBroadcastReceiver.netE
                 materialRefreshLayout.finishRefreshLoadMore();
                 return;
             }
-            if (!Constant.isContainLists(mListContentAdapter, ListContents)) {
+            if (!MyApplication.isContainLists(mListContentAdapter, ListContents)) {
                 mListContentAdapter.addData(ListContents);
                 mListContentAdapter.notifyDataSetChanged();
             }

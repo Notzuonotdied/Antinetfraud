@@ -1,29 +1,24 @@
 package com.jiketuandui.antinetfraud.Fragment;
 
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Environment;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.facebook.drawee.view.SimpleDraweeView;
-import com.jiketuandui.antinetfraud.Activity.AboutActivity;
-import com.jiketuandui.antinetfraud.Activity.FeedbackActivity;
-import com.jiketuandui.antinetfraud.Activity.LoginActivity;
-import com.jiketuandui.antinetfraud.Activity.ShareActivity;
+import com.jiketuandui.antinetfraud.Activity.SettingActivity.AboutActivity;
+import com.jiketuandui.antinetfraud.Activity.SettingActivity.CollectionDetailActivity;
+import com.jiketuandui.antinetfraud.Activity.SettingActivity.FeedbackActivity;
+import com.jiketuandui.antinetfraud.Activity.SettingActivity.HistoryDetailActivity;
+import com.jiketuandui.antinetfraud.Activity.UserActivity.AccountActivity;
+import com.jiketuandui.antinetfraud.Activity.UserActivity.LoginActivity;
+import com.jiketuandui.antinetfraud.Activity.SettingActivity.ShareActivity;
 import com.jiketuandui.antinetfraud.HTTP.getAppUpdate;
-import com.jiketuandui.antinetfraud.HTTP.getConnect;
 import com.jiketuandui.antinetfraud.HTTP.getImage;
 import com.jiketuandui.antinetfraud.R;
 import com.jiketuandui.antinetfraud.Util.CacheCleanManage;
@@ -74,7 +69,13 @@ public class MainTab_setting extends Fragment {
                     break;
                 case R.id.setting_pieces_account: // 账号信息
                     Log.i("Notzuonotdied", "account");
-                    startActivity(new Intent(getActivity(), LoginActivity.class));
+                    startActivity(new Intent(getActivity(), AccountActivity.class));
+                    break;
+                case R.id.setting_pieces_history:
+                    startActivity(new Intent(getActivity(), HistoryDetailActivity.class));
+                    break;
+                case R.id.setting_pieces_collection:
+                    startActivity(new Intent(getActivity(), CollectionDetailActivity.class));
                     break;
             }
         }
@@ -111,6 +112,8 @@ public class MainTab_setting extends Fragment {
         settingshare.setOnClickListener(listener);
         settingpiecesupdate.setOnClickListener(listener);
         settingpiecesaccount.setOnClickListener(listener);
+        settingpieceshistory.setOnClickListener(listener);
+        settingpiecescollection.setOnClickListener(listener);
     }
 
     /**

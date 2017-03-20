@@ -6,7 +6,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.widget.Toast;
 
-import com.jiketuandui.antinetfraud.Activity.NetWorkErrorActivity;
+import com.jiketuandui.antinetfraud.Activity.UtilActivity.NetWorkErrorActivity;
 
 /**
  * Created by Notzuonotdied on 2016/10/31.

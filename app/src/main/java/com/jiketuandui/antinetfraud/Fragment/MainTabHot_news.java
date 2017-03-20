@@ -17,7 +17,6 @@ import com.jiketuandui.antinetfraud.Bean.ListContent;
 import com.jiketuandui.antinetfraud.HTTP.getConnect;
 import com.jiketuandui.antinetfraud.R;
 import com.jiketuandui.antinetfraud.Service.NetBroadcastReceiver;
-import com.jiketuandui.antinetfraud.Util.Constant;
 import com.jiketuandui.antinetfraud.Util.MyApplication;
 import com.jiketuandui.antinetfraud.Util.NetWorkUtils;
 
@@ -199,7 +198,7 @@ public class MainTabHot_news extends Fragment implements NetBroadcastReceiver.ne
                 materialRefreshLayout.finishRefreshLoadMore();
                 return;
             }
-            if (!Constant.isContainLists(mListContentAdapter, ListContents)) {
+            if (!MyApplication.isContainLists(mListContentAdapter, ListContents)) {
                 mListContentAdapter.addData(ListContents);
                 mListContentAdapter.notifyDataSetChanged();
             }

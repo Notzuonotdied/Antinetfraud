@@ -8,7 +8,7 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
-    tools:context=".Activity.ShareActivity">
+    tools:context=".Activity.SettingActivity.ShareActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -67,11 +67,20 @@
                         android:textColor="@color/color_content"
                         android:textSize="18sp" />
 
-                    <EditText
-                        android:id="@+id/share_title"
+                    <android.support.design.widget.TextInputLayout
                         android:layout_width="match_parent"
-                        android:layout_height="?attr/actionBarSize"
-                        android:hint="@string/title_hint" />
+                        android:layout_height="wrap_content">
+
+                        <EditText
+                            android:id="@+id/share_title"
+                            android:layout_width="match_parent"
+                            android:layout_height="?attr/actionBarSize"
+                            android:hint="@string/title_hint"
+                            android:inputType="textPhonetic"
+                            android:maxLines="1"
+                            android:singleLine="true" />
+                    </android.support.design.widget.TextInputLayout>
+
                 </TableRow>
 
                 <TableRow>
@@ -95,19 +104,25 @@
                 </TableRow>
             </TableLayout>
 
-            <EditText
-                android:id="@+id/share_content"
+            <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/list_holder_shape"
-                android:enabled="true"
-                android:gravity="start"
-                android:hint="@string/edit_hint"
-                android:inputType="textMultiLine"
-                android:maxLines="14"
-                android:minLines="10"
-                android:padding="@dimen/activity_horizontal_margin"
-                android:scrollbars="vertical" />
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/share_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:enabled="true"
+                    android:gravity="start"
+                    android:hint="@string/edit_hint"
+                    android:inputType="textMultiLine"
+                    android:maxLines="8"
+                    android:minLines="3"
+                    android:padding="@dimen/activity_horizontal_margin"
+                    android:scrollbars="vertical" />
+
+            </android.support.design.widget.TextInputLayout>
+
 
             <Button
                 android:id="@+id/post"

@@ -2,13 +2,19 @@ package com.jiketuandui.antinetfraud.Activity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.Window;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
+import android.widget.Toast;
 
+import com.jiketuandui.antinetfraud.Activity.MainActivity.MainActivity;
 import com.jiketuandui.antinetfraud.R;
+import com.jiketuandui.antinetfraud.Util.MyApplication;
+import com.jiketuandui.antinetfraud.Util.SharedPManager;
 
 /**
  * Created by Notzuonotdied on 2016/8/9.
@@ -53,8 +59,41 @@ public class StartActivity extends Activity {
      * 进入MainAcitvity
      */
     private void gotoMainActivity() {
+        new UserLoginTask().execute();
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
         this.finish();
+    }
+
+    /**
+     * 在开始屏幕的时候进行重新登陆一次
+     */
+    private class UserLoginTask extends AsyncTask<Void, Void, Boolean> {
+        SharedPManager sharedPManager = new SharedPManager(StartActivity.this);
+
+        @Override
+        protected Boolean doInBackground(Void... params) {
+            String stringToken = null;
+            String stringAccount = null;
+            if (sharedPManager.isContains(MyApplication.mToken)) {
+                stringToken = sharedPManager.getString(MyApplication.mToken, null);
+                stringAccount = sharedPManager.getString(MyApplication.username, null);
+            }
+            if (TextUtils.isEmpty(stringToken) || TextUtils.isEmpty(stringAccount)) {
+                return null;
+            }
+            return ((MyApplication) getApplication()).instancepostAccount().postCheckLogin(
+                    "token=" + stringToken + "&&username=" + stringAccount +
+                            "&&phone_id=" + ((MyApplication) getApplication()).getMAC());
+        }
+
+        @Override
+        protected void onPostExecute(Boolean aBoolean) {
+            super.onPostExecute(aBoolean);
+            if (aBoolean) {
+                Toast.makeText(StartActivity.this,"登陆成功~",Toast.LENGTH_SHORT).show();
+                MyApplication.isLogin = true;
+            }
+        }
     }
 }

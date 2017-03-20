@@ -8,13 +8,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.jiketuandui.antinetfraud.Activity.AnnounceDetailActivity;
-import com.jiketuandui.antinetfraud.Activity.ArticleContentActivity;
+import com.jiketuandui.antinetfraud.Activity.AnnounceAcitivity.AnnounceDetailActivity;
 import com.jiketuandui.antinetfraud.Bean.AnnounceContent;
 import com.jiketuandui.antinetfraud.Holder.AnnounceListHolder;
 import com.jiketuandui.antinetfraud.Interface.AnnounceListOnClickListener;
 import com.jiketuandui.antinetfraud.R;
-import com.jiketuandui.antinetfraud.Util.Constant;
+import com.jiketuandui.antinetfraud.Util.MyApplication;
 import com.jiketuandui.antinetfraud.Util.NetWorkUtils;
 
 import java.util.List;
@@ -36,7 +35,7 @@ public class AnnounceAdapter extends RecyclerView.Adapter<AnnounceListHolder> {
             if (NetWorkUtils.isConnectNET(context)) {
                 Intent intent = new Intent(context, AnnounceDetailActivity.class);
                 Bundle mBundle = new Bundle();
-                mBundle.putString(Constant.ANNOUNCEID, mListContents.get(position).getId());
+                mBundle.putString(MyApplication.ANNOUNCEID, mListContents.get(position).getId());
                 intent.putExtras(mBundle);
                 context.startActivity(intent);
             }

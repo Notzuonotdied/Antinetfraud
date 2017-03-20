@@ -18,7 +18,6 @@ import com.jiketuandui.antinetfraud.Bean.ListContent;
 import com.jiketuandui.antinetfraud.HTTP.getConnect;
 import com.jiketuandui.antinetfraud.R;
 import com.jiketuandui.antinetfraud.Service.NetBroadcastReceiver;
-import com.jiketuandui.antinetfraud.Util.Constant;
 import com.jiketuandui.antinetfraud.Util.MyApplication;
 import com.jiketuandui.antinetfraud.Util.NetWorkUtils;
 import com.jiketuandui.antinetfraud.View.MyListView;
@@ -152,7 +151,7 @@ public class MainTab_classcial extends Fragment implements NetBroadcastReceiver.
                         if (NetWorkUtils.isConnectNET(getActivity())) {
                             Intent intent = new Intent(getActivity(), ArticleContentActivity.class);
                             Bundle mBundle = new Bundle();
-                            mBundle.putInt(Constant.CONTENTID, Integer.valueOf(mListContents
+                            mBundle.putInt(MyApplication.CONTENTID, Integer.valueOf(mListContents
                                     .get(position).getId()));
                             intent.putExtras(mBundle);
                             startActivity(intent);

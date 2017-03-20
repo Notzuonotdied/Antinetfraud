@@ -5,8 +5,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.jiketuandui.antinetfraud.Util.Constant;
 import com.jiketuandui.antinetfraud.Fragment.MainTab_news;
+import com.jiketuandui.antinetfraud.Util.MyApplication;
 
 
 /**
@@ -26,18 +26,18 @@ public class MainTabAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         MainTab_news mainTab_news = new MainTab_news();
         Bundle mbundle = new Bundle();
-        mbundle.putInt(Constant.MAINPAGEPOSITON, position);
+        mbundle.putInt(MyApplication.MAINPAGEPOSITON, position);
         mainTab_news.setArguments(mbundle);
         return mainTab_news;
     }
 
     @Override
     public int getCount() {
-        return Constant.TabBigTitle.length;
+        return MyApplication.TabBigTitle.length;
     }
 
     @Override
     public CharSequence getPageTitle(int position) {
-        return Constant.TabBigTitle[position];
+        return MyApplication.TabBigTitle[position];
     }
 }

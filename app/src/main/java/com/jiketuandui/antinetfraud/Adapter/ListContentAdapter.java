@@ -14,12 +14,12 @@ import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.drawee.generic.GenericDraweeHierarchy;
 import com.facebook.drawee.interfaces.DraweeController;
 import com.jiketuandui.antinetfraud.Activity.ArticleContentActivity;
-import com.jiketuandui.antinetfraud.Activity.ToTagsListActivity;
+import com.jiketuandui.antinetfraud.Activity.UtilActivity.ToTagsListActivity;
 import com.jiketuandui.antinetfraud.Bean.ListContent;
 import com.jiketuandui.antinetfraud.Holder.ListContentHolder;
 import com.jiketuandui.antinetfraud.R;
-import com.jiketuandui.antinetfraud.Util.Constant;
 import com.jiketuandui.antinetfraud.Interface.ListContentOnClickListener;
+import com.jiketuandui.antinetfraud.Util.MyApplication;
 import com.jiketuandui.antinetfraud.Util.NetWorkUtils;
 
 import java.util.List;
@@ -47,7 +47,7 @@ public class ListContentAdapter extends RecyclerView.Adapter<ListContentHolder> 
             if (NetWorkUtils.isConnectNET(context)) {
                 Intent intent = new Intent(context, ArticleContentActivity.class);
                 Bundle mBundle = new Bundle();
-                mBundle.putInt(Constant.CONTENTID, Integer.valueOf(mListContents.get(position).getId()));
+                mBundle.putInt(MyApplication.CONTENTID, Integer.valueOf(mListContents.get(position).getId()));
                 intent.putExtras(mBundle);
                 context.startActivity(intent);
             }
@@ -58,9 +58,9 @@ public class ListContentAdapter extends RecyclerView.Adapter<ListContentHolder> 
             if (NetWorkUtils.isConnectNET(context)) {
                 Intent intent = new Intent(context, ToTagsListActivity.class);
                 Bundle mBundle = new Bundle();
-                mBundle.putInt(Constant.TAGSID, Integer.valueOf(mListContents.get(position).getTagid()));
+                mBundle.putInt(MyApplication.TAGSID, Integer.valueOf(mListContents.get(position).getTagid()));
                 if (category != 0) {
-                    mBundle.putInt(Constant.CATEGORY, category);
+                    mBundle.putInt(MyApplication.CATEGORY, category);
                 }
                 intent.putExtras(mBundle);
                 context.startActivity(intent);
@@ -169,7 +169,7 @@ public class ListContentAdapter extends RecyclerView.Adapter<ListContentHolder> 
         // 设置来源
         holder.Holder_source.setText(mListContents.get(position).getSource());
         // 设置顶部的标签
-        holder.top_tag.setText(Constant.TabBigTitle[Integer.valueOf(mListContents.get(position).getTagid())]);
+        holder.top_tag.setText(MyApplication.TabBigTitle[Integer.valueOf(mListContents.get(position).getTagid())]);
         // 设置响应事件
         holder.setItemOnClickListener(mListListener);
     }

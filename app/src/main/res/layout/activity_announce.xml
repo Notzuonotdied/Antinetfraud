@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/color_white"
     android:orientation="vertical"
-    tools:context="com.jiketuandui.antinetfraud.Activity.AnnounceActivity">
+    tools:context="com.jiketuandui.antinetfraud.Activity.AnnounceAcitivity.AnnounceActivity">
 
     <LinearLayout
         android:layout_width="match_parent"

@@ -2,9 +2,6 @@ package com.jiketuandui.antinetfraud.HTTP;
 
 import android.support.annotation.Nullable;
 
-import com.jiketuandui.antinetfraud.Service.NetBroadcastReceiver;
-import com.jiketuandui.antinetfraud.Util.NetWorkUtils;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -19,7 +16,7 @@ import java.net.URLConnection;
  * 网络连接核心部分
  * Created by Notzuonotdied on 2017/3/7.
  */
-class accessNetwork  {
+class accessNetwork {
     static final String myUrl = "http://119.29.220.221";
 
     /**
@@ -137,8 +134,8 @@ class accessNetwork  {
 
             PrintWriter out = new PrintWriter(httpURLConnection.getOutputStream());
 //            if (httpURLConnection.getResponseCode() == 200) {
-            inputString = new String(inputString.getBytes(), "UTF-8");
-            out.print("value=" + inputString);
+            //inputString = new String(inputString.getBytes(), "UTF-8");
+            out.print(inputString);
             out.close();
 
             // 数据流

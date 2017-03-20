@@ -10,23 +10,5 @@
         sha1="89f651a94b183931e7699f3a329627d5e4cc7c1a">
         <dex dex="D:\Android\AndroidStudioProjects\AntiNETFraud\app\build\intermediates\pre-dexed\debug\classes_63ea1edfd28dc631b930ff90e7ad150e9fb053bf.jar" />
     </item>
-    <item
-        is-multidex="false"
-        jar="D:\Android\sdk\extras\m2repository\com\android\support\constraint\constraint-layout-solver\1.0.0-beta4\constraint-layout-solver-1.0.0-beta4.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.0"
-        sha1="0a9cb567dc008f570c28531720168f19148da965">
-        <dex dex="D:\Android\AndroidStudioProjects\AntiNETFraud\app\build\intermediates\pre-dexed\debug\constraint-layout-solver-1.0.0-beta4_0a1a51452886a4374f029187c8cda582b3326c21.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\Notzuonotdied\.android\build-cache\ce8a03dc4bcf08d8a07d807a1f0d1066b22ae8df\output\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.0"
-        sha1="662d7533b25a666c649c10a16b42edfb95f25a4f">
-        <dex dex="D:\Android\AndroidStudioProjects\AntiNETFraud\app\build\intermediates\pre-dexed\debug\classes_755226d8ec102d7350274efa4cb2b08366ac136d.jar" />
-    </item>
 
 </items>

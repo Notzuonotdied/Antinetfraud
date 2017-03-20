@@ -8,7 +8,12 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
+    <!-- To auto-complete the email text field in the login form with the user's emails -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.READ_PROFILE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
 
     <application
         android:name=".Util.MyApplication"
@@ -27,32 +32,32 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Activity.MainActivity"
+            android:name=".Activity.MainActivity.MainActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activity.SearchDetailActivity"
+            android:name=".Activity.MainActivity.SearchDetailActivity"
             android:windowSoftInputMode="stateHidden|stateAlwaysHidden" />
-        <activity android:name=".Activity.ToTagsListActivity" />
-        <activity android:name=".Activity.NetWorkErrorActivity" />
+        <activity android:name=".Activity.UtilActivity.ToTagsListActivity" />
+        <activity android:name=".Activity.UtilActivity.NetWorkErrorActivity" />
         <activity android:name=".Activity.ArticleContentActivity" />
         <activity
-            android:name=".Activity.LoginActivity"
+            android:name=".Activity.UserActivity.LoginActivity"
             android:label="@string/title_activity_login" />
-        <activity android:name=".Activity.AboutActivity" />
+        <activity android:name=".Activity.SettingActivity.AboutActivity" />
         <activity
-            android:name=".Activity.ShareActivity"
+            android:name=".Activity.SettingActivity.ShareActivity"
             android:windowSoftInputMode="stateHidden|stateAlwaysHidden" />
         <activity
-            android:name=".Activity.FeedbackActivity"
+            android:name=".Activity.SettingActivity.FeedbackActivity"
             android:windowSoftInputMode="stateHidden|stateAlwaysHidden" />
         <activity
-            android:name=".Activity.SearchActivity"
+            android:name=".Activity.MainActivity.SearchActivity"
             android:windowSoftInputMode="stateHidden|stateAlwaysHidden" />
         <activity
-            android:name=".Activity.AnnounceActivity"
+            android:name=".Activity.AnnounceAcitivity.AnnounceActivity"
             android:windowSoftInputMode="stateHidden|stateAlwaysHidden" />
-        <activity android:name=".Activity.AnnounceDetailActivity" />
+        <activity android:name=".Activity.AnnounceAcitivity.AnnounceDetailActivity" />
 
         <receiver
             android:name=".Service.NetBroadcastReceiver"
@@ -67,6 +72,10 @@
             android:name=".Service.NetworkStateService"
             android:enabled="true" />
 
+        <activity android:name=".Activity.UserActivity.AccountActivity" />
+        <activity android:name=".Activity.UserActivity.RegisterActivity" />
+        <activity android:name=".Activity.SettingActivity.HistoryDetailActivity"/>
+        <activity android:name=".Activity.SettingActivity.CollectionDetailActivity"/>
     </application>
 
 </manifest>

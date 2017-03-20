@@ -79,5 +79,4 @@ public class RecordSQLiteOpenHelper extends SQLiteOpenHelper {
         db.execSQL("delete from records");
         db.close();
     }
-
 }

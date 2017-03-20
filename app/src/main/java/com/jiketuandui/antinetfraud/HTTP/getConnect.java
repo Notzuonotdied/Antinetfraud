@@ -71,7 +71,7 @@ public class getConnect extends accessNetwork {
      */
     @Nullable
     private List<ListContent> getListContentsBydoPost(String strUrl, String inputString) throws IOException {
-        String json = doPost(strUrl, inputString);
+        String json = doPost(strUrl, "value=" + new String(inputString.getBytes(), "UTF-8"));
         Gson gson = new Gson();
         Type type = new TypeToken<ArrayList<ListContent>>() {
         }.getType();

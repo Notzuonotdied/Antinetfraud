@@ -15,8 +15,8 @@ import android.view.Window;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import com.jiketuandui.antinetfraud.Activity.AnnounceActivity;
-import com.jiketuandui.antinetfraud.Activity.SearchActivity;
+import com.jiketuandui.antinetfraud.Activity.AnnounceAcitivity.AnnounceActivity;
+import com.jiketuandui.antinetfraud.Activity.MainActivity.SearchActivity;
 import com.jiketuandui.antinetfraud.Adapter.MainTabAdapter;
 import com.jiketuandui.antinetfraud.Bean.AnnounceContent;
 import com.jiketuandui.antinetfraud.R;
@@ -49,6 +49,8 @@ public class MainTab extends Fragment implements NetBroadcastReceiver.netEventHa
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
+        // 注册
+        NetBroadcastReceiver.mListeners.add(this);
         /* *
          * 使用LayoutInflate将main_tab.xml的加载进来之后,为TabPageIndicator,
          * ViewPager进行初始化
