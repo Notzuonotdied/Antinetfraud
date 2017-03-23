@@ -149,4 +149,11 @@ public class postAccount extends accessNetwork {
     public boolean postFeedback(String content) {
         return TextUtils.equals(post("/api/feedback", content),"true");
     }
+
+    /**
+     * 登出API，username="123"&token="123"
+     * */
+    public boolean postLogout(String content) {
+        return TextUtils.equals(post("/api/logout",content),"true");
+    }
 }

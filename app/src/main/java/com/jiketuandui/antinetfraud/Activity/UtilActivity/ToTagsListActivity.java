@@ -41,8 +41,8 @@ public class ToTagsListActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_to_tags_list);
         readPage = 1;
-        tagId = getIntent().getExtras().getInt(MyApplication.TAGSID);
-        category = getIntent().getExtras().getInt(MyApplication.CATEGORY);
+        tagId = getIntent().getExtras().getInt(MyApplication.getInstance().getTAGSID());
+        category = getIntent().getExtras().getInt(MyApplication.getInstance().getCATEGORY());
         initView();
         initLintener();
     }
@@ -92,7 +92,7 @@ public class ToTagsListActivity extends Activity {
             tagsrefresh.autoRefresh();
             isFirstRefresh = false;
         }
-        this.tagstitle.setText(MyApplication.TabBigTitle[tagId]);
+        this.tagstitle.setText(MyApplication.getInstance().getTabBigTitle()[tagId]);
     }
 
     /**
@@ -168,7 +168,7 @@ public class ToTagsListActivity extends Activity {
                 tagsrefresh.finishRefreshLoadMore();
                 return;
             }
-            if (!MyApplication.isContainLists(mListContentAdapter, ListContents)) {
+            if (!MyApplication.getInstance().isContainLists(mListContentAdapter, ListContents)) {
                 mListContentAdapter.addData(ListContents);
                 mListContentAdapter.notifyDataSetChanged();
             }

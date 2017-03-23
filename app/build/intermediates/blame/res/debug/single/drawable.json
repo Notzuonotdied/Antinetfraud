@@ -1,0 +1,334 @@
+[
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/drawable/jc_seek_thumb_normal.xml",
+        "source": "/home/wangyu/.android/build-cache/57dc41004c2831fef7033751c1f152f057ba54eb/output/res/drawable/jc_seek_thumb_normal.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/drawable/jc_dialog_progress_bg.xml",
+        "source": "/home/wangyu/.android/build-cache/57dc41004c2831fef7033751c1f152f057ba54eb/output/res/drawable/jc_dialog_progress_bg.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/drawable/design_fab_background.xml",
+        "source": "/home/wangyu/.android/build-cache/465833effb92175e7896678d09f700b953329111/output/res/drawable/design_fab_background.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/drawable/button_shape.xml",
+        "source": "/home/wangyu/Android/myApp/app/src/main/res/drawable/button_shape.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/drawable/shape_announcement.xml",
+        "source": "/home/wangyu/Android/myApp/app/src/main/res/drawable/shape_announcement.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/drawable/abc_ratingbar_small_material.xml",
+        "source": "/home/wangyu/.android/build-cache/80d7b926ca18f1fc91833c79f1e0194790a235b7/output/res/drawable/abc_ratingbar_small_material.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/drawable/jc_volume_progress_bg.xml",
+        "source": "/home/wangyu/.android/build-cache/57dc41004c2831fef7033751c1f152f057ba54eb/output/res/drawable/jc_volume_progress_bg.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/drawable/search_shape.xml",
+        "source": "/home/wangyu/Android/myApp/app/src/main/res/drawable/search_shape.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/drawable/abc_ic_arrow_drop_right_black_24dp.xml",
+        "source": "/home/wangyu/.android/build-cache/80d7b926ca18f1fc91833c79f1e0194790a235b7/output/res/drawable/abc_ic_arrow_drop_right_black_24dp.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/drawable/jc_progress.xml",
+        "source": "/home/wangyu/.android/build-cache/57dc41004c2831fef7033751c1f152f057ba54eb/output/res/drawable/jc_progress.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/drawable/abc_edit_text_material.xml",
+        "source": "/home/wangyu/.android/build-cache/80d7b926ca18f1fc91833c79f1e0194790a235b7/output/res/drawable/abc_edit_text_material.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/drawable/viewpager_title_textcolor.xml",
+        "source": "/home/wangyu/Android/myApp/app/src/main/res/drawable/viewpager_title_textcolor.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/drawable/abc_list_selector_holo_light.xml",
+        "source": "/home/wangyu/.android/build-cache/80d7b926ca18f1fc91833c79f1e0194790a235b7/output/res/drawable/abc_list_selector_holo_light.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/drawable/searched_shape_right.xml",
+        "source": "/home/wangyu/Android/myApp/app/src/main/res/drawable/searched_shape_right.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/drawable/button_exit.xml",
+        "source": "/home/wangyu/Android/myApp/app/src/main/res/drawable/button_exit.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/drawable/jc_click_back_tiny_selector.xml",
+        "source": "/home/wangyu/.android/build-cache/57dc41004c2831fef7033751c1f152f057ba54eb/output/res/drawable/jc_click_back_tiny_selector.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/drawable/linear_shape.xml",
+        "source": "/home/wangyu/Android/myApp/app/src/main/res/drawable/linear_shape.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/drawable/abc_btn_colored_material.xml",
+        "source": "/home/wangyu/.android/build-cache/80d7b926ca18f1fc91833c79f1e0194790a235b7/output/res/drawable/abc_btn_colored_material.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/drawable/jc_click_play_selector.xml",
+        "source": "/home/wangyu/.android/build-cache/57dc41004c2831fef7033751c1f152f057ba54eb/output/res/drawable/jc_click_play_selector.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/drawable/jc_seek_thumb.xml",
+        "source": "/home/wangyu/.android/build-cache/57dc41004c2831fef7033751c1f152f057ba54eb/output/res/drawable/jc_seek_thumb.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/drawable/abc_ic_go_search_api_material.xml",
+        "source": "/home/wangyu/.android/build-cache/80d7b926ca18f1fc91833c79f1e0194790a235b7/output/res/drawable/abc_ic_go_search_api_material.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/drawable/abc_ic_search_api_material.xml",
+        "source": "/home/wangyu/.android/build-cache/80d7b926ca18f1fc91833c79f1e0194790a235b7/output/res/drawable/abc_ic_search_api_material.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/drawable/abc_btn_borderless_material.xml",
+        "source": "/home/wangyu/.android/build-cache/80d7b926ca18f1fc91833c79f1e0194790a235b7/output/res/drawable/abc_btn_borderless_material.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/drawable/abc_item_background_holo_dark.xml",
+        "source": "/home/wangyu/.android/build-cache/80d7b926ca18f1fc91833c79f1e0194790a235b7/output/res/drawable/abc_item_background_holo_dark.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/drawable/design_snackbar_background.xml",
+        "source": "/home/wangyu/.android/build-cache/465833effb92175e7896678d09f700b953329111/output/res/drawable/design_snackbar_background.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/drawable/abc_seekbar_thumb_material.xml",
+        "source": "/home/wangyu/.android/build-cache/80d7b926ca18f1fc91833c79f1e0194790a235b7/output/res/drawable/abc_seekbar_thumb_material.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/drawable/jc_loading.xml",
+        "source": "/home/wangyu/.android/build-cache/57dc41004c2831fef7033751c1f152f057ba54eb/output/res/drawable/jc_loading.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/drawable/search_button_background_selector.xml",
+        "source": "/home/wangyu/Android/myApp/app/src/main/res/drawable/search_button_background_selector.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/drawable/jc_click_error_selector.xml",
+        "source": "/home/wangyu/.android/build-cache/57dc41004c2831fef7033751c1f152f057ba54eb/output/res/drawable/jc_click_error_selector.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/drawable/select_selector.xml",
+        "source": "/home/wangyu/Android/myApp/app/src/main/res/drawable/select_selector.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/drawable/abc_list_selector_background_transition_holo_dark.xml",
+        "source": "/home/wangyu/.android/build-cache/80d7b926ca18f1fc91833c79f1e0194790a235b7/output/res/drawable/abc_list_selector_background_transition_holo_dark.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/drawable/select_shape.xml",
+        "source": "/home/wangyu/Android/myApp/app/src/main/res/drawable/select_shape.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/drawable/jc_seek_progress.xml",
+        "source": "/home/wangyu/.android/build-cache/57dc41004c2831fef7033751c1f152f057ba54eb/output/res/drawable/jc_seek_progress.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/drawable/button_background_selector_1.xml",
+        "source": "/home/wangyu/Android/myApp/app/src/main/res/drawable/button_background_selector_1.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/drawable/content_classic_selector.xml",
+        "source": "/home/wangyu/Android/myApp/app/src/main/res/drawable/content_classic_selector.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/drawable/abc_ic_clear_material.xml",
+        "source": "/home/wangyu/.android/build-cache/80d7b926ca18f1fc91833c79f1e0194790a235b7/output/res/drawable/abc_ic_clear_material.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/drawable/button_sub_action_selector.xml",
+        "source": "/home/wangyu/.android/build-cache/d5e70d70bdd32a3b7dd0efc97e9679f5a187e174/output/res/drawable/button_sub_action_selector.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/drawable/abc_ic_ab_back_material.xml",
+        "source": "/home/wangyu/.android/build-cache/80d7b926ca18f1fc91833c79f1e0194790a235b7/output/res/drawable/abc_ic_ab_back_material.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/drawable/content_hot_selector.xml",
+        "source": "/home/wangyu/Android/myApp/app/src/main/res/drawable/content_hot_selector.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/drawable/abc_ic_menu_overflow_material.xml",
+        "source": "/home/wangyu/.android/build-cache/80d7b926ca18f1fc91833c79f1e0194790a235b7/output/res/drawable/abc_ic_menu_overflow_material.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/drawable/abc_list_selector_holo_dark.xml",
+        "source": "/home/wangyu/.android/build-cache/80d7b926ca18f1fc91833c79f1e0194790a235b7/output/res/drawable/abc_list_selector_holo_dark.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/drawable/abc_ratingbar_material.xml",
+        "source": "/home/wangyu/.android/build-cache/80d7b926ca18f1fc91833c79f1e0194790a235b7/output/res/drawable/abc_ratingbar_material.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/drawable/button_collect_selector.xml",
+        "source": "/home/wangyu/Android/myApp/app/src/main/res/drawable/button_collect_selector.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/drawable/jc_seek_thumb_pressed.xml",
+        "source": "/home/wangyu/.android/build-cache/57dc41004c2831fef7033751c1f152f057ba54eb/output/res/drawable/jc_seek_thumb_pressed.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/drawable/abc_list_selector_background_transition_holo_light.xml",
+        "source": "/home/wangyu/.android/build-cache/80d7b926ca18f1fc91833c79f1e0194790a235b7/output/res/drawable/abc_list_selector_background_transition_holo_light.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/drawable/abc_btn_check_material.xml",
+        "source": "/home/wangyu/.android/build-cache/80d7b926ca18f1fc91833c79f1e0194790a235b7/output/res/drawable/abc_btn_check_material.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/drawable/abc_dialog_material_background.xml",
+        "source": "/home/wangyu/.android/build-cache/80d7b926ca18f1fc91833c79f1e0194790a235b7/output/res/drawable/abc_dialog_material_background.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/drawable/abc_switch_thumb_material.xml",
+        "source": "/home/wangyu/.android/build-cache/80d7b926ca18f1fc91833c79f1e0194790a235b7/output/res/drawable/abc_switch_thumb_material.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/drawable/abc_btn_radio_material.xml",
+        "source": "/home/wangyu/.android/build-cache/80d7b926ca18f1fc91833c79f1e0194790a235b7/output/res/drawable/abc_btn_radio_material.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/drawable/content_my_selector.xml",
+        "source": "/home/wangyu/Android/myApp/app/src/main/res/drawable/content_my_selector.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/drawable/abc_text_cursor_material.xml",
+        "source": "/home/wangyu/.android/build-cache/80d7b926ca18f1fc91833c79f1e0194790a235b7/output/res/drawable/abc_text_cursor_material.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/drawable/abc_btn_default_mtrl_shape.xml",
+        "source": "/home/wangyu/.android/build-cache/80d7b926ca18f1fc91833c79f1e0194790a235b7/output/res/drawable/abc_btn_default_mtrl_shape.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/drawable/button_background_selector.xml",
+        "source": "/home/wangyu/Android/myApp/app/src/main/res/drawable/button_background_selector.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/drawable/abc_cab_background_internal_bg.xml",
+        "source": "/home/wangyu/.android/build-cache/80d7b926ca18f1fc91833c79f1e0194790a235b7/output/res/drawable/abc_cab_background_internal_bg.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/drawable/content_home_selector.xml",
+        "source": "/home/wangyu/Android/myApp/app/src/main/res/drawable/content_home_selector.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/drawable/abc_spinner_textfield_background_material.xml",
+        "source": "/home/wangyu/.android/build-cache/80d7b926ca18f1fc91833c79f1e0194790a235b7/output/res/drawable/abc_spinner_textfield_background_material.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/drawable/abc_seekbar_tick_mark_material.xml",
+        "source": "/home/wangyu/.android/build-cache/80d7b926ca18f1fc91833c79f1e0194790a235b7/output/res/drawable/abc_seekbar_tick_mark_material.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/drawable/shape.xml",
+        "source": "/home/wangyu/Android/myApp/app/src/main/res/drawable/shape.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/drawable/abc_item_background_holo_light.xml",
+        "source": "/home/wangyu/.android/build-cache/80d7b926ca18f1fc91833c79f1e0194790a235b7/output/res/drawable/abc_item_background_holo_light.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/drawable/content_home_announcement.xml",
+        "source": "/home/wangyu/Android/myApp/app/src/main/res/drawable/content_home_announcement.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/drawable/jc_title_bg.xml",
+        "source": "/home/wangyu/.android/build-cache/57dc41004c2831fef7033751c1f152f057ba54eb/output/res/drawable/jc_title_bg.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/drawable/abc_ratingbar_indicator_material.xml",
+        "source": "/home/wangyu/.android/build-cache/80d7b926ca18f1fc91833c79f1e0194790a235b7/output/res/drawable/abc_ratingbar_indicator_material.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/drawable/jc_dialog_progress.xml",
+        "source": "/home/wangyu/.android/build-cache/57dc41004c2831fef7033751c1f152f057ba54eb/output/res/drawable/jc_dialog_progress.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/drawable/content_search_selector.xml",
+        "source": "/home/wangyu/Android/myApp/app/src/main/res/drawable/content_search_selector.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/drawable/setting_shape.xml",
+        "source": "/home/wangyu/Android/myApp/app/src/main/res/drawable/setting_shape.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/drawable/abc_cab_background_top_material.xml",
+        "source": "/home/wangyu/.android/build-cache/80d7b926ca18f1fc91833c79f1e0194790a235b7/output/res/drawable/abc_cab_background_top_material.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/drawable/abc_seekbar_track_material.xml",
+        "source": "/home/wangyu/.android/build-cache/80d7b926ca18f1fc91833c79f1e0194790a235b7/output/res/drawable/abc_seekbar_track_material.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/drawable/holder_top_selector.xml",
+        "source": "/home/wangyu/Android/myApp/app/src/main/res/drawable/holder_top_selector.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/drawable/search_shape_right.xml",
+        "source": "/home/wangyu/Android/myApp/app/src/main/res/drawable/search_shape_right.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/drawable/abc_textfield_search_material.xml",
+        "source": "/home/wangyu/.android/build-cache/80d7b926ca18f1fc91833c79f1e0194790a235b7/output/res/drawable/abc_textfield_search_material.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/drawable/select_background.xml",
+        "source": "/home/wangyu/Android/myApp/app/src/main/res/drawable/select_background.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/drawable/shape_drop_down_normal.xml",
+        "source": "/home/wangyu/Android/myApp/app/src/main/res/drawable/shape_drop_down_normal.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/drawable/list_holder_shape.xml",
+        "source": "/home/wangyu/Android/myApp/app/src/main/res/drawable/list_holder_shape.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/drawable/button_exit_shape1.xml",
+        "source": "/home/wangyu/Android/myApp/app/src/main/res/drawable/button_exit_shape1.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/drawable/abc_tab_indicator_material.xml",
+        "source": "/home/wangyu/.android/build-cache/80d7b926ca18f1fc91833c79f1e0194790a235b7/output/res/drawable/abc_tab_indicator_material.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/drawable/button_action_dark_selector.xml",
+        "source": "/home/wangyu/.android/build-cache/d5e70d70bdd32a3b7dd0efc97e9679f5a187e174/output/res/drawable/button_action_dark_selector.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/drawable/button_sub_action_dark_selector.xml",
+        "source": "/home/wangyu/.android/build-cache/d5e70d70bdd32a3b7dd0efc97e9679f5a187e174/output/res/drawable/button_sub_action_dark_selector.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/drawable/button_exit_shape.xml",
+        "source": "/home/wangyu/Android/myApp/app/src/main/res/drawable/button_exit_shape.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/drawable/abc_ic_voice_search_api_material.xml",
+        "source": "/home/wangyu/.android/build-cache/80d7b926ca18f1fc91833c79f1e0194790a235b7/output/res/drawable/abc_ic_voice_search_api_material.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/drawable/button_action_selector.xml",
+        "source": "/home/wangyu/.android/build-cache/d5e70d70bdd32a3b7dd0efc97e9679f5a187e174/output/res/drawable/button_action_selector.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/drawable/jc_click_pause_selector.xml",
+        "source": "/home/wangyu/.android/build-cache/57dc41004c2831fef7033751c1f152f057ba54eb/output/res/drawable/jc_click_pause_selector.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/drawable/list_cencont_shape.xml",
+        "source": "/home/wangyu/Android/myApp/app/src/main/res/drawable/list_cencont_shape.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/drawable/button_praise_selector.xml",
+        "source": "/home/wangyu/Android/myApp/app/src/main/res/drawable/button_praise_selector.xml"
+    }
+]

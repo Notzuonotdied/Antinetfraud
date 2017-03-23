@@ -28,60 +28,153 @@ import java.util.List;
  */
 public class MyApplication extends Application {
     /**
+     * 单例模式
+     */
+    private static MyApplication myApplication;
+    /**
      * 用户注册时候返回的Token
      */
-    public static final String mToken = "TOKEN";
+    private String mToken;
     /**
      * 用户的名称
      */
-    public static final String username = "USERNAME";
+    private String username;
     /**
      * 用户注册的ID
      */
-    public static final String uid = "UID";
+    private String uid;
     /**
      * 当前ViewPgaeIndication的子项的position
      */
-    public static final String MAINPAGEPOSITON = "mainpageposition";
-    public static final String MAINPAGEPOSITONHOT = "mainpagepositionhot";
-    public static final String SEARCHSTRING = "searchstring";
-    public static final String TAGSID = "tagsid";
-    public static final String CATEGORY = "category";
+    private String MAINPAGEPOSITON;
+    private String MAINPAGEPOSITONHOT;
+    private String SEARCHSTRING;
+    private String TAGSID;
+    private String CATEGORY;
     /**
      * 当前的Content的id
      */
-    public static final String CONTENTID = "ContentId";
+    private String CONTENTID;
     /**
      * 当前的Content的id
      */
-    public static final String ANNOUNCEID = "AnnounceId";
+    private String ANNOUNCEID;
     /**
-     * 当前的历史记录的ID
+     * 当前网络状态
+     * */
+    private int mNetWorkState;
+    private String[] TabTitle;
+    private String[] TabBigTitle;
+    private String[] TabBigTitle_hot;
+    private String[] Header_TextView;
+    /**
+     * 判断是否登录了
      */
-    public static final String HISTORY = "History";
-    public static int mNetWorkState;
-    public static String[] TabTitle = {"最新", "奖励", "诱惑", "信息", "通知", "传销", "投资",
-            "短信", "通讯", "工具", "病毒", "充值", "交易", "钓鱼", "伪造", "其他"};
-    public static String[] TabBigTitle = {"最新消息", "网络诈骗", "电信诈骗", "小小贴士"};
-    public static String[] TabBigTitle_hot = {"总排行榜", "电信诈骗", "网络诈骗", "小小贴士"};
-    public static String[] Header_TextView = {"网络诈骗防范科普网", "热门案例排行榜",
-            "案例搜索", "个人设置"};
-    public static boolean isLogin;
-    private static MyApplication myApplication;
+    private boolean isLogin;
+    /**
+     * 屏幕的宽度
+     */
     private int myScreenWidth;
+    /**
+     * 屏幕的高度
+     */
     private int myScreenHeight;
-    //    private List<HistoryArticle> historyArticles;
+    /**
+     * 用于判断是否被收藏了
+     */
     private List<CollectionArticle> collectionArticles;
 
+    /**
+     * 单例模式
+     */
     public static MyApplication getInstance() {
+        if (myApplication == null) {
+            synchronized (MyApplication.class) {
+                if (myApplication == null) {
+                    myApplication = new MyApplication();
+                }
+            }
+        }
         return myApplication;
+    }
+
+    public boolean getLogin() {
+        return isLogin;
+    }
+
+    public void setLogin(boolean login) {
+        isLogin = login;
+    }
+
+    public String getmToken() {
+        return mToken;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public String getUid() {
+        return uid;
+    }
+
+    public String getMAINPAGEPOSITON() {
+        return MAINPAGEPOSITON;
+    }
+
+    public String getMAINPAGEPOSITONHOT() {
+        return MAINPAGEPOSITONHOT;
+    }
+
+    public String getSEARCHSTRING() {
+        return SEARCHSTRING;
+    }
+
+    public String getTAGSID() {
+        return TAGSID;
+    }
+
+    public String getCATEGORY() {
+        return CATEGORY;
+    }
+
+    public String getCONTENTID() {
+        return CONTENTID;
+    }
+
+    public String getANNOUNCEID() {
+        return ANNOUNCEID;
+    }
+
+    public int getmNetWorkState() {
+        return mNetWorkState;
+    }
+
+    public void setmNetWorkState(int mNetWorkState) {
+        this.mNetWorkState = mNetWorkState;
+    }
+
+    public String[] getTabTitle() {
+        return TabTitle;
+    }
+
+    public String[] getTabBigTitle() {
+        return TabBigTitle;
+    }
+
+    public String[] getTabBigTitle_hot() {
+        return TabBigTitle_hot;
+    }
+
+    public String[] getHeader_TextView() {
+        return Header_TextView;
     }
 
     /**
      * 判断是否重复
      */
-    public static boolean isContainLists(ListContentAdapter mListContentAdapter,
-                                         List<ListContent> ListContents) {
+    public boolean isContainLists(ListContentAdapter mListContentAdapter,
+                                  List<ListContent> ListContents) {
         for (ListContent ml : ListContents) {
             for (int i = 0; i < mListContentAdapter.getData().size(); i++) {
                 if (mListContentAdapter.getData().get(i).getId().equals(ml.getId())) {
@@ -95,8 +188,8 @@ public class MyApplication extends Application {
     /**
      * 判断是否重复
      */
-    public static boolean isContainLists(AnnounceAdapter mListContentAdapter,
-                                         List<AnnounceContent> ListContents) {
+    public boolean isContainLists(AnnounceAdapter mListContentAdapter,
+                                  List<AnnounceContent> ListContents) {
         for (AnnounceContent ml : ListContents) {
             for (int i = 0; i < mListContentAdapter.getData().size(); i++) {
                 if (mListContentAdapter.getData().get(i).getId().equals(ml.getId())) {
@@ -107,21 +200,56 @@ public class MyApplication extends Application {
         return false;
     }
 
+    public MyApplication() {
+        /*初始化变量*/
+        initField();
+    }
+
     @Override
     public void onCreate() {
-        super.onCreate();
         /*初始化Fresco类*/
         Fresco.initialize(this);
+        /*初始化网络监听机制*/
+        initNETService();
         /*初始化获取屏幕的宽度和高度*/
         initScreenWidth();
         /*初始化Tag标签列表*/
         initTagsList();
-        /*初始化网络监听机制*/
-        initNETService();
         /*初始化缓存数据*/
         initCache();
         /*初始化登陆状态*/
         initLoginState();
+        super.onCreate();
+    }
+
+    /**
+     * 初始化Field
+     */
+    private void initField() {
+        mToken = "TOKEN";
+        username = "USERNAME";
+        uid = "UID";
+        MAINPAGEPOSITON = "MainPagePosition";
+        MAINPAGEPOSITONHOT = "MainPagePositionHot";
+        SEARCHSTRING = "SearchString";
+        TAGSID = "TagsId";
+        CATEGORY = "Category";
+        CONTENTID = "ContentId";
+        ANNOUNCEID = "AnnounceId";
+        TabTitle = new String[]{
+                "最新", "奖励", "诱惑", "信息", "通知", "传销", "投资",
+                "短信", "通讯", "工具", "病毒", "充值", "交易", "钓鱼", "伪造", "其他"
+        };
+        TabBigTitle = new String[]{
+                "最新消息", "网络诈骗", "电信诈骗", "小小贴士"
+        };
+        TabBigTitle_hot = new String[]{
+                "总排行榜", "电信诈骗", "网络诈骗", "小小贴士"
+        };
+        Header_TextView = new String[]{
+                "网络诈骗防范科普网", "热门案例排行榜",
+                "案例搜索", "个人设置"
+        };
     }
 
     private void initLoginState() {
@@ -240,7 +368,7 @@ public class MyApplication extends Application {
         protected Boolean doInBackground(Void... params) {
             collectionArticles = instancepostAccount().getCollection(
                     new SharedPManager(MyApplication.this)
-                            .getString(MyApplication.uid, null));
+                            .getString(uid, null));
 //            historyArticles = instancepostAccount().getBrowserHistory(
 //                    new SharedPManager(MyApplication.this).getString(MyApplication.uid, null));
             return collectionArticles != null /*&& historyArticles != null*/;

@@ -22,4 +22,10 @@ public class transTime {
         }
         return time;
     }
+
+    public static String getTime(String createtime) {
+        return transTime.TimeStamp2Date(createtime, "yyyy") + "年" +
+                transTime.TimeStamp2Date(createtime, "MM") + "月" +
+                transTime.TimeStamp2Date(createtime, "dd") + "日";
+    }
 }

@@ -5,7 +5,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.jiketuandui.antinetfraud.Fragment.MainTabHot_news;
+import com.jiketuandui.antinetfraud.Fragment.MainPageFragment.MainTabHotNews;
 import com.jiketuandui.antinetfraud.Util.MyApplication;
 
 
@@ -24,20 +24,20 @@ public class MainTabHotAdapter extends FragmentPagerAdapter {
      */
     @Override
     public Fragment getItem(int position) {
-        MainTabHot_news mainTabHotNews = new MainTabHot_news();
+        MainTabHotNews mainTabHotNews = new MainTabHotNews();
         Bundle mbundle = new Bundle();
-        mbundle.putInt(MyApplication.MAINPAGEPOSITONHOT, position);
+        mbundle.putInt(MyApplication.getInstance().getMAINPAGEPOSITONHOT(), position);
         mainTabHotNews.setArguments(mbundle);
         return mainTabHotNews;
     }
 
     @Override
     public int getCount() {
-        return MyApplication.TabBigTitle_hot.length;
+        return MyApplication.getInstance().getTabBigTitle_hot().length;
     }
 
     @Override
     public CharSequence getPageTitle(int position) {
-        return MyApplication.TabBigTitle_hot[position];
+        return MyApplication.getInstance().getTabBigTitle_hot()[position];
     }
 }

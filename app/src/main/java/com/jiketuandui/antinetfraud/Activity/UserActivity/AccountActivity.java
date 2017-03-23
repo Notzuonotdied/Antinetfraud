@@ -52,7 +52,7 @@ public class AccountActivity extends AppCompatActivity {
     }
 
     private void initButton() {
-        if (MyApplication.isLogin) {
+        if (MyApplication.getInstance().getLogin()) {
             button.setText(getString(R.string.exit));
         } else {
             button.setText(getString(R.string.start_login));
@@ -73,12 +73,12 @@ public class AccountActivity extends AppCompatActivity {
     }
 
     private void LoginOrExit() {
-        if (MyApplication.isLogin) {
+        if (MyApplication.getInstance().getLogin()) {
             button.setText(getString(R.string.exit));
             SharedPManager sp = new SharedPManager(AccountActivity.this);
             sp.clear();
             sp.commit();
-            MyApplication.isLogin = false;
+            MyApplication.getInstance().setLogin(false);
             button.setText(getString(R.string.start_login));
         } else {
             button.setText(getString(R.string.start_login));
@@ -88,7 +88,7 @@ public class AccountActivity extends AppCompatActivity {
 
     @Override
     protected void onResume() {
-        if (MyApplication.isLogin) {
+        if (MyApplication.getInstance().getLogin()) {
             button.setText(getString(R.string.exit));
         } else {
             button.setText(getString(R.string.start_login));

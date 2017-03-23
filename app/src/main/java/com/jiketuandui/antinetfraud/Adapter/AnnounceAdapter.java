@@ -35,7 +35,7 @@ public class AnnounceAdapter extends RecyclerView.Adapter<AnnounceListHolder> {
             if (NetWorkUtils.isConnectNET(context)) {
                 Intent intent = new Intent(context, AnnounceDetailActivity.class);
                 Bundle mBundle = new Bundle();
-                mBundle.putString(MyApplication.ANNOUNCEID, mListContents.get(position).getId());
+                mBundle.putString(MyApplication.getInstance().getANNOUNCEID(), mListContents.get(position).getId());
                 intent.putExtras(mBundle);
                 context.startActivity(intent);
             }

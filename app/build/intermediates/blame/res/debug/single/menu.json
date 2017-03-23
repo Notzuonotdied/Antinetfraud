@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/menu/main.xml",
+        "source": "/home/wangyu/Android/myApp/app/src/main/res/menu/main.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/menu/setting.xml",
+        "source": "/home/wangyu/Android/myApp/app/src/main/res/menu/setting.xml"
+    }
+]

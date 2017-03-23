@@ -1,0 +1,374 @@
+[
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/layout/list_content_holder.xml",
+        "source": "/home/wangyu/Android/myApp/app/src/main/res/layout/list_content_holder.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/layout/head_classcial.xml",
+        "source": "/home/wangyu/Android/myApp/app/src/main/res/layout/head_classcial.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/layout/activity_about.xml",
+        "source": "/home/wangyu/Android/myApp/app/src/main/res/layout/activity_about.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/layout/activity_announce.xml",
+        "source": "/home/wangyu/Android/myApp/app/src/main/res/layout/activity_announce.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/layout/abc_activity_chooser_view_list_item.xml",
+        "source": "/home/wangyu/.android/build-cache/80d7b926ca18f1fc91833c79f1e0194790a235b7/output/res/layout/abc_activity_chooser_view_list_item.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/layout/main_tab_news.xml",
+        "source": "/home/wangyu/Android/myApp/app/src/main/res/layout/main_tab_news.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/layout/select_dialog_item_material.xml",
+        "source": "/home/wangyu/.android/build-cache/80d7b926ca18f1fc91833c79f1e0194790a235b7/output/res/layout/select_dialog_item_material.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/layout/activity_detail_collection.xml",
+        "source": "/home/wangyu/Android/myApp/app/src/main/res/layout/activity_detail_collection.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/layout/activity_to_tags_list.xml",
+        "source": "/home/wangyu/Android/myApp/app/src/main/res/layout/activity_to_tags_list.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/layout/abc_search_view.xml",
+        "source": "/home/wangyu/.android/build-cache/80d7b926ca18f1fc91833c79f1e0194790a235b7/output/res/layout/abc_search_view.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/layout/activity_search.xml",
+        "source": "/home/wangyu/Android/myApp/app/src/main/res/layout/activity_search.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/layout/announce_list_holder.xml",
+        "source": "/home/wangyu/Android/myApp/app/src/main/res/layout/announce_list_holder.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/layout/activity_login.xml",
+        "source": "/home/wangyu/Android/myApp/app/src/main/res/layout/activity_login.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/layout/activity_detail_search.xml",
+        "source": "/home/wangyu/Android/myApp/app/src/main/res/layout/activity_detail_search.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/layout/setting_header.xml",
+        "source": "/home/wangyu/Android/myApp/app/src/main/res/layout/setting_header.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/layout/item_videoview.xml",
+        "source": "/home/wangyu/Android/myApp/app/src/main/res/layout/item_videoview.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/layout/abc_select_dialog_material.xml",
+        "source": "/home/wangyu/.android/build-cache/80d7b926ca18f1fc91833c79f1e0194790a235b7/output/res/layout/abc_select_dialog_material.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/layout/main_tab_hot.xml",
+        "source": "/home/wangyu/Android/myApp/app/src/main/res/layout/main_tab_hot.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/layout/design_navigation_item.xml",
+        "source": "/home/wangyu/.android/build-cache/465833effb92175e7896678d09f700b953329111/output/res/layout/design_navigation_item.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/layout/abc_screen_simple_overlay_action_mode.xml",
+        "source": "/home/wangyu/.android/build-cache/80d7b926ca18f1fc91833c79f1e0194790a235b7/output/res/layout/abc_screen_simple_overlay_action_mode.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/layout/activity_announce_detail.xml",
+        "source": "/home/wangyu/Android/myApp/app/src/main/res/layout/activity_announce_detail.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/layout/jc_volume_dialog.xml",
+        "source": "/home/wangyu/.android/build-cache/57dc41004c2831fef7033751c1f152f057ba54eb/output/res/layout/jc_volume_dialog.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/layout/design_navigation_menu_item.xml",
+        "source": "/home/wangyu/.android/build-cache/465833effb92175e7896678d09f700b953329111/output/res/layout/design_navigation_menu_item.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/layout/announcement.xml",
+        "source": "/home/wangyu/Android/myApp/app/src/main/res/layout/announcement.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/layout/head_setting.xml",
+        "source": "/home/wangyu/Android/myApp/app/src/main/res/layout/head_setting.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/layout/design_navigation_item_header.xml",
+        "source": "/home/wangyu/.android/build-cache/465833effb92175e7896678d09f700b953329111/output/res/layout/design_navigation_item_header.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/layout/abc_popup_menu_item_layout.xml",
+        "source": "/home/wangyu/.android/build-cache/80d7b926ca18f1fc91833c79f1e0194790a235b7/output/res/layout/abc_popup_menu_item_layout.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/layout/abc_action_menu_layout.xml",
+        "source": "/home/wangyu/.android/build-cache/80d7b926ca18f1fc91833c79f1e0194790a235b7/output/res/layout/abc_action_menu_layout.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/layout/head_hot.xml",
+        "source": "/home/wangyu/Android/myApp/app/src/main/res/layout/head_hot.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/layout/design_navigation_item_subheader.xml",
+        "source": "/home/wangyu/.android/build-cache/465833effb92175e7896678d09f700b953329111/output/res/layout/design_navigation_item_subheader.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/layout/design_layout_tab_icon.xml",
+        "source": "/home/wangyu/.android/build-cache/465833effb92175e7896678d09f700b953329111/output/res/layout/design_layout_tab_icon.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/layout/search_view_style.xml",
+        "source": "/home/wangyu/Android/myApp/app/src/main/res/layout/search_view_style.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/layout/jc_progress_dialog.xml",
+        "source": "/home/wangyu/.android/build-cache/57dc41004c2831fef7033751c1f152f057ba54eb/output/res/layout/jc_progress_dialog.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/layout/abc_action_menu_item_layout.xml",
+        "source": "/home/wangyu/.android/build-cache/80d7b926ca18f1fc91833c79f1e0194790a235b7/output/res/layout/abc_action_menu_item_layout.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/layout/main_tab_classcial.xml",
+        "source": "/home/wangyu/Android/myApp/app/src/main/res/layout/main_tab_classcial.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/layout/abc_alert_dialog_button_bar_material.xml",
+        "source": "/home/wangyu/.android/build-cache/80d7b926ca18f1fc91833c79f1e0194790a235b7/output/res/layout/abc_alert_dialog_button_bar_material.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/layout/abc_list_menu_item_layout.xml",
+        "source": "/home/wangyu/.android/build-cache/80d7b926ca18f1fc91833c79f1e0194790a235b7/output/res/layout/abc_list_menu_item_layout.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/layout/abc_screen_toolbar.xml",
+        "source": "/home/wangyu/.android/build-cache/80d7b926ca18f1fc91833c79f1e0194790a235b7/output/res/layout/abc_screen_toolbar.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/layout/bottom.xml",
+        "source": "/home/wangyu/Android/myApp/app/src/main/res/layout/bottom.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/layout/main_tab.xml",
+        "source": "/home/wangyu/Android/myApp/app/src/main/res/layout/main_tab.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/layout/design_layout_snackbar_include.xml",
+        "source": "/home/wangyu/.android/build-cache/465833effb92175e7896678d09f700b953329111/output/res/layout/design_layout_snackbar_include.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/layout/notification_template_part_time.xml",
+        "source": "/home/wangyu/.android/build-cache/80d7b926ca18f1fc91833c79f1e0194790a235b7/output/res/layout/notification_template_part_time.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/layout/abc_screen_simple.xml",
+        "source": "/home/wangyu/.android/build-cache/80d7b926ca18f1fc91833c79f1e0194790a235b7/output/res/layout/abc_screen_simple.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/layout/head_news.xml",
+        "source": "/home/wangyu/Android/myApp/app/src/main/res/layout/head_news.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/layout/activity_share.xml",
+        "source": "/home/wangyu/Android/myApp/app/src/main/res/layout/activity_share.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/layout/notification_media_action.xml",
+        "source": "/home/wangyu/.android/build-cache/80d7b926ca18f1fc91833c79f1e0194790a235b7/output/res/layout/notification_media_action.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/layout/design_bottom_sheet_dialog.xml",
+        "source": "/home/wangyu/.android/build-cache/465833effb92175e7896678d09f700b953329111/output/res/layout/design_bottom_sheet_dialog.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/layout/main_tab_my.xml",
+        "source": "/home/wangyu/Android/myApp/app/src/main/res/layout/main_tab_my.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/layout/announcement_update.xml",
+        "source": "/home/wangyu/Android/myApp/app/src/main/res/layout/announcement_update.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/layout/abc_alert_dialog_material.xml",
+        "source": "/home/wangyu/.android/build-cache/80d7b926ca18f1fc91833c79f1e0194790a235b7/output/res/layout/abc_alert_dialog_material.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/layout/abc_action_bar_up_container.xml",
+        "source": "/home/wangyu/.android/build-cache/80d7b926ca18f1fc91833c79f1e0194790a235b7/output/res/layout/abc_action_bar_up_container.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/layout/abc_action_mode_close_item_material.xml",
+        "source": "/home/wangyu/.android/build-cache/80d7b926ca18f1fc91833c79f1e0194790a235b7/output/res/layout/abc_action_mode_close_item_material.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/layout/abc_list_menu_item_radio.xml",
+        "source": "/home/wangyu/.android/build-cache/80d7b926ca18f1fc91833c79f1e0194790a235b7/output/res/layout/abc_list_menu_item_radio.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/layout/design_navigation_item_separator.xml",
+        "source": "/home/wangyu/.android/build-cache/465833effb92175e7896678d09f700b953329111/output/res/layout/design_navigation_item_separator.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/layout/abc_dialog_title_material.xml",
+        "source": "/home/wangyu/.android/build-cache/80d7b926ca18f1fc91833c79f1e0194790a235b7/output/res/layout/abc_dialog_title_material.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/layout/notification_template_big_media.xml",
+        "source": "/home/wangyu/.android/build-cache/80d7b926ca18f1fc91833c79f1e0194790a235b7/output/res/layout/notification_template_big_media.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/layout/design_layout_tab_text.xml",
+        "source": "/home/wangyu/.android/build-cache/465833effb92175e7896678d09f700b953329111/output/res/layout/design_layout_tab_text.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/layout/activity_detail_history.xml",
+        "source": "/home/wangyu/Android/myApp/app/src/main/res/layout/activity_detail_history.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/layout/activity_main.xml",
+        "source": "/home/wangyu/Android/myApp/app/src/main/res/layout/activity_main.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/layout/notification_template_big_media_narrow.xml",
+        "source": "/home/wangyu/.android/build-cache/80d7b926ca18f1fc91833c79f1e0194790a235b7/output/res/layout/notification_template_big_media_narrow.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/layout/main_tab_hot_news.xml",
+        "source": "/home/wangyu/Android/myApp/app/src/main/res/layout/main_tab_hot_news.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/layout/abc_action_bar_title_item.xml",
+        "source": "/home/wangyu/.android/build-cache/80d7b926ca18f1fc91833c79f1e0194790a235b7/output/res/layout/abc_action_bar_title_item.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/layout/activity_article_content.xml",
+        "source": "/home/wangyu/Android/myApp/app/src/main/res/layout/activity_article_content.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/layout/abc_action_bar_view_list_nav_layout.xml",
+        "source": "/home/wangyu/.android/build-cache/80d7b926ca18f1fc91833c79f1e0194790a235b7/output/res/layout/abc_action_bar_view_list_nav_layout.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/layout/design_layout_snackbar.xml",
+        "source": "/home/wangyu/.android/build-cache/465833effb92175e7896678d09f700b953329111/output/res/layout/design_layout_snackbar.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/layout/select_dialog_singlechoice_material.xml",
+        "source": "/home/wangyu/.android/build-cache/80d7b926ca18f1fc91833c79f1e0194790a235b7/output/res/layout/select_dialog_singlechoice_material.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/layout/abc_screen_content_include.xml",
+        "source": "/home/wangyu/.android/build-cache/80d7b926ca18f1fc91833c79f1e0194790a235b7/output/res/layout/abc_screen_content_include.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/layout/search_content.xml",
+        "source": "/home/wangyu/Android/myApp/app/src/main/res/layout/search_content.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/layout/abc_expanded_menu_layout.xml",
+        "source": "/home/wangyu/.android/build-cache/80d7b926ca18f1fc91833c79f1e0194790a235b7/output/res/layout/abc_expanded_menu_layout.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/layout/design_navigation_menu.xml",
+        "source": "/home/wangyu/.android/build-cache/465833effb92175e7896678d09f700b953329111/output/res/layout/design_navigation_menu.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/layout/design_menu_item_action_area.xml",
+        "source": "/home/wangyu/.android/build-cache/465833effb92175e7896678d09f700b953329111/output/res/layout/design_menu_item_action_area.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/layout/notification_template_lines.xml",
+        "source": "/home/wangyu/.android/build-cache/80d7b926ca18f1fc91833c79f1e0194790a235b7/output/res/layout/notification_template_lines.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/layout/abc_action_mode_bar.xml",
+        "source": "/home/wangyu/.android/build-cache/80d7b926ca18f1fc91833c79f1e0194790a235b7/output/res/layout/abc_action_mode_bar.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/layout/support_simple_spinner_dropdown_item.xml",
+        "source": "/home/wangyu/.android/build-cache/80d7b926ca18f1fc91833c79f1e0194790a235b7/output/res/layout/support_simple_spinner_dropdown_item.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/layout/abc_list_menu_item_checkbox.xml",
+        "source": "/home/wangyu/.android/build-cache/80d7b926ca18f1fc91833c79f1e0194790a235b7/output/res/layout/abc_list_menu_item_checkbox.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/layout/my_refresh.xml",
+        "source": "/home/wangyu/Android/myApp/app/src/main/res/layout/my_refresh.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/layout/activity_net_work_error.xml",
+        "source": "/home/wangyu/Android/myApp/app/src/main/res/layout/activity_net_work_error.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/layout/activity_register.xml",
+        "source": "/home/wangyu/Android/myApp/app/src/main/res/layout/activity_register.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/layout/notification_template_part_chronometer.xml",
+        "source": "/home/wangyu/.android/build-cache/80d7b926ca18f1fc91833c79f1e0194790a235b7/output/res/layout/notification_template_part_chronometer.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/layout/abc_popup_menu_header_item_layout.xml",
+        "source": "/home/wangyu/.android/build-cache/80d7b926ca18f1fc91833c79f1e0194790a235b7/output/res/layout/abc_popup_menu_header_item_layout.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/layout/select_dialog_multichoice_material.xml",
+        "source": "/home/wangyu/.android/build-cache/80d7b926ca18f1fc91833c79f1e0194790a235b7/output/res/layout/select_dialog_multichoice_material.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/layout/notification_template_media.xml",
+        "source": "/home/wangyu/.android/build-cache/80d7b926ca18f1fc91833c79f1e0194790a235b7/output/res/layout/notification_template_media.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/layout/header.xml",
+        "source": "/home/wangyu/Android/myApp/app/src/main/res/layout/header.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/layout/abc_list_menu_item_icon.xml",
+        "source": "/home/wangyu/.android/build-cache/80d7b926ca18f1fc91833c79f1e0194790a235b7/output/res/layout/abc_list_menu_item_icon.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/layout/notification_media_cancel_action.xml",
+        "source": "/home/wangyu/.android/build-cache/80d7b926ca18f1fc91833c79f1e0194790a235b7/output/res/layout/notification_media_cancel_action.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/layout/abc_search_dropdown_item_icons_2line.xml",
+        "source": "/home/wangyu/.android/build-cache/80d7b926ca18f1fc91833c79f1e0194790a235b7/output/res/layout/abc_search_dropdown_item_icons_2line.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/layout/jc_layout_standard.xml",
+        "source": "/home/wangyu/.android/build-cache/57dc41004c2831fef7033751c1f152f057ba54eb/output/res/layout/jc_layout_standard.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/layout/activity_start.xml",
+        "source": "/home/wangyu/Android/myApp/app/src/main/res/layout/activity_start.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/layout/jc_layout_base.xml",
+        "source": "/home/wangyu/.android/build-cache/57dc41004c2831fef7033751c1f152f057ba54eb/output/res/layout/jc_layout_base.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/layout/search_history_list.xml",
+        "source": "/home/wangyu/Android/myApp/app/src/main/res/layout/search_history_list.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/layout/abc_activity_chooser_view.xml",
+        "source": "/home/wangyu/.android/build-cache/80d7b926ca18f1fc91833c79f1e0194790a235b7/output/res/layout/abc_activity_chooser_view.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/layout/activity_account.xml",
+        "source": "/home/wangyu/Android/myApp/app/src/main/res/layout/activity_account.xml"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/layout/activity_feedback.xml",
+        "source": "/home/wangyu/Android/myApp/app/src/main/res/layout/activity_feedback.xml"
+    }
+]

@@ -157,7 +157,7 @@ public class AnnounceActivity extends AppCompatActivity {
                 materialRefreshLayout.finishRefreshLoadMore();
                 return;
             }
-            if (!MyApplication.isContainLists(mListContentAdapter, ListContents)) {
+            if (!MyApplication.getInstance().isContainLists(mListContentAdapter, ListContents)) {
                 mListContentAdapter.addData(ListContents);
                 mListContentAdapter.notifyDataSetChanged();
             }

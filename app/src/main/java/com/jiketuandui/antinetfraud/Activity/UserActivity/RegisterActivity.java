@@ -239,7 +239,7 @@ public class RegisterActivity extends Activity {
             showProgress(false);
 
             if (success) {
-                MyApplication.isLogin = true;
+                MyApplication.getInstance().setLogin(true);
                 finish();
             } else {
                 mPasswordView.setError(getString(R.string.error_incorrect_password));

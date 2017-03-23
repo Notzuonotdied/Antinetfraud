@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/mipmap-xhdpi/ic_header.png",
+        "source": "/home/wangyu/Android/myApp/app/src/main/res/mipmap-xhdpi/ic_header.png"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/mipmap-xhdpi/ic_launcher.png",
+        "source": "/home/wangyu/Android/myApp/app/src/main/res/mipmap-xhdpi/ic_launcher.png"
+    }
+]

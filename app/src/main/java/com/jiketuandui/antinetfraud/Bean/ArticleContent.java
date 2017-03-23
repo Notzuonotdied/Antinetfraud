@@ -75,10 +75,7 @@ public class ArticleContent {
     }
 
     public String getCreatetime() {
-
-        return transTime.TimeStamp2Date(createtime, "yyyy") + "年" +
-                transTime.TimeStamp2Date(createtime, "MM") + "月" +
-                transTime.TimeStamp2Date(createtime, "dd") + "日";
+        return transTime.getTime(createtime);
     }
 
     public void setCreatetime(String createtime) {

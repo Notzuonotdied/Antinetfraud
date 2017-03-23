@@ -1,38 +1,38 @@
 [
     {
-        "merged": "D:\\Android\\AndroidStudioProjects\\AntiNETFraud\\MaterialRefreshLayout\\build\\intermediates\\res\\merged\\debug\\color\\abc_primary_text_material_light.xml",
-        "source": "C:\\Users\\Notzuonotdied\\.android\\build-cache\\4ee42d65170a33374636e11682efa2586c924f0d\\output\\res\\color\\abc_primary_text_material_light.xml"
+        "merged": "/home/wangyu/Android/myApp/MaterialRefreshLayout/build/intermediates/res/merged/debug/color/switch_thumb_material_light.xml",
+        "source": "/home/wangyu/.android/build-cache/ad91c04ab7cbb57860ce1f00d3071cb15282a6ea/output/res/color/switch_thumb_material_light.xml"
     },
     {
-        "merged": "D:\\Android\\AndroidStudioProjects\\AntiNETFraud\\MaterialRefreshLayout\\build\\intermediates\\res\\merged\\debug\\color\\abc_primary_text_disable_only_material_light.xml",
-        "source": "C:\\Users\\Notzuonotdied\\.android\\build-cache\\4ee42d65170a33374636e11682efa2586c924f0d\\output\\res\\color\\abc_primary_text_disable_only_material_light.xml"
+        "merged": "/home/wangyu/Android/myApp/MaterialRefreshLayout/build/intermediates/res/merged/debug/color/abc_primary_text_material_dark.xml",
+        "source": "/home/wangyu/.android/build-cache/ad91c04ab7cbb57860ce1f00d3071cb15282a6ea/output/res/color/abc_primary_text_material_dark.xml"
     },
     {
-        "merged": "D:\\Android\\AndroidStudioProjects\\AntiNETFraud\\MaterialRefreshLayout\\build\\intermediates\\res\\merged\\debug\\color\\switch_thumb_material_light.xml",
-        "source": "C:\\Users\\Notzuonotdied\\.android\\build-cache\\4ee42d65170a33374636e11682efa2586c924f0d\\output\\res\\color\\switch_thumb_material_light.xml"
+        "merged": "/home/wangyu/Android/myApp/MaterialRefreshLayout/build/intermediates/res/merged/debug/color/abc_primary_text_material_light.xml",
+        "source": "/home/wangyu/.android/build-cache/ad91c04ab7cbb57860ce1f00d3071cb15282a6ea/output/res/color/abc_primary_text_material_light.xml"
     },
     {
-        "merged": "D:\\Android\\AndroidStudioProjects\\AntiNETFraud\\MaterialRefreshLayout\\build\\intermediates\\res\\merged\\debug\\color\\switch_thumb_material_dark.xml",
-        "source": "C:\\Users\\Notzuonotdied\\.android\\build-cache\\4ee42d65170a33374636e11682efa2586c924f0d\\output\\res\\color\\switch_thumb_material_dark.xml"
+        "merged": "/home/wangyu/Android/myApp/MaterialRefreshLayout/build/intermediates/res/merged/debug/color/switch_thumb_material_dark.xml",
+        "source": "/home/wangyu/.android/build-cache/ad91c04ab7cbb57860ce1f00d3071cb15282a6ea/output/res/color/switch_thumb_material_dark.xml"
     },
     {
-        "merged": "D:\\Android\\AndroidStudioProjects\\AntiNETFraud\\MaterialRefreshLayout\\build\\intermediates\\res\\merged\\debug\\color\\abc_search_url_text.xml",
-        "source": "C:\\Users\\Notzuonotdied\\.android\\build-cache\\4ee42d65170a33374636e11682efa2586c924f0d\\output\\res\\color\\abc_search_url_text.xml"
+        "merged": "/home/wangyu/Android/myApp/MaterialRefreshLayout/build/intermediates/res/merged/debug/color/abc_primary_text_disable_only_material_light.xml",
+        "source": "/home/wangyu/.android/build-cache/ad91c04ab7cbb57860ce1f00d3071cb15282a6ea/output/res/color/abc_primary_text_disable_only_material_light.xml"
     },
     {
-        "merged": "D:\\Android\\AndroidStudioProjects\\AntiNETFraud\\MaterialRefreshLayout\\build\\intermediates\\res\\merged\\debug\\color\\abc_secondary_text_material_light.xml",
-        "source": "C:\\Users\\Notzuonotdied\\.android\\build-cache\\4ee42d65170a33374636e11682efa2586c924f0d\\output\\res\\color\\abc_secondary_text_material_light.xml"
+        "merged": "/home/wangyu/Android/myApp/MaterialRefreshLayout/build/intermediates/res/merged/debug/color/abc_secondary_text_material_light.xml",
+        "source": "/home/wangyu/.android/build-cache/ad91c04ab7cbb57860ce1f00d3071cb15282a6ea/output/res/color/abc_secondary_text_material_light.xml"
     },
     {
-        "merged": "D:\\Android\\AndroidStudioProjects\\AntiNETFraud\\MaterialRefreshLayout\\build\\intermediates\\res\\merged\\debug\\color\\abc_primary_text_material_dark.xml",
-        "source": "C:\\Users\\Notzuonotdied\\.android\\build-cache\\4ee42d65170a33374636e11682efa2586c924f0d\\output\\res\\color\\abc_primary_text_material_dark.xml"
+        "merged": "/home/wangyu/Android/myApp/MaterialRefreshLayout/build/intermediates/res/merged/debug/color/abc_primary_text_disable_only_material_dark.xml",
+        "source": "/home/wangyu/.android/build-cache/ad91c04ab7cbb57860ce1f00d3071cb15282a6ea/output/res/color/abc_primary_text_disable_only_material_dark.xml"
     },
     {
-        "merged": "D:\\Android\\AndroidStudioProjects\\AntiNETFraud\\MaterialRefreshLayout\\build\\intermediates\\res\\merged\\debug\\color\\abc_secondary_text_material_dark.xml",
-        "source": "C:\\Users\\Notzuonotdied\\.android\\build-cache\\4ee42d65170a33374636e11682efa2586c924f0d\\output\\res\\color\\abc_secondary_text_material_dark.xml"
+        "merged": "/home/wangyu/Android/myApp/MaterialRefreshLayout/build/intermediates/res/merged/debug/color/abc_search_url_text.xml",
+        "source": "/home/wangyu/.android/build-cache/ad91c04ab7cbb57860ce1f00d3071cb15282a6ea/output/res/color/abc_search_url_text.xml"
     },
     {
-        "merged": "D:\\Android\\AndroidStudioProjects\\AntiNETFraud\\MaterialRefreshLayout\\build\\intermediates\\res\\merged\\debug\\color\\abc_primary_text_disable_only_material_dark.xml",
-        "source": "C:\\Users\\Notzuonotdied\\.android\\build-cache\\4ee42d65170a33374636e11682efa2586c924f0d\\output\\res\\color\\abc_primary_text_disable_only_material_dark.xml"
+        "merged": "/home/wangyu/Android/myApp/MaterialRefreshLayout/build/intermediates/res/merged/debug/color/abc_secondary_text_material_dark.xml",
+        "source": "/home/wangyu/.android/build-cache/ad91c04ab7cbb57860ce1f00d3071cb15282a6ea/output/res/color/abc_secondary_text_material_dark.xml"
     }
 ]

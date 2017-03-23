@@ -45,7 +45,7 @@ public class SearchDetailActivity extends AppCompatActivity implements NetBroadc
         NetBroadcastReceiver.mListeners.add(this);
 
         helper = new RecordSQLiteOpenHelper(SearchDetailActivity.this);
-        inputString = getIntent().getExtras().getString(MyApplication.SEARCHSTRING);
+        inputString = getIntent().getExtras().getString(MyApplication.getInstance().getSEARCHSTRING());
         readPage = 1;
         initView();
         initListener();
@@ -156,7 +156,7 @@ public class SearchDetailActivity extends AppCompatActivity implements NetBroadc
 
     @Override
     public void onNetChange() {
-        if (MyApplication.mNetWorkState != NetWorkUtils.NET_TYPE_NO_NETWORK &&
+        if (MyApplication.getInstance().getmNetWorkState() != NetWorkUtils.NET_TYPE_NO_NETWORK &&
                 mListContents != null && mListContents.size() == 0 && inputString != null) {
             materialRefreshLayout.autoRefresh();
         }
@@ -236,7 +236,7 @@ public class SearchDetailActivity extends AppCompatActivity implements NetBroadc
                 materialRefreshLayout.finishRefreshLoadMore();
                 return;
             }
-            if (!MyApplication.isContainLists(mListContentAdapter, ListContents)) {
+            if (!MyApplication.getInstance().isContainLists(mListContentAdapter, ListContents)) {
                 mListContentAdapter.addData(ListContents);
                 mListContentAdapter.notifyDataSetChanged();
             }

@@ -222,14 +222,13 @@ public class LoginActivity extends Activity {
             showProgress(false);
 
             if (success) {
-                Log.i("Notzuonotdied", "tokenString = " + mAccountInfo.getToken());
                 SharedPManager sharedPManager = new SharedPManager(LoginActivity.this);
-                sharedPManager.putString(MyApplication.mToken, mAccountInfo.getToken());
-                sharedPManager.putString(MyApplication.username, mAccountInfo.getUser());
-                sharedPManager.putString(MyApplication.uid, mAccountInfo.getUid());
+                sharedPManager.putString(MyApplication.getInstance().getmToken(), mAccountInfo.getToken());
+                sharedPManager.putString(MyApplication.getInstance().getUsername(), mAccountInfo.getUser());
+                sharedPManager.putString(MyApplication.getInstance().getUid(), mAccountInfo.getUid());
                 sharedPManager.commit();
                 Toast.makeText(LoginActivity.this,"登陆成功~",Toast.LENGTH_SHORT).show();
-                MyApplication.isLogin = true;
+                MyApplication.getInstance().setLogin(true);
                 finish();
             } else {
                 mPasswordView.setError(getString(R.string.error_incorrect_password));

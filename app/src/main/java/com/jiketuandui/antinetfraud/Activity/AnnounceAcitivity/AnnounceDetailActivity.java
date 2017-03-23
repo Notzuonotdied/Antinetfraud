@@ -47,7 +47,7 @@ public class AnnounceDetailActivity extends AppCompatActivity {
     private void LoadingArticle() {
         // 根据ID获取公告的内容
         new AnnounceDetailActivity.LoadArticle().execute(
-                this.getIntent().getExtras().getString(MyApplication.ANNOUNCEID)
+                this.getIntent().getExtras().getString(MyApplication.getInstance().getANNOUNCEID())
         );
     }
 

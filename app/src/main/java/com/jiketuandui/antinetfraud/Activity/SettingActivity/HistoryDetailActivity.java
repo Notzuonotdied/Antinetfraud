@@ -103,7 +103,7 @@ public class HistoryDetailActivity extends AppCompatActivity implements NetBroad
 
     @Override
     public void onNetChange() {
-        if (MyApplication.mNetWorkState != NetWorkUtils.NET_TYPE_NO_NETWORK &&
+        if (MyApplication.getInstance().getmNetWorkState() != NetWorkUtils.NET_TYPE_NO_NETWORK &&
                 mListContents != null && mListContents.size() == 0) {
             materialRefreshLayout.autoRefresh();
         }
@@ -118,12 +118,13 @@ public class HistoryDetailActivity extends AppCompatActivity implements NetBroad
         protected List<ListContent> doInBackground(Void... voids) {
             List<HistoryArticle> mHistoryContents =
                     ((MyApplication) getApplication()).instancepostAccount().getBrowserHistory(
-                            new SharedPManager(HistoryDetailActivity.this).getString(MyApplication.uid, null));
+                            new SharedPManager(HistoryDetailActivity.this)
+                                    .getString(MyApplication.getInstance().getUid(), null));
             List<ListContent> mListContents = new ArrayList<>();
             ListContent listContent;
             if (mHistoryContents != null && mHistoryContents.size() != 0) {
                 for (HistoryArticle historyArticle : mHistoryContents) {
-                    ArticleContent articleContent = ((MyApplication)getApplication())
+                    ArticleContent articleContent = ((MyApplication) getApplication())
                             .instanceConnect()
                             .setArticleURL(Integer.valueOf(historyArticle.getArticle_id()));
                     if (articleContent != null) {
@@ -176,7 +177,7 @@ public class HistoryDetailActivity extends AppCompatActivity implements NetBroad
                 materialRefreshLayout.finishRefreshLoadMore();
                 return;
             }
-            if (!MyApplication.isContainLists(mListContentAdapter, ListContents)) {
+            if (!MyApplication.getInstance().isContainLists(mListContentAdapter, ListContents)) {
                 mListContentAdapter.addData(ListContents);
                 mListContentAdapter.notifyDataSetChanged();
             }

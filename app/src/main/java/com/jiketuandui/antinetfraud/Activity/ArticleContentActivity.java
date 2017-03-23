@@ -10,6 +10,7 @@ import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.Html;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
@@ -49,6 +50,7 @@ public class ArticleContentActivity extends AppCompatActivity implements NetBroa
     private TextView article_info;
     private TextView article_time;
     private MarkdownView article_markdownView;
+    private TextView article_textView;
     private ArticleContent mArticleContent;
     private SimpleDraweeView head_layout;
     private LinearLayout head_info;
@@ -81,7 +83,7 @@ public class ArticleContentActivity extends AppCompatActivity implements NetBroa
 
     @Override
     public void onNetChange() {
-        if (MyApplication.mNetWorkState != NetWorkUtils.NET_TYPE_NO_NETWORK &&
+        if (MyApplication.getInstance().getmNetWorkState() != NetWorkUtils.NET_TYPE_NO_NETWORK &&
                 mArticleContent == null) {
             LoadingArticle();
         }
@@ -148,6 +150,9 @@ public class ArticleContentActivity extends AppCompatActivity implements NetBroa
         article_time = (TextView) findViewById(R.id.article_time);
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
         article_markdownView = (MarkdownView) findViewById(R.id.article_markdownView);
+        // -----------------------
+        //article_textView = (TextView) findViewById(R.id.article_textView);
+        // -----------------------
         head_info = (LinearLayout) findViewById(R.id.head_info);
         //head_layout = (LinearLayout) findViewById(R.id.head_layout);
         head_layout = (SimpleDraweeView) findViewById(R.id.head_layout);
@@ -214,7 +219,7 @@ public class ArticleContentActivity extends AppCompatActivity implements NetBroa
         //mProgressBar = (ProgressBar) findViewById(R.id.article_progress);
 
         // 根据ID获取文章的内容
-        int articleId = this.getIntent().getExtras().getInt(MyApplication.CONTENTID);
+        int articleId = this.getIntent().getExtras().getInt(MyApplication.getInstance().getCONTENTID());
         new LoadArticle().execute(articleId);
     }
 
@@ -230,7 +235,7 @@ public class ArticleContentActivity extends AppCompatActivity implements NetBroa
         article_info.setText(mArticleContent.getInfo());
         article_time.setText(mArticleContent.getCreatetime());
         article_markdownView.loadMarkdown(articleContent.getContent());
-
+ //       article_textView.setText(Html.fromHtml(articleContent.getContent()));
         //       head_layout.setImageURI(mArticleContent.getAllImagelink());
         // 设置头图
         if (Build.VERSION.SDK_INT >= 16) {
@@ -361,8 +366,8 @@ public class ArticleContentActivity extends AppCompatActivity implements NetBroa
          */
         private boolean isLogin() {
             SharedPManager sharedPManager = new SharedPManager(ArticleContentActivity.this);
-            if (sharedPManager.isContains(MyApplication.uid)) {
-                mUid = sharedPManager.getString(MyApplication.uid, "0");
+            if (sharedPManager.isContains(MyApplication.getInstance().getUid())) {
+                mUid = sharedPManager.getString(MyApplication.getInstance().getUid(), "0");
                 Log.i("Notzuonotdied", "mUid = " + mUid);
                 return true;
             }
@@ -395,13 +400,13 @@ public class ArticleContentActivity extends AppCompatActivity implements NetBroa
                 isCollected = false;
                 return ((MyApplication) getApplication()).instancepostAccount().postCancleCollection(
                         "uid=" + new SharedPManager(ArticleContentActivity.this)
-                                .getString(MyApplication.uid, "0")
+                                .getString(MyApplication.getInstance().getUid(), "0")
                                 + "&&article_id=" + strings[0]);
             } else {// false
                 isCollected = true;
                 return ((MyApplication) getApplication()).instancepostAccount().postCollection(
                         "uid=" + new SharedPManager(ArticleContentActivity.this)
-                                .getString(MyApplication.uid, "0")
+                                .getString(MyApplication.getInstance().getUid(), "0")
                                 + "&&article_id=" + strings[0]);
             }
         }

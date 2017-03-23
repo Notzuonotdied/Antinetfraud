@@ -98,7 +98,7 @@ public class SearchActivity extends Activity {
             Intent intent = new Intent(SearchActivity.this,
                     SearchDetailActivity.class);
             Bundle mbundle = new Bundle();
-            mbundle.putString(MyApplication.SEARCHSTRING, text);
+            mbundle.putString(MyApplication.getInstance().getSEARCHSTRING(), text);
             intent.putExtras(mbundle);
             startActivity(intent);
         }

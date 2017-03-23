@@ -42,7 +42,6 @@ public class StartActivity extends Activity {
 
             @Override// 效果结束的时候
             public void onAnimationEnd(Animation animation) {
-
                 gotoMainActivity();
             }
 
@@ -75,11 +74,11 @@ public class StartActivity extends Activity {
         protected Boolean doInBackground(Void... params) {
             String stringToken = null;
             String stringAccount = null;
-            if (sharedPManager.isContains(MyApplication.mToken)) {
-                stringToken = sharedPManager.getString(MyApplication.mToken, null);
-                stringAccount = sharedPManager.getString(MyApplication.username, null);
+            if (sharedPManager.isContains(MyApplication.getInstance().getmToken())) {
+                stringToken = sharedPManager.getString(MyApplication.getInstance().getmToken(), null);
+                stringAccount = sharedPManager.getString(MyApplication.getInstance().getUsername(), null);
             }
-            if (TextUtils.isEmpty(stringToken) || TextUtils.isEmpty(stringAccount)) {
+            if (!TextUtils.isEmpty(stringToken) && !TextUtils.isEmpty(stringAccount)) {
                 return null;
             }
             return ((MyApplication) getApplication()).instancepostAccount().postCheckLogin(
@@ -89,11 +88,11 @@ public class StartActivity extends Activity {
 
         @Override
         protected void onPostExecute(Boolean aBoolean) {
-            super.onPostExecute(aBoolean);
-            if (aBoolean) {
-                Toast.makeText(StartActivity.this,"登陆成功~",Toast.LENGTH_SHORT).show();
-                MyApplication.isLogin = true;
+            if (aBoolean != null && aBoolean) {
+                Toast.makeText(StartActivity.this, "登陆成功~", Toast.LENGTH_SHORT).show();
+                MyApplication.getInstance().setLogin(true);
             }
+            super.onPostExecute(aBoolean);
         }
     }
 }

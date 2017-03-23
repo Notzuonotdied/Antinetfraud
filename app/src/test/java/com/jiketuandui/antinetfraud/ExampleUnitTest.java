@@ -1,7 +1,6 @@
 package com.jiketuandui.antinetfraud;
 
-import com.jiketuandui.antinetfraud.HTTP.postAccount;
-
+import com.jiketuandui.antinetfraud.HTTP.getUpdate;
 import org.junit.Test;
 
 /**
@@ -10,7 +9,6 @@ import org.junit.Test;
 public class ExampleUnitTest {
     @Test
     public void addition_isCorrect() throws Exception {
-    postAccount pc = new postAccount();
-    System.out.println(pc.postFeedback("content=1234567890pioiuytreeww"));
-}
+        System.out.println(getUpdate.getUpdateString().toString());
+    }
 }

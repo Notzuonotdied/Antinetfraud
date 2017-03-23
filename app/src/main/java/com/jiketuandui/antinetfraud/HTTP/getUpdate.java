@@ -2,7 +2,14 @@ package com.jiketuandui.antinetfraud.HTTP;
 
 import android.content.Context;
 import android.os.Environment;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.util.Log;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonSyntaxException;
+import com.google.gson.reflect.TypeToken;
+import com.jiketuandui.antinetfraud.Bean.UpdateInfo;
 import com.jiketuandui.antinetfraud.Util.getVersion;
 
 import java.io.BufferedReader;
@@ -12,6 +19,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.lang.reflect.Type;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -21,7 +29,7 @@ import java.net.URL;
  * Created by Notzuonotdied on 2017/3/7.
  */
 
-class getUpdate extends accessNetwork {
+public class getUpdate extends accessNetwork {
 
     /**
      * 常量，App更新下载链接
@@ -81,18 +89,19 @@ class getUpdate extends accessNetwork {
     }
 
     /**
-     * 与服务器交互确定是否需要更新
+     * 与服务器交互确定是否需要更新，通过提交的版本号，判断是否需要更新
      *
      * @param context Context
      */
-    static String getUpdateInfo(Context context) {
-        String path = "/?/api/update/" +
+    @NonNull
+    public static String getUpdateString(Context context) {
+        String path = "/api/update/" +
                 getVersion.getVersionCode(context);
         StringBuilder sb = new StringBuilder();
         String line;
         BufferedReader reader = null;
         try {
-            URL url = new URL(path);
+            URL url = new URL(myUrl + path);
             HttpURLConnection urlConnection = (HttpURLConnection) url
                     .openConnection();
             urlConnection.setRequestProperty("Accept-Charset", "utf-8");
@@ -118,5 +127,22 @@ class getUpdate extends accessNetwork {
             }
         }
         return sb.toString();
+    }
+
+    /**
+     * 处理getUpdateString获得的String，用Json String初始化UpdateInfo对象成员变量
+     */
+    @Nullable
+    static UpdateInfo getUpdateInfo(Context context) {
+        String json = getUpdateString(context);
+        Gson gson = new Gson();
+        Type type = new TypeToken<UpdateInfo>() {
+        }.getType();
+        try {
+            return gson.fromJson(json, type);
+        } catch (JsonSyntaxException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 }

@@ -1,6 +1,6 @@
 [
     {
-        "outputFile": "D:\\Android\\AndroidStudioProjects\\AntiNETFraud\\MaterialRefreshLayout\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values-v14\\values-v14.xml",
+        "outputFile": "/home/wangyu/Android/myApp/MaterialRefreshLayout/build/intermediates/incremental/mergeDebugAndroidTestResources/merged.dir/values-v14/values-v14.xml",
         "map": [
             {
                 "to": {
@@ -12,7 +12,7 @@
                     "endOffset": 326
                 },
                 "from": {
-                    "file": "C:\\Users\\Notzuonotdied\\.android\\build-cache\\4ee42d65170a33374636e11682efa2586c924f0d\\output\\res\\values-v14\\values-v14.xml",
+                    "file": "/home/wangyu/.android/build-cache/ad91c04ab7cbb57860ce1f00d3071cb15282a6ea/output/res/values-v14/values-v14.xml",
                     "position": {
                         "startLine": 4,
                         "startColumn": 4,
@@ -32,7 +32,7 @@
                     "endOffset": 397
                 },
                 "from": {
-                    "file": "C:\\Users\\Notzuonotdied\\.android\\build-cache\\4ee42d65170a33374636e11682efa2586c924f0d\\output\\res\\values-v14\\values-v14.xml",
+                    "file": "/home/wangyu/.android/build-cache/ad91c04ab7cbb57860ce1f00d3071cb15282a6ea/output/res/values-v14/values-v14.xml",
                     "position": {
                         "startLine": 11,
                         "startColumn": 4,
@@ -51,7 +51,7 @@
                     "endOffset": 480
                 },
                 "from": {
-                    "file": "C:\\Users\\Notzuonotdied\\.android\\build-cache\\4ee42d65170a33374636e11682efa2586c924f0d\\output\\res\\values-v14\\values-v14.xml",
+                    "file": "/home/wangyu/.android/build-cache/ad91c04ab7cbb57860ce1f00d3071cb15282a6ea/output/res/values-v14/values-v14.xml",
                     "position": {
                         "startLine": 12,
                         "startColumn": 4,
@@ -71,7 +71,7 @@
                     "endOffset": 890
                 },
                 "from": {
-                    "file": "C:\\Users\\Notzuonotdied\\.android\\build-cache\\4ee42d65170a33374636e11682efa2586c924f0d\\output\\res\\values-v14\\values-v14.xml",
+                    "file": "/home/wangyu/.android/build-cache/ad91c04ab7cbb57860ce1f00d3071cb15282a6ea/output/res/values-v14/values-v14.xml",
                     "position": {
                         "startLine": 13,
                         "startColumn": 4,
@@ -92,7 +92,7 @@
                     "endOffset": 1312
                 },
                 "from": {
-                    "file": "C:\\Users\\Notzuonotdied\\.android\\build-cache\\4ee42d65170a33374636e11682efa2586c924f0d\\output\\res\\values-v14\\values-v14.xml",
+                    "file": "/home/wangyu/.android/build-cache/ad91c04ab7cbb57860ce1f00d3071cb15282a6ea/output/res/values-v14/values-v14.xml",
                     "position": {
                         "startLine": 19,
                         "startColumn": 4,
@@ -112,7 +112,7 @@
                     "endOffset": 1432
                 },
                 "from": {
-                    "file": "C:\\Users\\Notzuonotdied\\.android\\build-cache\\4ee42d65170a33374636e11682efa2586c924f0d\\output\\res\\values-v14\\values-v14.xml",
+                    "file": "/home/wangyu/.android/build-cache/ad91c04ab7cbb57860ce1f00d3071cb15282a6ea/output/res/values-v14/values-v14.xml",
                     "position": {
                         "startLine": 27,
                         "startColumn": 4,
@@ -131,7 +131,7 @@
                     "endOffset": 1495
                 },
                 "from": {
-                    "file": "C:\\Users\\Notzuonotdied\\.android\\build-cache\\4ee42d65170a33374636e11682efa2586c924f0d\\output\\res\\values-v14\\values-v14.xml",
+                    "file": "/home/wangyu/.android/build-cache/ad91c04ab7cbb57860ce1f00d3071cb15282a6ea/output/res/values-v14/values-v14.xml",
                     "position": {
                         "startLine": 28,
                         "startColumn": 4,
@@ -151,7 +151,7 @@
                     "endOffset": 1649
                 },
                 "from": {
-                    "file": "C:\\Users\\Notzuonotdied\\.android\\build-cache\\4ee42d65170a33374636e11682efa2586c924f0d\\output\\res\\values-v14\\values-v14.xml",
+                    "file": "/home/wangyu/.android/build-cache/ad91c04ab7cbb57860ce1f00d3071cb15282a6ea/output/res/values-v14/values-v14.xml",
                     "position": {
                         "startLine": 29,
                         "startColumn": 4,
@@ -171,7 +171,7 @@
                     "endOffset": 1712
                 },
                 "from": {
-                    "file": "C:\\Users\\Notzuonotdied\\.android\\build-cache\\4ee42d65170a33374636e11682efa2586c924f0d\\output\\res\\values-v14\\values-v14.xml",
+                    "file": "/home/wangyu/.android/build-cache/ad91c04ab7cbb57860ce1f00d3071cb15282a6ea/output/res/values-v14/values-v14.xml",
                     "position": {
                         "startLine": 32,
                         "startColumn": 4,
@@ -190,7 +190,7 @@
                     "endOffset": 1844
                 },
                 "from": {
-                    "file": "C:\\Users\\Notzuonotdied\\.android\\build-cache\\4ee42d65170a33374636e11682efa2586c924f0d\\output\\res\\values-v14\\values-v14.xml",
+                    "file": "/home/wangyu/.android/build-cache/ad91c04ab7cbb57860ce1f00d3071cb15282a6ea/output/res/values-v14/values-v14.xml",
                     "position": {
                         "startLine": 33,
                         "startColumn": 4,

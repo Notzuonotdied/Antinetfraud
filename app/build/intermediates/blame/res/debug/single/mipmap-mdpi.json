@@ -1,0 +1,22 @@
+[
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/mipmap-mdpi/tel_fraud.png",
+        "source": "/home/wangyu/Android/myApp/app/src/main/res/mipmap-mdpi/tel_fraud.png"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/mipmap-mdpi/ic_launcher.png",
+        "source": "/home/wangyu/Android/myApp/app/src/main/res/mipmap-mdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/mipmap-mdpi/booklet.png",
+        "source": "/home/wangyu/Android/myApp/app/src/main/res/mipmap-mdpi/booklet.png"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/mipmap-mdpi/ic_header.png",
+        "source": "/home/wangyu/Android/myApp/app/src/main/res/mipmap-mdpi/ic_header.png"
+    },
+    {
+        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/mipmap-mdpi/net_fraud.png",
+        "source": "/home/wangyu/Android/myApp/app/src/main/res/mipmap-mdpi/net_fraud.png"
+    }
+]

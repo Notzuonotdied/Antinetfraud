@@ -6,13 +6,16 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Environment;
 import android.support.v7.app.AlertDialog;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.jiketuandui.antinetfraud.Bean.UpdateInfo;
 import com.jiketuandui.antinetfraud.R;
+import com.jiketuandui.antinetfraud.Util.transTime;
 
 import java.io.File;
 
@@ -35,15 +38,20 @@ public class getAppUpdate {
     }
 
     //显示公告
-    public void showAnnouncmentDialog(String updataInfo, boolean isVisible) {
+    private void showAnnounceDialog(String updateInfo, boolean isVisible) {
         final AlertDialog alertDialog = new AlertDialog.Builder(context).create();
-        alertDialog.show();
+        if (!alertDialog.isShowing()) {
+            alertDialog.show();
+        }
         Window window = alertDialog.getWindow();
+        if (window == null) {
+            return;
+        }
         window.setContentView(R.layout.announcement_update);
         TextView tv_title = (TextView) window.findViewById(R.id.tv_dialog_title);
         tv_title.setText("更新通知");
         TextView tv_message = (TextView) window.findViewById(R.id.tv_dialog_message);
-        tv_message.setText(updataInfo);
+        tv_message.setText(updateInfo);
         LinearLayout btn_bottom = (LinearLayout) window.findViewById(R.id.btn_bottom);
         if (!isVisible) {
             btn_bottom.setVisibility(View.GONE);
@@ -61,6 +69,7 @@ public class getAppUpdate {
             public void onClick(View view) {
                 if (Environment.getExternalStorageState().equals(
                         Environment.MEDIA_MOUNTED)) {
+                    alertDialog.cancel();
                     new getAPPTask().execute(mUrl);
                 } else {
                     Toast.makeText(context, "SD卡不可用，请插入SD卡",
@@ -73,7 +82,7 @@ public class getAppUpdate {
     /**
      * 安装App
      */
-    public void update() {
+    private void update() {
         Intent intent = new Intent(Intent.ACTION_VIEW);
         intent.setDataAndType(Uri.fromFile(new File(Environment
                         .getExternalStorageDirectory(), "Test.apk")),
@@ -81,37 +90,47 @@ public class getAppUpdate {
         context.startActivity(intent);
     }
 
-    private class NeedRefreshTask extends AsyncTask<Void, Void, String> {
+
+    private class NeedRefreshTask extends AsyncTask<Void, Void, UpdateInfo> {
+
         @Override
-        protected String doInBackground(Void... voids) {
+        protected UpdateInfo doInBackground(Void... voids) {
             return getUpdate.getUpdateInfo(context);
         }
 
         @Override
-        protected void onPostExecute(String string) {
-            if ("null".equals(string) || string == null || string.length() <= 0 ||
-                    string.isEmpty() || "".equals(string)) {
+        protected void onPostExecute(UpdateInfo updateInfo) {
+            if (updateInfo == null) {
                 if (isShow) {
-                    showAnnouncmentDialog("\u3000已经是最新版了~", false);
+                    showAnnounceDialog("\u3000当前已经是最新版了～", false);
                 }
             } else {
-                mUrl = getUpdate.UrlgetApp + string.split("/")[4].replace("\"", "");
-                showAnnouncmentDialog("\u3000有最新版可以下载~", true);
+                // 处理获取到的URL，因为URL中包含了\/，要去掉一个\才可以
+                mUrl = getUpdate.UrlgetApp + updateInfo.getUrl().split("/")[4].replace("\"", "");
+                Log.i("Notzuonotdied", mUrl);
+                showAnnounceDialog("\u3000有最新版可以下载～\n" +
+                        "\u3000更新时间：" + transTime.getTime(updateInfo.getUpdate_time())
+                        + "\n\u3000版本号：" + updateInfo.getVersion() +
+                        "\n\u3000更新内容：" + updateInfo.getUpdate_log(), true);
             }
-            super.onPostExecute(string);
+            super.onPostExecute(updateInfo);
         }
     }
 
+    /**
+     * 下载APP
+     * */
     private class getAPPTask extends AsyncTask<String, Void, Boolean> {
 
         @Override
         protected Boolean doInBackground(String... strings) {
-            return getUpdate.getAPP(strings[0]);
+            return getUpdate.getAPP(accessNetwork.myUrl + strings[0]);
         }
 
         @Override
         protected void onPostExecute(Boolean aBoolean) {
-            if (aBoolean) {
+            if (aBoolean != null && aBoolean) {
+                // 安装APP
                 update();
             }
             super.onPostExecute(aBoolean);

@@ -110,7 +110,7 @@ public class CollectionDetailActivity extends AppCompatActivity implements NetBr
 
     @Override
     public void onNetChange() {
-        if (MyApplication.mNetWorkState != NetWorkUtils.NET_TYPE_NO_NETWORK &&
+        if (MyApplication.getInstance().getmNetWorkState() != NetWorkUtils.NET_TYPE_NO_NETWORK &&
                 mListContents != null && mListContents.size() == 0) {
             materialRefreshLayout.autoRefresh();
         }
@@ -126,7 +126,7 @@ public class CollectionDetailActivity extends AppCompatActivity implements NetBr
             List<CollectionArticle> mCollectionArticle =
                     ((MyApplication) getApplication()).instancepostAccount().getCollection(
                             new SharedPManager(CollectionDetailActivity.this)
-                                    .getString(MyApplication.uid, null));
+                                    .getString(MyApplication.getInstance().getUid(), null));
             List<ListContent> mListContents = new ArrayList<>();
             ListContent listContent;
             if (mCollectionArticle != null && mCollectionArticle.size() != 0) {
@@ -186,7 +186,7 @@ public class CollectionDetailActivity extends AppCompatActivity implements NetBr
                 materialRefreshLayout.finishRefreshLoadMore();
                 return;
             }
-            if (!MyApplication.isContainLists(mListContentAdapter, ListContents)) {
+            if (!MyApplication.getInstance().isContainLists(mListContentAdapter, ListContents)) {
                 mListContentAdapter.addData(ListContents);
                 mListContentAdapter.notifyDataSetChanged();
             }
