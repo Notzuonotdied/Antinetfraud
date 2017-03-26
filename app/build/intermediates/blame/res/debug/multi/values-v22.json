@@ -1,6 +1,6 @@
 [
     {
-        "outputFile": "/home/wangyu/Android/myApp/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v22/values-v22.xml",
+        "outputFile": "/home/wangyu892449346/myCode/AntiNETFraud/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v22/values-v22.xml",
         "map": [
             {
                 "to": {
@@ -11,7 +11,7 @@
                     "endOffset": 125
                 },
                 "from": {
-                    "file": "/home/wangyu/.android/build-cache/80d7b926ca18f1fc91833c79f1e0194790a235b7/output/res/values-v22/values-v22.xml",
+                    "file": "/home/wangyu892449346/.android/build-cache/5d9e8125cb25ae09e5c0075d5c349893b177570f/output/res/values-v22/values-v22.xml",
                     "position": {
                         "startLine": 2,
                         "startColumn": 4,
@@ -30,7 +30,7 @@
                     "endOffset": 212
                 },
                 "from": {
-                    "file": "/home/wangyu/.android/build-cache/80d7b926ca18f1fc91833c79f1e0194790a235b7/output/res/values-v22/values-v22.xml",
+                    "file": "/home/wangyu892449346/.android/build-cache/5d9e8125cb25ae09e5c0075d5c349893b177570f/output/res/values-v22/values-v22.xml",
                     "position": {
                         "startLine": 3,
                         "startColumn": 4,
@@ -50,7 +50,7 @@
                     "endOffset": 548
                 },
                 "from": {
-                    "file": "/home/wangyu/.android/build-cache/80d7b926ca18f1fc91833c79f1e0194790a235b7/output/res/values-v22/values-v22.xml",
+                    "file": "/home/wangyu892449346/.android/build-cache/5d9e8125cb25ae09e5c0075d5c349893b177570f/output/res/values-v22/values-v22.xml",
                     "position": {
                         "startLine": 4,
                         "startColumn": 4,
@@ -71,7 +71,7 @@
                     "endOffset": 896
                 },
                 "from": {
-                    "file": "/home/wangyu/.android/build-cache/80d7b926ca18f1fc91833c79f1e0194790a235b7/output/res/values-v22/values-v22.xml",
+                    "file": "/home/wangyu892449346/.android/build-cache/5d9e8125cb25ae09e5c0075d5c349893b177570f/output/res/values-v22/values-v22.xml",
                     "position": {
                         "startLine": 9,
                         "startColumn": 4,

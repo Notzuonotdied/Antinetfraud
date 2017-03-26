@@ -33,11 +33,11 @@ public class MainTabHotAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        return MyApplication.getInstance().getTabBigTitle_hot().length;
+        return MyApplication.getInstance().getTabBigTitleHot().length;
     }
 
     @Override
     public CharSequence getPageTitle(int position) {
-        return MyApplication.getInstance().getTabBigTitle_hot()[position];
+        return MyApplication.getInstance().getTabBigTitleHot()[position];
     }
 }

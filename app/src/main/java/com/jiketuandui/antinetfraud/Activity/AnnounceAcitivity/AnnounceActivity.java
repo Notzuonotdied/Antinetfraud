@@ -22,8 +22,8 @@ import java.util.List;
 public class AnnounceActivity extends AppCompatActivity {
 
     private int readPage;
-    private android.widget.FrameLayout back;
-    private com.cjj.MaterialRefreshLayout materialRefreshLayout;
+    private FrameLayout back;
+    private MaterialRefreshLayout materialRefreshLayout;
     private AnnounceAdapter mListContentAdapter;
     private List<AnnounceContent> mListContents = new ArrayList<>();
     private boolean isFirstRefresh = true;
@@ -67,7 +67,7 @@ public class AnnounceActivity extends AppCompatActivity {
             public void onRefresh(MaterialRefreshLayout materialRefreshLayout) {
                 materialRefreshLayout.finishRefreshLoadMore();
                 if (NetWorkUtils.isConnectNET(AnnounceActivity.this)) {
-                    new AnnounceActivity.RefreshDataTask().execute();
+                    new RefreshDataTask().execute();
                 } else {
                     materialRefreshLayout.finishRefresh();
                 }
@@ -77,7 +77,7 @@ public class AnnounceActivity extends AppCompatActivity {
             public void onRefreshLoadMore(MaterialRefreshLayout materialRefreshLayout) {
                 materialRefreshLayout.finishRefresh();
                 if (NetWorkUtils.isConnectNET(AnnounceActivity.this)) {
-                    new AnnounceActivity.LoadMoreDataTask().execute();
+                    new LoadMoreDataTask().execute();
                 } else {
                     materialRefreshLayout.finishRefreshLoadMore();
                 }

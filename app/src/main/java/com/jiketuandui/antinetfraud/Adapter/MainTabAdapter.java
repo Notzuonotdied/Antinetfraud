@@ -25,9 +25,9 @@ public class MainTabAdapter extends FragmentPagerAdapter {
     @Override
     public Fragment getItem(int position) {
         MainTabNews mainTab_news = new MainTabNews();
-        Bundle mbundle = new Bundle();
-        mbundle.putInt(MyApplication.getInstance().getMAINPAGEPOSITON(), position);
-        mainTab_news.setArguments(mbundle);
+        Bundle mBundle = new Bundle();
+        mBundle.putInt(MyApplication.getInstance().getMAINPAGEPOSITON(), position);
+        mainTab_news.setArguments(mBundle);
         return mainTab_news;
     }
 

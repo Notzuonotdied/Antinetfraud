@@ -238,9 +238,9 @@ public class MyTabPageIndicator extends LinearLayout {
      */
     private void addTab(final int position, CharSequence title) {
         TextView tv = new TextView(getContext());
-        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
+        LayoutParams lp = new LayoutParams(
                 mScreenWidth / mTabVisibleCount,
-                LinearLayout.LayoutParams.MATCH_PARENT);
+                LayoutParams.MATCH_PARENT);
         tv.setGravity(Gravity.CENTER);
         tv.setTextColor(COLOR_TEXT_NORMAL);
         tv.setText(title);

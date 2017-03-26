@@ -32,7 +32,7 @@ import java.io.File;
 public class MainTabSetting extends Fragment {
     private LinearLayout setting_pieces_delete;
     private TextView setting_cache_size;
-    private com.facebook.drawee.view.SimpleDraweeView lcholderimage;
+    private SimpleDraweeView lcholderimage;
     private LinearLayout settingpiecesaccount;
     private TextView settingpiecescollection;
     private TextView settingpieceshistory;

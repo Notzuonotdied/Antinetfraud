@@ -19,8 +19,8 @@ import com.jiketuandui.antinetfraud.View.MySearchView;
 
 public class SearchActivity extends Activity {
 
-    private android.widget.TextView searchclear;
-    private com.jiketuandui.antinetfraud.View.MyListView searchlistView;
+    private TextView searchclear;
+    private MyListView searchlistView;
     private MySearchView my_search_view;
     private RecordSQLiteOpenHelper helper;
 

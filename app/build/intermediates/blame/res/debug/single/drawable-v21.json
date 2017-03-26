@@ -1,14 +1,14 @@
 [
     {
-        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/drawable-v21/abc_btn_colored_material.xml",
-        "source": "/home/wangyu/.android/build-cache/80d7b926ca18f1fc91833c79f1e0194790a235b7/output/res/drawable-v21/abc_btn_colored_material.xml"
+        "merged": "/home/wangyu892449346/myCode/AntiNETFraud/app/build/intermediates/res/merged/debug/drawable-v21/abc_action_bar_item_background_material.xml",
+        "source": "/home/wangyu892449346/.android/build-cache/5d9e8125cb25ae09e5c0075d5c349893b177570f/output/res/drawable-v21/abc_action_bar_item_background_material.xml"
     },
     {
-        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/drawable-v21/abc_action_bar_item_background_material.xml",
-        "source": "/home/wangyu/.android/build-cache/80d7b926ca18f1fc91833c79f1e0194790a235b7/output/res/drawable-v21/abc_action_bar_item_background_material.xml"
+        "merged": "/home/wangyu892449346/myCode/AntiNETFraud/app/build/intermediates/res/merged/debug/drawable-v21/abc_edit_text_material.xml",
+        "source": "/home/wangyu892449346/.android/build-cache/5d9e8125cb25ae09e5c0075d5c349893b177570f/output/res/drawable-v21/abc_edit_text_material.xml"
     },
     {
-        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/drawable-v21/abc_edit_text_material.xml",
-        "source": "/home/wangyu/.android/build-cache/80d7b926ca18f1fc91833c79f1e0194790a235b7/output/res/drawable-v21/abc_edit_text_material.xml"
+        "merged": "/home/wangyu892449346/myCode/AntiNETFraud/app/build/intermediates/res/merged/debug/drawable-v21/abc_btn_colored_material.xml",
+        "source": "/home/wangyu892449346/.android/build-cache/5d9e8125cb25ae09e5c0075d5c349893b177570f/output/res/drawable-v21/abc_btn_colored_material.xml"
     }
 ]

@@ -1,46 +1,43 @@
 package com.jiketuandui.antinetfraud.Activity;
 
-import android.app.Activity;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.design.widget.TabLayout;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.text.Html;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.drawee.interfaces.DraweeController;
 import com.facebook.drawee.view.SimpleDraweeView;
+import com.jiketuandui.antinetfraud.Adapter.ArticleDetailAdapter;
 import com.jiketuandui.antinetfraud.Bean.ArticleContent;
+import com.jiketuandui.antinetfraud.Fragment.ArticleDetailFragment.ArticleFragment;
+import com.jiketuandui.antinetfraud.Fragment.ArticleDetailFragment.CommentFragment;
 import com.jiketuandui.antinetfraud.HTTP.getImage;
 import com.jiketuandui.antinetfraud.R;
 import com.jiketuandui.antinetfraud.Service.NetBroadcastReceiver;
 import com.jiketuandui.antinetfraud.Util.MyApplication;
 import com.jiketuandui.antinetfraud.Util.NetWorkUtils;
 import com.jiketuandui.antinetfraud.Util.SharedPManager;
-import com.jiketuandui.antinetfraud.View.MarkdownView;
+import com.jiketuandui.antinetfraud.View.WrapContentHeightViewPager;
 import com.oguzdev.circularfloatingactionmenu.library.FloatingActionButton;
 import com.oguzdev.circularfloatingactionmenu.library.FloatingActionMenu;
 import com.oguzdev.circularfloatingactionmenu.library.SubActionButton;
 
-
 /**
  * 文章内容显示
- * <p>
  * 文章在点击之后会将浏览记录提交到服务器
  */
 public class ArticleContentActivity extends AppCompatActivity implements NetBroadcastReceiver.netEventHandler {
@@ -49,8 +46,8 @@ public class ArticleContentActivity extends AppCompatActivity implements NetBroa
     private TextView article_title;
     private TextView article_info;
     private TextView article_time;
-    private MarkdownView article_markdownView;
-    private TextView article_textView;
+    //    private MarkdownView article_markdownView;
+//    private TextView article_textView;
     private ArticleContent mArticleContent;
     private SimpleDraweeView head_layout;
     private LinearLayout head_info;
@@ -58,14 +55,11 @@ public class ArticleContentActivity extends AppCompatActivity implements NetBroa
     private boolean isLessThan;
     private AppBarLayout app_bar_layout;
     private Toolbar mToolbar;
-    private ProgressBar mProgressBar;
     private boolean isCollected;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // drawable参数设为null，表示小菊花的样式随系统默认
-        mProgressBar = createProgressBar(ArticleContentActivity.this, null);
         setContentView(R.layout.activity_article_content);
 
         isCollected = false; // false表示没有被收藏，true表示被收藏
@@ -79,6 +73,49 @@ public class ArticleContentActivity extends AppCompatActivity implements NetBroa
         initListener();
         // 初始化悬浮按钮
         initFloatButton();
+    }
+
+    private void initFragment(String articleContent) {
+        WrapContentHeightViewPager mViewPager = (WrapContentHeightViewPager) findViewById(R.id.viewpager);
+        ArticleDetailAdapter viewPagerAdapter = new ArticleDetailAdapter(getSupportFragmentManager());
+        // ————————————————————————————————————————————新建ArticleFragment
+        ArticleFragment articleFragment = new ArticleFragment();
+        Bundle bundle = new Bundle();
+        bundle.putString(MyApplication.getInstance().getARTICLECONTENT(), articleContent);
+        articleFragment.setArguments(bundle);
+        //————————————————————————————————————————————新建CommentFragment
+        CommentFragment commentFragment = new CommentFragment();
+        bundle = new Bundle();
+        bundle.putString(MyApplication.getInstance().getARTICLEID(), mArticleContent.getId());
+        commentFragment.setArguments(bundle);
+        // _________________________________________
+        viewPagerAdapter.addFragment(articleFragment);//添加Fragment
+        viewPagerAdapter.addFragment(commentFragment);
+        mViewPager.setAdapter(viewPagerAdapter);//设置适配器
+        // ViewPager切换时NestedScrollView滑动到顶部
+        mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                findViewById(R.id.nestedScrollView).scrollTo(0, 0);
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+
+        TabLayout mTabLayout = (TabLayout) findViewById(R.id.tabLayout);
+        //给TabLayout添加Tab
+        mTabLayout.addTab(mTabLayout.newTab().setText(MyApplication.getInstance().getArticleTitle()[0]));
+        mTabLayout.addTab(mTabLayout.newTab().setText(MyApplication.getInstance().getArticleTitle()[1]));
+        //给TabLayout设置关联ViewPager，如果设置了ViewPager，那么ViewPagerAdapter中的getPageTitle()方法返回的就是Tab上的标题
+        mTabLayout.setupWithViewPager(mViewPager);
     }
 
     @Override
@@ -149,12 +186,7 @@ public class ArticleContentActivity extends AppCompatActivity implements NetBroa
         article_info = (TextView) findViewById(R.id.article_info);
         article_time = (TextView) findViewById(R.id.article_time);
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
-        article_markdownView = (MarkdownView) findViewById(R.id.article_markdownView);
-        // -----------------------
-        //article_textView = (TextView) findViewById(R.id.article_textView);
-        // -----------------------
         head_info = (LinearLayout) findViewById(R.id.head_info);
-        //head_layout = (LinearLayout) findViewById(R.id.head_layout);
         head_layout = (SimpleDraweeView) findViewById(R.id.head_layout);
         // 定义收缩栏
         app_bar_layout = (AppBarLayout) findViewById(R.id.app_bar_layout);
@@ -168,7 +200,7 @@ public class ArticleContentActivity extends AppCompatActivity implements NetBroa
         // 悬浮按钮
         ImageView icon = new ImageView(this); // Create an icon
         icon.setImageResource(R.mipmap.home);
-        FloatingActionButton actionButton = new FloatingActionButton.Builder(this)
+        final FloatingActionButton actionButton = new FloatingActionButton.Builder(this)
                 .setContentView(icon)
                 .build();
         SubActionButton.Builder itemBuilder = new SubActionButton.Builder(this);
@@ -176,26 +208,43 @@ public class ArticleContentActivity extends AppCompatActivity implements NetBroa
         ImageView itemIconP = new ImageView(this);
         itemIconP.setImageResource(R.drawable.button_praise_selector);
         SubActionButton praise = itemBuilder.setContentView(itemIconP).build();
+        ImageView itemIconC = new ImageView(this);
+        itemIconC.setImageResource(R.drawable.button_collect_selector);
+        SubActionButton collect = itemBuilder.setContentView(itemIconC).build();
+
+        ImageView itemIconCM = new ImageView(this);
+        itemIconCM.setImageResource(R.drawable.button_comment_selector);
+        SubActionButton comment = itemBuilder.setContentView(itemIconCM).build();
+
+        final FloatingActionMenu actionMenu = new FloatingActionMenu.Builder(this)
+                .addSubActionView(praise, 100, 100)
+                .addSubActionView(collect, 100, 100)
+                .addSubActionView(comment, 100, 100)
+                .attachTo(actionButton)
+                .build();
         praise.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 new AsyncPraise().execute(mArticleContent.getId());
+                actionMenu.close(true);
             }
         });
-        ImageView itemIconC = new ImageView(this);
-        itemIconC.setImageResource(R.drawable.button_collect_selector);
-        SubActionButton collect = itemBuilder.setContentView(itemIconC).build();
         collect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 new AsyncCollect().execute(mArticleContent.getId());
+                actionMenu.close(true);
             }
         });
-        FloatingActionMenu actionMenu = new FloatingActionMenu.Builder(this)
-                .addSubActionView(praise, 100, 100)
-                .addSubActionView(collect, 100, 100)
-                .attachTo(actionButton)
-                .build();
+        comment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MyApplication.getInstance()
+                        .instanceGetComment()
+                        .showCommentDialog(ArticleContentActivity.this);
+                actionMenu.close(true);
+            }
+        });
     }
 
     /**
@@ -216,8 +265,6 @@ public class ArticleContentActivity extends AppCompatActivity implements NetBroa
      * 获取文章内容
      */
     private void LoadingArticle() {
-        //mProgressBar = (ProgressBar) findViewById(R.id.article_progress);
-
         // 根据ID获取文章的内容
         int articleId = this.getIntent().getExtras().getInt(MyApplication.getInstance().getCONTENTID());
         new LoadArticle().execute(articleId);
@@ -234,8 +281,8 @@ public class ArticleContentActivity extends AppCompatActivity implements NetBroa
         article_title.setText(mArticleContent.getTitle());
         article_info.setText(mArticleContent.getInfo());
         article_time.setText(mArticleContent.getCreatetime());
-        article_markdownView.loadMarkdown(articleContent.getContent());
- //       article_textView.setText(Html.fromHtml(articleContent.getContent()));
+        //       article_markdownView.loadMarkdown(articleContent.getContent());
+        //       article_textView.setText(Html.fromHtml(articleContent.getContent()));
         //       head_layout.setImageURI(mArticleContent.getAllImagelink());
         // 设置头图
         if (Build.VERSION.SDK_INT >= 16) {
@@ -291,35 +338,6 @@ public class ArticleContentActivity extends AppCompatActivity implements NetBroa
 //        super.onDestroy();
 //    }
 
-    /**
-     * 在屏幕上添加一个转动的小菊花（传说中的Loading），默认为隐藏状态
-     * 注意：务必保证此方法在setContentView()方法后调用，否则小菊花将会处于最底层，被屏幕其他View给覆盖
-     *
-     * @param activity                    需要添加菊花的Activity
-     * @param customIndeterminateDrawable 自定义的菊花图片，可以为null，此时为系统默认菊花
-     * @return {ProgressBar}    菊花对象
-     */
-    private ProgressBar createProgressBar(Activity activity, Drawable customIndeterminateDrawable) {
-        // activity根部的ViewGroup，其实是一个FrameLayout
-        FrameLayout rootContainer = (FrameLayout) activity.findViewById(android.R.id.content);
-        // 给progressbar准备一个FrameLayout的LayoutParams
-        FrameLayout.LayoutParams lp = new FrameLayout.LayoutParams(
-                ViewGroup.LayoutParams.WRAP_CONTENT,
-                ViewGroup.LayoutParams.WRAP_CONTENT);
-        // 设置对其方式为：屏幕居中对其
-        lp.gravity = Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL;
-
-        ProgressBar progressBar = new ProgressBar(activity);
-        progressBar.setVisibility(View.GONE);
-        progressBar.setLayoutParams(lp);
-        // 自定义小菊花
-        if (customIndeterminateDrawable != null) {
-            progressBar.setIndeterminateDrawable(customIndeterminateDrawable);
-        }
-        // 将菊花添加到FrameLayout中
-        rootContainer.addView(progressBar);
-        return progressBar;
-    }
 
     private class LoadArticle extends AsyncTask<Integer, Integer, ArticleContent> {
 
@@ -328,12 +346,6 @@ public class ArticleContentActivity extends AppCompatActivity implements NetBroa
         @Override
         protected void onProgressUpdate(Integer... values) {
             //mProgressBar.setProgress(values[0]);// 每次更新进度条
-        }
-
-        @Override
-        protected void onPreExecute() {
-
-            mProgressBar.setVisibility(View.VISIBLE);
         }
 
         @Override// 在子线程执行
@@ -357,8 +369,9 @@ public class ArticleContentActivity extends AppCompatActivity implements NetBroa
 
         @Override// 在主线程执行
         protected void onPostExecute(ArticleContent articleContent) {
-            mProgressBar.setVisibility(View.GONE);
             initAppBarLayout(articleContent);
+            // 初始化Fragment
+            initFragment(articleContent.getContent());
         }
 
         /**
@@ -423,4 +436,6 @@ public class ArticleContentActivity extends AppCompatActivity implements NetBroa
             super.onPostExecute(aBoolean);
         }
     }
+
+
 }

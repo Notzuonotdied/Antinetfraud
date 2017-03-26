@@ -74,8 +74,8 @@
 
         <activity android:name=".Activity.UserActivity.AccountActivity" />
         <activity android:name=".Activity.UserActivity.RegisterActivity" />
-        <activity android:name=".Activity.SettingActivity.HistoryDetailActivity"/>
-        <activity android:name=".Activity.SettingActivity.CollectionDetailActivity"/>
+        <activity android:name=".Activity.SettingActivity.HistoryDetailActivity" />
+        <activity android:name=".Activity.SettingActivity.CollectionDetailActivity" />
     </application>
 
 </manifest>

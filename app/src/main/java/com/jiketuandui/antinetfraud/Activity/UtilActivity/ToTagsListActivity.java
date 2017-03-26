@@ -30,10 +30,10 @@ public class ToTagsListActivity extends Activity {
     private boolean isNeedtoRefresh = false;
     private ListContentAdapter mListContentAdapter;
     private List<ListContent> mListContents = new ArrayList<>();
-    private android.widget.FrameLayout tagsback;
-    private android.widget.TextView tagstitle;
-    private android.support.v7.widget.RecyclerView tagsrecyclerView;
-    private com.cjj.MaterialRefreshLayout tagsrefresh;
+    private FrameLayout tagsback;
+    private TextView tagstitle;
+    private RecyclerView tagsrecyclerView;
+    private MaterialRefreshLayout tagsrefresh;
 
 
     @Override

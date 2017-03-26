@@ -1,4 +1,4 @@
-#Thu Mar 23 22:45:57 CST 2017
-base.0=/home/wangyu/Android/myApp/app/build/intermediates/transforms/dex/debug/folders/1000/1f/main
+#Sun Mar 26 18:14:30 CST 2017
+base.0=/home/wangyu892449346/myCode/AntiNETFraud/app/build/intermediates/transforms/dex/debug/folders/1000/1f/main
 renamed.0=classes.dex
-file.0=/home/wangyu/Android/myApp/app/build/intermediates/transforms/dex/debug/folders/1000/1f/main/classes.dex
+file.0=/home/wangyu892449346/myCode/AntiNETFraud/app/build/intermediates/transforms/dex/debug/folders/1000/1f/main/classes.dex

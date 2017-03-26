@@ -28,9 +28,9 @@ import java.util.List;
 public class SearchDetailActivity extends AppCompatActivity implements NetBroadcastReceiver.netEventHandler {
     private int readPage;
     private MySearchView mySearchView;
-    private android.widget.FrameLayout back;
-    private android.widget.TextView searchnull;
-    private com.cjj.MaterialRefreshLayout materialRefreshLayout;
+    private FrameLayout back;
+    private TextView searchnull;
+    private MaterialRefreshLayout materialRefreshLayout;
     private ListContentAdapter mListContentAdapter;
     private String inputString;
     private RecordSQLiteOpenHelper helper;

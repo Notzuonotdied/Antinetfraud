@@ -99,7 +99,7 @@ public class LoginActivity extends Activity {
     // 返回键
     private void inittagsback() {
         FrameLayout tagsback = (FrameLayout) findViewById(R.id.back);
-        tagsback.setOnClickListener(new View.OnClickListener() {
+        tagsback.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
                 finish();

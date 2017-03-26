@@ -15,6 +15,7 @@ import com.jiketuandui.antinetfraud.Bean.AnnounceContent;
 import com.jiketuandui.antinetfraud.Bean.CollectionArticle;
 import com.jiketuandui.antinetfraud.Bean.ListContent;
 import com.jiketuandui.antinetfraud.HTTP.getAnnouncement;
+import com.jiketuandui.antinetfraud.HTTP.getCommentInfo;
 import com.jiketuandui.antinetfraud.HTTP.getConnect;
 import com.jiketuandui.antinetfraud.HTTP.getPraise;
 import com.jiketuandui.antinetfraud.HTTP.postAccount;
@@ -60,13 +61,22 @@ public class MyApplication extends Application {
      */
     private String ANNOUNCEID;
     /**
+     * 当前文章的ID
+     */
+    private String ARTICLEID;
+    /**
+     * 当前的文章的Markdown格式内容
+     */
+    private String ARTICLECONTENT;
+    /**
      * 当前网络状态
-     * */
+     */
     private int mNetWorkState;
     private String[] TabTitle;
     private String[] TabBigTitle;
-    private String[] TabBigTitle_hot;
-    private String[] Header_TextView;
+    private String[] TabBigTitleHot;
+    private String[] HeaderTextView;
+    private String[] ArticleTitle;
     /**
      * 判断是否登录了
      */
@@ -83,6 +93,10 @@ public class MyApplication extends Application {
      * 用于判断是否被收藏了
      */
     private List<CollectionArticle> collectionArticles;
+    public MyApplication() {
+        /*初始化变量*/
+        initField();
+    }
 
     /**
      * 单例模式
@@ -96,6 +110,18 @@ public class MyApplication extends Application {
             }
         }
         return myApplication;
+    }
+
+    public String getARTICLEID() {
+        return ARTICLEID;
+    }
+
+    public String getARTICLECONTENT() {
+        return ARTICLECONTENT;
+    }
+
+    public String[] getArticleTitle() {
+        return ArticleTitle;
     }
 
     public boolean getLogin() {
@@ -162,12 +188,12 @@ public class MyApplication extends Application {
         return TabBigTitle;
     }
 
-    public String[] getTabBigTitle_hot() {
-        return TabBigTitle_hot;
+    public String[] getTabBigTitleHot() {
+        return TabBigTitleHot;
     }
 
-    public String[] getHeader_TextView() {
-        return Header_TextView;
+    public String[] getHeaderTextView() {
+        return HeaderTextView;
     }
 
     /**
@@ -198,11 +224,6 @@ public class MyApplication extends Application {
             }
         }
         return false;
-    }
-
-    public MyApplication() {
-        /*初始化变量*/
-        initField();
     }
 
     @Override
@@ -236,6 +257,8 @@ public class MyApplication extends Application {
         CATEGORY = "Category";
         CONTENTID = "ContentId";
         ANNOUNCEID = "AnnounceId";
+        ARTICLECONTENT = "ArticleContent";
+        ARTICLEID = "ArticleId";
         TabTitle = new String[]{
                 "最新", "奖励", "诱惑", "信息", "通知", "传销", "投资",
                 "短信", "通讯", "工具", "病毒", "充值", "交易", "钓鱼", "伪造", "其他"
@@ -243,12 +266,15 @@ public class MyApplication extends Application {
         TabBigTitle = new String[]{
                 "最新消息", "网络诈骗", "电信诈骗", "小小贴士"
         };
-        TabBigTitle_hot = new String[]{
+        TabBigTitleHot = new String[]{
                 "总排行榜", "电信诈骗", "网络诈骗", "小小贴士"
         };
-        Header_TextView = new String[]{
+        HeaderTextView = new String[]{
                 "网络诈骗防范科普网", "热门案例排行榜",
                 "案例搜索", "个人设置"
+        };
+        ArticleTitle = new String[]{
+                "文章详情", "评论列表"
         };
     }
 
@@ -318,6 +344,13 @@ public class MyApplication extends Application {
      */
     public getPraise instancePraise() {
         return new getPraise();
+    }
+
+    /**
+     * 评论
+     */
+    public getCommentInfo instanceGetComment() {
+        return new getCommentInfo();
     }
 
     /**

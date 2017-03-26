@@ -16,10 +16,10 @@ import com.jiketuandui.antinetfraud.Util.SharedPManager;
 
 public class AccountActivity extends AppCompatActivity {
 
-    private com.facebook.drawee.view.SimpleDraweeView accountimg;
-    private android.widget.TextView collection;
-    private android.widget.TextView history;
-    private android.widget.Button button;
+    private SimpleDraweeView accountimg;
+    private TextView collection;
+    private TextView history;
+    private Button button;
     private View.OnClickListener listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {

@@ -12,17 +12,18 @@
     <android.support.design.widget.AppBarLayout
         android:id="@+id/app_bar_layout"
         android:layout_width="match_parent"
-        android:layout_height="228dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
         android:fitsSystemWindows="true">
 
         <android.support.design.widget.CollapsingToolbarLayout
             android:id="@+id/collapsing_toolbar_layout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="228dp"
             android:alpha="255"
             android:fitsSystemWindows="true"
             android:minHeight="?attr/actionBarSize"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
+            app:layout_scrollFlags="scroll|enterAlways">
 
             <com.facebook.drawee.view.SimpleDraweeView
                 android:id="@+id/head_layout"
@@ -64,57 +65,57 @@
                 <android.support.v7.widget.CardView
                     android:id="@+id/cv_item"
                     android:layout_width="0dp"
-                    android:layout_weight="6"
                     android:layout_height="wrap_content"
+                    android:layout_weight="6"
                     android:foreground="?android:attr/selectableItemBackground"
                     app:cardCornerRadius="15dp"
                     app:cardElevation="4dp"
                     app:cardPreventCornerOverlap="true"
                     app:cardUseCompatPadding="true">
 
-                <LinearLayout
-                    android:id="@+id/head_info"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/shape"
-                    android:orientation="vertical"
-                    android:visibility="visible">
-                    <!--标题-->
-                    <TextView
-                        android:id="@+id/article_title"
+                    <LinearLayout
+                        android:id="@+id/head_info"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:ellipsize="end"
-                        android:gravity="center"
-                        android:maxLines="2"
-                        android:shadowColor="#55000000"
-                        android:shadowDx="3"
-                        android:shadowDy="3"
-                        android:shadowRadius="3"
-                        android:text="@string/welcome1"
-                        android:textColor="#d0000000"
-                        android:textSize="18sp" />
+                        android:layout_height="match_parent"
+                        android:background="@drawable/shape"
+                        android:orientation="vertical"
+                        android:visibility="visible">
+                        <!--标题-->
+                        <TextView
+                            android:id="@+id/article_title"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:ellipsize="end"
+                            android:gravity="center"
+                            android:maxLines="2"
+                            android:shadowColor="#55000000"
+                            android:shadowDx="3"
+                            android:shadowDy="3"
+                            android:shadowRadius="3"
+                            android:text="@string/welcome1"
+                            android:textColor="#d0000000"
+                            android:textSize="18sp" />
 
-                    <!--发布时间-->
-                    <TextView
-                        android:id="@+id/article_time"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:text="@string/welcome2"
-                        android:textColor="@color/color_article_info"
-                        android:textSize="13sp" />
+                        <!--发布时间-->
+                        <TextView
+                            android:id="@+id/article_time"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="@string/welcome2"
+                            android:textColor="@color/color_article_info"
+                            android:textSize="13sp" />
 
-                    <!--阅读量,点击量-->
-                    <TextView
-                        android:id="@+id/article_info"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:text="@string/welcome3"
-                        android:textColor="@color/color_article_info"
-                        android:textSize="13sp" />
-                </LinearLayout>
+                        <!--阅读量,点击量-->
+                        <TextView
+                            android:id="@+id/article_info"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="@string/welcome3"
+                            android:textColor="@color/color_article_info"
+                            android:textSize="13sp" />
+                    </LinearLayout>
 
                 </android.support.v7.widget.CardView>
 
@@ -126,12 +127,11 @@
 
             </LinearLayout>
 
-
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                app:layout_collapseMode="pin"
+                app:layout_scrollFlags="scroll|enterAlways"
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
         </android.support.design.widget.CollapsingToolbarLayout>
@@ -141,34 +141,25 @@
             android:id="@+id/tabLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:tabMode="fixed"
             app:tabIndicatorColor="@color/colorAccent"
-            app:tabMode="scrollable"
             app:tabSelectedTextColor="@color/colorAccent"
             app:tabTextColor="@android:color/black" />
 
     </android.support.design.widget.AppBarLayout>
 
     <android.support.v4.widget.NestedScrollView
+        android:id="@+id/nestedScrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/color_white"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <com.jiketuandui.antinetfraud.View.MarkdownView
-            android:id="@+id/article_markdownView"
+        <com.jiketuandui.antinetfraud.View.WrapContentHeightViewPager
+            android:id="@+id/viewpager"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:minHeight="500dp">
-
-        </com.jiketuandui.antinetfraud.View.MarkdownView>
-
-
-        <!--<TextView-->
-        <!--android:id="@+id/article_textView"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content" />-->
-
-
+            android:layout_height="wrap_content" />
     </android.support.v4.widget.NestedScrollView>
+
 
 </android.support.design.widget.CoordinatorLayout>

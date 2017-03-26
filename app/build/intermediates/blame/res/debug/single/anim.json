@@ -1,74 +1,74 @@
 [
     {
-        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/anim/abc_slide_out_bottom.xml",
-        "source": "/home/wangyu/.android/build-cache/80d7b926ca18f1fc91833c79f1e0194790a235b7/output/res/anim/abc_slide_out_bottom.xml"
+        "merged": "/home/wangyu892449346/myCode/AntiNETFraud/app/build/intermediates/res/merged/debug/anim/abc_shrink_fade_out_from_bottom.xml",
+        "source": "/home/wangyu892449346/.android/build-cache/5d9e8125cb25ae09e5c0075d5c349893b177570f/output/res/anim/abc_shrink_fade_out_from_bottom.xml"
     },
     {
-        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/anim/start_fullscreen.xml",
-        "source": "/home/wangyu/.android/build-cache/57dc41004c2831fef7033751c1f152f057ba54eb/output/res/anim/start_fullscreen.xml"
+        "merged": "/home/wangyu892449346/myCode/AntiNETFraud/app/build/intermediates/res/merged/debug/anim/abc_slide_out_top.xml",
+        "source": "/home/wangyu892449346/.android/build-cache/5d9e8125cb25ae09e5c0075d5c349893b177570f/output/res/anim/abc_slide_out_top.xml"
     },
     {
-        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/anim/design_snackbar_in.xml",
-        "source": "/home/wangyu/.android/build-cache/465833effb92175e7896678d09f700b953329111/output/res/anim/design_snackbar_in.xml"
+        "merged": "/home/wangyu892449346/myCode/AntiNETFraud/app/build/intermediates/res/merged/debug/anim/abc_popup_enter.xml",
+        "source": "/home/wangyu892449346/.android/build-cache/5d9e8125cb25ae09e5c0075d5c349893b177570f/output/res/anim/abc_popup_enter.xml"
     },
     {
-        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/anim/abc_grow_fade_in_from_bottom.xml",
-        "source": "/home/wangyu/.android/build-cache/80d7b926ca18f1fc91833c79f1e0194790a235b7/output/res/anim/abc_grow_fade_in_from_bottom.xml"
+        "merged": "/home/wangyu892449346/myCode/AntiNETFraud/app/build/intermediates/res/merged/debug/anim/abc_grow_fade_in_from_bottom.xml",
+        "source": "/home/wangyu892449346/.android/build-cache/5d9e8125cb25ae09e5c0075d5c349893b177570f/output/res/anim/abc_grow_fade_in_from_bottom.xml"
     },
     {
-        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/anim/abc_shrink_fade_out_from_bottom.xml",
-        "source": "/home/wangyu/.android/build-cache/80d7b926ca18f1fc91833c79f1e0194790a235b7/output/res/anim/abc_shrink_fade_out_from_bottom.xml"
+        "merged": "/home/wangyu892449346/myCode/AntiNETFraud/app/build/intermediates/res/merged/debug/anim/abc_slide_in_bottom.xml",
+        "source": "/home/wangyu892449346/.android/build-cache/5d9e8125cb25ae09e5c0075d5c349893b177570f/output/res/anim/abc_slide_in_bottom.xml"
     },
     {
-        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/anim/design_fab_in.xml",
-        "source": "/home/wangyu/.android/build-cache/465833effb92175e7896678d09f700b953329111/output/res/anim/design_fab_in.xml"
+        "merged": "/home/wangyu892449346/myCode/AntiNETFraud/app/build/intermediates/res/merged/debug/anim/abc_fade_out.xml",
+        "source": "/home/wangyu892449346/.android/build-cache/5d9e8125cb25ae09e5c0075d5c349893b177570f/output/res/anim/abc_fade_out.xml"
     },
     {
-        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/anim/abc_slide_out_top.xml",
-        "source": "/home/wangyu/.android/build-cache/80d7b926ca18f1fc91833c79f1e0194790a235b7/output/res/anim/abc_slide_out_top.xml"
+        "merged": "/home/wangyu892449346/myCode/AntiNETFraud/app/build/intermediates/res/merged/debug/anim/design_bottom_sheet_slide_in.xml",
+        "source": "/home/wangyu892449346/.android/build-cache/8bf54c62ba6708774a2f8e80a6d0d056a6d74652/output/res/anim/design_bottom_sheet_slide_in.xml"
     },
     {
-        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/anim/design_bottom_sheet_slide_in.xml",
-        "source": "/home/wangyu/.android/build-cache/465833effb92175e7896678d09f700b953329111/output/res/anim/design_bottom_sheet_slide_in.xml"
+        "merged": "/home/wangyu892449346/myCode/AntiNETFraud/app/build/intermediates/res/merged/debug/anim/quit_fullscreen.xml",
+        "source": "/home/wangyu892449346/.android/build-cache/0feb4b304a9163c3c16b5d19e77b176bf39343fa/output/res/anim/quit_fullscreen.xml"
     },
     {
-        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/anim/abc_slide_in_bottom.xml",
-        "source": "/home/wangyu/.android/build-cache/80d7b926ca18f1fc91833c79f1e0194790a235b7/output/res/anim/abc_slide_in_bottom.xml"
+        "merged": "/home/wangyu892449346/myCode/AntiNETFraud/app/build/intermediates/res/merged/debug/anim/design_fab_in.xml",
+        "source": "/home/wangyu892449346/.android/build-cache/8bf54c62ba6708774a2f8e80a6d0d056a6d74652/output/res/anim/design_fab_in.xml"
     },
     {
-        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/anim/abc_popup_exit.xml",
-        "source": "/home/wangyu/.android/build-cache/80d7b926ca18f1fc91833c79f1e0194790a235b7/output/res/anim/abc_popup_exit.xml"
+        "merged": "/home/wangyu892449346/myCode/AntiNETFraud/app/build/intermediates/res/merged/debug/anim/abc_slide_out_bottom.xml",
+        "source": "/home/wangyu892449346/.android/build-cache/5d9e8125cb25ae09e5c0075d5c349893b177570f/output/res/anim/abc_slide_out_bottom.xml"
     },
     {
-        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/anim/quit_fullscreen.xml",
-        "source": "/home/wangyu/.android/build-cache/57dc41004c2831fef7033751c1f152f057ba54eb/output/res/anim/quit_fullscreen.xml"
+        "merged": "/home/wangyu892449346/myCode/AntiNETFraud/app/build/intermediates/res/merged/debug/anim/abc_popup_exit.xml",
+        "source": "/home/wangyu892449346/.android/build-cache/5d9e8125cb25ae09e5c0075d5c349893b177570f/output/res/anim/abc_popup_exit.xml"
     },
     {
-        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/anim/abc_fade_out.xml",
-        "source": "/home/wangyu/.android/build-cache/80d7b926ca18f1fc91833c79f1e0194790a235b7/output/res/anim/abc_fade_out.xml"
+        "merged": "/home/wangyu892449346/myCode/AntiNETFraud/app/build/intermediates/res/merged/debug/anim/design_bottom_sheet_slide_out.xml",
+        "source": "/home/wangyu892449346/.android/build-cache/8bf54c62ba6708774a2f8e80a6d0d056a6d74652/output/res/anim/design_bottom_sheet_slide_out.xml"
     },
     {
-        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/anim/abc_fade_in.xml",
-        "source": "/home/wangyu/.android/build-cache/80d7b926ca18f1fc91833c79f1e0194790a235b7/output/res/anim/abc_fade_in.xml"
+        "merged": "/home/wangyu892449346/myCode/AntiNETFraud/app/build/intermediates/res/merged/debug/anim/abc_slide_in_top.xml",
+        "source": "/home/wangyu892449346/.android/build-cache/5d9e8125cb25ae09e5c0075d5c349893b177570f/output/res/anim/abc_slide_in_top.xml"
     },
     {
-        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/anim/abc_popup_enter.xml",
-        "source": "/home/wangyu/.android/build-cache/80d7b926ca18f1fc91833c79f1e0194790a235b7/output/res/anim/abc_popup_enter.xml"
+        "merged": "/home/wangyu892449346/myCode/AntiNETFraud/app/build/intermediates/res/merged/debug/anim/abc_fade_in.xml",
+        "source": "/home/wangyu892449346/.android/build-cache/5d9e8125cb25ae09e5c0075d5c349893b177570f/output/res/anim/abc_fade_in.xml"
     },
     {
-        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/anim/abc_slide_in_top.xml",
-        "source": "/home/wangyu/.android/build-cache/80d7b926ca18f1fc91833c79f1e0194790a235b7/output/res/anim/abc_slide_in_top.xml"
+        "merged": "/home/wangyu892449346/myCode/AntiNETFraud/app/build/intermediates/res/merged/debug/anim/design_snackbar_in.xml",
+        "source": "/home/wangyu892449346/.android/build-cache/8bf54c62ba6708774a2f8e80a6d0d056a6d74652/output/res/anim/design_snackbar_in.xml"
     },
     {
-        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/anim/design_fab_out.xml",
-        "source": "/home/wangyu/.android/build-cache/465833effb92175e7896678d09f700b953329111/output/res/anim/design_fab_out.xml"
+        "merged": "/home/wangyu892449346/myCode/AntiNETFraud/app/build/intermediates/res/merged/debug/anim/design_fab_out.xml",
+        "source": "/home/wangyu892449346/.android/build-cache/8bf54c62ba6708774a2f8e80a6d0d056a6d74652/output/res/anim/design_fab_out.xml"
     },
     {
-        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/anim/design_bottom_sheet_slide_out.xml",
-        "source": "/home/wangyu/.android/build-cache/465833effb92175e7896678d09f700b953329111/output/res/anim/design_bottom_sheet_slide_out.xml"
+        "merged": "/home/wangyu892449346/myCode/AntiNETFraud/app/build/intermediates/res/merged/debug/anim/design_snackbar_out.xml",
+        "source": "/home/wangyu892449346/.android/build-cache/8bf54c62ba6708774a2f8e80a6d0d056a6d74652/output/res/anim/design_snackbar_out.xml"
     },
     {
-        "merged": "/home/wangyu/Android/myApp/app/build/intermediates/res/merged/debug/anim/design_snackbar_out.xml",
-        "source": "/home/wangyu/.android/build-cache/465833effb92175e7896678d09f700b953329111/output/res/anim/design_snackbar_out.xml"
+        "merged": "/home/wangyu892449346/myCode/AntiNETFraud/app/build/intermediates/res/merged/debug/anim/start_fullscreen.xml",
+        "source": "/home/wangyu892449346/.android/build-cache/0feb4b304a9163c3c16b5d19e77b176bf39343fa/output/res/anim/start_fullscreen.xml"
     }
 ]

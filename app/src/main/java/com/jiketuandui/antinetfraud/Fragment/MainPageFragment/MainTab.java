@@ -125,6 +125,9 @@ public class MainTab extends Fragment implements NetBroadcastReceiver.netEventHa
         AlertDialog alertDialog = new AlertDialog.Builder(getContext()).create();
         alertDialog.show();
         Window window = alertDialog.getWindow();
+        if (window == null) {
+            return;
+        }
         window.setContentView(R.layout.announcement);
         // 网站公告
         TextView tv_title = (TextView) window.findViewById(R.id.tv_dialog_title);

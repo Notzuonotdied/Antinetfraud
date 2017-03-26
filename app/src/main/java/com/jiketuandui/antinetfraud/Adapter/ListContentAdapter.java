@@ -47,7 +47,8 @@ public class ListContentAdapter extends RecyclerView.Adapter<ListContentHolder> 
             if (NetWorkUtils.isConnectNET(context)) {
                 Intent intent = new Intent(context, ArticleContentActivity.class);
                 Bundle mBundle = new Bundle();
-                mBundle.putInt(MyApplication.getInstance().getCONTENTID(), Integer.valueOf(mListContents.get(position).getId()));
+                mBundle.putInt(MyApplication.getInstance().getCONTENTID(),
+                        Integer.valueOf(mListContents.get(position).getId()));
                 intent.putExtras(mBundle);
                 context.startActivity(intent);
             }
