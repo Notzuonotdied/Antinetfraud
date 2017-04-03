@@ -1,10 +1,16 @@
 package com.jiketuandui.antinetfraud.HTTP;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.AsyncTask;
+import android.os.Environment;
 import android.support.v7.app.AlertDialog;
 import android.text.TextUtils;
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -15,10 +21,14 @@ import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
 import com.jiketuandui.antinetfraud.Bean.CommentInfo;
 import com.jiketuandui.antinetfraud.R;
+import com.jiketuandui.antinetfraud.Util.MyApplication;
+import com.jiketuandui.antinetfraud.Util.SharedPManager;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.jiketuandui.antinetfraud.Util.NetWorkUtils.getApplication;
 
 /**
  * 评论类
@@ -49,7 +59,7 @@ public class getCommentInfo extends accessNetwork {
      * 获取文章的评论数组,username="123"&token="123"
      */
     public List<CommentInfo> getComment(String articleId) {
-        String json = get("/api/getCommentInfo/" + articleId);
+        String json = get("/api/getComment/" + articleId);
         Gson gson = new Gson();
         Type type = new TypeToken<ArrayList<CommentInfo>>() {
         }.getType();
@@ -64,12 +74,28 @@ public class getCommentInfo extends accessNetwork {
     /**
      * psot评论,username="123"&token="123"&phone_id="123"&article_id="17"&user_id="12"&content="123"
      */
-    private boolean postComment(String content) {
-        return TextUtils.equals(post("api/comment/", content), "true");
+    private boolean postComment(final Context context, String articleId, String content, String phoneID) {
+        if (context==null) {
+            Log.i("Notzuonotdied", "context is null!");
+            return false;
+        }
+        SharedPManager sp = new SharedPManager(context);
+        String userName = sp.getString(MyApplication.getInstance().getUsername(), null);
+        String userToken = sp.getString(MyApplication.getInstance().getmToken(), null);
+        String userID = sp.getString(MyApplication.getInstance().getUid(), null);
+        if (userName == null || userToken == null || userID == null) {
+            Log.i("Notzuonotdied", "全部为空～");
+            return false;
+        }
+        String commentString = "username=" + userName +"&token=" + userToken +"&phone_id="
+            + phoneID +"&article_id=" + articleId + "&user_id=" + userID + "&content="
+                + content;
+        Log.i("Notzuonotdied", commentString);
+        return TextUtils.equals(post("/api/comment/", commentString), "true");
     }
 
     //显示公告
-    public void showCommentDialog(final Context context) {
+    public void showCommentDialog(final Context context, final String articleID, final String phoneID) {
         final AlertDialog alertDialog = new AlertDialog.Builder(context).create();
         if (!alertDialog.isShowing()) {
             alertDialog.show();
@@ -79,37 +105,40 @@ public class getCommentInfo extends accessNetwork {
             return;
         }
         window.setContentView(R.layout.comment_input);
-        TextView tv_title = (TextView) window.findViewById(R.id.comment_title);
-        tv_title.setText("请输入评论～");
-        final EditText editText = (EditText) window.findViewById(R.id.comment_input);
-        TextView tv_cancel = (TextView) window.findViewById(R.id.tv_dialog_cancel);
-        tv_cancel.setOnClickListener(new View.OnClickListener() {
+        final EditText editText = (EditText) window.findViewById(R.id.comment_edit);
+        TextView cancel = (TextView) window.findViewById(R.id.comment_cancel);
+        TextView confirm = (TextView) window.findViewById(R.id.comment_confirm);
+        cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 alertDialog.dismiss();
             }
         });
-        TextView tv_confirm = (TextView) window.findViewById(R.id.tv_dialog_confirm);
-        tv_confirm.setOnClickListener(new View.OnClickListener() {
+        confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                alertDialog.cancel();
-                new AsyncComment(context).execute(editText.getText().toString());
+                new AsyncComment(context, articleID, editText.getText().toString(), phoneID).execute();
             }
         });
     }
 
-    private class AsyncComment extends AsyncTask<String, Void, Boolean> {
+    private class AsyncComment extends AsyncTask<Void, Void, Boolean> {
 
         private Context context;
+        private String articleID;
+        private String content;
+        private String phoneID;
 
-        AsyncComment(Context context) {
+        AsyncComment(Context context, String articleID, String content, String phoneID) {
             this.context = context;
+            this.articleID = articleID;
+            this.content = content;
+            this.phoneID = phoneID;
         }
 
         @Override
-        protected Boolean doInBackground(String... Strings) {
-            return postComment(Strings[0]);
+        protected Boolean doInBackground(Void... Voids) {
+            return postComment(context, articleID, content, phoneID);
         }
 
         @Override

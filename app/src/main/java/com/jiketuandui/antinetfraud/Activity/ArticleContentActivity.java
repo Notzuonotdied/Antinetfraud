@@ -56,12 +56,16 @@ public class ArticleContentActivity extends AppCompatActivity implements NetBroa
     private AppBarLayout app_bar_layout;
     private Toolbar mToolbar;
     private boolean isCollected;
+    /*这是文章ID*/
+    private int articleId ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_article_content);
-
+        // 根据ID获取文章的内容
+        articleId = this.getIntent().getExtras().getInt(MyApplication.getInstance().getCONTENTID());
+        Log.i("Notzuonotdied", "articleId = " + articleId);
         isCollected = false; // false表示没有被收藏，true表示被收藏
         // 注册
         NetBroadcastReceiver.mListeners.add(this);
@@ -216,6 +220,7 @@ public class ArticleContentActivity extends AppCompatActivity implements NetBroa
         itemIconCM.setImageResource(R.drawable.button_comment_selector);
         SubActionButton comment = itemBuilder.setContentView(itemIconCM).build();
 
+        final String phoneID = ((MyApplication)getApplication()).getMAC();
         final FloatingActionMenu actionMenu = new FloatingActionMenu.Builder(this)
                 .addSubActionView(praise, 100, 100)
                 .addSubActionView(collect, 100, 100)
@@ -241,7 +246,7 @@ public class ArticleContentActivity extends AppCompatActivity implements NetBroa
             public void onClick(View v) {
                 MyApplication.getInstance()
                         .instanceGetComment()
-                        .showCommentDialog(ArticleContentActivity.this);
+                        .showCommentDialog(ArticleContentActivity.this, String.valueOf(articleId), phoneID);
                 actionMenu.close(true);
             }
         });
@@ -265,8 +270,6 @@ public class ArticleContentActivity extends AppCompatActivity implements NetBroa
      * 获取文章内容
      */
     private void LoadingArticle() {
-        // 根据ID获取文章的内容
-        int articleId = this.getIntent().getExtras().getInt(MyApplication.getInstance().getCONTENTID());
         new LoadArticle().execute(articleId);
     }
 
@@ -381,7 +384,7 @@ public class ArticleContentActivity extends AppCompatActivity implements NetBroa
             SharedPManager sharedPManager = new SharedPManager(ArticleContentActivity.this);
             if (sharedPManager.isContains(MyApplication.getInstance().getUid())) {
                 mUid = sharedPManager.getString(MyApplication.getInstance().getUid(), "0");
-                Log.i("Notzuonotdied", "mUid = " + mUid);
+                //Log.i("Notzuonotdied", "mUid = " + mUid);
                 return true;
             }
             return false;
@@ -436,6 +439,4 @@ public class ArticleContentActivity extends AppCompatActivity implements NetBroa
             super.onPostExecute(aBoolean);
         }
     }
-
-
 }

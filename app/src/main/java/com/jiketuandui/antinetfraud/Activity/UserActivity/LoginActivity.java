@@ -220,7 +220,6 @@ public class LoginActivity extends Activity {
         protected void onPostExecute(final Boolean success) {
             mAuthTask = null;
             showProgress(false);
-
             if (success) {
                 SharedPManager sharedPManager = new SharedPManager(LoginActivity.this);
                 sharedPManager.putString(MyApplication.getInstance().getmToken(), mAccountInfo.getToken());

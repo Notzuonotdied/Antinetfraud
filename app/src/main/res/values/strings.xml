@@ -152,5 +152,6 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_base">BaseActivity</string>
     <string name="title_activity_register">注册界面</string>
+    <string name="input_your_comment">请输入您的评论～</string>
 
 </resources>

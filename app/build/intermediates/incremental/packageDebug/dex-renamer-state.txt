@@ -1,4 +1,7 @@
-#Sun Mar 26 18:14:30 CST 2017
-base.0=/home/wangyu892449346/myCode/AntiNETFraud/app/build/intermediates/transforms/dex/debug/folders/1000/1f/main
-renamed.0=classes.dex
-file.0=/home/wangyu892449346/myCode/AntiNETFraud/app/build/intermediates/transforms/dex/debug/folders/1000/1f/main/classes.dex
+#Mon Apr 03 19:20:18 CST 2017
+base.0=/home/wangyu892449346/myCode/AntiNETFraud/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_b4f380fbe75eaba097abdcb6d0e05bcf1570e120
+renamed.1=classes.dex
+renamed.0=classes2.dex
+file.1=/home/wangyu892449346/myCode/AntiNETFraud/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_c75c52301af10add112ec18e9a01b9b03c07d59d/classes.dex
+base.1=/home/wangyu892449346/myCode/AntiNETFraud/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_c75c52301af10add112ec18e9a01b9b03c07d59d
+file.0=/home/wangyu892449346/myCode/AntiNETFraud/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_b4f380fbe75eaba097abdcb6d0e05bcf1570e120/classes.dex

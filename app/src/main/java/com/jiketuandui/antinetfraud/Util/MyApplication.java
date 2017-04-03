@@ -10,9 +10,11 @@ import android.view.WindowManager;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.jiketuandui.antinetfraud.Adapter.AnnounceAdapter;
+import com.jiketuandui.antinetfraud.Adapter.CommentAdapter;
 import com.jiketuandui.antinetfraud.Adapter.ListContentAdapter;
 import com.jiketuandui.antinetfraud.Bean.AnnounceContent;
 import com.jiketuandui.antinetfraud.Bean.CollectionArticle;
+import com.jiketuandui.antinetfraud.Bean.CommentInfo;
 import com.jiketuandui.antinetfraud.Bean.ListContent;
 import com.jiketuandui.antinetfraud.HTTP.getAnnouncement;
 import com.jiketuandui.antinetfraud.HTTP.getCommentInfo;
@@ -28,9 +30,7 @@ import java.util.List;
  * 全局变量类
  */
 public class MyApplication extends Application {
-    /**
-     * 单例模式
-     */
+
     private static MyApplication myApplication;
     /**
      * 用户注册时候返回的Token
@@ -93,6 +93,7 @@ public class MyApplication extends Application {
      * 用于判断是否被收藏了
      */
     private List<CollectionArticle> collectionArticles;
+
     public MyApplication() {
         /*初始化变量*/
         initField();
@@ -226,6 +227,21 @@ public class MyApplication extends Application {
         return false;
     }
 
+    /**
+     * 判断是否重复
+     */
+    public boolean isContainComment(CommentAdapter mListContentAdapter,
+                                  List<CommentInfo> ListContents) {
+        for (CommentInfo ml : ListContents) {
+            for (int i = 0; i < mListContentAdapter.getData().size(); i++) {
+                if (mListContentAdapter.getData().get(i).getId().equals(ml.getId())) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
     @Override
     public void onCreate() {
         /*初始化Fresco类*/
@@ -238,8 +254,6 @@ public class MyApplication extends Application {
         initTagsList();
         /*初始化缓存数据*/
         initCache();
-        /*初始化登陆状态*/
-        initLoginState();
         super.onCreate();
     }
 
@@ -278,7 +292,7 @@ public class MyApplication extends Application {
         };
     }
 
-    private void initLoginState() {
+    public void initLoginState() {
         SharedPManager sp = new SharedPManager(MyApplication.this);
         isLogin = sp.getString(mToken, null) != null;
     }

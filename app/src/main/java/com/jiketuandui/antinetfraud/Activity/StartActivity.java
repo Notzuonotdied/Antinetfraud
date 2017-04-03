@@ -59,6 +59,7 @@ public class StartActivity extends Activity {
      */
     private void gotoMainActivity() {
         new UserLoginTask().execute();
+        ((MyApplication)getApplication()).initLoginState();
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
         this.finish();
@@ -78,10 +79,8 @@ public class StartActivity extends Activity {
                 stringToken = sharedPManager.getString(MyApplication.getInstance().getmToken(), null);
                 stringAccount = sharedPManager.getString(MyApplication.getInstance().getUsername(), null);
             }
-            if (!TextUtils.isEmpty(stringToken) && !TextUtils.isEmpty(stringAccount)) {
-                return null;
-            }
-            return ((MyApplication) getApplication()).instancepostAccount().postCheckLogin(
+            return !TextUtils.isEmpty(stringToken) && !TextUtils.isEmpty(stringAccount) &&
+                    ((MyApplication) getApplication()).instancepostAccount().postCheckLogin(
                     "token=" + stringToken + "&&username=" + stringAccount +
                             "&&phone_id=" + ((MyApplication) getApplication()).getMAC());
         }

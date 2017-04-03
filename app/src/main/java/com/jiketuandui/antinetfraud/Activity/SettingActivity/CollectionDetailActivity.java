@@ -136,8 +136,8 @@ public class CollectionDetailActivity extends AppCompatActivity implements NetBr
                             .setArticleURL(Integer.valueOf(collectionArticle.getArticle_id()));
                     if (articleContent != null) {
                         listContent = new ListContent();
-                        Log.i("Notzuonotdied", "articleContent title = " +
-                                articleContent.getTitle());
+//                        Log.i("Notzuonotdied", "articleContent title = " +
+//                                articleContent.getTitle());
                         listContent.setContent(articleContent.getContent());
                         listContent.setCreatetime(articleContent.getCreatetime());
                         listContent.setId(articleContent.getId());

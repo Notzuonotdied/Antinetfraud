@@ -1,0 +1,4 @@
+#Mon Apr 03 19:39:16 CST 2017
+base.0=/home/wangyu892449346/myCode/AntiNETFraud/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_3
+renamed.0=classes.dex
+file.0=/home/wangyu892449346/myCode/AntiNETFraud/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_3/classes.dex

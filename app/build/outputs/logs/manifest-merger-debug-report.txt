@@ -52,19 +52,19 @@ ADDED from /home/wangyu892449346/myCode/AntiNETFraud/app/src/main/AndroidManifes
 		ADDED from /home/wangyu892449346/myCode/AntiNETFraud/app/src/main/AndroidManifest.xml:16:22-69
 application
 ADDED from /home/wangyu892449346/myCode/AntiNETFraud/app/src/main/AndroidManifest.xml:18:5-79:19
-MERGED from [com.android.support:design:24.1.1] /home/wangyu892449346/.android/build-cache/8bf54c62ba6708774a2f8e80a6d0d056a6d74652/output/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design:24.1.1] /home/wangyu892449346/.android/build-cache/4bb4fc8129496ac95469c217004f5a082f0ad512/output/AndroidManifest.xml:22:5-20
 MERGED from [fm.jiecao:jiecaovideoplayer:4.8.2] /home/wangyu892449346/.android/build-cache/0feb4b304a9163c3c16b5d19e77b176bf39343fa/output/AndroidManifest.xml:15:5-17:38
-MERGED from [com.android.support:appcompat-v7:24.1.1] /home/wangyu892449346/.android/build-cache/5d9e8125cb25ae09e5c0075d5c349893b177570f/output/AndroidManifest.xml:25:5-20
-MERGED from [com.android.support:animated-vector-drawable:24.1.1] /home/wangyu892449346/.android/build-cache/414d06234794819ab75c2d8de5d1fa57b025992d/output/AndroidManifest.xml:22:5-20
-MERGED from [com.android.support:support-vector-drawable:24.1.1] /home/wangyu892449346/.android/build-cache/1743be128b657d4f76c53b7f99ecce06e626e933/output/AndroidManifest.xml:23:5-20
-MERGED from [com.android.support:support-v4:24.2.1] /home/wangyu892449346/.android/build-cache/486176789acb59b0a3b0bfb6dbb030e300c3e076/output/AndroidManifest.xml:25:5-20
-MERGED from [com.android.support:support-fragment:24.2.1] /home/wangyu892449346/.android/build-cache/322e19ee5a5d1ca110539961902211fc3eaa8684/output/AndroidManifest.xml:25:5-20
-MERGED from [com.android.support:support-media-compat:24.2.1] /home/wangyu892449346/.android/build-cache/59f2e73ed94cbf659ce77832d00eab94ecba799c/output/AndroidManifest.xml:25:5-20
-MERGED from [com.android.support:support-core-ui:24.2.1] /home/wangyu892449346/.android/build-cache/368eaa9201a7dfd97bfdb3abdf209d7bd162f7a2/output/AndroidManifest.xml:25:5-20
-MERGED from [com.android.support:support-core-utils:24.2.1] /home/wangyu892449346/.android/build-cache/be725a5bfc25af616035edb1d80f65e8f40a22ac/output/AndroidManifest.xml:25:5-20
-MERGED from [com.android.support:support-compat:24.2.1] /home/wangyu892449346/.android/build-cache/dc1cd5ce6039ce7509e6b98682de868078814af8/output/AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:appcompat-v7:24.1.1] /home/wangyu892449346/.android/build-cache/dbb488c563586b7ad282ea8370db0a954e28022a/output/AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:animated-vector-drawable:24.1.1] /home/wangyu892449346/.android/build-cache/7e13d5486b5f49f24064df22fac74647107b551e/output/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-vector-drawable:24.1.1] /home/wangyu892449346/.android/build-cache/fb9db044febce41995478ccce79a0cd1368bdae9/output/AndroidManifest.xml:23:5-20
+MERGED from [com.android.support:support-v4:24.2.1] /home/wangyu892449346/.android/build-cache/b358362db8a771a8d49571bbde716a50a0d7acfa/output/AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-fragment:24.2.1] /home/wangyu892449346/.android/build-cache/b885e047d743e69257298c68217b38ad02d9045b/output/AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-media-compat:24.2.1] /home/wangyu892449346/.android/build-cache/fbafd88e151ea6a252b887d55147c4cd87f86128/output/AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-core-ui:24.2.1] /home/wangyu892449346/.android/build-cache/4a505fb451b46c93b21cb10ac87beea1e85a9eef/output/AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-core-utils:24.2.1] /home/wangyu892449346/.android/build-cache/0b6b79cd6ed350cde105dce460946cf4fc0f6f52/output/AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-compat:24.2.1] /home/wangyu892449346/.android/build-cache/11c0e2822bcdd3ec6287a746066ea2103835c5d9/output/AndroidManifest.xml:25:5-20
 MERGED from [com.android.support.constraint:constraint-layout:1.0.0-beta4] /home/wangyu892449346/.android/build-cache/5c5d93386b114b165ed2142fdef6d89b1fedf0d6/output/AndroidManifest.xml:9:5-20
-MERGED from [com.android.support:cardview-v7:24.2.1] /home/wangyu892449346/.android/build-cache/d87a93040fee4e6dc8d3060c8fb97ca86c310332/output/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:cardview-v7:24.2.1] /home/wangyu892449346/.android/build-cache/fb62fbeee67212f85e46d3db1db37b69a01736b1/output/AndroidManifest.xml:22:5-20
 	android:label
 		ADDED from /home/wangyu892449346/myCode/AntiNETFraud/app/src/main/AndroidManifest.xml:22:9-41
 	android:supportsRtl
@@ -201,26 +201,26 @@ MERGED from [com.facebook.fresco:drawee:0.12.0] /home/wangyu892449346/.android/b
 MERGED from [com.facebook.fresco:imagepipeline:0.12.0] /home/wangyu892449346/.android/build-cache/78d0bed61a3a5f580f17a5d7003ef12d00aab92d/output/AndroidManifest.xml:5:5-7:41
 MERGED from [com.facebook.fresco:imagepipeline-base:0.12.0] /home/wangyu892449346/.android/build-cache/d77a19fad994c6e714708c28b3f3784fae1827dc/output/AndroidManifest.xml:5:5-7:41
 MERGED from [com.facebook.fresco:fbcore:0.12.0] /home/wangyu892449346/.android/build-cache/80fba0b064ff13d6892b043bdd2dfc3cf1077d12/output/AndroidManifest.xml:5:5-7:41
-MERGED from [com.android.support:design:24.1.1] /home/wangyu892449346/.android/build-cache/8bf54c62ba6708774a2f8e80a6d0d056a6d74652/output/AndroidManifest.xml:20:5-43
-MERGED from [com.android.support:recyclerview-v7:24.1.1] /home/wangyu892449346/.android/build-cache/aff8ed5858c06dffbb8f794beedecb09bf498f5e/output/AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:design:24.1.1] /home/wangyu892449346/.android/build-cache/4bb4fc8129496ac95469c217004f5a082f0ad512/output/AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:recyclerview-v7:24.1.1] /home/wangyu892449346/.android/build-cache/9662bd71ab3ad797ea772014f221abdbb2b2655f/output/AndroidManifest.xml:20:5-43
 MERGED from [fm.jiecao:jiecaovideoplayer:4.8.2] /home/wangyu892449346/.android/build-cache/0feb4b304a9163c3c16b5d19e77b176bf39343fa/output/AndroidManifest.xml:8:5-11:104
-MERGED from [com.android.support:appcompat-v7:24.1.1] /home/wangyu892449346/.android/build-cache/5d9e8125cb25ae09e5c0075d5c349893b177570f/output/AndroidManifest.xml:21:5-23:78
-MERGED from [com.android.support:animated-vector-drawable:24.1.1] /home/wangyu892449346/.android/build-cache/414d06234794819ab75c2d8de5d1fa57b025992d/output/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-vector-drawable:24.1.1] /home/wangyu892449346/.android/build-cache/1743be128b657d4f76c53b7f99ecce06e626e933/output/AndroidManifest.xml:21:5-43
+MERGED from [com.android.support:appcompat-v7:24.1.1] /home/wangyu892449346/.android/build-cache/dbb488c563586b7ad282ea8370db0a954e28022a/output/AndroidManifest.xml:21:5-23:78
+MERGED from [com.android.support:animated-vector-drawable:24.1.1] /home/wangyu892449346/.android/build-cache/7e13d5486b5f49f24064df22fac74647107b551e/output/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:24.1.1] /home/wangyu892449346/.android/build-cache/fb9db044febce41995478ccce79a0cd1368bdae9/output/AndroidManifest.xml:21:5-43
 MERGED from [tv.danmaku.ijk.media:ijkplayer-java:0.6.0] /home/wangyu892449346/.android/build-cache/0665a5ca7bbfcf4daca62b0f883fa580ace53586/output/AndroidManifest.xml:5:5-7:41
 MERGED from [tv.danmaku.ijk.media:ijkplayer-armv7a:0.6.0] /home/wangyu892449346/.android/build-cache/b7d5e6d31e43b30d05f4fe89b647de3321d4eb8c/output/AndroidManifest.xml:5:5-7:41
 MERGED from [tv.danmaku.ijk.media:ijkplayer-arm64:0.6.0] /home/wangyu892449346/.android/build-cache/03d0c2c3d5212d323d7856c0e9335a375f6cbf68/output/AndroidManifest.xml:5:5-7:41
 MERGED from [tv.danmaku.ijk.media:ijkplayer-x86:0.6.0] /home/wangyu892449346/.android/build-cache/6d89a9653be601e2c76a0b0fb9109b16dcb31aea/output/AndroidManifest.xml:5:5-7:41
 MERGED from [tv.danmaku.ijk.media:ijkplayer-x86_64:0.6.0] /home/wangyu892449346/.android/build-cache/afb59e0a4818fdafad10ed6fec73ae285d6c9462/output/AndroidManifest.xml:5:5-7:41
-MERGED from [com.android.support:support-v4:24.2.1] /home/wangyu892449346/.android/build-cache/486176789acb59b0a3b0bfb6dbb030e300c3e076/output/AndroidManifest.xml:21:5-23:54
-MERGED from [com.android.support:support-fragment:24.2.1] /home/wangyu892449346/.android/build-cache/322e19ee5a5d1ca110539961902211fc3eaa8684/output/AndroidManifest.xml:21:5-23:60
-MERGED from [com.android.support:support-media-compat:24.2.1] /home/wangyu892449346/.android/build-cache/59f2e73ed94cbf659ce77832d00eab94ecba799c/output/AndroidManifest.xml:21:5-23:63
-MERGED from [com.android.support:support-core-ui:24.2.1] /home/wangyu892449346/.android/build-cache/368eaa9201a7dfd97bfdb3abdf209d7bd162f7a2/output/AndroidManifest.xml:21:5-23:58
-MERGED from [com.android.support:support-core-utils:24.2.1] /home/wangyu892449346/.android/build-cache/be725a5bfc25af616035edb1d80f65e8f40a22ac/output/AndroidManifest.xml:21:5-23:61
-MERGED from [com.android.support:support-compat:24.2.1] /home/wangyu892449346/.android/build-cache/dc1cd5ce6039ce7509e6b98682de868078814af8/output/AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-v4:24.2.1] /home/wangyu892449346/.android/build-cache/b358362db8a771a8d49571bbde716a50a0d7acfa/output/AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:support-fragment:24.2.1] /home/wangyu892449346/.android/build-cache/b885e047d743e69257298c68217b38ad02d9045b/output/AndroidManifest.xml:21:5-23:60
+MERGED from [com.android.support:support-media-compat:24.2.1] /home/wangyu892449346/.android/build-cache/fbafd88e151ea6a252b887d55147c4cd87f86128/output/AndroidManifest.xml:21:5-23:63
+MERGED from [com.android.support:support-core-ui:24.2.1] /home/wangyu892449346/.android/build-cache/4a505fb451b46c93b21cb10ac87beea1e85a9eef/output/AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-core-utils:24.2.1] /home/wangyu892449346/.android/build-cache/0b6b79cd6ed350cde105dce460946cf4fc0f6f52/output/AndroidManifest.xml:21:5-23:61
+MERGED from [com.android.support:support-compat:24.2.1] /home/wangyu892449346/.android/build-cache/11c0e2822bcdd3ec6287a746066ea2103835c5d9/output/AndroidManifest.xml:21:5-23:58
 MERGED from [com.oguzdev:CircularFloatingActionMenu:1.0.2] /home/wangyu892449346/.android/build-cache/3f8fa29eb724aee4a746bbf30faf86b599e02374/output/AndroidManifest.xml:7:5-9:41
 MERGED from [com.android.support.constraint:constraint-layout:1.0.0-beta4] /home/wangyu892449346/.android/build-cache/5c5d93386b114b165ed2142fdef6d89b1fedf0d6/output/AndroidManifest.xml:5:5-7:41
-MERGED from [com.android.support:cardview-v7:24.2.1] /home/wangyu892449346/.android/build-cache/d87a93040fee4e6dc8d3060c8fb97ca86c310332/output/AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:cardview-v7:24.2.1] /home/wangyu892449346/.android/build-cache/fb62fbeee67212f85e46d3db1db37b69a01736b1/output/AndroidManifest.xml:20:5-43
 	tools:overrideLibrary
 		ADDED from [fm.jiecao:jiecaovideoplayer:4.8.2] /home/wangyu892449346/.android/build-cache/0feb4b304a9163c3c16b5d19e77b176bf39343fa/output/AndroidManifest.xml:11:9-101
 	android:targetSdkVersion

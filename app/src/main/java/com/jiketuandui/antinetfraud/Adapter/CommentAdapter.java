@@ -6,7 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.jiketuandui.antinetfraud.Bean.CommentInfo;
-import com.jiketuandui.antinetfraud.Bean.ListContent;
 import com.jiketuandui.antinetfraud.Holder.CommentHolder;
 import com.jiketuandui.antinetfraud.R;
 
@@ -23,7 +22,6 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentHolder> {
 
     @Override
     public CommentHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-
         View rootView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.comment_item, parent, false);
 

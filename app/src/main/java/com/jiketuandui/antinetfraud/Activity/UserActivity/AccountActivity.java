@@ -45,7 +45,6 @@ public class AccountActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account);
 
-
         initView();
         initListener();
         initButton();
@@ -83,6 +82,7 @@ public class AccountActivity extends AppCompatActivity {
         } else {
             button.setText(getString(R.string.start_login));
             startActivity(new Intent(AccountActivity.this, LoginActivity.class));
+            button.setText(getString(R.string.exit));
         }
     }
 

@@ -68,7 +68,7 @@ public class MainTabSetting extends Fragment {
                     update.startUpdate();
                     break;
                 case R.id.setting_pieces_account: // 账号信息
-                    Log.i("Notzuonotdied", "account");
+                    // Log.i("Notzuonotdied", "account");
                     startActivity(new Intent(getActivity(), AccountActivity.class));
                     break;
                 case R.id.setting_pieces_history:
