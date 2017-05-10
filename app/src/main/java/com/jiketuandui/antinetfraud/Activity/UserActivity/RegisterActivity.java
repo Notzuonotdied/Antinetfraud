@@ -103,21 +103,17 @@ public class RegisterActivity extends Activity {
         if (mAuthTask != null) {
             return;
         }
-
         // Reset errors.
         mAccountView.setError(null);
         mPasswordView.setError(null);
         mConfirm.setError(null);
 
-        // Store values at the time of the login attempt.
         String account = mAccountView.getText().toString();
         String password = mPasswordView.getText().toString();
         String confirm = mConfirm.getText().toString();
 
         boolean cancel = false;
         View focusView = null;
-
-        // Check for a valid password, if the user entered one.
         if (TextUtils.isEmpty(password)) {
             // 密码不能为空
             mPasswordView.setError(getString(R.string.error_password_required));
@@ -129,8 +125,6 @@ public class RegisterActivity extends Activity {
             focusView = mPasswordView;
             cancel = true;
         }
-
-        // Check for a valid ConfirmPassword.
         if (TextUtils.isEmpty(confirm)) {
             // 密码不能为空
             mConfirm.setError(getString(R.string.error_password_required));
@@ -226,8 +220,7 @@ public class RegisterActivity extends Activity {
             try {
                 isValid = ((MyApplication) getApplication()).instancepostAccount().postRegister(
                         "username=" + mAccount + "&&password=" + mPassword);
-                Thread.sleep(666);
-            } catch (InterruptedException e) {
+            } catch (Exception e) {
                 return false;
             }
             return TextUtils.equals(isValid, "true");

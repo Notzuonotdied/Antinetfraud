@@ -151,10 +151,9 @@ public class MainTabNews extends Fragment implements NetBroadcastReceiver.netEve
      * 刷新数据
      */
     private class RefreshDataTask extends AsyncTask<Integer, Void, List<ListContent>> {
-
         @Override
         protected List<ListContent> doInBackground(Integer... params) {
-            readPage = 1;
+            readPage = 1;// 发送当前页面特定的类型ID，获取数据
             return ((MyApplication) getActivity().getApplication())
                     .instanceConnect().setContentURLByTagId(getConnect.UrlContentHead,
                             String.valueOf(readPage), String.valueOf(params[0]));
@@ -163,7 +162,7 @@ public class MainTabNews extends Fragment implements NetBroadcastReceiver.netEve
         @Override
         protected void onPostExecute(List<ListContent> ListContents) {
             super.onPostExecute(ListContents);
-            if (ListContents != null) {
+            if (ListContents != null) {// 填充容器并刷新页面的列表项数据
                 isNeedtoRefresh = true;
                 mListContentAdapter.setData(ListContents);
                 mListContentAdapter.notifyDataSetChanged();

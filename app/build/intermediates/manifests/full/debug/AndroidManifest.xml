@@ -78,7 +78,6 @@
             android:name="com.jiketuandui.antinetfraud.Service.NetworkStateService"
             android:enabled="true" />
 
-        <activity android:name="com.jiketuandui.antinetfraud.Activity.UserActivity.AccountActivity" />
         <activity android:name="com.jiketuandui.antinetfraud.Activity.UserActivity.RegisterActivity" />
         <activity android:name="com.jiketuandui.antinetfraud.Activity.SettingActivity.HistoryDetailActivity" />
         <activity android:name="com.jiketuandui.antinetfraud.Activity.SettingActivity.CollectionDetailActivity" />

@@ -8,12 +8,12 @@
         "source": "/home/wangyu892449346/.android/build-cache/3f8fa29eb724aee4a746bbf30faf86b599e02374/output/res/drawable/button_action_selector.xml"
     },
     {
-        "merged": "/home/wangyu892449346/myCode/AntiNETFraud/app/build/intermediates/res/merged/debug/drawable/button_sub_action_selector.xml",
-        "source": "/home/wangyu892449346/.android/build-cache/3f8fa29eb724aee4a746bbf30faf86b599e02374/output/res/drawable/button_sub_action_selector.xml"
-    },
-    {
         "merged": "/home/wangyu892449346/myCode/AntiNETFraud/app/build/intermediates/res/merged/debug/drawable/jc_seek_thumb.xml",
         "source": "/home/wangyu892449346/.android/build-cache/0feb4b304a9163c3c16b5d19e77b176bf39343fa/output/res/drawable/jc_seek_thumb.xml"
+    },
+    {
+        "merged": "/home/wangyu892449346/myCode/AntiNETFraud/app/build/intermediates/res/merged/debug/drawable/button_sub_action_selector.xml",
+        "source": "/home/wangyu892449346/.android/build-cache/3f8fa29eb724aee4a746bbf30faf86b599e02374/output/res/drawable/button_sub_action_selector.xml"
     },
     {
         "merged": "/home/wangyu892449346/myCode/AntiNETFraud/app/build/intermediates/res/merged/debug/drawable/content_search_selector.xml",

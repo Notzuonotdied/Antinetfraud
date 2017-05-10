@@ -103,13 +103,16 @@ public class ToTagsListActivity extends Activity {
         @Override
         protected List<ListContent> doInBackground(Void... voids) {
             readPage = 1;
+            //　根据文章类型判断应该获取哪些数据
             switch (category) {
                 case 1:
-                    mListContents = ((MyApplication) getApplication()).instanceConnect().setContentURLByTagId(getConnect.UrlContentHead,
+                    mListContents = ((MyApplication) getApplication()).
+                            instanceConnect().setContentURLByTagId(getConnect.UrlContentHead,
                             String.valueOf(readPage), String.valueOf(tagId));
                     break;
                 case 2:
-                    mListContents = ((MyApplication) getApplication()).instanceConnect().setContentURLByTagId(getConnect.UrlContentHot,
+                    mListContents = ((MyApplication) getApplication()).
+                            instanceConnect().setContentURLByTagId(getConnect.UrlContentHot,
                             String.valueOf(readPage), String.valueOf(tagId));
                     break;
             }

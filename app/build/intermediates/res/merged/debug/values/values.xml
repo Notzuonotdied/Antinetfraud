@@ -604,6 +604,7 @@
     <dimen name="setting_padding">16dp</dimen>
     <dimen name="sub_action_button_content_margin">6dp</dimen>
     <dimen name="sub_action_button_size">36dp</dimen>
+    <dimen name="text_padding">8dp</dimen>
     <item name="ic_menu_camera" type="drawable">@android:drawable/ic_menu_camera</item>
     <item name="ic_menu_gallery" type="drawable">@android:drawable/ic_menu_gallery</item>
     <item name="ic_menu_manage" type="drawable">@android:drawable/ic_menu_manage</item>
@@ -731,6 +732,7 @@
     <string name="ijkplayer_dummy"/>
     <string name="input_your_comment">请输入您的评论～</string>
     <string name="loadingText">欢迎使用网络诈骗防范\n科普网APP\n希望能帮到您！</string>
+    <string name="logged">已登录</string>
     <string name="login">欢迎登陆</string>
     <string name="main_classical">典例</string>
     <string name="main_hot">热点</string>
@@ -741,6 +743,7 @@
     <string name="nick_name">简称：</string>
     <string name="nick_name_hint">怎么称呼您？</string>
     <string name="no_url">No mUrl</string>
+    <string name="not_logged_in">未登录</string>
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
@@ -779,6 +782,7 @@
     <string name="start_login">登陆</string>
     <string name="status_bar_notification_info_overflow">999+</string>
     <string name="submit">提交</string>
+    <string name="success">登陆成功~</string>
     <string name="tips_not_wifi">You are currently using the mobile network, the player will continue to consume traffic</string>
     <string name="tips_not_wifi_cancel">Stop play</string>
     <string name="tips_not_wifi_confirm">Resume</string>
@@ -790,6 +794,7 @@
     <string name="type">类型：</string>
     <string name="type_hint">请选择类型</string>
     <string name="version_unknown">版本错误</string>
+    <string name="welcome">欢迎注册</string>
     <string name="welcome1">欢迎使用网络诈骗防范</string>
     <string name="welcome2">科普网APP</string>
     <string name="welcome3">希望能帮到您！</string>

@@ -33,16 +33,6 @@ public class MainTab extends Fragment implements NetBroadcastReceiver.netEventHa
 
     private TextView tv_message;
     private boolean isAvailable;
-
-    public MainTab() {
-        super();
-    }
-
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-
     /**
      * 因为要在Fragment中嵌套使用ViewPager,所以需要进行初始化一些变量
      */
@@ -133,18 +123,15 @@ public class MainTab extends Fragment implements NetBroadcastReceiver.netEventHa
         TextView tv_title = (TextView) window.findViewById(R.id.tv_dialog_title);
         tv_title.setText("网站公告");
         tv_message = (TextView) window.findViewById(R.id.tv_dialog_message);
-        //tv_message.setText("\u3000\u3000希望我们能够帮助到您！\n\u3000\u3000声明：本网站的案例来源与网络，如有侵犯，请及时联系本站删除案例！");
         if (isAvailable) {
             new AsynAnnounce().execute("/api/noticelist");
         }
-        // 更多
         TextView tv_more = (TextView) window.findViewById(R.id.tv_dialog_more);
         tv_more.setText("更多");
         tv_more.getPaint().setFlags(Paint.UNDERLINE_TEXT_FLAG);
         tv_more.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Toast.makeText(getActivity(),"哈哈",Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(getActivity(), AnnounceActivity.class);
                 getContext().startActivity(intent);
             }

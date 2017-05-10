@@ -47,7 +47,7 @@ public class ArticleContentActivity extends AppCompatActivity implements NetBroa
     private TextView article_info;
     private TextView article_time;
     //    private MarkdownView article_markdownView;
-//    private TextView article_textView;
+    //    private TextView article_textView;
     private ArticleContent mArticleContent;
     private SimpleDraweeView head_layout;
     private LinearLayout head_info;

@@ -8,12 +8,12 @@
         "source": "/home/wangyu892449346/myCode/AntiNETFraud/app/src/main/res/mipmap-hdpi/search_t.png"
     },
     {
-        "merged": "/home/wangyu892449346/myCode/AntiNETFraud/app/build/intermediates/res/merged/debug/mipmap-hdpi/classic.png",
-        "source": "/home/wangyu892449346/myCode/AntiNETFraud/app/src/main/res/mipmap-hdpi/classic.png"
-    },
-    {
         "merged": "/home/wangyu892449346/myCode/AntiNETFraud/app/build/intermediates/res/merged/debug/mipmap-hdpi/classical.png",
         "source": "/home/wangyu892449346/myCode/AntiNETFraud/app/src/main/res/mipmap-hdpi/classical.png"
+    },
+    {
+        "merged": "/home/wangyu892449346/myCode/AntiNETFraud/app/build/intermediates/res/merged/debug/mipmap-hdpi/classic.png",
+        "source": "/home/wangyu892449346/myCode/AntiNETFraud/app/src/main/res/mipmap-hdpi/classic.png"
     },
     {
         "merged": "/home/wangyu892449346/myCode/AntiNETFraud/app/build/intermediates/res/merged/debug/mipmap-hdpi/my.png",
@@ -24,24 +24,24 @@
         "source": "/home/wangyu892449346/myCode/AntiNETFraud/app/src/main/res/mipmap-hdpi/flash.png"
     },
     {
-        "merged": "/home/wangyu892449346/myCode/AntiNETFraud/app/build/intermediates/res/merged/debug/mipmap-hdpi/search_header.png",
-        "source": "/home/wangyu892449346/myCode/AntiNETFraud/app/src/main/res/mipmap-hdpi/search_header.png"
-    },
-    {
         "merged": "/home/wangyu892449346/myCode/AntiNETFraud/app/build/intermediates/res/merged/debug/mipmap-hdpi/delete.png",
         "source": "/home/wangyu892449346/myCode/AntiNETFraud/app/src/main/res/mipmap-hdpi/delete.png"
+    },
+    {
+        "merged": "/home/wangyu892449346/myCode/AntiNETFraud/app/build/intermediates/res/merged/debug/mipmap-hdpi/search_header.png",
+        "source": "/home/wangyu892449346/myCode/AntiNETFraud/app/src/main/res/mipmap-hdpi/search_header.png"
     },
     {
         "merged": "/home/wangyu892449346/myCode/AntiNETFraud/app/build/intermediates/res/merged/debug/mipmap-hdpi/hot_t.png",
         "source": "/home/wangyu892449346/myCode/AntiNETFraud/app/src/main/res/mipmap-hdpi/hot_t.png"
     },
     {
-        "merged": "/home/wangyu892449346/myCode/AntiNETFraud/app/build/intermediates/res/merged/debug/mipmap-hdpi/loading01.png",
-        "source": "/home/wangyu892449346/myCode/AntiNETFraud/app/src/main/res/mipmap-hdpi/loading01.png"
-    },
-    {
         "merged": "/home/wangyu892449346/myCode/AntiNETFraud/app/build/intermediates/res/merged/debug/mipmap-hdpi/account.png",
         "source": "/home/wangyu892449346/myCode/AntiNETFraud/app/src/main/res/mipmap-hdpi/account.png"
+    },
+    {
+        "merged": "/home/wangyu892449346/myCode/AntiNETFraud/app/build/intermediates/res/merged/debug/mipmap-hdpi/loading01.png",
+        "source": "/home/wangyu892449346/myCode/AntiNETFraud/app/src/main/res/mipmap-hdpi/loading01.png"
     },
     {
         "merged": "/home/wangyu892449346/myCode/AntiNETFraud/app/build/intermediates/res/merged/debug/mipmap-hdpi/rightinfo.png",

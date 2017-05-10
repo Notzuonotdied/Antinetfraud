@@ -45,6 +45,11 @@
                             style="@style/setting_item"
                             android:text="@string/setting_person_account" />
 
+                        <TextView
+                            android:id="@+id/status"
+                            style="@style/setting_item"
+                            android:text="@string/not_logged_in" />
+
                         <com.facebook.drawee.view.SimpleDraweeView
                             android:id="@+id/lc_holder_image"
                             android:layout_width="@dimen/x46"

@@ -19,10 +19,6 @@ public class ArticleFragment extends Fragment {
     private MarkdownView article_markdownView;
     private String articleContent;
 
-    public ArticleFragment() {
-
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

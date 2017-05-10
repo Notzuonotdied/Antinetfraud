@@ -9,7 +9,6 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -32,11 +31,7 @@ import com.jiketuandui.antinetfraud.Util.SharedPManager;
  */
 public class LoginActivity extends Activity {
 
-    /**
-     * Keep track of the login task to ensure we can cancel it if requested.
-     */
     private UserLoginTask mAuthTask = null;
-    private String tokenString;
     private AccountInfo mAccountInfo;
 
     // UI
@@ -69,7 +64,7 @@ public class LoginActivity extends Activity {
 
         initView();
         initListener();
-        inittagsback();
+        initTagsBack();
     }
 
     private void initListener() {
@@ -97,9 +92,9 @@ public class LoginActivity extends Activity {
     }
 
     // 返回键
-    private void inittagsback() {
-        FrameLayout tagsback = (FrameLayout) findViewById(R.id.back);
-        tagsback.setOnClickListener(new OnClickListener() {
+    private void initTagsBack() {
+        FrameLayout tagsBack = (FrameLayout) findViewById(R.id.back);
+        tagsBack.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
                 finish();
@@ -107,35 +102,23 @@ public class LoginActivity extends Activity {
         });
     }
 
-    /**
-     * Attempts to sign in or register the account specified by the login form.
-     * If there are form errors (invalid email, missing fields, etc.), the
-     * errors are presented and no actual login attempt is made.
-     */
     private void attemptLogin() {
         if (mAuthTask != null) {
             return;
         }
-
-        // Reset errors.
         mAccountView.setError(null);
         mPasswordView.setError(null);
 
-        // Store values at the time of the login attempt.
         String account = mAccountView.getText().toString();
         String password = mPasswordView.getText().toString();
 
         boolean cancel = false;
         View focusView = null;
-
-        // Check for a valid password, if the user entered one.
         if (!TextUtils.isEmpty(password) && !isPasswordValid(password)) {
             mPasswordView.setError(getString(R.string.error_invalid_password));
             focusView = mPasswordView;
             cancel = true;
         }
-
-        // Check for a valid account address.
         if (TextUtils.isEmpty(account)) {
             mAccountView.setError(getString(R.string.error_field_required));
             focusView = mAccountView;
@@ -163,9 +146,6 @@ public class LoginActivity extends Activity {
         return password.length() > 8;
     }
 
-    /**
-     * Shows the progress UI and hides the login form.
-     */
     @TargetApi(Build.VERSION_CODES.HONEYCOMB_MR2)
     private void showProgress(final boolean show) {
 
@@ -190,9 +170,6 @@ public class LoginActivity extends Activity {
         });
     }
 
-    /**
-     * 异步登陆
-     */
     private class UserLoginTask extends AsyncTask<Void, Void, Boolean> {
 
         private final String mAccount;
@@ -225,8 +202,8 @@ public class LoginActivity extends Activity {
                 sharedPManager.putString(MyApplication.getInstance().getmToken(), mAccountInfo.getToken());
                 sharedPManager.putString(MyApplication.getInstance().getUsername(), mAccountInfo.getUser());
                 sharedPManager.putString(MyApplication.getInstance().getUid(), mAccountInfo.getUid());
-                sharedPManager.commit();
-                Toast.makeText(LoginActivity.this,"登陆成功~",Toast.LENGTH_SHORT).show();
+                sharedPManager.apply();
+                Toast.makeText(LoginActivity.this, R.string.success,Toast.LENGTH_SHORT).show();
                 MyApplication.getInstance().setLogin(true);
                 finish();
             } else {

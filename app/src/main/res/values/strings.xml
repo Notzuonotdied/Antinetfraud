@@ -153,5 +153,9 @@
     <string name="title_activity_base">BaseActivity</string>
     <string name="title_activity_register">注册界面</string>
     <string name="input_your_comment">请输入您的评论～</string>
+    <string name="welcome">欢迎注册</string>
+    <string name="success">登陆成功~</string>
 
+    <string name="not_logged_in">未登录</string>
+    <string name="logged">已登录</string>
 </resources>

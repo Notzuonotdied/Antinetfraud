@@ -53,13 +53,13 @@ public class ListContentAdapter extends RecyclerView.Adapter<ListContentHolder> 
                 context.startActivity(intent);
             }
         }
-
         @Override
         public void TOPOnClickLinstener(int position) {
             if (NetWorkUtils.isConnectNET(context)) {
                 Intent intent = new Intent(context, ToTagsListActivity.class);
                 Bundle mBundle = new Bundle();
-                mBundle.putInt(MyApplication.getInstance().getTAGSID(), Integer.valueOf(mListContents.get(position).getTagid()));
+                mBundle.putInt(MyApplication.getInstance().getTAGSID(),
+                        Integer.valueOf(mListContents.get(position).getTagid()));
                 if (category != 0) {
                     mBundle.putInt(MyApplication.getInstance().getCATEGORY(), category);
                 }

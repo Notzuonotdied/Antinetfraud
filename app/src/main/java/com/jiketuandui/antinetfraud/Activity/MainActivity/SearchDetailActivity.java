@@ -166,15 +166,13 @@ public class SearchDetailActivity extends AppCompatActivity implements NetBroadc
      * 点击搜索获取数据
      */
     private class SearchDataTask extends AsyncTask<String, Void, List<ListContent>> {
-
         @Override
         protected List<ListContent> doInBackground(String... strings) {
-            List<ListContent> listContents = ((MyApplication) getApplication()).instanceConnect().setContentPost(String.valueOf(readPage),
-                    inputString);
+            List<ListContent> listContents = ((MyApplication) getApplication())
+                    .instanceConnect().setContentPost(String.valueOf(readPage), inputString);
             readPage++;
             return listContents;
         }
-
         @Override
         protected void onPostExecute(List<ListContent> mListContents) {
             super.onPostExecute(mListContents);

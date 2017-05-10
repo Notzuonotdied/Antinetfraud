@@ -3,25 +3,25 @@ package com.jiketuandui.antinetfraud.Fragment.MainPageFragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.jiketuandui.antinetfraud.Activity.SettingActivity.AboutActivity;
 import com.jiketuandui.antinetfraud.Activity.SettingActivity.CollectionDetailActivity;
 import com.jiketuandui.antinetfraud.Activity.SettingActivity.FeedbackActivity;
 import com.jiketuandui.antinetfraud.Activity.SettingActivity.HistoryDetailActivity;
-import com.jiketuandui.antinetfraud.Activity.UserActivity.AccountActivity;
-import com.jiketuandui.antinetfraud.Activity.UserActivity.LoginActivity;
 import com.jiketuandui.antinetfraud.Activity.SettingActivity.ShareActivity;
+import com.jiketuandui.antinetfraud.Activity.UserActivity.LoginActivity;
 import com.jiketuandui.antinetfraud.HTTP.getAppUpdate;
 import com.jiketuandui.antinetfraud.HTTP.getImage;
 import com.jiketuandui.antinetfraud.R;
 import com.jiketuandui.antinetfraud.Util.CacheCleanManage;
+import com.jiketuandui.antinetfraud.Util.MyApplication;
 
 import java.io.File;
 
@@ -40,6 +40,7 @@ public class MainTabSetting extends Fragment {
     private TextView settingpiecesidea;
     private TextView settingpiecesupdate;
     private TextView settingpiecesabout;
+    private TextView status;
     //    private TextView settingcachesize;
 //    private LinearLayout settingpiecesdelete;
     private TextView settingshare;
@@ -64,12 +65,11 @@ public class MainTabSetting extends Fragment {
                     gotoActivity(ShareActivity.class);
                     break;
                 case R.id.setting_pieces_update:// app更新
-                    getAppUpdate update = new getAppUpdate(getContext(),true);
+                    getAppUpdate update = new getAppUpdate(getContext(), true);
                     update.startUpdate();
                     break;
                 case R.id.setting_pieces_account: // 账号信息
-                    // Log.i("Notzuonotdied", "account");
-                    startActivity(new Intent(getActivity(), AccountActivity.class));
+                    LogIn();
                     break;
                 case R.id.setting_pieces_history:
                     startActivity(new Intent(getActivity(), HistoryDetailActivity.class));
@@ -95,10 +95,33 @@ public class MainTabSetting extends Fragment {
         this.lcholderimage = (SimpleDraweeView) view.findViewById(R.id.lc_holder_image);
         this.setting_pieces_delete = (LinearLayout) view.findViewById(R.id.setting_pieces_delete);
         this.setting_cache_size = (TextView) view.findViewById(R.id.setting_cache_size);
+        this.status = (TextView) view.findViewById(R.id.status);
 
-
+        initStatus();
         initLintener();
         return view;
+    }
+
+    private void LogIn() {
+        if (!MyApplication.getInstance().getLogin()) {
+            startActivity(new Intent(getActivity(), LoginActivity.class));
+        } else {
+            Toast.makeText(getActivity(), getString(R.string.success), Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void initStatus() {
+        if (MyApplication.getInstance().getLogin()) {
+            this.status.setText(getString(R.string.logged));
+        } else {
+            this.status.setText(getString(R.string.not_logged_in));
+        }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        initStatus();
     }
 
     /**
