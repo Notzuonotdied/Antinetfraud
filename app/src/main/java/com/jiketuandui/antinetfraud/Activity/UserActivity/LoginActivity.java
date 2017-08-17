@@ -4,11 +4,13 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.inputmethod.EditorInfo;
@@ -50,7 +52,7 @@ public class LoginActivity extends Activity {
     private OnClickListener listener = v -> {
         switch (v.getId()) {
             case R.id.register_in_button:
-                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+                Intent intent = new Intent(this, RegisterActivity.class);
                 finish();
                 startActivity(intent);
                 break;
@@ -65,6 +67,7 @@ public class LoginActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
+
         initListener();
         initTagsBack();
     }
@@ -118,7 +121,7 @@ public class LoginActivity extends Activity {
             focusView.requestFocus();
         } else {
             showProgress(true);
-            mAuthTask = new UserLoginTask(account, password);
+            mAuthTask = new UserLoginTask(account, password, this);
             mAuthTask.execute((Void) null);
         }
     }
@@ -159,10 +162,12 @@ public class LoginActivity extends Activity {
 
         private final String mAccount;
         private final String mPassword;
+        private final Context mContext;
 
-        UserLoginTask(String account, String password) {
+        UserLoginTask(String account, String password, Context context) {
             mAccount = account;
             mPassword = password;
+            mContext = context;
         }
 
         @Override
@@ -183,12 +188,12 @@ public class LoginActivity extends Activity {
             mAuthTask = null;
             showProgress(false);
             if (success) {
-                SharedPManager sharedPManager = new SharedPManager(LoginActivity.this);
-                sharedPManager.putString(MyApplication.getInstance().getmToken(), mAccountInfo.getToken());
-                sharedPManager.putString(MyApplication.getInstance().getUsername(), mAccountInfo.getUser());
-                sharedPManager.putString(MyApplication.getInstance().getUid(), mAccountInfo.getUid());
-                sharedPManager.apply();
-                Toast.makeText(LoginActivity.this, R.string.success, Toast.LENGTH_SHORT).show();
+                SharedPManager sp = new SharedPManager(mContext);
+                sp.putString(MyApplication.getInstance().getToken(), mAccountInfo.getToken());
+                sp.putString(MyApplication.getInstance().getUsername(), mAccountInfo.getUser());
+                sp.putString(MyApplication.getInstance().getUid(), mAccountInfo.getUid());
+                sp.apply();
+                Toast.makeText(mContext, R.string.success, Toast.LENGTH_SHORT).show();
                 MyApplication.getInstance().setLogin(true);
                 finish();
             } else {

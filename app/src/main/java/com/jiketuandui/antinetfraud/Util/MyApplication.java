@@ -2,9 +2,8 @@ package com.jiketuandui.antinetfraud.Util;
 
 import android.app.Application;
 import android.content.Context;
-import android.net.wifi.WifiInfo;
-import android.net.wifi.WifiManager;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.util.DisplayMetrics;
 import android.view.WindowManager;
 
@@ -24,6 +23,7 @@ import com.jiketuandui.antinetfraud.HTTP.postAccount;
 import com.jiketuandui.antinetfraud.HTTP.postShareContent;
 
 import java.util.List;
+import java.util.UUID;
 
 /**
  * Created by Notzuonotdied on 2016/8/6.
@@ -133,7 +133,7 @@ public class MyApplication extends Application {
         isLogin = login;
     }
 
-    public String getmToken() {
+    public String getToken() {
         return mToken;
     }
 
@@ -231,7 +231,7 @@ public class MyApplication extends Application {
      * 判断是否重复
      */
     public boolean isContainComment(CommentAdapter mListContentAdapter,
-                                  List<CommentInfo> ListContents) {
+                                    List<CommentInfo> ListContents) {
         for (CommentInfo ml : ListContents) {
             for (int i = 0; i < mListContentAdapter.getData().size(); i++) {
                 if (mListContentAdapter.getData().get(i).getId().equals(ml.getId())) {
@@ -385,9 +385,29 @@ public class MyApplication extends Application {
      * MAC
      */
     public String getMAC() {
-        WifiManager wifi = (WifiManager) getSystemService(Context.WIFI_SERVICE);
-        WifiInfo info = wifi.getConnectionInfo();
-        return info.getMacAddress();
+        return getUniquePseudoID();
+    }
+
+    public String getUniquePseudoID() {
+        String serial;
+
+        String m_szDevIDShort = "233" +
+                Build.BOARD.length() % 10 + Build.BRAND.length() % 10 +
+                Build.DEVICE.length() % 10 + Build.USER.length() % 10 +
+                Build.DISPLAY.length() % 10 + Build.HOST.length() % 10 +
+                Build.ID.length() % 10 + Build.MANUFACTURER.length() % 10 +
+                Build.MODEL.length() % 10 + Build.PRODUCT.length() % 10 +
+                Build.TAGS.length() % 10 + Build.TYPE.length() % 10; //12 位
+        try {
+            serial = android.os.Build.class.getField("SERIAL").get(null).toString();
+            //API>=9 使用serial号
+            return new UUID(m_szDevIDShort.hashCode(), serial.hashCode()).toString();
+        } catch (Exception exception) {
+            //serial需要一个初始化
+            serial = "serial"; // 随便一个初始化
+        }
+        //使用硬件信息拼凑出来的15位号码
+        return new UUID(m_szDevIDShort.hashCode(), serial.hashCode()).toString();
     }
 
     /**

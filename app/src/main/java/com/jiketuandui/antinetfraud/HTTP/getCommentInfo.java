@@ -1,16 +1,11 @@
 package com.jiketuandui.antinetfraud.HTTP;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.os.AsyncTask;
-import android.os.Environment;
 import android.support.v7.app.AlertDialog;
 import android.text.TextUtils;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -27,8 +22,6 @@ import com.jiketuandui.antinetfraud.Util.SharedPManager;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
-
-import static com.jiketuandui.antinetfraud.Util.NetWorkUtils.getApplication;
 
 /**
  * 评论类
@@ -81,7 +74,7 @@ public class getCommentInfo extends accessNetwork {
         }
         SharedPManager sp = new SharedPManager(context);
         String userName = sp.getString(MyApplication.getInstance().getUsername(), null);
-        String userToken = sp.getString(MyApplication.getInstance().getmToken(), null);
+        String userToken = sp.getString(MyApplication.getInstance().getToken(), null);
         String userID = sp.getString(MyApplication.getInstance().getUid(), null);
         if (userName == null || userToken == null || userID == null) {
             Log.i("Notzuonotdied", "全部为空～");

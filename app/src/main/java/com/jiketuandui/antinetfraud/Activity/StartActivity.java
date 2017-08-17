@@ -75,8 +75,8 @@ public class StartActivity extends Activity {
         protected Boolean doInBackground(Void... params) {
             String stringToken = null;
             String stringAccount = null;
-            if (sharedPManager.isContains(MyApplication.getInstance().getmToken())) {
-                stringToken = sharedPManager.getString(MyApplication.getInstance().getmToken(), null);
+            if (sharedPManager.isContains(MyApplication.getInstance().getToken())) {
+                stringToken = sharedPManager.getString(MyApplication.getInstance().getToken(), null);
                 stringAccount = sharedPManager.getString(MyApplication.getInstance().getUsername(), null);
             }
             return !TextUtils.isEmpty(stringToken) && !TextUtils.isEmpty(stringAccount) &&
