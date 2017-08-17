@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
     /**
      * List 用于存放四个Fragment
      */
-    private List<Fragment> content_list = null;
+    private List<Fragment> content_list;
     private ContentViewPager mContentViewPager;
     /**
      * 底部的四个控件的响应事件

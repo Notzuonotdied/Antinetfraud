@@ -3,12 +3,183 @@
 
     <item
         is-multidex="false"
-        jar="/home/wangyu892449346/myCode/AntiNETFraud/MaterialRefreshLayout/build/intermediates/bundles/default/classes.jar"
+        jar="/home/wangyu/.android/build-cache/bdee3c02182a3f383a13c7381d01ac6ee4066993/output/jars/classes.jar"
         jumboMode="false"
         optimize="true"
-        revision="25.0.0"
-        sha1="b379f9173cbe573756d13107c012f3578e667cde">
-        <dex dex="/home/wangyu892449346/myCode/AntiNETFraud/app/build/intermediates/pre-dexed/debug/classes_0a4e7afede9128340e64d8081349862412ed464c.jar" />
+        revision="25.0.2"
+        sha1="d6a0998f61ebb488e6a3198fa20c851a137cd9b3">
+        <dex dex="/home/wangyu/myCode/AntiNETFraud/app/build/intermediates/pre-dexed/debug/classes_b3cfcc8a7a40c8ce9df916c6b34c888f0426d790.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/wangyu/.android/build-cache/7dcc83dc79f4b450056e45d98962bed27bbd57fd/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="c9a86e6bc8300fc00c191949ac61a2f7165e35c7">
+        <dex dex="/home/wangyu/myCode/AntiNETFraud/app/build/intermediates/pre-dexed/debug/classes_f16c5190ec21343e440f4ac326de01c86da8fd45.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/wangyu/.gradle/caches/modules-2/files-2.1/com.parse.bolts/bolts-tasks/1.4.0/d85884acf6810a3bbbecb587f239005cbc846dc4/bolts-tasks-1.4.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="d85884acf6810a3bbbecb587f239005cbc846dc4">
+        <dex dex="/home/wangyu/myCode/AntiNETFraud/app/build/intermediates/pre-dexed/debug/bolts-tasks-1.4.0_a07edd2f3f747b06e9fdade057839779f6f19439.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/wangyu/.gradle/caches/modules-2/files-2.1/com.nineoldandroids/library/2.4.0/e9b63380f3a242dbdbf103a2355ad7e43bad17cb/library-2.4.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="e9b63380f3a242dbdbf103a2355ad7e43bad17cb">
+        <dex dex="/home/wangyu/myCode/AntiNETFraud/app/build/intermediates/pre-dexed/debug/library-2.4.0_7dd60996ac05b62a231b60a565c4959a9b70b18c.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/wangyu/.android/build-cache/16428c258a733b85dd74e674c88243fa0a1f3b5e/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="a13789ec9e884e49740bb970550fabcb340466c1">
+        <dex dex="/home/wangyu/myCode/AntiNETFraud/app/build/intermediates/pre-dexed/debug/classes_268c98b1194f7e64bd06875cf31e741190cf2d65.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/wangyu/.android/build-cache/f3cc931e8ad2bd6f8d4b6ad97de154a9a7b392c9/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="40e5cb8708fc25fe57cb403cc82e9ef98376b648">
+        <dex dex="/home/wangyu/myCode/AntiNETFraud/app/build/intermediates/pre-dexed/debug/classes_c86dae6e9b5183ef40ea932abefe7aa7d045260e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/wangyu/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.7/751f548c85fa49f330cecbb1875893f971b33c4e/gson-2.7.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="751f548c85fa49f330cecbb1875893f971b33c4e">
+        <dex dex="/home/wangyu/myCode/AntiNETFraud/app/build/intermediates/pre-dexed/debug/gson-2.7_3346aff456988cfcd235242d7f417d9655059c67.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/wangyu/.android/build-cache/879429041cb97363bbbc1bf0a28e99e249b96457/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="a540784239c611ea490593e2053a5e2890675c68">
+        <dex dex="/home/wangyu/myCode/AntiNETFraud/app/build/intermediates/pre-dexed/debug/classes_33872804b300b850c1314895551715a7dbd7e54c.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/wangyu/.gradle/caches/modules-2/files-2.1/org.markdownj/markdownj-core/0.4/7dab17c3d4d492a2b776d25eb50e2320995de24c/markdownj-core-0.4.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="7dab17c3d4d492a2b776d25eb50e2320995de24c">
+        <dex dex="/home/wangyu/myCode/AntiNETFraud/app/build/intermediates/pre-dexed/debug/markdownj-core-0.4_a9f0f35653aa7521dc3ad52e2863915feacc5911.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/wangyu/.android/build-cache/5f14db500a0b1e0e5c0ce3b593eb0da480bed2bf/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="1e346707e4770db216049a532ab3eb5e317cf82a">
+        <dex dex="/home/wangyu/myCode/AntiNETFraud/app/build/intermediates/pre-dexed/debug/classes_813aff4dff0452e2a0b66abf388fb49880a13a69.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/wangyu/.android/build-cache/ea9b1781c8d9e37eaa44a910c00499a2c75264c9/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="ca24ddf3784c094578d634df395bcb97952a737c">
+        <dex dex="/home/wangyu/myCode/AntiNETFraud/app/build/intermediates/pre-dexed/debug/classes_9cdcd85318a06e04112676174b92ed0666bd6cea.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/wangyu/.android/build-cache/b2090e5b8cf4499a02a04cbafd3d36674a8903d1/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="662d7533b25a666c649c10a16b42edfb95f25a4f">
+        <dex dex="/home/wangyu/myCode/AntiNETFraud/app/build/intermediates/pre-dexed/debug/classes_e97ebea5eed069fb482f3cfe06ef1bd8abdfe8c4.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/wangyu/.android/build-cache/85bf72801b7131a0cf555304402d9af77a493561/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="607d961caf1a59b6e782724654c1f3229e036c20">
+        <dex dex="/home/wangyu/myCode/AntiNETFraud/app/build/intermediates/pre-dexed/debug/classes_c76ea6c52ee25b95014e2d53292d590455998701.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/wangyu/.android/build-cache/0c7d99bf0018083ef447894ca502493d68cbc341/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="883eb9c3bde63636505e42fc6cad790f4739b0d3">
+        <dex dex="/home/wangyu/myCode/AntiNETFraud/app/build/intermediates/pre-dexed/debug/classes_c68a51c5965ee1aafd8a27c69d8eaffaf4f7fd7c.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/wangyu/.android/build-cache/bd332ecb889cb8582177918e2aade67d6a612e1b/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="5ee6f3750abc2947b67bfbdf2061e26b0def1735">
+        <dex dex="/home/wangyu/myCode/AntiNETFraud/app/build/intermediates/pre-dexed/debug/classes_49a20ecce3ad33340a5e53155d1c386a99394fe3.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/wangyu/.android/build-cache/6a94fbe65f695397f42f7d68af00ec6994cabaae/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="0562efaffe940ea2da9383096ddea9281585c052">
+        <dex dex="/home/wangyu/myCode/AntiNETFraud/app/build/intermediates/pre-dexed/debug/classes_a463a73090c6e59662cb97471fe4a0096eda5753.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/wangyu/.gradle/caches/modules-2/files-2.1/com.jakewharton/butterknife/6.1.0/63735f48b82bcd24cdd33821342428252eb1ca5a/butterknife-6.1.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="63735f48b82bcd24cdd33821342428252eb1ca5a">
+        <dex dex="/home/wangyu/myCode/AntiNETFraud/app/build/intermediates/pre-dexed/debug/butterknife-6.1.0_bd06d2bb0c3563f7105bca4c61dc39f8cdad5fc0.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/wangyu/myCode/AntiNETFraud/MaterialRefreshLayout/build/intermediates/bundles/default/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="acc76e0e897d68dfb227603d3705cbfc6e73550d">
+        <dex dex="/home/wangyu/myCode/AntiNETFraud/app/build/intermediates/pre-dexed/debug/classes_9ade4e22513961552ba7c78d2cc0b284d0494064.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/wangyu/.android/build-cache/dc22de576a67a31c17c833e52627422b45b2d86c/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="145da27a459a63ea0c4e318930365cf0a8b8e891">
+        <dex dex="/home/wangyu/myCode/AntiNETFraud/app/build/intermediates/pre-dexed/debug/classes_13c1f368aa30593afbf15b8fcc6b35d498015854.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/wangyu/Android/Sdk/extras/m2repository/com/android/support/constraint/constraint-layout-solver/1.0.0-beta4/constraint-layout-solver-1.0.0-beta4.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="0a9cb567dc008f570c28531720168f19148da965">
+        <dex dex="/home/wangyu/myCode/AntiNETFraud/app/build/intermediates/pre-dexed/debug/constraint-layout-solver-1.0.0-beta4_cf118a420c438bcf939d3688da3db189c73019ea.jar" />
     </item>
 
 </items>

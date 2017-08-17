@@ -15,13 +15,21 @@ import android.widget.Toast;
 import com.jiketuandui.antinetfraud.R;
 import com.jiketuandui.antinetfraud.Util.MyApplication;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class ShareActivity extends Activity {
 
-    private FrameLayout tagsback;
-    private EditText sharetitle;
-    private Spinner sharetype;
-    private EditText sharecontent;
-    private Button post;
+    @BindView(R.id.tags_back)
+    FrameLayout tagsBack;
+    @BindView(R.id.share_title)
+    EditText shareTitle;
+    @BindView(R.id.share_type)
+    Spinner shareType;
+    @BindView(R.id.share_content)
+    EditText shareContent;
+    @BindView(R.id.post)
+    Button post;
 
     private String allContent;
     private int type = 1;
@@ -30,8 +38,7 @@ public class ShareActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_share);
-
-        initView();
+        ButterKnife.bind(this);
         initListener();
     }
 
@@ -40,35 +47,35 @@ public class ShareActivity extends Activity {
      */
     private void initData() {
         // 重置Errors
-        sharetitle.setError(null);
-        sharecontent.setError(null);
+        shareTitle.setError(null);
+        shareContent.setError(null);
 
         boolean cancel = false;
         View focusView = null;
 
-        String title = sharetitle.getText().toString();
-        String content = sharecontent.getText().toString();
+        String title = shareTitle.getText().toString();
+        String content = shareContent.getText().toString();
 
         // 检查经历名称
         if (TextUtils.isEmpty(title)) {
-            sharetitle.setError(getString(R.string.error_invalid_title));
-            focusView = sharetitle;
+            shareTitle.setError(getString(R.string.error_invalid_title));
+            focusView = shareTitle;
             cancel = true;
         }
 
         // 检查案例内容
         if (TextUtils.isEmpty(content)) {
-            sharecontent.setError(getString(R.string.error_invalid_content));
-            focusView = sharecontent;
+            shareContent.setError(getString(R.string.error_invalid_content));
+            focusView = shareContent;
             cancel = true;
         }
 
         if (cancel) {
             focusView.requestFocus();
         } else {
-            allContent = "title=" + sharetitle.getText().toString() +
+            allContent = "title=" + shareTitle.getText().toString() +
                     "&&type=" + String.valueOf(type) +
-                    "&&content=" + sharecontent.getText().toString();
+                    "&&content=" + shareContent.getText().toString();
             new postShare().execute();
         }
     }
@@ -77,18 +84,13 @@ public class ShareActivity extends Activity {
      * 初始化响应事件
      */
     private void initListener() {
-        tagsback.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
-        sharetype.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        tagsBack.setOnClickListener(view -> finish());
+        shareType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if (TextUtils.equals(sharetype.getSelectedItem().toString(), "网络诈骗")) {
+                if (TextUtils.equals(shareType.getSelectedItem().toString(), "网络诈骗")) {
                     type = 1;
-                } else if (TextUtils.equals(sharetype.getSelectedItem().toString(), "电信诈骗")) {
+                } else if (TextUtils.equals(shareType.getSelectedItem().toString(), "电信诈骗")) {
                     type = 2;
                 }
             }
@@ -98,23 +100,7 @@ public class ShareActivity extends Activity {
 
             }
         });
-        post.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                initData();
-            }
-        });
-    }
-
-    /**
-     * 初始化View
-     */
-    private void initView() {
-        this.sharecontent = (EditText) findViewById(R.id.share_content);
-        this.sharetype = (Spinner) findViewById(R.id.share_type);
-        this.sharetitle = (EditText) findViewById(R.id.share_title);
-        this.tagsback = (FrameLayout) findViewById(R.id.tags_back);
-        this.post = (Button) findViewById(R.id.post);
+        post.setOnClickListener(v -> initData());
     }
 
     /**

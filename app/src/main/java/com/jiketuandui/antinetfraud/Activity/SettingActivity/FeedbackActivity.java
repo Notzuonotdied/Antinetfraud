@@ -29,12 +29,7 @@ public class FeedbackActivity extends Activity {
     }
 
     private void initListener() {
-        post.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                attemptPost();
-            }
-        });
+        post.setOnClickListener(v -> attemptPost());
     }
 
     private void attemptPost() {
@@ -59,12 +54,7 @@ public class FeedbackActivity extends Activity {
 
     private void initBack() {
         FrameLayout tagsback = (FrameLayout) findViewById(R.id.back);
-        tagsback.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
+        tagsback.setOnClickListener(view -> finish());
     }
 
     private void initView() {

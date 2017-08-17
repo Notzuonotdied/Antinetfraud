@@ -95,15 +95,8 @@
                 android:background="@drawable/setting_shape"
                 android:orientation="vertical">
 
-                <TextView
-                    android:visibility="gone"
-                    android:id="@+id/setting_pieces_setting"
-                    style="@style/setting_item_single"
-                    android:text="@string/setting_comment_setting" />
-
                 <LinearLayout
                     android:id="@+id/setting_pieces_delete"
-                    android:visibility="gone"
                     style="@style/setting_row">
 
                     <TextView

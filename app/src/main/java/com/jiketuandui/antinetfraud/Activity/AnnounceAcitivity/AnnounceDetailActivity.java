@@ -4,7 +4,6 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
-import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
@@ -12,33 +11,32 @@ import com.jiketuandui.antinetfraud.Bean.AnnounceContent;
 import com.jiketuandui.antinetfraud.R;
 import com.jiketuandui.antinetfraud.Util.MyApplication;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class AnnounceDetailActivity extends AppCompatActivity {
 
-    private TextView announcetitle;
-    private TextView announcetime;
-    private TextView announcecontent;
+    @BindView(R.id.announce_title)
+    TextView announceTitle;
+    @BindView(R.id.announce_time)
+    TextView announceTime;
+    @BindView(R.id.announce_content)
+    TextView announceContent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_announce_detail);
-        this.announcecontent = (TextView) findViewById(R.id.announce_content);
-        this.announcetime = (TextView) findViewById(R.id.announce_time);
-        this.announcetitle = (TextView) findViewById(R.id.announce_title);
+        ButterKnife.bind(this);
 
         LoadingArticle();
-        inittagsback();
+        initTagsBack();
     }
 
     // 返回键
-    private void inittagsback() {
-        FrameLayout tagsback = (FrameLayout) findViewById(R.id.back);
-        tagsback.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
+    private void initTagsBack() {
+        FrameLayout tagsBack = (FrameLayout) findViewById(R.id.back);
+        tagsBack.setOnClickListener(view -> finish());
     }
 
     /**
@@ -62,9 +60,9 @@ public class AnnounceDetailActivity extends AppCompatActivity {
         @Override// 在主线程执行
         protected void onPostExecute(AnnounceContent articleContents) {
             if (articleContents != null) {
-                announcetitle.setText(Html.fromHtml(articleContents.getTitle()));
-                announcetime.setText(Html.fromHtml(articleContents.getCreated_at()));
-                announcecontent.setText(Html.fromHtml(articleContents.getContent()));
+                announceTitle.setText(Html.fromHtml(articleContents.getTitle()));
+                announceTime.setText(Html.fromHtml(articleContents.getCreated_at()));
+                announceContent.setText(Html.fromHtml(articleContents.getContent()));
             }
         }
     }

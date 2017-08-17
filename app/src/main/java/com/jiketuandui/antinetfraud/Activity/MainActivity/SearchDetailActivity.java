@@ -25,12 +25,19 @@ import com.jiketuandui.antinetfraud.View.MySearchView;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class SearchDetailActivity extends AppCompatActivity implements NetBroadcastReceiver.netEventHandler {
+    @BindView(R.id.my_search_view)
+    MySearchView mySearchView;
+    @BindView(R.id.back)
+    FrameLayout back;
+    @BindView(R.id.search_null)
+    TextView searchNull;
+    @BindView(R.id.maintab_search_refresh)
+    MaterialRefreshLayout materialRefreshLayout;
     private int readPage;
-    private MySearchView mySearchView;
-    private FrameLayout back;
-    private TextView searchnull;
-    private MaterialRefreshLayout materialRefreshLayout;
     private ListContentAdapter mListContentAdapter;
     private String inputString;
     private RecordSQLiteOpenHelper helper;
@@ -43,6 +50,7 @@ public class SearchDetailActivity extends AppCompatActivity implements NetBroadc
         setContentView(R.layout.activity_detail_search);
         // 注册
         NetBroadcastReceiver.mListeners.add(this);
+        ButterKnife.bind(this);
 
         helper = new RecordSQLiteOpenHelper(SearchDetailActivity.this);
         inputString = getIntent().getExtras().getString(MyApplication.getInstance().getSEARCHSTRING());
@@ -58,12 +66,7 @@ public class SearchDetailActivity extends AppCompatActivity implements NetBroadc
      * 初始化响应事件
      */
     private void initListener() {
-        this.back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
+        this.back.setOnClickListener(view -> finish());
 
         mySearchView.setSearchViewListener(new MySearchView.SearchViewListener() {
             @Override
@@ -117,11 +120,11 @@ public class SearchDetailActivity extends AppCompatActivity implements NetBroadc
 
         if (!text.equals("")) {
             if (isNull) {
-                searchnull.setVisibility(View.VISIBLE);
+                searchNull.setVisibility(View.VISIBLE);
                 materialRefreshLayout.setVisibility(View.GONE);
             } else {
                 materialRefreshLayout.setVisibility(View.VISIBLE);
-                searchnull.setVisibility(View.GONE);
+                searchNull.setVisibility(View.GONE);
             }
         }
 
@@ -138,12 +141,8 @@ public class SearchDetailActivity extends AppCompatActivity implements NetBroadc
      * 初始化View
      */
     private void initView() {
-        this.mySearchView = (MySearchView) findViewById(R.id.my_search_view);
-        this.materialRefreshLayout = (MaterialRefreshLayout) findViewById(R.id.maintab_search_refresh);
-        RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.maintab_search_recyclerView);
-        this.searchnull = (TextView) findViewById(R.id.search_null);
-        this.back = (FrameLayout) findViewById(R.id.back);
         mListContentAdapter = new ListContentAdapter(SearchDetailActivity.this, mListContents, true, 1);
+        RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.maintab_search_recyclerView);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(SearchDetailActivity.this,
                 LinearLayoutManager.VERTICAL, false));
         mRecyclerView.setAdapter(mListContentAdapter);
@@ -173,6 +172,7 @@ public class SearchDetailActivity extends AppCompatActivity implements NetBroadc
             readPage++;
             return listContents;
         }
+
         @Override
         protected void onPostExecute(List<ListContent> mListContents) {
             super.onPostExecute(mListContents);

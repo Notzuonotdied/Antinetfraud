@@ -6,8 +6,6 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v4.widget.CursorAdapter;
 import android.support.v4.widget.SimpleCursorAdapter;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
@@ -17,26 +15,33 @@ import com.jiketuandui.antinetfraud.Util.MyApplication;
 import com.jiketuandui.antinetfraud.View.MyListView;
 import com.jiketuandui.antinetfraud.View.MySearchView;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class SearchActivity extends Activity {
 
-    private TextView searchclear;
-    private MyListView searchlistView;
-    private MySearchView my_search_view;
+    @BindView(R.id.search_clear)
+    TextView searchClear;
+    @BindView(R.id.search_listView)
+    MyListView searchListView;
+    @BindView(R.id.my_search_view)
+    MySearchView mySearchView;
     private RecordSQLiteOpenHelper helper;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
+        ButterKnife.bind(this);
         helper = new RecordSQLiteOpenHelper(SearchActivity.this);
-
-        initView();
-        initLintener();
+        updateAdapter("");
+        initListener();
     }
 
-    private void initLintener() {
+    private void initListener() {
 
-        my_search_view.setSearchViewListener(new MySearchView.SearchViewListener() {
+        mySearchView.setSearchViewListener(new MySearchView.SearchViewListener() {
             @Override
             public void onSearch(String text) {
                 searchfunction(text);
@@ -53,20 +58,14 @@ public class SearchActivity extends Activity {
             }
         });
 
-        searchclear.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                helper.deleteData();
-                updateAdapter("");
-            }
+        searchClear.setOnClickListener(view -> {
+            helper.deleteData();
+            updateAdapter("");
         });
 
-        searchlistView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                TextView tv = (TextView) view.findViewById(R.id.text_history);
-                my_search_view.setInputString(tv.getText().toString());
-            }
+        searchListView.setOnItemClickListener((adapterView, view, i, l) -> {
+            TextView tv = (TextView) view.findViewById(R.id.text_history);
+            mySearchView.setInputString(tv.getText().toString());
         });
     }
 
@@ -79,7 +78,7 @@ public class SearchActivity extends Activity {
                 new int[]{R.id.text_history},
                 CursorAdapter.FLAG_REGISTER_CONTENT_OBSERVER);
         // 设置适配器
-        searchlistView.setAdapter(adapter);
+        searchListView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
     }
 
@@ -97,18 +96,10 @@ public class SearchActivity extends Activity {
 
             Intent intent = new Intent(SearchActivity.this,
                     SearchDetailActivity.class);
-            Bundle mbundle = new Bundle();
-            mbundle.putString(MyApplication.getInstance().getSEARCHSTRING(), text);
-            intent.putExtras(mbundle);
+            Bundle bundle = new Bundle();
+            bundle.putString(MyApplication.getInstance().getSEARCHSTRING(), text);
+            intent.putExtras(bundle);
             startActivity(intent);
         }
-    }
-
-    private void initView() {
-        this.searchlistView = (MyListView) findViewById(R.id.search_listView);
-        this.searchclear = (TextView) findViewById(R.id.search_clear);
-        this.my_search_view = (MySearchView) findViewById(R.id.my_search_view);
-
-        updateAdapter("");
     }
 }

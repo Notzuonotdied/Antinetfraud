@@ -63,9 +63,9 @@ MERGED from [com.android.support:support-fragment:25.3.1] /home/wangyu/.android/
 MERGED from [com.android.support:support-media-compat:25.3.1] /home/wangyu/.android/build-cache/6960156a7210b689c4b67825b874408bf19a712c/output/AndroidManifest.xml:29:5-20
 MERGED from [com.android.support:support-core-ui:25.3.1] /home/wangyu/.android/build-cache/0ade203e67870e1016d6cb0365c0b8c2a87beadd/output/AndroidManifest.xml:29:5-20
 MERGED from [com.android.support:support-core-utils:25.3.1] /home/wangyu/.android/build-cache/44b1846fcb846a0acbb1558390e408a6ca49d910/output/AndroidManifest.xml:29:5-20
-MERGED from [com.android.support:support-compat:25.3.1] /home/wangyu/.android/build-cache/8d05bc43b39342404ec00699801f9b28a40495e9/output/AndroidManifest.xml:29:5-20
 MERGED from [com.android.support.constraint:constraint-layout:1.0.0-beta4] /home/wangyu/.android/build-cache/b2090e5b8cf4499a02a04cbafd3d36674a8903d1/output/AndroidManifest.xml:9:5-20
 MERGED from [com.android.support:cardview-v7:25.3.1] /home/wangyu/.android/build-cache/552fd3033217f083a238b3705eb2393271795eef/output/AndroidManifest.xml:26:5-20
+MERGED from [com.android.support:support-compat:25.3.1] /home/wangyu/.android/build-cache/8d05bc43b39342404ec00699801f9b28a40495e9/output/AndroidManifest.xml:29:5-20
 	android:label
 		ADDED from /home/wangyu/myCode/AntiNETFraud/app/src/main/AndroidManifest.xml:22:9-41
 	android:supportsRtl
@@ -215,10 +215,11 @@ MERGED from [com.android.support:support-fragment:25.3.1] /home/wangyu/.android/
 MERGED from [com.android.support:support-media-compat:25.3.1] /home/wangyu/.android/build-cache/6960156a7210b689c4b67825b874408bf19a712c/output/AndroidManifest.xml:21:5-23:63
 MERGED from [com.android.support:support-core-ui:25.3.1] /home/wangyu/.android/build-cache/0ade203e67870e1016d6cb0365c0b8c2a87beadd/output/AndroidManifest.xml:21:5-23:58
 MERGED from [com.android.support:support-core-utils:25.3.1] /home/wangyu/.android/build-cache/44b1846fcb846a0acbb1558390e408a6ca49d910/output/AndroidManifest.xml:21:5-23:61
-MERGED from [com.android.support:support-compat:25.3.1] /home/wangyu/.android/build-cache/8d05bc43b39342404ec00699801f9b28a40495e9/output/AndroidManifest.xml:21:5-23:58
 MERGED from [com.oguzdev:CircularFloatingActionMenu:1.0.2] /home/wangyu/.android/build-cache/85bf72801b7131a0cf555304402d9af77a493561/output/AndroidManifest.xml:7:5-9:41
 MERGED from [com.android.support.constraint:constraint-layout:1.0.0-beta4] /home/wangyu/.android/build-cache/b2090e5b8cf4499a02a04cbafd3d36674a8903d1/output/AndroidManifest.xml:5:5-7:41
 MERGED from [com.android.support:cardview-v7:25.3.1] /home/wangyu/.android/build-cache/552fd3033217f083a238b3705eb2393271795eef/output/AndroidManifest.xml:20:5-43
+MERGED from [com.jakewharton:butterknife:8.8.1] /home/wangyu/.android/build-cache/be032cb518f4c459ac879bf6c9bdcde83c0a3cbe/output/AndroidManifest.xml:5:5-43
+MERGED from [com.android.support:support-compat:25.3.1] /home/wangyu/.android/build-cache/8d05bc43b39342404ec00699801f9b28a40495e9/output/AndroidManifest.xml:21:5-23:58
 	tools:overrideLibrary
 		ADDED from [com.android.support:design:25.3.1] /home/wangyu/.android/build-cache/08a6255f200a2bd99fab3bd6cbcaaef5d91a90d2/output/AndroidManifest.xml:23:9-59
 	android:targetSdkVersion
@@ -239,8 +240,8 @@ MERGED from [com.android.support:support-fragment:25.3.1] /home/wangyu/.android/
 MERGED from [com.android.support:support-media-compat:25.3.1] /home/wangyu/.android/build-cache/6960156a7210b689c4b67825b874408bf19a712c/output/AndroidManifest.xml:25:5-27:34
 MERGED from [com.android.support:support-core-ui:25.3.1] /home/wangyu/.android/build-cache/0ade203e67870e1016d6cb0365c0b8c2a87beadd/output/AndroidManifest.xml:25:5-27:34
 MERGED from [com.android.support:support-core-utils:25.3.1] /home/wangyu/.android/build-cache/44b1846fcb846a0acbb1558390e408a6ca49d910/output/AndroidManifest.xml:25:5-27:34
-MERGED from [com.android.support:support-compat:25.3.1] /home/wangyu/.android/build-cache/8d05bc43b39342404ec00699801f9b28a40495e9/output/AndroidManifest.xml:25:5-27:34
 MERGED from [com.android.support:cardview-v7:25.3.1] /home/wangyu/.android/build-cache/552fd3033217f083a238b3705eb2393271795eef/output/AndroidManifest.xml:22:5-24:34
+MERGED from [com.android.support:support-compat:25.3.1] /home/wangyu/.android/build-cache/8d05bc43b39342404ec00699801f9b28a40495e9/output/AndroidManifest.xml:25:5-27:34
 	android:value
 		ADDED from [com.android.support:design:25.3.1] /home/wangyu/.android/build-cache/08a6255f200a2bd99fab3bd6cbcaaef5d91a90d2/output/AndroidManifest.xml:27:9-31
 	android:name

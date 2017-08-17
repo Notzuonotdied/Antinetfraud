@@ -5,8 +5,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
-import android.view.View;
 import android.widget.FrameLayout;
 
 import com.cjj.MaterialRefreshLayout;
@@ -25,6 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CollectionDetailActivity extends AppCompatActivity implements NetBroadcastReceiver.netEventHandler {
+
     private MaterialRefreshLayout materialRefreshLayout;
     private ListContentAdapter mListContentAdapter;
     private List<ListContent> mListContents = new ArrayList<>();
@@ -39,18 +38,13 @@ public class CollectionDetailActivity extends AppCompatActivity implements NetBr
 
         initView();
         initListener();
-        inittagsback();
+        initTagsBack();
     }
 
     // 返回键
-    private void inittagsback() {
-        FrameLayout tagsback = (FrameLayout) findViewById(R.id.back);
-        tagsback.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
+    private void initTagsBack() {
+        FrameLayout tagsBack = (FrameLayout) findViewById(R.id.back);
+        tagsBack.setOnClickListener(view -> finish());
     }
 
     @Override
@@ -91,8 +85,8 @@ public class CollectionDetailActivity extends AppCompatActivity implements NetBr
      */
     private void initView() {
         this.materialRefreshLayout = (MaterialRefreshLayout) findViewById(R.id.refresh);
-        RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         mListContentAdapter = new ListContentAdapter(CollectionDetailActivity.this, mListContents, true, 1);
+        RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(CollectionDetailActivity.this,
                 LinearLayoutManager.VERTICAL, false));
         mRecyclerView.setAdapter(mListContentAdapter);

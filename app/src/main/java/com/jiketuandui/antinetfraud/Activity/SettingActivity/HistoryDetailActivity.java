@@ -44,12 +44,7 @@ public class HistoryDetailActivity extends AppCompatActivity implements NetBroad
     // 返回键
     private void inittagsback() {
         FrameLayout tagsback = (FrameLayout) findViewById(R.id.back);
-        tagsback.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
+        tagsback.setOnClickListener(view -> finish());
     }
 
     /**

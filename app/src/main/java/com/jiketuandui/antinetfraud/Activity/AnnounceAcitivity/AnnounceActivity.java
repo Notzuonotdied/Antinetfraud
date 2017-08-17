@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
 import android.widget.FrameLayout;
 
 import com.cjj.MaterialRefreshLayout;
@@ -19,11 +18,14 @@ import com.jiketuandui.antinetfraud.Util.NetWorkUtils;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AnnounceActivity extends AppCompatActivity {
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
-    private int readPage;
-    private FrameLayout back;
-    private MaterialRefreshLayout materialRefreshLayout;
+public class AnnounceActivity extends AppCompatActivity {
+    @BindView(R.id.back)
+    FrameLayout back;
+    @BindView(R.id.announce_refresh)
+    MaterialRefreshLayout materialRefreshLayout;
     private AnnounceAdapter mListContentAdapter;
     private List<AnnounceContent> mListContents = new ArrayList<>();
     private boolean isFirstRefresh = true;
@@ -32,7 +34,7 @@ public class AnnounceActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_announce);
-        readPage = 1;
+        ButterKnife.bind(this);
         initView();
         initListener();
     }
@@ -55,12 +57,7 @@ public class AnnounceActivity extends AppCompatActivity {
      * 初始化响应事件
      */
     private void initListener() {
-        this.back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
+        this.back.setOnClickListener(view -> finish());
 
         materialRefreshLayout.setMaterialRefreshListener(new MaterialRefreshListener() {
             @Override
@@ -89,10 +86,8 @@ public class AnnounceActivity extends AppCompatActivity {
      * 初始化View
      */
     private void initView() {
-        this.materialRefreshLayout = (MaterialRefreshLayout) findViewById(R.id.announce_refresh);
-        RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.announce_recyclerView);
-        this.back = (FrameLayout) findViewById(R.id.announce_back);
         mListContentAdapter = new AnnounceAdapter(AnnounceActivity.this, mListContents);
+        RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.announce_recyclerView);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(AnnounceActivity.this,
                 LinearLayoutManager.VERTICAL, false));
         mRecyclerView.setAdapter(mListContentAdapter);
@@ -115,11 +110,10 @@ public class AnnounceActivity extends AppCompatActivity {
 
         @Override
         protected List<AnnounceContent> doInBackground(Void... voids) {
-            List<AnnounceContent> listContents = ((MyApplication) getApplication())
+            //readPage++;
+            return ((MyApplication) getApplication())
                     .instanceAnnouncement()
                     .getAnnounceList();
-            //readPage++;
-            return listContents;
         }
 
         @Override
@@ -143,11 +137,10 @@ public class AnnounceActivity extends AppCompatActivity {
             if (mListContentAdapter.getData().size() == 0) {
                 return null;
             }
-            List<AnnounceContent> listContents = ((MyApplication) getApplication())
+            //readPage++;
+            return ((MyApplication) getApplication())
                     .instanceAnnouncement()
                     .getAnnounceList();
-            //readPage++;
-            return listContents;
         }
 
         @Override

@@ -8,7 +8,6 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.inputmethod.EditorInfo;
@@ -16,10 +15,12 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
-import android.widget.TextView;
 
 import com.jiketuandui.antinetfraud.R;
 import com.jiketuandui.antinetfraud.Util.MyApplication;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 
 /**
@@ -27,26 +28,28 @@ import com.jiketuandui.antinetfraud.Util.MyApplication;
  */
 public class RegisterActivity extends Activity {
 
+    // UI
+    @BindView(R.id.account)
+    AutoCompleteTextView mAccountView;
+    @BindView(R.id.password)
+    EditText mPasswordView;
+    @BindView(R.id.login_progress)
+    View mProgressView;
+    @BindView(R.id.login_form)
+    View mLoginFormView;
+    @BindView(R.id.register_in_button)
+    Button mRegisterButton;
+    @BindView(R.id.confirm)
+    EditText mConfirm;
     /**
      * Keep track of the login task to ensure we can cancel it if requested.
      */
     private UserLoginTask mAuthTask = null;
-
-    // UI
-    private AutoCompleteTextView mAccountView;
-    private EditText mPasswordView;
-    private EditText mConfirm;
-    private View mProgressView;
-    private View mLoginFormView;
-    private Button mRegisterButton;
-    private OnClickListener listener = new OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            switch (v.getId()) {
-                case R.id.register:
-                    attemptLogin();
-                    break;
-            }
+    private OnClickListener listener = v -> {
+        switch (v.getId()) {
+            case R.id.register:
+                attemptLogin();
+                break;
         }
     };
 
@@ -54,44 +57,26 @@ public class RegisterActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-
-        initView();
+        ButterKnife.bind(this);
         initListener();
-        inittagsback();
+        initTagsBack();
     }
 
     private void initListener() {
-        mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
-                if (id == R.id.login || id == EditorInfo.IME_NULL) {
-                    attemptLogin();
-                    return true;
-                }
-                return false;
+        mPasswordView.setOnEditorActionListener((textView, id, keyEvent) -> {
+            if (id == R.id.login || id == EditorInfo.IME_NULL) {
+                attemptLogin();
+                return true;
             }
+            return false;
         });
         mRegisterButton.setOnClickListener(listener);
     }
 
-    private void initView() {
-        mConfirm = (EditText) findViewById(R.id.confirm);
-        mLoginFormView = findViewById(R.id.login_form);
-        mProgressView = findViewById(R.id.login_progress);
-        mAccountView = (AutoCompleteTextView) findViewById(R.id.account);
-        mPasswordView = (EditText) findViewById(R.id.password);
-        mRegisterButton = (Button) findViewById(R.id.register);
-    }
-
     // 返回键
-    private void inittagsback() {
-        FrameLayout tagsback = (FrameLayout) findViewById(R.id.back);
-        tagsback.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
+    private void initTagsBack() {
+        FrameLayout tagsBack = (FrameLayout) findViewById(R.id.back);
+        tagsBack.setOnClickListener(view -> finish());
     }
 
     /**

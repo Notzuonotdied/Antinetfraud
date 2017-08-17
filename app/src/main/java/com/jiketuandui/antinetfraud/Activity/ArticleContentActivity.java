@@ -36,33 +36,47 @@ import com.oguzdev.circularfloatingactionmenu.library.FloatingActionButton;
 import com.oguzdev.circularfloatingactionmenu.library.FloatingActionMenu;
 import com.oguzdev.circularfloatingactionmenu.library.SubActionButton;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 /**
  * 文章内容显示
  * 文章在点击之后会将浏览记录提交到服务器
  */
-public class ArticleContentActivity extends AppCompatActivity implements NetBroadcastReceiver.netEventHandler {
+public class ArticleContentActivity extends AppCompatActivity
+        implements NetBroadcastReceiver.netEventHandler {
 
+    @BindView(R.id.article_title)
+    TextView article_title;
+    @BindView(R.id.article_info)
+    TextView article_info;
+    @BindView(R.id.article_time)
+    TextView article_time;
+    @BindView(R.id.head_info)
+    LinearLayout head_info;
+    @BindView(R.id.collapsing_toolbar_layout)
+    CollapsingToolbarLayout mCollapsingToolbarLayout;
+    @BindView(R.id.app_bar_layout)
+    AppBarLayout app_bar_layout;
+    @BindView(R.id.head_layout)
+    SimpleDraweeView head_layout;
+    @BindView(R.id.toolbar)
+    Toolbar mToolbar;
     private int reHeight;
-    private TextView article_title;
-    private TextView article_info;
-    private TextView article_time;
     //    private MarkdownView article_markdownView;
     //    private TextView article_textView;
     private ArticleContent mArticleContent;
-    private SimpleDraweeView head_layout;
-    private LinearLayout head_info;
-    private CollapsingToolbarLayout mCollapsingToolbarLayout;
     private boolean isLessThan;
-    private AppBarLayout app_bar_layout;
-    private Toolbar mToolbar;
     private boolean isCollected;
     /*这是文章ID*/
-    private int articleId ;
+    private int articleId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_article_content);
+        ButterKnife.bind(this);
+
         // 根据ID获取文章的内容
         articleId = this.getIntent().getExtras().getInt(MyApplication.getInstance().getCONTENTID());
         Log.i("Notzuonotdied", "articleId = " + articleId);
@@ -71,8 +85,6 @@ public class ArticleContentActivity extends AppCompatActivity implements NetBroa
         NetBroadcastReceiver.mListeners.add(this);
         // 读取文章
         LoadingArticle();
-        // 初始化View
-        initView();
         // 初始化监听事件
         initListener();
         // 初始化悬浮按钮
@@ -131,70 +143,46 @@ public class ArticleContentActivity extends AppCompatActivity implements NetBroa
     }
 
     private void initListener() {
-        mToolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
         // 返回键
-        mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBackPressed();
-            }
-        });
+        mToolbar.setNavigationOnClickListener(v -> onBackPressed());
         reHeight = head_layout.getHeight();
         isLessThan = false;
         mCollapsingToolbarLayout.setCollapsedTitleTextColor(getResources().getColor(R.color.color_white));
         // 设置标题
-        app_bar_layout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
-            @Override
-            public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
-                int total_Height = -mCollapsingToolbarLayout.getHeight() + mToolbar.getHeight();
-                if (verticalOffset <= total_Height) {
-                    if (mArticleContent != null) {
-                        mCollapsingToolbarLayout.setTitle(mArticleContent.getTitle());
-                    }
-                    head_info.setVisibility(View.GONE);
-                    if (!isLessThan) {
-                        mCollapsingToolbarLayout.setContentScrimColor(0xffffffff);
-                        mCollapsingToolbarLayout.setCollapsedTitleTextColor(0xff717171);
-                    }
-                    isLessThan = true;
-                } else {
-                    mCollapsingToolbarLayout.setTitle("");
-                    head_info.setVisibility(View.VISIBLE);
-                    Drawable drawable = head_info.getBackground();
-                    drawable.setAlpha(changAlpha(Math.abs(verticalOffset), Math.abs(total_Height)));
-                    // 设置头图
-                    if (Build.VERSION.SDK_INT >= 16) {
-                        head_info.setBackground(drawable);
-                    } else {
-                        head_info.setBackgroundDrawable(drawable);
-                    }
-                    if (isLessThan) {
-                        mCollapsingToolbarLayout.setContentScrim(null);
-                    }
-                    isLessThan = false;
+        app_bar_layout.addOnOffsetChangedListener((appBarLayout, verticalOffset) -> {
+            int total_Height = -mCollapsingToolbarLayout.getHeight() + mToolbar.getHeight();
+            if (verticalOffset <= total_Height) {
+                if (mArticleContent != null) {
+                    mCollapsingToolbarLayout.setTitle(mArticleContent.getTitle());
                 }
+                head_info.setVisibility(View.GONE);
+                if (!isLessThan) {
+                    mCollapsingToolbarLayout.setContentScrimColor(0xffffffff);
+                    mCollapsingToolbarLayout.setCollapsedTitleTextColor(0xff717171);
+                }
+                isLessThan = true;
+            } else {
+                mCollapsingToolbarLayout.setTitle("");
+                head_info.setVisibility(View.VISIBLE);
+                Drawable drawable = head_info.getBackground();
+                drawable.setAlpha(changAlpha(Math.abs(verticalOffset), Math.abs(total_Height)));
+                // 设置头图
+                if (Build.VERSION.SDK_INT >= 16) {
+                    head_info.setBackground(drawable);
+                } else {
+                    head_info.setBackgroundDrawable(drawable);
+                }
+                if (isLessThan) {
+                    mCollapsingToolbarLayout.setContentScrim(null);
+                }
+                isLessThan = false;
             }
         });
-    }
-
-    /**
-     * 这里包含了标签的部分,暂时未实现
-     */
-    private void initView() {
-        article_title = (TextView) findViewById(R.id.article_title);
-        article_info = (TextView) findViewById(R.id.article_info);
-        article_time = (TextView) findViewById(R.id.article_time);
-        mToolbar = (Toolbar) findViewById(R.id.toolbar);
-        head_info = (LinearLayout) findViewById(R.id.head_info);
-        head_layout = (SimpleDraweeView) findViewById(R.id.head_layout);
-        // 定义收缩栏
-        app_bar_layout = (AppBarLayout) findViewById(R.id.app_bar_layout);
-        mCollapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar_layout);
     }
 
     /**
@@ -220,35 +208,26 @@ public class ArticleContentActivity extends AppCompatActivity implements NetBroa
         itemIconCM.setImageResource(R.drawable.button_comment_selector);
         SubActionButton comment = itemBuilder.setContentView(itemIconCM).build();
 
-        final String phoneID = ((MyApplication)getApplication()).getMAC();
+        final String phoneID = ((MyApplication) getApplication()).getMAC();
         final FloatingActionMenu actionMenu = new FloatingActionMenu.Builder(this)
                 .addSubActionView(praise, 100, 100)
                 .addSubActionView(collect, 100, 100)
                 .addSubActionView(comment, 100, 100)
                 .attachTo(actionButton)
                 .build();
-        praise.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                new AsyncPraise().execute(mArticleContent.getId());
-                actionMenu.close(true);
-            }
+        praise.setOnClickListener(v -> {
+            new AsyncPraise().execute(mArticleContent.getId());
+            actionMenu.close(true);
         });
-        collect.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                new AsyncCollect().execute(mArticleContent.getId());
-                actionMenu.close(true);
-            }
+        collect.setOnClickListener(v -> {
+            new AsyncCollect().execute(mArticleContent.getId());
+            actionMenu.close(true);
         });
-        comment.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                MyApplication.getInstance()
-                        .instanceGetComment()
-                        .showCommentDialog(ArticleContentActivity.this, String.valueOf(articleId), phoneID);
-                actionMenu.close(true);
-            }
+        comment.setOnClickListener(v -> {
+            MyApplication.getInstance()
+                    .instanceGetComment()
+                    .showCommentDialog(ArticleContentActivity.this, String.valueOf(articleId), phoneID);
+            actionMenu.close(true);
         });
     }
 
