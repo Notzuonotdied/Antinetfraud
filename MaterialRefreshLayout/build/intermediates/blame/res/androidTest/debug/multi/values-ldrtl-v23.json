@@ -22,5 +22,29 @@
                 }
             }
         ]
+    },
+    {
+        "outputFile": "/home/wangyu/myCode/AntiNETFraud/MaterialRefreshLayout/build/intermediates/incremental/mergeDebugAndroidTestResources/merged.dir/values-ldrtl-v23/values-ldrtl-v23.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 112,
+                    "endOffset": 163
+                },
+                "from": {
+                    "file": "/home/wangyu/.android/build-cache/089caebd313915e7a03a42fcd68d3eb73a17bf03/output/res/values-ldrtl-v23/values-ldrtl-v23.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 240,
+                        "endColumn": 112,
+                        "endOffset": 348
+                    }
+                }
+            }
+        ]
     }
 ]

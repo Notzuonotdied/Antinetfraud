@@ -2,5 +2,9 @@
     {
         "merged": "/home/wangyu892449346/myCode/AntiNETFraud/app/build/intermediates/res/merged/debug/layout-sw600dp-v13/design_layout_snackbar.xml",
         "source": "/home/wangyu892449346/.android/build-cache/4bb4fc8129496ac95469c217004f5a082f0ad512/output/res/layout-sw600dp-v13/design_layout_snackbar.xml"
+    },
+    {
+        "merged": "/home/wangyu/myCode/AntiNETFraud/app/build/intermediates/res/merged/debug/layout-sw600dp-v13/design_layout_snackbar.xml",
+        "source": "/home/wangyu/.android/build-cache/08a6255f200a2bd99fab3bd6cbcaaef5d91a90d2/output/res/layout-sw600dp-v13/design_layout_snackbar.xml"
     }
 ]

@@ -4,6 +4,14 @@
         "source": "/home/wangyu892449346/myCode/AntiNETFraud/app/src/main/res/mipmap-xhdpi/ic_header.png"
     },
     {
+        "merged": "/home/wangyu/myCode/AntiNETFraud/app/build/intermediates/res/merged/debug/mipmap-xhdpi/ic_launcher.png",
+        "source": "/home/wangyu/myCode/AntiNETFraud/app/src/main/res/mipmap-xhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/home/wangyu/myCode/AntiNETFraud/app/build/intermediates/res/merged/debug/mipmap-xhdpi/ic_header.png",
+        "source": "/home/wangyu/myCode/AntiNETFraud/app/src/main/res/mipmap-xhdpi/ic_header.png"
+    },
+    {
         "merged": "/home/wangyu892449346/myCode/AntiNETFraud/app/build/intermediates/res/merged/debug/mipmap-xhdpi/ic_launcher.png",
         "source": "/home/wangyu892449346/myCode/AntiNETFraud/app/src/main/res/mipmap-xhdpi/ic_launcher.png"
     }

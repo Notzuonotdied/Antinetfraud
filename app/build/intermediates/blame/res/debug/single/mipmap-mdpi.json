@@ -4,16 +4,36 @@
         "source": "/home/wangyu892449346/myCode/AntiNETFraud/app/src/main/res/mipmap-mdpi/net_fraud.png"
     },
     {
+        "merged": "/home/wangyu/myCode/AntiNETFraud/app/build/intermediates/res/merged/debug/mipmap-mdpi/tel_fraud.png",
+        "source": "/home/wangyu/myCode/AntiNETFraud/app/src/main/res/mipmap-mdpi/tel_fraud.png"
+    },
+    {
+        "merged": "/home/wangyu/myCode/AntiNETFraud/app/build/intermediates/res/merged/debug/mipmap-mdpi/net_fraud.png",
+        "source": "/home/wangyu/myCode/AntiNETFraud/app/src/main/res/mipmap-mdpi/net_fraud.png"
+    },
+    {
         "merged": "/home/wangyu892449346/myCode/AntiNETFraud/app/build/intermediates/res/merged/debug/mipmap-mdpi/tel_fraud.png",
         "source": "/home/wangyu892449346/myCode/AntiNETFraud/app/src/main/res/mipmap-mdpi/tel_fraud.png"
+    },
+    {
+        "merged": "/home/wangyu/myCode/AntiNETFraud/app/build/intermediates/res/merged/debug/mipmap-mdpi/ic_launcher.png",
+        "source": "/home/wangyu/myCode/AntiNETFraud/app/src/main/res/mipmap-mdpi/ic_launcher.png"
     },
     {
         "merged": "/home/wangyu892449346/myCode/AntiNETFraud/app/build/intermediates/res/merged/debug/mipmap-mdpi/ic_header.png",
         "source": "/home/wangyu892449346/myCode/AntiNETFraud/app/src/main/res/mipmap-mdpi/ic_header.png"
     },
     {
+        "merged": "/home/wangyu/myCode/AntiNETFraud/app/build/intermediates/res/merged/debug/mipmap-mdpi/ic_header.png",
+        "source": "/home/wangyu/myCode/AntiNETFraud/app/src/main/res/mipmap-mdpi/ic_header.png"
+    },
+    {
         "merged": "/home/wangyu892449346/myCode/AntiNETFraud/app/build/intermediates/res/merged/debug/mipmap-mdpi/ic_launcher.png",
         "source": "/home/wangyu892449346/myCode/AntiNETFraud/app/src/main/res/mipmap-mdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/home/wangyu/myCode/AntiNETFraud/app/build/intermediates/res/merged/debug/mipmap-mdpi/booklet.png",
+        "source": "/home/wangyu/myCode/AntiNETFraud/app/src/main/res/mipmap-mdpi/booklet.png"
     },
     {
         "merged": "/home/wangyu892449346/myCode/AntiNETFraud/app/build/intermediates/res/merged/debug/mipmap-mdpi/booklet.png",
