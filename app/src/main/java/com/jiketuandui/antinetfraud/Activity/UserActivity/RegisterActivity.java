@@ -37,7 +37,7 @@ public class RegisterActivity extends Activity {
     View mProgressView;
     @BindView(R.id.login_form)
     View mLoginFormView;
-    @BindView(R.id.register_in_button)
+    @BindView(R.id.register)
     Button mRegisterButton;
     @BindView(R.id.confirm)
     EditText mConfirm;
@@ -115,7 +115,7 @@ public class RegisterActivity extends Activity {
             mConfirm.setError(getString(R.string.error_password_required));
             focusView = mConfirm;
             cancel = true;
-        } else if (!isConfirmPasswordValid(confirm, password)) {
+        } else if (!TextUtils.equals(confirm, password)) {
             // 两次密码不匹配
             mConfirm.setError(getString(R.string.error_confirm_password));
             focusView = mConfirm;
@@ -155,9 +155,6 @@ public class RegisterActivity extends Activity {
         return password.length() > 4;
     }
 
-    private boolean isConfirmPasswordValid(String confirmPassword, String password) {
-        return TextUtils.equals(confirmPassword, password);
-    }
 
     /**
      * Shows the progress UI and hides the login form.
