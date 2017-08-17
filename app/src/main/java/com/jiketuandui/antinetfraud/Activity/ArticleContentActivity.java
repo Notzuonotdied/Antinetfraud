@@ -195,6 +195,7 @@ public class ArticleContentActivity extends AppCompatActivity
         final FloatingActionButton actionButton = new FloatingActionButton.Builder(this)
                 .setContentView(icon)
                 .build();
+        actionButton.setAlpha((float)0.7);
         SubActionButton.Builder itemBuilder = new SubActionButton.Builder(this);
 
         ImageView itemIconP = new ImageView(this);
