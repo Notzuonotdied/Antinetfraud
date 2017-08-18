@@ -3,9 +3,7 @@ package com.jiketuandui.antinetfraud.View.banner;
 import android.view.View;
 
 public interface BannerViewBehavior {
+    void update(Object object);
 
-    public void update(Object object);
-
-    public View getView();
-
+    View getView();
 }

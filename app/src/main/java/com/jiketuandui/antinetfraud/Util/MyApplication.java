@@ -173,11 +173,11 @@ public class MyApplication extends Application {
         return ANNOUNCEID;
     }
 
-    public int getmNetWorkState() {
+    public int getNetWorkState() {
         return mNetWorkState;
     }
 
-    public void setmNetWorkState(int mNetWorkState) {
+    public void setNetWorkState(int mNetWorkState) {
         this.mNetWorkState = mNetWorkState;
     }
 

@@ -18,7 +18,7 @@ public class NetBroadcastReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         // 如果相等的话说明网络发生了变化
         if (intent.getAction().equals(ConnectivityManager.CONNECTIVITY_ACTION)) {
-            MyApplication.getInstance().setmNetWorkState(NetWorkUtils.getNetWorkState(context));
+            MyApplication.getInstance().setNetWorkState(NetWorkUtils.getNetWorkState(context));
             if (mListeners.size() > 0)// 通知接口完成加载
                 for (netEventHandler handler : mListeners) {
                     handler.onNetChange();

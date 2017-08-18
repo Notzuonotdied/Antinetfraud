@@ -5,7 +5,6 @@ import android.os.AsyncTask;
 import android.support.v7.app.AlertDialog;
 import android.text.TextUtils;
 import android.util.Log;
-import android.view.View;
 import android.view.Window;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -68,7 +67,7 @@ public class getCommentInfo extends accessNetwork {
      * psot评论,username="123"&token="123"&phone_id="123"&article_id="17"&user_id="12"&content="123"
      */
     private boolean postComment(final Context context, String articleId, String content, String phoneID) {
-        if (context==null) {
+        if (context == null) {
             Log.i("Notzuonotdied", "context is null!");
             return false;
         }
@@ -80,8 +79,8 @@ public class getCommentInfo extends accessNetwork {
             Log.i("Notzuonotdied", "全部为空～");
             return false;
         }
-        String commentString = "username=" + userName +"&token=" + userToken +"&phone_id="
-            + phoneID +"&article_id=" + articleId + "&user_id=" + userID + "&content="
+        String commentString = "username=" + userName + "&token=" + userToken + "&phone_id="
+                + phoneID + "&article_id=" + articleId + "&user_id=" + userID + "&content="
                 + content;
         Log.i("Notzuonotdied", commentString);
         return TextUtils.equals(post("/api/comment/", commentString), "true");
@@ -101,18 +100,8 @@ public class getCommentInfo extends accessNetwork {
         final EditText editText = (EditText) window.findViewById(R.id.comment_edit);
         TextView cancel = (TextView) window.findViewById(R.id.comment_cancel);
         TextView confirm = (TextView) window.findViewById(R.id.comment_confirm);
-        cancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                alertDialog.dismiss();
-            }
-        });
-        confirm.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                new AsyncComment(context, articleID, editText.getText().toString(), phoneID).execute();
-            }
-        });
+        cancel.setOnClickListener(view -> alertDialog.dismiss());
+        confirm.setOnClickListener(view -> new AsyncComment(context, articleID, editText.getText().toString(), phoneID).execute());
     }
 
     private class AsyncComment extends AsyncTask<Void, Void, Boolean> {

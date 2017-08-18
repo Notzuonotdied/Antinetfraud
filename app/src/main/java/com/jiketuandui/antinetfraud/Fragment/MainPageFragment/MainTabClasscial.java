@@ -37,8 +37,6 @@ public class MainTabClasscial extends Fragment implements NetBroadcastReceiver.n
     private RelativeLayout bannerContent;
     private TextView tv_01;
     private TextView tv_02;
-    private MyListView listView;
-    private VideoListAdapter adapterVideoList;
 
     /**
      * 当前页面的各个Item的数据存放容器
@@ -46,17 +44,14 @@ public class MainTabClasscial extends Fragment implements NetBroadcastReceiver.n
     private List<ListContent> bannerListContents = new ArrayList<>();
     private List<String> bannerTitle = new ArrayList<>();
 
-    private View.OnClickListener tvListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            switch (view.getId()) {
-                case R.id.tv_01:
-                    Toast.makeText(getContext(), "正在抓紧开发中~", Toast.LENGTH_SHORT).show();
-                    break;
-                case R.id.tv_02:
-                    Toast.makeText(getContext(), "正在抓紧开发中~", Toast.LENGTH_SHORT).show();
-                    break;
-            }
+    private View.OnClickListener tvListener = view -> {
+        switch (view.getId()) {
+            case R.id.tv_01:
+                Toast.makeText(getContext(), "正在抓紧开发中~", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.tv_02:
+                Toast.makeText(getContext(), "正在抓紧开发中~", Toast.LENGTH_SHORT).show();
+                break;
         }
     };
 
@@ -74,11 +69,11 @@ public class MainTabClasscial extends Fragment implements NetBroadcastReceiver.n
     private void initAllView(View view) {
         bannerContent = (RelativeLayout) view.findViewById(R.id.search_banner_cont);
 
-        this.listView = (MyListView) view.findViewById(R.id.listview);
+        MyListView listView = (MyListView) view.findViewById(R.id.listview);
         this.tv_01 = (TextView) view.findViewById(R.id.tv_01);
         this.tv_02 = (TextView) view.findViewById(R.id.tv_02);
 
-        adapterVideoList = new VideoListAdapter(getActivity());
+        VideoListAdapter adapterVideoList = new VideoListAdapter(getActivity());
         listView.setAdapter(adapterVideoList);
     }
 
@@ -117,7 +112,7 @@ public class MainTabClasscial extends Fragment implements NetBroadcastReceiver.n
 
     @Override
     public void onNetChange() {
-        if (MyApplication.getInstance().getmNetWorkState() != NetWorkUtils.NET_TYPE_NO_NETWORK &&
+        if (MyApplication.getInstance().getNetWorkState() != NetWorkUtils.NET_TYPE_NO_NETWORK &&
                 bannerListContents != null && bannerListContents.size() == 0) {
             init_banner();
         }
@@ -145,17 +140,14 @@ public class MainTabClasscial extends Fragment implements NetBroadcastReceiver.n
                     list.add(new BaseBannerBean(mListContents.get(i).getImagelink()));
                     bannerTitle.add(mListContents.get(i).getTitle());
                 }
-                banner.setBannerViewOnClickListener(new BannerViewOnClickListener() {
-                    @Override
-                    public void BannerOnClickListener(int position) {
-                        if (NetWorkUtils.isConnectNET(getActivity())) {
-                            Intent intent = new Intent(getActivity(), ArticleContentActivity.class);
-                            Bundle mBundle = new Bundle();
-                            mBundle.putInt(MyApplication.getInstance().getCONTENTID(),
-                                    Integer.valueOf(mListContents.get(position).getId()));
-                            intent.putExtras(mBundle);
-                            startActivity(intent);
-                        }
+                banner.setBannerViewOnClickListener(position -> {
+                    if (NetWorkUtils.isConnectNET(getActivity())) {
+                        Intent intent = new Intent(getActivity(), ArticleContentActivity.class);
+                        Bundle mBundle = new Bundle();
+                        mBundle.putInt(MyApplication.getInstance().getCONTENTID(),
+                                Integer.valueOf(mListContents.get(position).getId()));
+                        intent.putExtras(mBundle);
+                        startActivity(intent);
                     }
                 });
                 bannerContent.addView(banner);

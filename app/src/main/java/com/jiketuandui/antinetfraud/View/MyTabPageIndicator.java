@@ -35,10 +35,6 @@ public class MyTabPageIndicator extends LinearLayout {
      */
     private static final int COUNT_DEFAULT_TAB = 4;
     /**
-     * tab的数量
-     */
-    private int mTabVisibleCount = COUNT_DEFAULT_TAB;
-    /**
      * 标题正常的时候的颜色
      */
 //    private static int COLOR_TEXT_NORMAL = 0xaaffffff;
@@ -48,8 +44,12 @@ public class MyTabPageIndicator extends LinearLayout {
      */
     private static int COLOR_TEXT_HIGHLIGHTCOLOR = 0xff00BDD0;
     /**
+     * tab的数量
+     */
+    private int mTabVisibleCount = COUNT_DEFAULT_TAB;
+    /**
      * 单位是sp
-     * */
+     */
     private int IndicatorTextSize = 14;
     /**
      * 绘制三角形的画笔
@@ -95,7 +95,7 @@ public class MyTabPageIndicator extends LinearLayout {
     private ViewPager.OnPageChangeListener listener = new ViewPager.OnPageChangeListener() {
         /**
          * 当页面在滑动的时候会调用此方法，在滑动被停止之前，此方法回一直得到调用
-         * 
+         *
          * @param position 当前页面，及你点击滑动的页面
          * @param positionOffset 当前页面偏移的百分比
          * @param positionOffsetPixels 当前页面偏移的像素的位置
@@ -138,7 +138,7 @@ public class MyTabPageIndicator extends LinearLayout {
         super(context, attrs);
         // 获取自定义的属性。
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.MyTabPageIndicator);
-        mTabVisibleCount = typedArray.getInt(R.styleable.MyTabPageIndicator_tab_count,COUNT_DEFAULT_TAB);
+        mTabVisibleCount = typedArray.getInt(R.styleable.MyTabPageIndicator_tab_count, COUNT_DEFAULT_TAB);
         if (mTabVisibleCount < 0) {
             mTabVisibleCount = COUNT_DEFAULT_TAB;
         }
@@ -195,9 +195,7 @@ public class MyTabPageIndicator extends LinearLayout {
     private void initTriangle() {
 
         mPath = new Path();
-        /**
-         * 设置三角行的高度
-         */
+        // 设置三角行的高度
         int mTriangleHeight = (int) (mTriangleWidth / 2 / Math.sqrt(2));
         // path的moveTo方法将起始轮廓点移至x，y坐标点，默认情况为0,0点
         mPath.moveTo(0, 0);
@@ -251,12 +249,9 @@ public class MyTabPageIndicator extends LinearLayout {
         tv.setTypeface(typeFace);
 
         tv.setFocusable(true);
-        tv.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (mViewPager.getCurrentItem() != position) {
-                    mViewPager.setCurrentItem(position);
-                }
+        tv.setOnClickListener(view -> {
+            if (mViewPager.getCurrentItem() != position) {
+                mViewPager.setCurrentItem(position);
             }
         });
         tv.setLayoutParams(lp);

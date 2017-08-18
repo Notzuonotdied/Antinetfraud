@@ -48,27 +48,21 @@ public class CommentFragment extends Fragment {
         recyclerView.setMyRecyclerViewListener(new MyRecyclerView.MyRecyclerViewListener() {
             @Override
             public void onRefresh() {
-                h.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        isRefresh = true;
-                        // 回复原状
-                        recyclerView.setRefreshComplete();
-                        new AsyncComment().execute();
-                    }
+                h.postDelayed(() -> {
+                    isRefresh = true;
+                    // 回复原状
+                    recyclerView.setRefreshComplete();
+                    new AsyncComment().execute();
                 }, 2222);
             }
 
             @Override
             public void onLoadMore() {
-                h.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        isRefresh = false;
-                        // 恢复原状
-                        recyclerView.setLoadMoreComplete();
-                        new AsyncComment().execute();
-                    }
+                h.postDelayed(() -> {
+                    isRefresh = false;
+                    // 恢复原状
+                    recyclerView.setLoadMoreComplete();
+                    new AsyncComment().execute();
                 }, 1666);
             }
         });

@@ -48,10 +48,6 @@ public class MyRecyclerView extends RecyclerView {
         super(context, attrs, defStyle);
     }
 
-    public MyRecyclerViewListener getMyRecyclerViewListener() {
-        return myRecyclerViewListener;
-    }
-
     public void setMyRecyclerViewListener(MyRecyclerViewListener myRecyclerViewListener) {
         this.myRecyclerViewListener = myRecyclerViewListener;
     }
@@ -115,15 +111,12 @@ public class MyRecyclerView extends RecyclerView {
         }
 
         ValueAnimator objectAnimator = ValueAnimator.ofInt(currentHeight, targetHeight);
-        objectAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-            @Override
-            public void onAnimationUpdate(ValueAnimator animation) {
+        objectAnimator.addUpdateListener(animation -> {
 
-                int animatedValue = (int) animation.getAnimatedValue();
-                setStateByHeight(animatedValue, true);
-                headerView.getLayoutParams().height = animatedValue;
-                headerView.requestLayout();
-            }
+            int animatedValue = (int) animation.getAnimatedValue();
+            setStateByHeight(animatedValue, true);
+            headerView.getLayoutParams().height = animatedValue;
+            headerView.requestLayout();
         });
         objectAnimator.start();
     }
@@ -215,14 +208,11 @@ public class MyRecyclerView extends RecyclerView {
         headerLayout.setGravity(Gravity.BOTTOM);
 
         status = (TextView) refreshView.findViewById(R.id.status);
-        headerView.post(new Runnable() {
-            @Override
-            public void run() {
-                headerViewHeight = headerView.getHeight();
-                RelativeLayout.LayoutParams l = (RelativeLayout.LayoutParams) headerView.getLayoutParams();
-                l.setMargins(0, -headerViewHeight, 0, 0);
-                headerView.requestLayout();
-            }
+        headerView.post(() -> {
+            headerViewHeight = headerView.getHeight();
+            RelativeLayout.LayoutParams l = (RelativeLayout.LayoutParams) headerView.getLayoutParams();
+            l.setMargins(0, -headerViewHeight, 0, 0);
+            headerView.requestLayout();
         });
         headers.add(headerLayout);
 

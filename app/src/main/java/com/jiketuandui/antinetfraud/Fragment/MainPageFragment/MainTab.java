@@ -74,20 +74,12 @@ public class MainTab extends Fragment implements NetBroadcastReceiver.netEventHa
 
 
         ImageButton imageButton = (ImageButton) v.findViewById(R.id.gotoSearch);
-        imageButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), SearchActivity.class);
-                startActivity(intent);
-            }
+        imageButton.setOnClickListener(view -> {
+            Intent intent = new Intent(getActivity(), SearchActivity.class);
+            startActivity(intent);
         });
         ImageButton imageButton_a = (ImageButton) v.findViewById(R.id.announcement);
-        imageButton_a.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                showAnnouncmentDialog();
-            }
-        });
+        imageButton_a.setOnClickListener(view -> showAnnouncmentDialog());
     }
 
     /**
@@ -129,12 +121,9 @@ public class MainTab extends Fragment implements NetBroadcastReceiver.netEventHa
         TextView tv_more = (TextView) window.findViewById(R.id.tv_dialog_more);
         tv_more.setText("更多");
         tv_more.getPaint().setFlags(Paint.UNDERLINE_TEXT_FLAG);
-        tv_more.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), AnnounceActivity.class);
-                getContext().startActivity(intent);
-            }
+        tv_more.setOnClickListener(v -> {
+            Intent intent = new Intent(getActivity(), AnnounceActivity.class);
+            getContext().startActivity(intent);
         });
     }
 

@@ -47,7 +47,7 @@ public class MainTabNews extends Fragment implements NetBroadcastReceiver.netEve
      * 避免重复和多次加载
      */
     private boolean isFirstRefresh = true;
-    private boolean isNeedtoRefresh = false;
+    private boolean isNeed2Refresh = false;
     private boolean isOpenTop = true;
 
     @Override
@@ -141,7 +141,7 @@ public class MainTabNews extends Fragment implements NetBroadcastReceiver.netEve
 
     @Override
     public void onNetChange() {
-        if (MyApplication.getInstance().getmNetWorkState() != NetWorkUtils.NET_TYPE_NO_NETWORK &&
+        if (MyApplication.getInstance().getNetWorkState() != NetWorkUtils.NET_TYPE_NO_NETWORK &&
                 mListContents != null && mListContents.size() == 0) {
             materialRefreshLayout.autoRefresh();
         }
@@ -163,7 +163,7 @@ public class MainTabNews extends Fragment implements NetBroadcastReceiver.netEve
         protected void onPostExecute(List<ListContent> ListContents) {
             super.onPostExecute(ListContents);
             if (ListContents != null) {// 填充容器并刷新页面的列表项数据
-                isNeedtoRefresh = true;
+                isNeed2Refresh = true;
                 mListContentAdapter.setData(ListContents);
                 mListContentAdapter.notifyDataSetChanged();
             }
@@ -185,7 +185,7 @@ public class MainTabNews extends Fragment implements NetBroadcastReceiver.netEve
                     .instanceConnect().setContentURLByTagId(getConnect.UrlContentHead,
                             String.valueOf(readPage), String.valueOf(params[0]));
             readPage++;
-            isNeedtoRefresh = true;
+            isNeed2Refresh = true;
 
             return ListContents;
         }
@@ -194,12 +194,12 @@ public class MainTabNews extends Fragment implements NetBroadcastReceiver.netEve
         protected void onPostExecute(List<ListContent> ListContents) {
             super.onPostExecute(ListContents);
             if (ListContents == null) {
-                if (!isNeedtoRefresh) {
+                if (!isNeed2Refresh) {
                     Toast.makeText(getContext(), "已到底部~", Toast.LENGTH_SHORT).show();
                     materialRefreshLayout.finishRefreshLoadMore();
                     return;
                 }
-                isNeedtoRefresh = true;
+                isNeed2Refresh = true;
                 materialRefreshLayout.finishRefreshLoadMore();
                 return;
             }

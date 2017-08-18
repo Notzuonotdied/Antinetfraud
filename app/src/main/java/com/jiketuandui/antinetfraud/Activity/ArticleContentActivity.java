@@ -136,7 +136,7 @@ public class ArticleContentActivity extends AppCompatActivity
 
     @Override
     public void onNetChange() {
-        if (MyApplication.getInstance().getmNetWorkState() != NetWorkUtils.NET_TYPE_NO_NETWORK &&
+        if (MyApplication.getInstance().getNetWorkState() != NetWorkUtils.NET_TYPE_NO_NETWORK &&
                 mArticleContent == null) {
             LoadingArticle();
         }

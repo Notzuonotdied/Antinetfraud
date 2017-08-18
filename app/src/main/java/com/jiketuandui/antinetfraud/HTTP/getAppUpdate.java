@@ -57,24 +57,16 @@ public class getAppUpdate {
             btn_bottom.setVisibility(View.GONE);
         }
         TextView tv_cancel = (TextView) window.findViewById(R.id.tv_dialog_cancel);
-        tv_cancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                alertDialog.dismiss();
-            }
-        });
+        tv_cancel.setOnClickListener(view -> alertDialog.dismiss());
         TextView tv_confirm = (TextView) window.findViewById(R.id.tv_dialog_confirm);
-        tv_confirm.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (Environment.getExternalStorageState().equals(
-                        Environment.MEDIA_MOUNTED)) {
-                    alertDialog.cancel();
-                    new getAPPTask().execute(mUrl);
-                } else {
-                    Toast.makeText(context, "SD卡不可用，请插入SD卡",
-                            Toast.LENGTH_SHORT).show();
-                }
+        tv_confirm.setOnClickListener(view -> {
+            if (Environment.getExternalStorageState().equals(
+                    Environment.MEDIA_MOUNTED)) {
+                alertDialog.cancel();
+                new getAPPTask().execute(mUrl);
+            } else {
+                Toast.makeText(context, "SD卡不可用，请插入SD卡",
+                        Toast.LENGTH_SHORT).show();
             }
         });
     }

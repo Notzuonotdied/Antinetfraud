@@ -155,7 +155,7 @@ public class SearchDetailActivity extends AppCompatActivity implements NetBroadc
 
     @Override
     public void onNetChange() {
-        if (MyApplication.getInstance().getmNetWorkState() != NetWorkUtils.NET_TYPE_NO_NETWORK &&
+        if (MyApplication.getInstance().getNetWorkState() != NetWorkUtils.NET_TYPE_NO_NETWORK &&
                 mListContents != null && mListContents.size() == 0 && inputString != null) {
             materialRefreshLayout.autoRefresh();
         }

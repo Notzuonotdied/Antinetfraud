@@ -22,7 +22,7 @@ public class BlurUtilForHighAPI {
         if(sentBitmap==null) {
             return null;
         }
-        Bitmap bitmap = sentBitmap.createScaledBitmap(
+        Bitmap bitmap = Bitmap.createScaledBitmap(
                 sentBitmap, sentBitmap.getWidth() / SCALE,
                 sentBitmap.getHeight() / SCALE, false);
         if (radius <= 0.f || radius > 25.f) {

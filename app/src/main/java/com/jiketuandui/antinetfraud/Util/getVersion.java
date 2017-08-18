@@ -23,7 +23,7 @@ public class getVersion {
         }
     }
 
-    public static String getVersion(Context context)//获取版本号
+    public static String getAndroidVersion(Context context)//获取版本号
     {
         try {
             PackageInfo pi=context.getPackageManager().getPackageInfo(context.getPackageName(), 0);

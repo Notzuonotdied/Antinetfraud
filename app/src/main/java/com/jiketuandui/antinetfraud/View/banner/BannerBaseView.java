@@ -13,7 +13,6 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.jiketuandui.antinetfraud.View.banner.Indicator.CirclePageIndicator;
@@ -54,6 +53,7 @@ public class BannerBaseView extends RelativeLayout implements BannerViewBehavior
     private List<String> bannerTitle;
     private int cutIndex;
     private Context context;
+    private BannerViewOnClickListener bannerViewOnClickListener;
 
     public BannerBaseView(Context context) {
 
@@ -104,7 +104,7 @@ public class BannerBaseView extends RelativeLayout implements BannerViewBehavior
 
     /**
      * 将SP转为px
-     * */
+     */
     public int sp2px(float spValue) {
         final float fontScale = getContext().getResources().getDisplayMetrics().scaledDensity;
         return (int) (spValue * fontScale + 0.5f);
@@ -190,6 +190,10 @@ public class BannerBaseView extends RelativeLayout implements BannerViewBehavior
         mIndicator.setStrokeWidth(2);
         mIndicator.setSelectedRadius(indicatorHeight / 4 + 1);
         indicator.setCentered(true);
+    }
+
+    public void setBannerViewOnClickListener(BannerViewOnClickListener bannerViewOnClickListener) {
+        this.bannerViewOnClickListener = bannerViewOnClickListener;
     }
 
     private class BannerCutListener extends ViewPager.SimpleOnPageChangeListener {
@@ -281,11 +285,5 @@ public class BannerBaseView extends RelativeLayout implements BannerViewBehavior
         public boolean isViewFromObject(View view, Object obj) {
             return view == obj;
         }
-    }
-
-    private BannerViewOnClickListener bannerViewOnClickListener;
-
-    public void setBannerViewOnClickListener(BannerViewOnClickListener bannerViewOnClickListener) {
-        this.bannerViewOnClickListener = bannerViewOnClickListener;
     }
 }

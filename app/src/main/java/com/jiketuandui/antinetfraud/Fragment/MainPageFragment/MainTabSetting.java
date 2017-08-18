@@ -40,7 +40,7 @@ public class MainTabSetting extends Fragment {
     @BindView(R.id.setting_cache_size)
     TextView setting_cache_size;
     @BindView(R.id.lc_holder_image)
-    SimpleDraweeView acountPicture;
+    SimpleDraweeView accountPic;
     @BindView(R.id.setting_pieces_account)
     LinearLayout setAccount;
     @BindView(R.id.setting_pieces_collection)

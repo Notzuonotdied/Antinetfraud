@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
 import android.widget.FrameLayout;
 
 import com.cjj.MaterialRefreshLayout;
@@ -98,7 +97,7 @@ public class HistoryDetailActivity extends AppCompatActivity implements NetBroad
 
     @Override
     public void onNetChange() {
-        if (MyApplication.getInstance().getmNetWorkState() != NetWorkUtils.NET_TYPE_NO_NETWORK &&
+        if (MyApplication.getInstance().getNetWorkState() != NetWorkUtils.NET_TYPE_NO_NETWORK &&
                 mListContents != null && mListContents.size() == 0) {
             materialRefreshLayout.autoRefresh();
         }

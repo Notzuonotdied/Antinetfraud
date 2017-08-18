@@ -1,7 +1,8 @@
 package com.jiketuandui.antinetfraud.Util;
 
 /**
- * Created by shengjun on 16/9/10.
+ * Created by Notzuonotdied on 16/9/10.
+ * 这些是网上搜集来的一些诈骗短视频
  */
 public class VideoConstant {
 

@@ -57,13 +57,8 @@ public class VideoListAdapter extends BaseAdapter {
 
         viewHolder.jcVideoPlayerCover.setImageURI(VideoConstant.videoThumbs[position]);
         viewHolder.jcVideoPlayerTitle.setText(VideoConstant.videoTitles[position]);
-        viewHolder.video.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                JCVideoPlayerStandard.startFullscreen(context, JCVideoPlayerStandard.class,
-                        VideoConstant.videoUrls[pos], VideoConstant.videoTitles[pos]);
-            }
-        });
+        viewHolder.video.setOnClickListener(view -> JCVideoPlayerStandard.startFullscreen(context, JCVideoPlayerStandard.class,
+                VideoConstant.videoUrls[pos], VideoConstant.videoTitles[pos]));
 
         return convertView;
     }

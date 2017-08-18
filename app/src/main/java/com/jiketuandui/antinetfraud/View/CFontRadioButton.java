@@ -9,7 +9,7 @@ import android.widget.RadioButton;
  * Created by Notzuonotdied on 2016/8/30.
  * 自定义一个TextView用于设置字体
  */
-public class CFontRadioButton extends RadioButton {
+public class CFontRadioButton extends android.support.v7.widget.AppCompatRadioButton {
 
     public CFontRadioButton(Context context) {
         super(context);

@@ -55,14 +55,11 @@ public class MySearchView extends LinearLayout implements View.OnClickListener {
 
         etInput.addTextChangedListener(new EditChangedListener());
         etInput.setOnClickListener(this);
-        etInput.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView textView, int actionId, KeyEvent keyEvent) {
-                if (actionId == EditorInfo.IME_ACTION_SEARCH) {
-                    notifyStartSearching(etInput.getText().toString());
-                }
-                return true;
+        etInput.setOnEditorActionListener((textView, actionId, keyEvent) -> {
+            if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                notifyStartSearching(etInput.getText().toString());
             }
+            return true;
         });
     }
 

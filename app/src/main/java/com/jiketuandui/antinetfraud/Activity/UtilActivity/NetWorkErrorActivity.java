@@ -2,7 +2,6 @@ package com.jiketuandui.antinetfraud.Activity.UtilActivity;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.KeyEvent;
 
 import com.jiketuandui.antinetfraud.R;
 

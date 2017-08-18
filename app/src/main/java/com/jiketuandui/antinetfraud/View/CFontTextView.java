@@ -9,7 +9,7 @@ import android.widget.TextView;
  * Created by Notzuonotdied on 2016/8/30.
  * 自定义设置字体类型的TextView
  */
-public class CFontTextView extends TextView {
+public class CFontTextView extends android.support.v7.widget.AppCompatTextView {
 
     public CFontTextView(Context context) {
         super(context);

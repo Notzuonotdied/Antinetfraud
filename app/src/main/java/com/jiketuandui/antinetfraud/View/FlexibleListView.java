@@ -82,15 +82,12 @@ public class FlexibleListView extends ListView {
     private void resetHeaderViewHeight() {
         ValueAnimator valueAnimator = ValueAnimator.ofInt(1);
         valueAnimator.setDuration(1000);
-        valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-            @Override
-            public void onAnimationUpdate(ValueAnimator animation) {
-                final float f = animation.getAnimatedFraction();
-                mHeaderView.getLayoutParams().height -= f * (
-                        mHeaderView.getLayoutParams().height - mMaxScrollHeight);
-                mHeaderView.requestLayout();
+        valueAnimator.addUpdateListener(animation -> {
+            final float f = animation.getAnimatedFraction();
+            mHeaderView.getLayoutParams().height -= f * (
+                    mHeaderView.getLayoutParams().height - mMaxScrollHeight);
+            mHeaderView.requestLayout();
 
-            }
         });
         valueAnimator.setInterpolator(new OvershootInterpolator());
         valueAnimator.start();

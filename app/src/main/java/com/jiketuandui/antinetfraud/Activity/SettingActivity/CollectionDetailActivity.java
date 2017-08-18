@@ -104,7 +104,7 @@ public class CollectionDetailActivity extends AppCompatActivity implements NetBr
 
     @Override
     public void onNetChange() {
-        if (MyApplication.getInstance().getmNetWorkState() != NetWorkUtils.NET_TYPE_NO_NETWORK &&
+        if (MyApplication.getInstance().getNetWorkState() != NetWorkUtils.NET_TYPE_NO_NETWORK &&
                 mListContents != null && mListContents.size() == 0) {
             materialRefreshLayout.autoRefresh();
         }
