@@ -25,7 +25,6 @@ import com.jiketuandui.antinetfraud.Adapter.ArticleDetailAdapter;
 import com.jiketuandui.antinetfraud.Bean.ArticleContent;
 import com.jiketuandui.antinetfraud.Fragment.ArticleDetailFragment.ArticleFragment;
 import com.jiketuandui.antinetfraud.Fragment.ArticleDetailFragment.CommentFragment;
-import com.jiketuandui.antinetfraud.HTTP.getImage;
 import com.jiketuandui.antinetfraud.R;
 import com.jiketuandui.antinetfraud.Service.NetBroadcastReceiver;
 import com.jiketuandui.antinetfraud.Util.MyApplication;
@@ -62,9 +61,6 @@ public class ArticleContentActivity extends AppCompatActivity
     SimpleDraweeView head_layout;
     @BindView(R.id.toolbar)
     Toolbar mToolbar;
-    private int reHeight;
-    //    private MarkdownView article_markdownView;
-    //    private TextView article_textView;
     private ArticleContent mArticleContent;
     private boolean isLessThan;
     private boolean isCollected;
@@ -150,7 +146,7 @@ public class ArticleContentActivity extends AppCompatActivity
         }
         // 返回键
         mToolbar.setNavigationOnClickListener(v -> onBackPressed());
-        reHeight = head_layout.getHeight();
+        int reHeight = head_layout.getHeight();
         isLessThan = false;
         mCollapsingToolbarLayout.setCollapsedTitleTextColor(getResources().getColor(R.color.color_white));
         // 设置标题
@@ -195,7 +191,7 @@ public class ArticleContentActivity extends AppCompatActivity
         final FloatingActionButton actionButton = new FloatingActionButton.Builder(this)
                 .setContentView(icon)
                 .build();
-        actionButton.setAlpha((float)0.7);
+        actionButton.setAlpha((float) 0.7);
         SubActionButton.Builder itemBuilder = new SubActionButton.Builder(this);
 
         ImageView itemIconP = new ImageView(this);
@@ -264,9 +260,6 @@ public class ArticleContentActivity extends AppCompatActivity
         article_title.setText(mArticleContent.getTitle());
         article_info.setText(mArticleContent.getInfo());
         article_time.setText(mArticleContent.getCreatetime());
-        //       article_markdownView.loadMarkdown(articleContent.getContent());
-        //       article_textView.setText(Html.fromHtml(articleContent.getContent()));
-        //       head_layout.setImageURI(mArticleContent.getAllImagelink());
         // 设置头图
         if (Build.VERSION.SDK_INT >= 16) {
             DraweeController controller = Fresco.newDraweeControllerBuilder()
@@ -275,8 +268,6 @@ public class ArticleContentActivity extends AppCompatActivity
                     .setOldController(head_layout.getController())
                     .build();
             head_layout.setController(controller);
-//            head_layout.setBackground(new BitmapDrawable(
-//                    mArticleContent.getBitmap()));
         } else {
             DraweeController controller = Fresco.newDraweeControllerBuilder()
                     .setUri(mArticleContent.getImagelink())
@@ -284,43 +275,8 @@ public class ArticleContentActivity extends AppCompatActivity
                     .setOldController(head_layout.getController())
                     .build();
             head_layout.setController(controller);
-//            head_layout.setBackgroundDrawable(new BitmapDrawable(
-//                    mArticleContent.getBitmap()));
         }
-
-//        drawable_head = Build.VERSION.SDK_INT > 16 ? new BitmapDrawable(
-//                BlurUtilForHighAPI.Highblur(mArticleContent.getBitmap(),
-//                        25f, ArticleContentActivity.this)) : new BitmapDrawable(
-//                BlurUtil.fastblur(mArticleContent.getBitmap(), 66));
-//        mCollapsingToolbarLayout.setContentScrim(drawable_head);
     }
-
-//    /**
-//     * 回收内存
-//     */
-//    @Override
-//    protected void onDestroy() {
-//        if (head_layout != null && head_layout.getDrawingCache() != null ||
-//                mCollapsingToolbarLayout != null && mCollapsingToolbarLayout.getDrawingCache() != null) {
-//            Bitmap bitmap = head_layout.getDrawingCache();
-//            Bitmap bitmap_coo = mCollapsingToolbarLayout.getDrawingCache();
-//            if (Build.VERSION.SDK_INT >= 16) {
-//                head_layout.setBackground(null);
-//            } else {
-//                head_layout.setBackgroundDrawable(null);
-//            }
-//            mCollapsingToolbarLayout.setContentScrim(null);
-//            if (bitmap != null && !bitmap.isRecycled()) {
-//                bitmap.recycle();
-//            }
-//            if (bitmap_coo != null && !bitmap_coo.isRecycled()) {
-//                bitmap_coo.recycle();
-//            }
-//            System.gc();
-//        }
-//        super.onDestroy();
-//    }
-
 
     private class LoadArticle extends AsyncTask<Integer, Integer, ArticleContent> {
 
@@ -333,12 +289,8 @@ public class ArticleContentActivity extends AppCompatActivity
 
         @Override// 在子线程执行
         protected ArticleContent doInBackground(Integer... integers) {
-            ArticleContent mAContent = ((MyApplication) getApplication()).instanceConnect().setArticleURL(integers[0]);
-            if (mAContent != null) {
-                mAContent.setBitmap(getImage.getBitmap(mAContent,
-                        ((MyApplication) getApplication()).getMyScreenWidth(),
-                        reHeight, ArticleContentActivity.this));
-            }
+            ArticleContent mAContent = ((MyApplication) getApplication()).instanceConnect()
+                    .setArticleURL(integers[0]);
             // 判断用户是否登陆，假如登陆了，就提交用户的浏览历史
             if (isLogin() && mAContent != null) {
                 ((MyApplication) getApplication()).instancepostAccount()
@@ -364,7 +316,6 @@ public class ArticleContentActivity extends AppCompatActivity
             SharedPManager sharedPManager = new SharedPManager(ArticleContentActivity.this);
             if (sharedPManager.isContains(MyApplication.getInstance().getUid())) {
                 mUid = sharedPManager.getString(MyApplication.getInstance().getUid(), "0");
-                //Log.i("Notzuonotdied", "mUid = " + mUid);
                 return true;
             }
             return false;

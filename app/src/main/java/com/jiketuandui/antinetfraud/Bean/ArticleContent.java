@@ -1,7 +1,5 @@
 package com.jiketuandui.antinetfraud.Bean;
 
-import android.graphics.Bitmap;
-
 import com.jiketuandui.antinetfraud.Util.transTime;
 
 import java.util.List;
@@ -35,16 +33,6 @@ public class ArticleContent {
     private String imagelink;
     private String source;
     private List<TagInfo> tags;
-    // 图片
-    private Bitmap bitmap;
-
-    public Bitmap getBitmap() {
-        return bitmap;
-    }
-
-    public void setBitmap(Bitmap bitmap) {
-        this.bitmap = bitmap;
-    }
 
     public String getInfo() {
         return "阅读:" + getReading() + "次,点赞:" + getPraise() + "次";

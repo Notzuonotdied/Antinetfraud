@@ -20,12 +20,10 @@ import com.jiketuandui.antinetfraud.Activity.SettingActivity.HistoryDetailActivi
 import com.jiketuandui.antinetfraud.Activity.SettingActivity.ShareActivity;
 import com.jiketuandui.antinetfraud.Activity.UserActivity.LoginActivity;
 import com.jiketuandui.antinetfraud.HTTP.getAppUpdate;
-import com.jiketuandui.antinetfraud.HTTP.getImage;
 import com.jiketuandui.antinetfraud.R;
-import com.jiketuandui.antinetfraud.Util.CacheCleanManage;
 import com.jiketuandui.antinetfraud.Util.MyApplication;
 
-import java.io.File;
+import java.math.BigDecimal;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -67,16 +65,9 @@ public class MainTabSetting extends Fragment {
                 gotoActivity(AboutActivity.class);
                 break;
             case R.id.setting_pieces_delete:// 清除缓存
-//                boolean isSuccess = CacheCleanManage.CleanImageCache();
-//                Toast.makeText(getActivity(), isSuccess ? "缓存清除成功" :
-//                        "缓存清除失败", Toast.LENGTH_SHORT).show();
-                // setting_cache_size.setText(CacheCleanManage.getCacheSize(new File(getImage.photoPath)));
                 ImagePipeline imagePipeline = Fresco.getImagePipeline();
                 imagePipeline.clearCaches();
-                setting_cache_size.setText(
-                        String.valueOf(
-                                Fresco.getImagePipelineFactory().getBitmapCountingMemoryCache().getSizeInBytes()
-                        ));
+                setting_cache_size.setText(getFormatSize());
                 break;
             case R.id.setting_share:// 分享经历
                 gotoActivity(ShareActivity.class);
@@ -132,7 +123,7 @@ public class MainTabSetting extends Fragment {
      * 初始化View的行为事件
      */
     private void initListener() {
-        setting_cache_size.setText(CacheCleanManage.getCacheSize(new File(getImage.photoPath)));
+        setting_cache_size.setText(getFormatSize());
         setting_pieces_delete.setOnClickListener(listener);
         setAbout.setOnClickListener(listener);
         setIdea.setOnClickListener(listener);
@@ -154,13 +145,39 @@ public class MainTabSetting extends Fragment {
     @Override // 重置缓存数据
     public void onHiddenChanged(boolean hidden) {
         super.onHiddenChanged(hidden);
-//        setting_cache_size.setText(
-//                !hidden ? CacheCleanManage.getCacheSize(new File(getImage.photoPath))
-//                        : "0.0B");
-        setting_cache_size.setText(!hidden ? String.valueOf(
-                Fresco.getImagePipelineFactory().getBitmapCountingMemoryCache().getSizeInBytes())
-                : "0.0B");
+        setting_cache_size.setText(!hidden ? getFormatSize() : "0.0B");
 
     }
 
+    /**
+     * 格式化缓存的单位
+     * */
+    private static String getFormatSize() {
+        double size = Fresco.getImagePipelineFactory().getBitmapCountingMemoryCache().getSizeInBytes();
+        double kiloByte = size / 1024;
+        if (kiloByte < 1) {
+            return size + "B";
+        }
+
+        double megaByte = kiloByte / 1024;
+        if (megaByte < 1) {
+            BigDecimal result1 = new BigDecimal(Double.toString(kiloByte));
+            return result1.setScale(2, BigDecimal.ROUND_HALF_UP).toPlainString() + "KB";
+        }
+
+        double gigaByte = megaByte / 1024;
+        if (gigaByte < 1) {
+            BigDecimal result2 = new BigDecimal(Double.toString(megaByte));
+            return result2.setScale(2, BigDecimal.ROUND_HALF_UP).toPlainString() + "MB";
+        }
+
+        double teraByte = gigaByte / 1024;
+        if (teraByte < 1) {
+            BigDecimal result3 = new BigDecimal(Double.toString(gigaByte));
+            return result3.setScale(2, BigDecimal.ROUND_HALF_UP).toPlainString() + "GB";
+        }
+
+        BigDecimal result4 = new BigDecimal(teraByte);
+        return result4.setScale(2, BigDecimal.ROUND_HALF_UP).toPlainString() + "TB";
+    }
 }
