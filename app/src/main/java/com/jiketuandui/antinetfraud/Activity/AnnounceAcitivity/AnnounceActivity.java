@@ -22,7 +22,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class AnnounceActivity extends AppCompatActivity {
-    @BindView(R.id.back)
+    @BindView(R.id.announce_back)
     FrameLayout back;
     @BindView(R.id.announce_refresh)
     MaterialRefreshLayout materialRefreshLayout;
