@@ -5,16 +5,13 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Environment;
-import android.support.v7.app.AlertDialog;
 import android.util.Log;
-import android.view.View;
-import android.view.Window;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
+import com.flyco.animation.BounceEnter.BounceTopEnter;
+import com.flyco.animation.SlideExit.SlideBottomExit;
+import com.flyco.dialog.widget.MaterialDialog;
 import com.jiketuandui.antinetfraud.Bean.UpdateInfo;
-import com.jiketuandui.antinetfraud.R;
 import com.jiketuandui.antinetfraud.Util.transTime;
 
 import java.io.File;
@@ -39,36 +36,35 @@ public class getAppUpdate {
 
     //显示公告
     private void showAnnounceDialog(String updateInfo, boolean isVisible) {
-        final AlertDialog alertDialog = new AlertDialog.Builder(context).create();
-        if (!alertDialog.isShowing()) {
-            alertDialog.show();
+        final MaterialDialog dialog = new MaterialDialog(context);
+        String btnInfo = "确定";
+        if (isVisible) {
+            btnInfo = "更新";
         }
-        Window window = alertDialog.getWindow();
-        if (window == null) {
-            return;
-        }
-        window.setContentView(R.layout.announcement_update);
-        TextView tv_title = (TextView) window.findViewById(R.id.tv_dialog_title);
-        tv_title.setText("更新通知");
-        TextView tv_message = (TextView) window.findViewById(R.id.tv_dialog_message);
-        tv_message.setText(updateInfo);
-        LinearLayout btn_bottom = (LinearLayout) window.findViewById(R.id.btn_bottom);
-        if (!isVisible) {
-            btn_bottom.setVisibility(View.GONE);
-        }
-        TextView tv_cancel = (TextView) window.findViewById(R.id.tv_dialog_cancel);
-        tv_cancel.setOnClickListener(view -> alertDialog.dismiss());
-        TextView tv_confirm = (TextView) window.findViewById(R.id.tv_dialog_confirm);
-        tv_confirm.setOnClickListener(view -> {
-            if (Environment.getExternalStorageState().equals(
-                    Environment.MEDIA_MOUNTED)) {
-                alertDialog.cancel();
-                new getAPPTask().execute(mUrl);
-            } else {
-                Toast.makeText(context, "SD卡不可用，请插入SD卡",
-                        Toast.LENGTH_SHORT).show();
-            }
-        });
+        dialog // 设置Dialog的属性
+                .title("更新通知")
+                .btnNum(1)
+                .content(updateInfo)// 设置内容
+                .btnText(btnInfo)// 设置按钮文本
+                .showAnim(new BounceTopEnter())// 设置进入动画
+                .dismissAnim(new SlideBottomExit())// 设置退出动画
+                .show();
+        dialog.setOnBtnClickL(
+                () -> {
+                    if (isVisible) {
+                        if (Environment.getExternalStorageState().equals(
+                                Environment.MEDIA_MOUNTED)) {
+                            dialog.dismiss();
+                            new getAPPTask().execute(mUrl);
+                        } else {
+                            Toast.makeText(context, "SD卡不可用，请插入SD卡",
+                                    Toast.LENGTH_SHORT).show();
+                        }
+                    } else {
+                        dialog.dismiss();
+                    }
+                }
+        );
     }
 
     /**
@@ -111,7 +107,7 @@ public class getAppUpdate {
 
     /**
      * 下载APP
-     * */
+     */
     private class getAPPTask extends AsyncTask<String, Void, Boolean> {
 
         @Override

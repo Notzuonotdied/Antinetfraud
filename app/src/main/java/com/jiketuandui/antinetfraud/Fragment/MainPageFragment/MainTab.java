@@ -1,20 +1,20 @@
 package com.jiketuandui.antinetfraud.Fragment.MainPageFragment;
 
 import android.content.Intent;
-import android.graphics.Paint;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.flyco.animation.BounceEnter.BounceTopEnter;
+import com.flyco.animation.SlideExit.SlideBottomExit;
+import com.flyco.dialog.widget.MaterialDialog;
 import com.jiketuandui.antinetfraud.Activity.AnnounceAcitivity.AnnounceActivity;
 import com.jiketuandui.antinetfraud.Activity.MainActivity.SearchActivity;
 import com.jiketuandui.antinetfraud.Adapter.MainTabAdapter;
@@ -31,8 +31,9 @@ import java.util.List;
 
 public class MainTab extends Fragment implements NetBroadcastReceiver.netEventHandler {
 
-    private TextView tv_message;
     private boolean isAvailable;
+    private MaterialDialog dialog;
+
     /**
      * 因为要在Fragment中嵌套使用ViewPager,所以需要进行初始化一些变量
      */
@@ -79,7 +80,7 @@ public class MainTab extends Fragment implements NetBroadcastReceiver.netEventHa
             startActivity(intent);
         });
         ImageButton imageButton_a = (ImageButton) v.findViewById(R.id.announcement);
-        imageButton_a.setOnClickListener(view -> showAnnouncmentDialog());
+        imageButton_a.setOnClickListener(view -> showDialog());
     }
 
     /**
@@ -103,28 +104,18 @@ public class MainTab extends Fragment implements NetBroadcastReceiver.netEventHa
     /**
      * 显示公告
      */
-    private void showAnnouncmentDialog() {
-        AlertDialog alertDialog = new AlertDialog.Builder(getContext()).create();
-        alertDialog.show();
-        Window window = alertDialog.getWindow();
-        if (window == null) {
-            return;
-        }
-        window.setContentView(R.layout.announcement);
-        // 网站公告
-        TextView tv_title = (TextView) window.findViewById(R.id.tv_dialog_title);
-        tv_title.setText("网站公告");
-        tv_message = (TextView) window.findViewById(R.id.tv_dialog_message);
+    private void showDialog() {
+        dialog = new MaterialDialog(getContext());
         if (isAvailable) {
-            new AsynAnnounce().execute("/api/noticelist");
+            new AsyncAnnounce().execute("/api/noticelist");
         }
-        TextView tv_more = (TextView) window.findViewById(R.id.tv_dialog_more);
-        tv_more.setText("更多");
-        tv_more.getPaint().setFlags(Paint.UNDERLINE_TEXT_FLAG);
-        tv_more.setOnClickListener(v -> {
-            Intent intent = new Intent(getActivity(), AnnounceActivity.class);
-            getContext().startActivity(intent);
-        });
+        dialog.setOnBtnClickL(
+                () -> {
+                    Intent intent = new Intent(getActivity(), AnnounceActivity.class);
+                    getContext().startActivity(intent);
+                },
+                () -> dialog.dismiss()
+        );
     }
 
     @Override
@@ -132,7 +123,7 @@ public class MainTab extends Fragment implements NetBroadcastReceiver.netEventHa
         isAvailable = NetWorkUtils.getNetWorkState(getActivity()) == NetWorkUtils.NET_TYPE_NO_NETWORK;
     }
 
-    private class AsynAnnounce extends AsyncTask<String, Void, List<AnnounceContent>> {
+    private class AsyncAnnounce extends AsyncTask<String, Void, List<AnnounceContent>> {
         @Override
         protected List<AnnounceContent> doInBackground(String... params) {
             return ((MyApplication) getActivity().getApplication())
@@ -142,9 +133,15 @@ public class MainTab extends Fragment implements NetBroadcastReceiver.netEventHa
         @Override
         protected void onPostExecute(List<AnnounceContent> announceContents) {
             if (announceContents != null) {
-                tv_message.setText(announceContents.get(0).getTitle() + ":" +
-                        announceContents.get(0).getCreated_at() + "\n\u3000\u3000" +
-                        announceContents.get(0).getContent() + "\n\u3000\u3000");
+                dialog // 设置Dialog的属性
+                        .title("网站公告")
+                        .content(announceContents.get(0).getTitle() + ":" +
+                                announceContents.get(0).getCreated_at() + "\n\u3000\u3000" +
+                                announceContents.get(0).getContent() + "\n\u3000\u3000")// 设置内容
+                        .btnText("更多", "确定")// 设置按钮文本
+                        .showAnim(new BounceTopEnter())// 设置进入动画
+                        .dismissAnim(new SlideBottomExit())// 设置退出动画
+                        .show();
             }
             super.onPostExecute(announceContents);
         }

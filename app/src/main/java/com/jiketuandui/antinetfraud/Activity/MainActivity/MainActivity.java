@@ -1,15 +1,17 @@
 package com.jiketuandui.antinetfraud.Activity.MainActivity;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v7.app.AppCompatActivity;
-import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
-import android.widget.Toast;
 
+import com.flyco.animation.Attention.Swing;
+import com.flyco.animation.SlideExit.SlideBottomExit;
+import com.flyco.dialog.widget.NormalDialog;
 import com.jiketuandui.antinetfraud.Fragment.MainPageFragment.MainTab;
 import com.jiketuandui.antinetfraud.Fragment.MainPageFragment.MainTabClasscial;
 import com.jiketuandui.antinetfraud.Fragment.MainPageFragment.MainTabHotNews;
@@ -21,11 +23,10 @@ import com.jiketuandui.antinetfraud.View.ContentViewPager;
 import java.util.ArrayList;
 import java.util.List;
 
-import fm.jiecao.jcvideoplayer_lib.JCVideoPlayer;
+import butterknife.ButterKnife;
 
 
 public class MainActivity extends AppCompatActivity {
-
     /**
      * List 用于存放四个Fragment
      */
@@ -55,15 +56,13 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     };
-    /**
-     * 双击退出效果
-     */
-    private long timeMillis;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        ButterKnife.bind(this);
+
         setContentView(R.layout.activity_main);
         initFragment();
         initView();
@@ -121,24 +120,23 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_DOWN) {
-            if (!JCVideoPlayer.backPress()) {
-                // 长按效果
-                if ((System.currentTimeMillis() - timeMillis) > 2000) {
-                    Toast.makeText(getApplicationContext(), "再按一次退出程序", Toast.LENGTH_SHORT).show();
-                    timeMillis = System.currentTimeMillis();
-                } else {
-                    finish();
-                    System.exit(0);
-                }
-                return true;
-            } else {
-                timeMillis = 0;
-                return false;
-            }
-        }
-        return super.onKeyDown(keyCode, event);
-    }
+    public void onBackPressed() {
+        final NormalDialog dialog = new NormalDialog(this);
+        dialog.content("亲,真的要走吗?")//
+                .style(NormalDialog.STYLE_TWO)//
+                .titleTextSize(23)//
+                .btnText("继续看看", "残忍退出")//
+                .btnTextColor(Color.parseColor("#00BDD0"), Color.parseColor("#D4D4D4"))//
+                .btnTextSize(16f, 16f)//
+                .showAnim(new Swing())//
+                .dismissAnim(new SlideBottomExit())//
+                .show();
 
+        dialog.setOnBtnClickL(
+                dialog::dismiss,
+                () -> {
+                    dialog.superDismiss();
+                    finish();
+                });
+    }
 }

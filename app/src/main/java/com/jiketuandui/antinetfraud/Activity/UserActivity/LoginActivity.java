@@ -10,6 +10,7 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.inputmethod.EditorInfo;
@@ -175,8 +176,11 @@ public class LoginActivity extends Activity {
                 mAccountInfo = ((MyApplication) getApplication()).instancepostAccount().postLogin(
                         "username=" + mAccount + "&&password=" + mPassword + "&&phone_id=" +
                                 ((MyApplication) getApplication()).getMAC());
+                Log.i("what", "mAccountInfo" + mAccountInfo);
                 Thread.sleep(666);
             } catch (InterruptedException e) {
+                e.printStackTrace();
+                Log.i("what", "mAccountInfo" + e.getCause());
                 return false;
             }
             return true;

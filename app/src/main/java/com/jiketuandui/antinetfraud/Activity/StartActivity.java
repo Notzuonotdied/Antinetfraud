@@ -55,7 +55,7 @@ public class StartActivity extends Activity {
     }
 
     /**
-     * 进入MainAcitvity
+     * 进入MainActivity
      */
     private void gotoMainActivity() {
         new UserLoginTask().execute();
