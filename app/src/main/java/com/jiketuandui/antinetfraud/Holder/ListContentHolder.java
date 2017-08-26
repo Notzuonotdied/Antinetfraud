@@ -64,7 +64,7 @@ public class ListContentHolder extends RecyclerView.ViewHolder implements View.O
         switch (view.getId()) {
             case R.id.top:
                 if (listContentOnClickListener != null) {
-                    listContentOnClickListener.TOPOnClickLinstener(getAdapterPosition());
+                    listContentOnClickListener.TOPOnClickListener(getAdapterPosition());
                 }
                 break;
             case R.id.bottom:

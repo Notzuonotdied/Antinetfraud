@@ -10,8 +10,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
-import android.widget.TextView;
 
+import com.daimajia.androidanimations.library.Techniques;
+import com.daimajia.androidanimations.library.YoYo;
 import com.flyco.animation.BounceEnter.BounceTopEnter;
 import com.flyco.animation.SlideExit.SlideBottomExit;
 import com.flyco.dialog.widget.MaterialDialog;
@@ -80,7 +81,13 @@ public class MainTab extends Fragment implements NetBroadcastReceiver.netEventHa
             startActivity(intent);
         });
         ImageButton imageButton_a = (ImageButton) v.findViewById(R.id.announcement);
-        imageButton_a.setOnClickListener(view -> showDialog());
+        imageButton_a.setOnClickListener(view -> {
+            showDialog();
+            YoYo.with(Techniques.Swing)
+                    .duration(333)
+                    .repeat(6)
+                    .playOn(v.findViewById(R.id.announcement));
+        });
     }
 
     /**

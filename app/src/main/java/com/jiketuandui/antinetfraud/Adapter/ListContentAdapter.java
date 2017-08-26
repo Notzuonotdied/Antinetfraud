@@ -34,7 +34,6 @@ import java.util.List;
 public class ListContentAdapter extends RecyclerView.Adapter<ListContentHolder> {
 
     private List<ListContent> mListContents;
-    private LayoutInflater mLayoutInflater;
     private Context context;
     private boolean isOpenTop;
     private int category;
@@ -54,7 +53,7 @@ public class ListContentAdapter extends RecyclerView.Adapter<ListContentHolder> 
             }
         }
         @Override
-        public void TOPOnClickLinstener(int position) {
+        public void TOPOnClickListener(int position) {
             if (NetWorkUtils.isConnectNET(context)) {
                 Intent intent = new Intent(context, ToTagsListActivity.class);
                 Bundle mBundle = new Bundle();
@@ -78,7 +77,6 @@ public class ListContentAdapter extends RecyclerView.Adapter<ListContentHolder> 
      */
     public ListContentAdapter(Context context, List<ListContent> mListContents, boolean isOpenTop, int category) {
         this.mListContents = mListContents;
-        this.mLayoutInflater = LayoutInflater.from(context);
         this.context = context;
         this.isOpenTop = isOpenTop;
         this.category = category;
@@ -92,26 +90,17 @@ public class ListContentAdapter extends RecyclerView.Adapter<ListContentHolder> 
      */
     public ListContentAdapter(Context context, List<ListContent> mListContents, boolean isOpenTop) {
         this.mListContents = mListContents;
-        this.mLayoutInflater = LayoutInflater.from(context);
         this.context = context;
         this.isOpenTop = isOpenTop;
         this.category = 0;
     }
 
     /**
-     * 清空博客文章摘要信息的List集合
-     */
-    public void clearData() {
-        this.mListContents.clear();
-        this.notifyDataSetChanged();
-    }
-
-    /**
      * 添加博客文章摘要信息的List集合
      * 追加模式
      */
-    public void addData(List<ListContent> mDatas) {
-        this.mListContents.addAll(mDatas);
+    public void addData(List<ListContent> mDates) {
+        this.mListContents.addAll(mDates);
     }
 
     /**
@@ -124,14 +113,16 @@ public class ListContentAdapter extends RecyclerView.Adapter<ListContentHolder> 
     /**
      * 清空后添加
      */
-    public void setData(List<ListContent> mDatas) {
+    public void setData(List<ListContent> mDates) {
         this.mListContents.clear();
-        this.mListContents.addAll(mDatas);
+        this.mListContents.addAll(mDates);
     }
 
     @Override// 创建新View，被LayoutManager所调用
     public ListContentHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = mLayoutInflater.inflate(R.layout.list_content_holder, parent, false);
+        View view = LayoutInflater
+                .from(parent.getContext())
+                .inflate(R.layout.list_content_holder, parent, false);
         LinearLayout m = (LinearLayout) view.findViewById(R.id.top);
         if (this.isOpenTop) {
             m.setVisibility(View.VISIBLE);
