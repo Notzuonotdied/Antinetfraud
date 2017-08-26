@@ -141,4 +141,20 @@
         <!--<item name="android:backgroundDimEnabled">true</item>-->
     </style>
 
+    <style name="CFontTitleTextViewStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:typeface">monospace</item>
+        <item name="android:layout_marginRight">50dp</item>
+        <item name="android:background">@color/color_white</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/color_header_title</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:shadowColor">@color/color_header_title_shadow</item>
+        <item name="android:shadowDx">6</item>
+        <item name="android:shadowDy">6</item>
+        <item name="android:shadowRadius">10</item>
+    </style>
+
 </resources>

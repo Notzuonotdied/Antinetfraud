@@ -32,7 +32,7 @@ public class CollectionDetailActivity extends AppCompatActivity implements NetBr
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detail_history);
+        setContentView(R.layout.activity_detail_collection);
         // 注册
         NetBroadcastReceiver.mListeners.add(this);
 
