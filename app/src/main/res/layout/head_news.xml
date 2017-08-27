@@ -20,7 +20,7 @@
         android:typeface="monospace"
         android:gravity="center"
         android:layout_centerInParent="true"
-        android:text="@string/header_titile"
+        android:text="@string/header_title"
         android:textColor="@color/color_header_title"
         android:textSize="20sp"
         android:textStyle="bold"

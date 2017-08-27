@@ -12,6 +12,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.daimajia.androidanimations.library.Techniques;
+import com.daimajia.androidanimations.library.YoYo;
 import com.jiketuandui.antinetfraud.Activity.ArticleContentActivity;
 import com.jiketuandui.antinetfraud.Adapter.VideoListAdapter;
 import com.jiketuandui.antinetfraud.Bean.ListContent;
@@ -20,6 +22,7 @@ import com.jiketuandui.antinetfraud.R;
 import com.jiketuandui.antinetfraud.Service.NetBroadcastReceiver;
 import com.jiketuandui.antinetfraud.Util.MyApplication;
 import com.jiketuandui.antinetfraud.Util.NetWorkUtils;
+import com.jiketuandui.antinetfraud.View.CFontTitleTextView;
 import com.jiketuandui.antinetfraud.View.MyListView;
 import com.jiketuandui.antinetfraud.View.banner.BannerBaseView;
 import com.jiketuandui.antinetfraud.View.banner.BannerViewOnClickListener;
@@ -37,6 +40,7 @@ public class MainTabClasscial extends Fragment implements NetBroadcastReceiver.n
     private RelativeLayout bannerContent;
     private TextView tv_01;
     private TextView tv_02;
+    private CFontTitleTextView title;
 
     /**
      * 当前页面的各个Item的数据存放容器
@@ -52,6 +56,12 @@ public class MainTabClasscial extends Fragment implements NetBroadcastReceiver.n
             case R.id.tv_02:
                 Toast.makeText(getContext(), "正在抓紧开发中~", Toast.LENGTH_SHORT).show();
                 break;
+            case R.id.main_header_tv:
+                YoYo.with(Techniques.Swing)
+                        .duration(333)
+                        .repeat(6)
+                        .playOn(view.findViewById(R.id.main_header_tv));
+                break;
         }
     };
 
@@ -62,7 +72,6 @@ public class MainTabClasscial extends Fragment implements NetBroadcastReceiver.n
         initView();
         // 注册
         NetBroadcastReceiver.mListeners.add(this);
-
         return view;
     }
 
@@ -72,6 +81,7 @@ public class MainTabClasscial extends Fragment implements NetBroadcastReceiver.n
         MyListView listView = (MyListView) view.findViewById(R.id.listview);
         this.tv_01 = (TextView) view.findViewById(R.id.tv_01);
         this.tv_02 = (TextView) view.findViewById(R.id.tv_02);
+        this.title = (CFontTitleTextView) view.findViewById(R.id.main_header_tv);
 
         VideoListAdapter adapterVideoList = new VideoListAdapter(getActivity());
         listView.setAdapter(adapterVideoList);
@@ -92,6 +102,7 @@ public class MainTabClasscial extends Fragment implements NetBroadcastReceiver.n
     private void initListener() {
         tv_01.setOnClickListener(tvListener);
         tv_02.setOnClickListener(tvListener);
+        title.setOnClickListener(tvListener);
     }
 
     @Override

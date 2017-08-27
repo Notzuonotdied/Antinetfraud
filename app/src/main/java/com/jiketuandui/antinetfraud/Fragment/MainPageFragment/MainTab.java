@@ -24,6 +24,7 @@ import com.jiketuandui.antinetfraud.R;
 import com.jiketuandui.antinetfraud.Service.NetBroadcastReceiver;
 import com.jiketuandui.antinetfraud.Util.MyApplication;
 import com.jiketuandui.antinetfraud.Util.NetWorkUtils;
+import com.jiketuandui.antinetfraud.View.CFontTitleTextView;
 import com.jiketuandui.antinetfraud.View.MyTabPageIndicator;
 
 import java.lang.reflect.Field;
@@ -47,9 +48,14 @@ public class MainTab extends Fragment implements NetBroadcastReceiver.netEventHa
          * 使用LayoutInflate将main_tab.xml的加载进来之后,为TabPageIndicator,
          * ViewPager进行初始化
          * */
-        View v = inflater.inflate(R.layout.main_tab, container, false);
-        initData(v);
-        return v;
+        View view = inflater.inflate(R.layout.main_tab, container, false);
+        CFontTitleTextView title = (CFontTitleTextView) view.findViewById(R.id.main_header_tv);
+        title.setOnClickListener(v -> YoYo.with(Techniques.Swing)
+                .duration(333)
+                .repeat(6)
+                .playOn(v.findViewById(R.id.main_header_tv)));
+        initData(view);
+        return view;
     }
 
     /**

@@ -16,7 +16,7 @@
         android:shadowDx="6"
         android:shadowDy="6"
         android:shadowRadius="10"
-        android:text="@string/header_titile"
+        android:text="@string/header_title"
         android:textColor="@color/color_header_title"
         android:textSize="20sp"
         android:textStyle="bold"

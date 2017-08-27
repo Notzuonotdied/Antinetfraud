@@ -10,6 +10,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.daimajia.androidanimations.library.Techniques;
+import com.daimajia.androidanimations.library.YoYo;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.facebook.imagepipeline.core.ImagePipeline;
@@ -22,6 +24,7 @@ import com.jiketuandui.antinetfraud.Activity.UserActivity.LoginActivity;
 import com.jiketuandui.antinetfraud.HTTP.getAppUpdate;
 import com.jiketuandui.antinetfraud.R;
 import com.jiketuandui.antinetfraud.Util.MyApplication;
+import com.jiketuandui.antinetfraud.View.CFontTitleTextView;
 
 import java.math.BigDecimal;
 
@@ -94,6 +97,11 @@ public class MainTabSetting extends Fragment {
         ButterKnife.bind(this, view);
         initStatus();
         initListener();
+        CFontTitleTextView title = (CFontTitleTextView) view.findViewById(R.id.main_header_tv);
+        title.setOnClickListener(v -> YoYo.with(Techniques.Swing)
+                .duration(333)
+                .repeat(6)
+                .playOn(v.findViewById(R.id.main_header_tv)));
         return view;
     }
 

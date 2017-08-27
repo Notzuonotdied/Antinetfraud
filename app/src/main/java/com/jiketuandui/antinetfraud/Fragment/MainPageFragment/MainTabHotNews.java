@@ -12,6 +12,8 @@ import android.widget.Toast;
 
 import com.cjj.MaterialRefreshLayout;
 import com.cjj.MaterialRefreshListener;
+import com.daimajia.androidanimations.library.Techniques;
+import com.daimajia.androidanimations.library.YoYo;
 import com.jiketuandui.antinetfraud.Adapter.ListContentAdapter;
 import com.jiketuandui.antinetfraud.Bean.ListContent;
 import com.jiketuandui.antinetfraud.HTTP.getConnect;
@@ -19,6 +21,7 @@ import com.jiketuandui.antinetfraud.R;
 import com.jiketuandui.antinetfraud.Service.NetBroadcastReceiver;
 import com.jiketuandui.antinetfraud.Util.MyApplication;
 import com.jiketuandui.antinetfraud.Util.NetWorkUtils;
+import com.jiketuandui.antinetfraud.View.CFontTitleTextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -60,7 +63,11 @@ public class MainTabHotNews extends Fragment implements NetBroadcastReceiver.net
         View view = inflater.inflate(R.layout.main_tab_hot_news, null);
         this.materialRefreshLayout = (MaterialRefreshLayout) view.findViewById(R.id.maintab_hot_refresh);
         this.mRecyclerView = (RecyclerView) view.findViewById(R.id.maintab_hot_recyclerView);
-
+        CFontTitleTextView title = (CFontTitleTextView) view.findViewById(R.id.main_header_tv);
+        title.setOnClickListener(v -> YoYo.with(Techniques.Swing)
+                .duration(333)
+                .repeat(6)
+                .playOn(v.findViewById(R.id.main_header_tv)));
         // 注册
         NetBroadcastReceiver.mListeners.add(this);
 
