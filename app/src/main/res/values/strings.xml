@@ -49,7 +49,7 @@
     <string name="edit_hint">\u3000写下您想说的言语~</string>
     <string name="submit">提交</string>
 
-    <string name="setting_person">个人</string>
+    <string name="setting_person">个人设置</string>
     <string name="setting_person_account_name">账户名</string>
     <string name="setting_person_level">等级</string>
     <string name="setting_person_discuss">评论</string>
@@ -60,7 +60,7 @@
     <string name="setting_person_collection">我的收藏</string>
     <string name="setting_person_discusstion">我的评论</string>
 
-    <string name="setting_comment">通用</string>
+    <string name="setting_comment">通用设置</string>
     <string name="setting_comment_setting">设置</string>
     <string name="setting_comment_delete">清空缓存</string>
     <string name="setting_comment_Cache_size">0.0B</string>

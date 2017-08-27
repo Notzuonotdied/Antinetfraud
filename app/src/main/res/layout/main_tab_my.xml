@@ -1,12 +1,11 @@
 <?xml version="1" encoding="UTF-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:fresco="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@color/color_white">
+    android:background="@color/color_white"
+    android:orientation="vertical">
 
-    <include layout="@layout/head_setting"/>
+    <include layout="@layout/head_setting" />
 
     <!--嵌套ScrollView实现滚动-->
     <ScrollView
@@ -22,121 +21,40 @@
             android:orientation="vertical"
             android:padding="@dimen/setting_padding">
 
-            <TextView
-                style="@style/setting_header"
-                android:text="@string/setting_person" />
-
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/setting_shape"
-                android:orientation="vertical">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <LinearLayout
-                        android:id="@+id/setting_pieces_account"
-                        style="@style/setting_row">
-
-                        <TextView
-                            style="@style/setting_item"
-                            android:text="@string/setting_person_account" />
-
-                        <TextView
-                            android:id="@+id/status"
-                            style="@style/setting_item"
-                            android:text="@string/not_logged_in" />
-
-                        <com.facebook.drawee.view.SimpleDraweeView
-                            android:id="@+id/lc_holder_image"
-                            android:layout_width="46dp"
-                            android:layout_height="46dp"
-                            android:layout_marginRight="10dp"
-                            android:background="@color/color_white"
-                            fresco:fadeDuration="100"
-                            fresco:placeholderImage="@mipmap/account"
-                            fresco:roundWithOverlayColor="@color/color_white"
-                            fresco:roundedCornerRadius="23dp"
-                            fresco:roundingBorderColor="@color/color_header"
-                            fresco:roundingBorderWidth="2dp" />
-
-                        <ImageView style="@style/setting_right_image" />
-
-                    </LinearLayout>
-
-                    <TextView
-                        android:id="@+id/setting_pieces_collection"
-                        style="@style/setting_item_single"
-                        android:text="@string/setting_person_collection" />
-
-                    <TextView
-                        android:id="@+id/setting_pieces_history"
-                        style="@style/setting_item_single"
-                        android:text="@string/setting_person_browsing" />
-
-                </LinearLayout>
+                style="@style/setting_header"
+                android:orientation="horizontal">
+                <!--颜色柱子-->
+                <TextView
+                    android:layout_width="5dp"
+                    android:layout_height="15dp"
+                    android:background="@color/color_start"
+                    android:gravity="bottom" />
+                <!--这个是头部显示-->
+                <TextView
+                    style="@style/setting_header"
+                    android:text="@string/setting_person" />
             </LinearLayout>
 
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="28dp" />
-
-            <TextView
-                style="@style/setting_header"
-                android:text="@string/setting_comment" />
-
+            <include layout="@layout/setting_person" />
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/setting_shape"
-                android:orientation="vertical">
-
-                <LinearLayout
-                    android:id="@+id/setting_pieces_delete"
-                    style="@style/setting_row">
-
-                    <TextView
-                        style="@style/setting_item"
-                        android:text="@string/setting_comment_delete" />
-
-                    <TextView
-                        android:id="@+id/setting_cache_size"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:gravity="center_vertical"
-                        android:paddingRight="20dp"
-                        android:text="@string/setting_comment_Cache_size"
-                        android:textColor="@color/color_content"
-                        android:textSize="14sp" />
-
-                    <ImageView style="@style/setting_right_image" />
-                </LinearLayout>
-
+                style="@style/setting_header"
+                android:orientation="horizontal">
+                <!--颜色柱子-->
                 <TextView
-                    android:id="@+id/setting_pieces_idea"
-                    style="@style/setting_item_single"
-                    android:text="@string/setting_comment_idea" />
-
+                    android:layout_width="5dp"
+                    android:layout_height="15dp"
+                    android:background="@color/color_start"
+                    android:gravity="bottom" />
+                <!--这个是头部显示-->
                 <TextView
-                    android:id="@+id/setting_share"
-                    style="@style/setting_item_single"
-                    android:text="@string/setting_comment_share" />
-
-                <TextView
-                    android:id="@+id/setting_pieces_update"
-                    style="@style/setting_item_single"
-                    android:text="@string/setting_comment_update" />
-
-                <TextView
-                    android:id="@+id/setting_pieces_about"
-                    style="@style/setting_item_single"
-                    android:text="@string/setting_comment_about" />
-
+                    style="@style/setting_header"
+                    android:text="@string/setting_comment" />
             </LinearLayout>
+
+            <include layout="@layout/setting_common" />
+
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

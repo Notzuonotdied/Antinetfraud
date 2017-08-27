@@ -77,7 +77,7 @@
         <item name="android:background">@drawable/select_background</item>
         <item name="android:clickable">true</item>
         <item name="android:textColor">@drawable/select_selector</item>
-        <item name="android:layout_height">50dp</item>
+        <item name="android:layout_height">?attr/listPreferredItemHeight</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:gravity">center_vertical</item>
         <item name="android:paddingLeft">17dp</item>
@@ -100,7 +100,7 @@
         <item name="android:background">@drawable/select_background</item>
         <item name="android:orientation">horizontal</item>
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">50dp</item>
+        <item name="android:layout_height">?attr/listPreferredItemHeight</item>
         <item name="android:layout_marginLeft">2dp</item>
         <item name="android:layout_marginRight">2dp</item>
     </style>
@@ -115,7 +115,7 @@
 
     <style name="setting_textView">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">50dp</item>
+        <item name="android:layout_height">?attr/listPreferredItemHeight</item>
         <item name="android:layout_marginLeft">2dp</item>
         <item name="android:layout_marginRight">2dp</item>
         <item name="android:paddingRight">20dp</item>
@@ -145,7 +145,7 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
         <item name="android:typeface">monospace</item>
-        <item name="android:layout_marginRight">50dp</item>
+        <item name="android:layout_marginRight">?attr/listPreferredItemHeight</item>
         <item name="android:background">@color/color_white</item>
         <item name="android:gravity">center</item>
         <item name="android:textColor">@color/color_header_title</item>

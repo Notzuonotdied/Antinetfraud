@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:fresco="http://schemas.android.com/tools"
+    android:id="@+id/cardlist_item"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    android:foreground="?android:attr/selectableItemBackground"
+    android:orientation="vertical"
+    card_view:cardCornerRadius="5dp"
+    card_view:cardElevation="@dimen/cardview_default_elevation">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/setting_shape"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/setting_pieces_account"
+                style="@style/setting_row">
+
+                <TextView
+                    style="@style/setting_item"
+                    android:text="@string/setting_person_account" />
+
+                <TextView
+                    android:id="@+id/status"
+                    style="@style/setting_item"
+                    android:text="@string/not_logged_in" />
+
+                <com.facebook.drawee.view.SimpleDraweeView
+                    android:id="@+id/lc_holder_image"
+                    android:layout_width="46dp"
+                    android:layout_height="46dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@color/color_white"
+                    fresco:fadeDuration="100"
+                    fresco:placeholderImage="@mipmap/account"
+                    fresco:roundWithOverlayColor="@color/color_white"
+                    fresco:roundedCornerRadius="23dp"
+                    fresco:roundingBorderColor="@color/color_header"
+                    fresco:roundingBorderWidth="2dp" />
+
+                <ImageView style="@style/setting_right_image" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/setting_pieces_collection"
+                style="@style/setting_item_single"
+                android:text="@string/setting_person_collection" />
+
+            <TextView
+                android:id="@+id/setting_pieces_history"
+                style="@style/setting_item_single"
+                android:text="@string/setting_person_browsing" />
+
+        </LinearLayout>
+    </LinearLayout>
+</android.support.v7.widget.CardView>
