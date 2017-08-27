@@ -5,8 +5,6 @@
     android:layout_height="match_parent"
     android:background="@color/color_white"
     android:orientation="vertical"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
     tools:context=".Activity.SettingActivity.AboutActivity">
 
     <LinearLayout
@@ -24,6 +22,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:background="@mipmap/arrowleft"
+                android:contentDescription="@string/about"
                 android:foregroundGravity="center" />
         </FrameLayout>
 
@@ -36,42 +35,42 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
         android:scrollbars="none">
 
-        <LinearLayout
+        <android.support.v7.widget.LinearLayoutCompat
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <TextView
+            <android.support.v7.widget.AppCompatTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/about_found_background"
                 android:textColor="@color/color_header_title"
                 android:textSize="20sp" />
 
-            <TextView
+            <android.support.v7.widget.AppCompatTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/about_content"
-                android:textColor="@color/color_content"
                 android:textSize="18sp" />
 
-            <TextView
+            <android.support.v7.widget.AppCompatTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/about_society"
                 android:textColor="@color/color_header_title"
                 android:textSize="20sp" />
 
-            <TextView
+            <android.support.v7.widget.AppCompatTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingBottom="@dimen/activity_horizontal_margin"
                 android:text="@string/about_content_s"
-                android:textColor="@color/color_content"
                 android:textSize="18sp" />
-        </LinearLayout>
+        </android.support.v7.widget.LinearLayoutCompat>
 
     </ScrollView>
 

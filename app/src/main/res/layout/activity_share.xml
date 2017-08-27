@@ -25,12 +25,13 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:background="@mipmap/arrowleft"
+                android:contentDescription="@string/share"
                 android:foregroundGravity="center" />
         </FrameLayout>
 
         <com.jiketuandui.antinetfraud.View.CFontTitleTextView
             style="@style/CFontTitleTextViewStyle"
-            android:text="@string/share"/>
+            android:text="@string/share" />
 
     </LinearLayout>
 

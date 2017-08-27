@@ -25,12 +25,13 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:background="@mipmap/arrowleft"
+                android:contentDescription="@string/idea"
                 android:foregroundGravity="center" />
         </FrameLayout>
 
         <com.jiketuandui.antinetfraud.View.CFontTitleTextView
             style="@style/CFontTitleTextViewStyle"
-            android:text="@string/idea"/>
+            android:text="@string/idea" />
 
     </LinearLayout>
 
@@ -44,24 +45,19 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <android.support.design.widget.TextInputLayout
+            <EditText
+                android:id="@+id/feedback"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <EditText
-                    android:id="@+id/feedback"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:enabled="true"
-                    android:gravity="start"
-                    android:hint="@string/edit_hint"
-                    android:inputType="textMultiLine"
-                    android:maxLines="8"
-                    android:minLines="6"
-                    android:padding="@dimen/activity_horizontal_margin"
-                    android:scrollbars="vertical" />
-            </android.support.design.widget.TextInputLayout>
-
+                android:layout_height="wrap_content"
+                android:enabled="true"
+                android:gravity="start"
+                android:hint="@string/edit_hint"
+                android:textColorHint="@color/color_content"
+                android:inputType="textMultiLine"
+                android:maxLines="8"
+                android:minLines="6"
+                android:padding="@dimen/activity_horizontal_margin"
+                android:scrollbars="vertical" />
 
             <Button
                 android:id="@+id/post"
@@ -74,9 +70,6 @@
                 android:textColor="@color/color_content"
                 android:textSize="16sp" />
 
-
         </LinearLayout>
-
     </ScrollView>
-
 </LinearLayout>
