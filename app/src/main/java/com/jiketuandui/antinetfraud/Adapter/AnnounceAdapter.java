@@ -55,14 +55,6 @@ public class AnnounceAdapter extends RecyclerView.Adapter<AnnounceListHolder> {
     }
 
     /**
-     * 清空博客文章摘要信息的List集合
-     */
-    public void clearData() {
-        this.mListContents.clear();
-        this.notifyDataSetChanged();
-    }
-
-    /**
      * 添加博客文章摘要信息的List集合
      * 追加模式
      */
