@@ -27,21 +27,21 @@
                 android:alpha="66"
                 android:background="@drawable/holder_top_selector"
                 android:orientation="horizontal"
-                android:padding="@dimen/x8"
+                android:padding="8dp"
                 android:visibility="visible">
 
                 <com.facebook.drawee.view.SimpleDraweeView
                     android:id="@+id/top_icon"
-                    android:layout_width="@dimen/x20"
-                    android:layout_height="@dimen/x20"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="@dimen/x10"
+                    android:layout_marginLeft="10dp"
                     fresco:fadeDuration="1000"
                     fresco:placeholderImage="@mipmap/ic_launcher"
                     fresco:roundWithOverlayColor="@color/color_white"
-                    fresco:roundedCornerRadius="@dimen/x10"
+                    fresco:roundedCornerRadius="10dp"
                     fresco:roundingBorderColor="@color/color_background"
-                    fresco:roundingBorderWidth="@dimen/x3" />
+                    fresco:roundingBorderWidth="3dp" />
                 <!--fresco:placeholderImage="@mipmap/ic_launcher"-->
                 <TextView
                     android:id="@+id/top_tag"
@@ -49,8 +49,8 @@
                     android:layout_height="match_parent"
                     android:drawableRight="@mipmap/rightinfo"
                     android:gravity="center_vertical"
-                    android:paddingLeft="@dimen/x6"
-                    android:paddingRight="@dimen/x18"
+                    android:paddingLeft="6dp"
+                    android:paddingRight="18dp"
                     android:text="@string/app_name"
                     android:textColor="@color/color_content"
                     android:textSize="14sp" />
@@ -62,8 +62,8 @@
 
                 <com.facebook.drawee.view.SimpleDraweeView
                     android:id="@+id/lc_holder_image"
-                    android:layout_width="@dimen/x80"
-                    android:layout_height="@dimen/x88"
+                    android:layout_width="80dp"
+                    android:layout_height="88dp"
                     fresco:actualImageScaleType="focusCrop"
                     fresco:backgroundImage="@color/color_white"
                     fresco:fadeDuration="3000"
@@ -75,9 +75,9 @@
                     fresco:retryImage="@mipmap/reloading"
                     fresco:retryImageScaleType="centerInside"
                     fresco:roundWithOverlayColor="@color/color_white"
-                    fresco:roundedCornerRadius="@dimen/x12"
+                    fresco:roundedCornerRadius="12dp"
                     fresco:roundingBorderColor="@color/color_white"
-                    fresco:roundingBorderWidth="@dimen/x3" />
+                    fresco:roundingBorderWidth="3dp" />
 
 
                 <LinearLayout
@@ -86,7 +86,7 @@
                     android:layout_height="match_parent"
                     android:layout_toRightOf="@id/lc_holder_image"
                     android:orientation="vertical"
-                    android:paddingLeft="@dimen/x5">
+                    android:paddingLeft="5dp">
 
                     <!--标题-->
                     <TextView

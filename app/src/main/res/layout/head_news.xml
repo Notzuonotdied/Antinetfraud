@@ -10,7 +10,8 @@
         android:layout_width="?attr/actionBarSize"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/color_white"
-        android:src="@drawable/content_home_announcement"/>
+        android:src="@drawable/content_home_announcement"
+        android:contentDescription="@string/announce_title" />
 
     <com.jiketuandui.antinetfraud.View.CFontTitleTextView
         android:id="@+id/main_header_tv"
@@ -26,7 +27,7 @@
         android:shadowColor="@color/color_header_title_shadow"
         android:shadowDx="6"
         android:shadowDy="6"
-        android:shadowRadius="10"/>
+        android:shadowRadius="10" />
 
     <ImageButton
         android:id="@+id/gotoSearch"
@@ -34,6 +35,7 @@
         android:layout_width="?attr/actionBarSize"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/color_white"
-        android:src="@drawable/content_search_selector"/>
+        android:src="@drawable/content_search_selector"
+        android:contentDescription="@string/main_search" />
 
 </RelativeLayout>

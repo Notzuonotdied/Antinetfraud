@@ -9,7 +9,7 @@
     <com.jiketuandui.antinetfraud.View.MyTabPageIndicator
         android:id="@+id/mainTab_indicator"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/x28"
+        android:layout_height="28dp"
         android:background="@color/color_header"
         android:orientation="horizontal">
 
@@ -20,7 +20,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:paddingTop="@dimen/x1">
+        android:paddingTop="1dp">
 
     </android.support.v4.view.ViewPager>
 
