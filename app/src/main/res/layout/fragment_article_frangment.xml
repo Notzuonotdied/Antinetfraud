@@ -1,14 +1,13 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:descendantFocusability="blocksDescendants"
     tools:context="com.jiketuandui.antinetfraud.Fragment.ArticleDetailFragment.ArticleFragment">
 
     <com.jiketuandui.antinetfraud.View.MarkdownView
         android:id="@+id/article_markdownView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"/>
 
-    </com.jiketuandui.antinetfraud.View.MarkdownView>
-
-</FrameLayout>
+</ScrollView>

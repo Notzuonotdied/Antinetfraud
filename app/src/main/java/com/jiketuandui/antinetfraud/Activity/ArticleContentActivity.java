@@ -53,8 +53,6 @@ public class ArticleContentActivity extends AppCompatActivity
     TextView article_time;
     @BindView(R.id.head_info)
     LinearLayout head_info;
-    @BindView(R.id.collapsing_toolbar_layout)
-    CollapsingToolbarLayout mCollapsingToolbarLayout;
     @BindView(R.id.app_bar_layout)
     AppBarLayout app_bar_layout;
     @BindView(R.id.head_layout)
@@ -62,7 +60,6 @@ public class ArticleContentActivity extends AppCompatActivity
     @BindView(R.id.toolbar)
     Toolbar mToolbar;
     private ArticleContent mArticleContent;
-    private boolean isLessThan;
     private boolean isCollected;
     /*这是文章ID*/
     private int articleId;
@@ -113,7 +110,7 @@ public class ArticleContentActivity extends AppCompatActivity
 
             @Override
             public void onPageSelected(int position) {
-                findViewById(R.id.nestedScrollView).scrollTo(0, 0);
+                // findViewById(R.id.nestedScrollView).scrollTo(0, 0);
             }
 
             @Override
@@ -146,39 +143,6 @@ public class ArticleContentActivity extends AppCompatActivity
         }
         // 返回键
         mToolbar.setNavigationOnClickListener(v -> onBackPressed());
-        int reHeight = head_layout.getHeight();
-        isLessThan = false;
-        mCollapsingToolbarLayout.setCollapsedTitleTextColor(getResources().getColor(R.color.color_white));
-        // 设置标题
-        app_bar_layout.addOnOffsetChangedListener((appBarLayout, verticalOffset) -> {
-            int total_Height = -mCollapsingToolbarLayout.getHeight() + mToolbar.getHeight();
-            if (verticalOffset <= total_Height) {
-                if (mArticleContent != null) {
-                    mCollapsingToolbarLayout.setTitle(mArticleContent.getTitle());
-                }
-                head_info.setVisibility(View.GONE);
-                if (!isLessThan) {
-                    mCollapsingToolbarLayout.setContentScrimColor(0xffffffff);
-                    mCollapsingToolbarLayout.setCollapsedTitleTextColor(0xff717171);
-                }
-                isLessThan = true;
-            } else {
-                mCollapsingToolbarLayout.setTitle("");
-                head_info.setVisibility(View.VISIBLE);
-                Drawable drawable = head_info.getBackground();
-                drawable.setAlpha(changAlpha(Math.abs(verticalOffset), Math.abs(total_Height)));
-                // 设置头图
-                if (Build.VERSION.SDK_INT >= 16) {
-                    head_info.setBackground(drawable);
-                } else {
-                    head_info.setBackgroundDrawable(drawable);
-                }
-                if (isLessThan) {
-                    mCollapsingToolbarLayout.setContentScrim(null);
-                }
-                isLessThan = false;
-            }
-        });
     }
 
     /**
@@ -226,20 +190,6 @@ public class ArticleContentActivity extends AppCompatActivity
                     .showCommentDialog(ArticleContentActivity.this, String.valueOf(articleId), phoneID);
             actionMenu.close(true);
         });
-    }
-
-    /**
-     * 渐变透明度
-     *
-     * @param heightOffset 高度变化值
-     * @param total_Height 总高度
-     */
-    private int changAlpha(int heightOffset, int total_Height) {
-        float alpha = heightOffset * 255 / total_Height;
-        if (alpha > 255) {
-            alpha = 255;
-        }
-        return (int) (255 - alpha);
     }
 
     /**

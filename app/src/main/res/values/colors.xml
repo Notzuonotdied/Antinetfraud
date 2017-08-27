@@ -23,7 +23,8 @@
     <color name="color_white">#ffffffff</color>
     <color name="color_loading">#42506B</color>
     <color name="color_black">#cf000000</color>
-    <color name="color_background">#f6f6f6</color>
+    <!--<color name="color_background">#f6f6f6</color>-->
+    <color name="color_background">#FF9A40</color>
     <color name="color_title">#af000000</color>
     <color name="color_content">#66000000</color>
     <color name="color_vpbackground">#E2E2E2</color>

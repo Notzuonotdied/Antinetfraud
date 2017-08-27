@@ -4,11 +4,11 @@
     android:layout_height="match_parent"
     tools:context="com.jiketuandui.antinetfraud.Fragment.ArticleDetailFragment.CommentFragment">
 
-    <com.jiketuandui.antinetfraud.View.myRecyclerView.MyRecyclerView
+    <com.jcodecraeer.xrecyclerview.XRecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    </com.jiketuandui.antinetfraud.View.myRecyclerView.MyRecyclerView>
+    </com.jcodecraeer.xrecyclerview.XRecyclerView>
 
 </FrameLayout>

@@ -94,6 +94,7 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" exported="" name="constraint-layout-1.0.0-beta4" level="project" />
     <orderEntry type="library" exported="" name="ijkplayer-arm64-0.6.0" level="project" />
+    <orderEntry type="library" exported="" name="xrecyclerview-1.3.2" level="project" />
     <orderEntry type="library" exported="" name="ijkplayer-x86-0.6.0" level="project" />
     <orderEntry type="library" exported="" name="drawee-0.12.0" level="project" />
     <orderEntry type="library" exported="" name="fresco-0.12.0" level="project" />
@@ -115,6 +116,7 @@
     <orderEntry type="library" exported="" name="imagepipeline-0.12.0" level="project" />
     <orderEntry type="library" exported="" name="library-2.4.0" level="project" />
     <orderEntry type="library" exported="" name="guava-19.0" level="project" />
+    <orderEntry type="library" exported="" name="panter-dialog-0.0.2.1" level="project" />
     <orderEntry type="library" exported="" name="imagepipeline-base-0.12.0" level="project" />
     <orderEntry type="library" exported="" name="jiecaovideoplayer-4.8.2" level="project" />
     <orderEntry type="library" exported="" name="gson-2.7" level="project" />
