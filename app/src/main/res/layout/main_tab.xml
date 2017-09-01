@@ -11,17 +11,13 @@
         android:layout_width="match_parent"
         android:layout_height="28dp"
         android:background="@color/color_header"
-        android:orientation="horizontal">
-
-    </com.jiketuandui.antinetfraud.View.MyTabPageIndicator>
+        android:orientation="horizontal"/>
 
     <android.support.v4.view.ViewPager
         android:id="@+id/mainTab_viewpager"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:paddingTop="1dp">
-
-    </android.support.v4.view.ViewPager>
+        android:paddingTop="1dp"/>
 
 </LinearLayout>

@@ -21,7 +21,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:background="@mipmap/arrowleft"
+                android:background="@mipmap/arrow_left"
                 android:contentDescription="@string/about"
                 android:foregroundGravity="center" />
         </FrameLayout>
