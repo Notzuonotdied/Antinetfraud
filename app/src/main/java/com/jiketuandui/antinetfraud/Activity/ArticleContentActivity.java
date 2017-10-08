@@ -8,11 +8,11 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.AppCompatTextView;
+import android.support.v7.widget.LinearLayoutCompat;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
@@ -43,13 +43,13 @@ public class ArticleContentActivity extends AppCompatActivity
         implements NetBroadcastReceiver.netEventHandler {
 
     @BindView(R.id.article_title)
-    TextView article_title;
+    AppCompatTextView article_title;
     @BindView(R.id.article_info)
-    TextView article_info;
+    AppCompatTextView article_info;
     @BindView(R.id.article_time)
-    TextView article_time;
+    AppCompatTextView article_time;
     @BindView(R.id.head_info)
-    LinearLayout head_info;
+    LinearLayoutCompat head_info;
     @BindView(R.id.app_bar_layout)
     AppBarLayout app_bar_layout;
     @BindView(R.id.head_layout)

@@ -1,4 +1,4 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:fresco="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,13 +8,13 @@
     android:orientation="vertical"
     tools:context="com.jiketuandui.antinetfraud.Activity.UserActivity.RegisterActivity">
 
-    <LinearLayout
+    <android.support.v7.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/title_color"
         android:orientation="horizontal">
 
-        <FrameLayout
+        <android.support.v7.widget.ContentFrameLayout
             android:id="@+id/back"
             android:layout_width="50dp"
             android:layout_height="match_parent">
@@ -25,16 +25,16 @@
                 android:layout_gravity="center"
                 android:background="@mipmap/arrow_left"
                 android:foregroundGravity="center" />
-        </FrameLayout>
+        </android.support.v7.widget.ContentFrameLayout>
 
         <com.jiketuandui.antinetfraud.View.CFontTitleTextView
             style="@style/CFontTitleTextViewStyle"
             android:text="@string/register" />
 
-    </LinearLayout>
+    </android.support.v7.widget.LinearLayoutCompat>
 
     <!-- Login progress -->
-    <ProgressBar
+    <com.cjj.CircleProgressBar
         android:id="@+id/login_progress"
         style="?android:attr/progressBarStyleLarge"
         android:layout_width="wrap_content"
@@ -54,7 +54,7 @@
         fresco:roundingBorderColor="@color/color_background"
         fresco:roundingBorderWidth="3dp" />
 
-    <LinearLayout
+    <android.support.v7.widget.LinearLayoutCompat
         android:id="@+id/login_form"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -106,7 +106,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <EditText
+            <android.support.v7.widget.AppCompatEditText
                 android:id="@+id/confirm"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -123,7 +123,7 @@
 
         </android.support.design.widget.TextInputLayout>
 
-        <Button
+        <android.support.v7.widget.AppCompatButton
             android:id="@+id/register"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -135,5 +135,5 @@
             android:textSize="18sp"
             android:textStyle="bold" />
 
-    </LinearLayout>
-</LinearLayout>
+    </android.support.v7.widget.LinearLayoutCompat>
+</android.support.v7.widget.LinearLayoutCompat>

@@ -4,12 +4,12 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.AppCompatTextView;
+import android.support.v7.widget.ContentFrameLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.FrameLayout;
-import android.widget.TextView;
 
 import com.cjj.MaterialRefreshLayout;
 import com.cjj.MaterialRefreshListener;
@@ -32,9 +32,9 @@ public class SearchDetailActivity extends AppCompatActivity implements NetBroadc
     @BindView(R.id.my_search_view)
     MySearchView mySearchView;
     @BindView(R.id.back)
-    FrameLayout back;
+    ContentFrameLayout back;
     @BindView(R.id.search_null)
-    TextView searchNull;
+    AppCompatTextView searchNull;
     @BindView(R.id.maintab_search_refresh)
     MaterialRefreshLayout materialRefreshLayout;
     private int readPage;
@@ -71,12 +71,12 @@ public class SearchDetailActivity extends AppCompatActivity implements NetBroadc
         mySearchView.setSearchViewListener(new MySearchView.SearchViewListener() {
             @Override
             public void onSearch(String text) {
-                searchfunction(text);
+                searchFunction(text);
             }
 
             @Override
             public void onQueryTextSubmit(String text) {
-                searchfunction(text);
+                searchFunction(text);
             }
 
             @Override
@@ -111,7 +111,7 @@ public class SearchDetailActivity extends AppCompatActivity implements NetBroadc
     /**
      * 搜索执行的函数
      */
-    private void searchfunction(String text) {
+    private void searchFunction(String text) {
         inputString = text;
         mListContents.clear();
         mListContentAdapter.notifyDataSetChanged();

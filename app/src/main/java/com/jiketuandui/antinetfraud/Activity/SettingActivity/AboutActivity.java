@@ -2,7 +2,7 @@ package com.jiketuandui.antinetfraud.Activity.SettingActivity;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.widget.FrameLayout;
+import android.support.v7.widget.ContentFrameLayout;
 
 import com.jiketuandui.antinetfraud.R;
 
@@ -12,7 +12,8 @@ public class AboutActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about);
-        FrameLayout tagsback = (FrameLayout) findViewById(R.id.tags_back);
-        tagsback.setOnClickListener(view -> finish());
+        ContentFrameLayout tagsBack = (ContentFrameLayout)
+                findViewById(R.id.tags_back);
+        tagsBack.setOnClickListener(view -> finish());
     }
 }

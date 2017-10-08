@@ -3,9 +3,9 @@ package com.jiketuandui.antinetfraud.Activity.AnnounceAcitivity;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.AppCompatTextView;
+import android.support.v7.widget.ContentFrameLayout;
 import android.text.Html;
-import android.widget.FrameLayout;
-import android.widget.TextView;
 
 import com.jiketuandui.antinetfraud.Bean.AnnounceContent;
 import com.jiketuandui.antinetfraud.R;
@@ -17,11 +17,11 @@ import butterknife.ButterKnife;
 public class AnnounceDetailActivity extends AppCompatActivity {
 
     @BindView(R.id.announce_title)
-    TextView announceTitle;
+    AppCompatTextView announceTitle;
     @BindView(R.id.announce_time)
-    TextView announceTime;
+    AppCompatTextView announceTime;
     @BindView(R.id.announce_content)
-    TextView announceContent;
+    AppCompatTextView announceContent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +35,8 @@ public class AnnounceDetailActivity extends AppCompatActivity {
 
     // 返回键
     private void initTagsBack() {
-        FrameLayout tagsBack = (FrameLayout) findViewById(R.id.back);
+        ContentFrameLayout tagsBack = (ContentFrameLayout)
+                findViewById(R.id.back);
         tagsBack.setOnClickListener(view -> finish());
     }
 

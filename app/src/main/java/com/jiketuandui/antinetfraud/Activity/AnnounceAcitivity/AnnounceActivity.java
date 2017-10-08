@@ -3,6 +3,7 @@ package com.jiketuandui.antinetfraud.Activity.AnnounceAcitivity;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.ContentFrameLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.FrameLayout;
@@ -23,7 +24,7 @@ import butterknife.ButterKnife;
 
 public class AnnounceActivity extends AppCompatActivity {
     @BindView(R.id.announce_back)
-    FrameLayout back;
+    ContentFrameLayout back;
     @BindView(R.id.announce_refresh)
     MaterialRefreshLayout materialRefreshLayout;
     private AnnounceAdapter mListContentAdapter;

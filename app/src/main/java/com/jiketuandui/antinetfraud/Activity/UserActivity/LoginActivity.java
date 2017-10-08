@@ -3,23 +3,24 @@ package com.jiketuandui.antinetfraud.Activity.UserActivity;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.AppCompatButton;
+import android.support.v7.widget.AppCompatEditText;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.inputmethod.EditorInfo;
 import android.widget.AutoCompleteTextView;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.Toast;
 
+import com.cjj.CircleProgressBar;
 import com.jiketuandui.antinetfraud.Bean.AccountInfo;
 import com.jiketuandui.antinetfraud.R;
 import com.jiketuandui.antinetfraud.Util.MyApplication;
@@ -32,21 +33,21 @@ import butterknife.ButterKnife;
  * 登陆界面
  * 2017年3月6日 20:10:26
  */
-public class LoginActivity extends Activity {
+public class LoginActivity extends AppCompatActivity {
 
     // UI
     @BindView(R.id.account)
     AutoCompleteTextView mAccountView;
     @BindView(R.id.password)
-    EditText mPasswordView;
+    AppCompatEditText mPasswordView;
     @BindView(R.id.login_progress)
-    View mProgressView;
+    CircleProgressBar mProgressView;
     @BindView(R.id.login_form)
     View mLoginFormView;
     @BindView(R.id.sign_in_button)
-    Button mSignInButton;
+    AppCompatButton mSignInButton;
     @BindView(R.id.register_in_button)
-    Button mRegisterButton;
+    AppCompatButton mRegisterButton;
     private UserLoginTask mAuthTask = null;
     private AccountInfo mAccountInfo;
     private OnClickListener listener = v -> {

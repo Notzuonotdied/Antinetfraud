@@ -3,11 +3,11 @@ package com.jiketuandui.antinetfraud.Fragment.MainPageFragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.AppCompatTextView;
+import android.support.v7.widget.LinearLayoutCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.daimajia.androidanimations.library.Techniques;
@@ -37,27 +37,27 @@ import butterknife.ButterKnife;
  */
 public class MainTabSetting extends Fragment {
     @BindView(R.id.setting_pieces_delete)
-    LinearLayout setting_pieces_delete;
+    LinearLayoutCompat setting_pieces_delete;
     @BindView(R.id.setting_cache_size)
-    TextView setting_cache_size;
+    AppCompatTextView setting_cache_size;
     @BindView(R.id.lc_holder_image)
     SimpleDraweeView accountPic;
     @BindView(R.id.setting_pieces_account)
-    LinearLayout setAccount;
+    LinearLayoutCompat setAccount;
     @BindView(R.id.setting_pieces_collection)
-    TextView setCollection;
+    AppCompatTextView setCollection;
     @BindView(R.id.setting_pieces_history)
-    TextView setHistory;
+    AppCompatTextView setHistory;
     @BindView(R.id.setting_pieces_idea)
-    TextView setIdea;
+    AppCompatTextView setIdea;
     @BindView(R.id.setting_pieces_update)
-    TextView setUpdate;
+    AppCompatTextView setUpdate;
     @BindView(R.id.setting_pieces_about)
-    TextView setAbout;
+    AppCompatTextView setAbout;
     @BindView(R.id.status)
-    TextView status;
+    AppCompatTextView status;
     @BindView(R.id.setting_share)
-    TextView setShare;
+    AppCompatTextView setShare;
 
     private View.OnClickListener listener = view -> {
         switch (view.getId()) {
@@ -90,6 +90,38 @@ public class MainTabSetting extends Fragment {
                 break;
         }
     };
+
+    /**
+     * 格式化缓存的单位
+     */
+    private static String getFormatSize() {
+        double size = Fresco.getImagePipelineFactory().getBitmapCountingMemoryCache().getSizeInBytes();
+        double kiloByte = size / 1024;
+        if (kiloByte < 1) {
+            return size + "B";
+        }
+
+        double megaByte = kiloByte / 1024;
+        if (megaByte < 1) {
+            BigDecimal result1 = new BigDecimal(Double.toString(kiloByte));
+            return result1.setScale(2, BigDecimal.ROUND_HALF_UP).toPlainString() + "KB";
+        }
+
+        double gigaByte = megaByte / 1024;
+        if (gigaByte < 1) {
+            BigDecimal result2 = new BigDecimal(Double.toString(megaByte));
+            return result2.setScale(2, BigDecimal.ROUND_HALF_UP).toPlainString() + "MB";
+        }
+
+        double teraByte = gigaByte / 1024;
+        if (teraByte < 1) {
+            BigDecimal result3 = new BigDecimal(Double.toString(gigaByte));
+            return result3.setScale(2, BigDecimal.ROUND_HALF_UP).toPlainString() + "GB";
+        }
+
+        BigDecimal result4 = new BigDecimal(teraByte);
+        return result4.setScale(2, BigDecimal.ROUND_HALF_UP).toPlainString() + "TB";
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -155,37 +187,5 @@ public class MainTabSetting extends Fragment {
         super.onHiddenChanged(hidden);
         setting_cache_size.setText(!hidden ? getFormatSize() : "0.0B");
 
-    }
-
-    /**
-     * 格式化缓存的单位
-     * */
-    private static String getFormatSize() {
-        double size = Fresco.getImagePipelineFactory().getBitmapCountingMemoryCache().getSizeInBytes();
-        double kiloByte = size / 1024;
-        if (kiloByte < 1) {
-            return size + "B";
-        }
-
-        double megaByte = kiloByte / 1024;
-        if (megaByte < 1) {
-            BigDecimal result1 = new BigDecimal(Double.toString(kiloByte));
-            return result1.setScale(2, BigDecimal.ROUND_HALF_UP).toPlainString() + "KB";
-        }
-
-        double gigaByte = megaByte / 1024;
-        if (gigaByte < 1) {
-            BigDecimal result2 = new BigDecimal(Double.toString(megaByte));
-            return result2.setScale(2, BigDecimal.ROUND_HALF_UP).toPlainString() + "MB";
-        }
-
-        double teraByte = gigaByte / 1024;
-        if (teraByte < 1) {
-            BigDecimal result3 = new BigDecimal(Double.toString(gigaByte));
-            return result3.setScale(2, BigDecimal.ROUND_HALF_UP).toPlainString() + "GB";
-        }
-
-        BigDecimal result4 = new BigDecimal(teraByte);
-        return result4.setScale(2, BigDecimal.ROUND_HALF_UP).toPlainString() + "TB";
     }
 }

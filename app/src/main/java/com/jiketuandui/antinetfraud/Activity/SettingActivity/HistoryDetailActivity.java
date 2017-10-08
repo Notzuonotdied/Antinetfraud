@@ -3,9 +3,9 @@ package com.jiketuandui.antinetfraud.Activity.SettingActivity;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.ContentFrameLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.widget.FrameLayout;
 
 import com.cjj.MaterialRefreshLayout;
 import com.cjj.MaterialRefreshListener;
@@ -37,13 +37,13 @@ public class HistoryDetailActivity extends AppCompatActivity implements NetBroad
 
         initView();
         initListener();
-        inittagsback();
+        initTagsBack();
     }
 
     // 返回键
-    private void inittagsback() {
-        FrameLayout tagsback = (FrameLayout) findViewById(R.id.back);
-        tagsback.setOnClickListener(view -> finish());
+    private void initTagsBack() {
+        ContentFrameLayout tagsBack = (ContentFrameLayout) findViewById(R.id.back);
+        tagsBack.setOnClickListener(view -> finish());
     }
 
     /**

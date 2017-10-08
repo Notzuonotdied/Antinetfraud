@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/color_white"
     tools:context="com.jiketuandui.antinetfraud.Activity.AnnounceAcitivity.AnnounceDetailActivity">
 
-    <LinearLayout
+    <android.support.v7.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <LinearLayout
+        <android.support.v7.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@color/color_white"
             android:orientation="horizontal">
 
-            <FrameLayout
+            <android.support.v7.widget.ContentFrameLayout
                 android:id="@+id/back"
                 android:layout_width="50dp"
                 android:layout_height="match_parent">
@@ -28,25 +28,25 @@
                     android:layout_gravity="center"
                     android:background="@mipmap/arrow_left"
                     android:foregroundGravity="center" />
-            </FrameLayout>
+            </android.support.v7.widget.ContentFrameLayout>
 
             <com.jiketuandui.antinetfraud.View.CFontTitleTextView
                 style="@style/CFontTitleTextViewStyle"
-                android:text="@string/announce_title"/>
+                android:text="@string/announce_title" />
 
-        </LinearLayout>
+        </android.support.v7.widget.LinearLayoutCompat>
 
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scrollbars="none">
 
-            <LinearLayout
+            <android.support.v7.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <TextView
+                <android.support.v7.widget.AppCompatTextView
                     android:id="@+id/announce_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -55,7 +55,7 @@
                     android:textColor="@color/color_content"
                     android:textSize="20sp" />
 
-                <TextView
+                <android.support.v7.widget.AppCompatTextView
                     android:id="@+id/announce_time"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -64,7 +64,7 @@
                     android:textColor="@color/color_content"
                     android:textSize="18sp" />
 
-                <TextView
+                <android.support.v7.widget.AppCompatTextView
                     android:id="@+id/announce_content"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -72,9 +72,7 @@
                     android:textColor="@color/color_content"
                     android:textSize="18sp" />
 
-            </LinearLayout>
+            </android.support.v7.widget.LinearLayoutCompat>
         </ScrollView>
-    </LinearLayout>
-
-
-</LinearLayout>
+    </android.support.v7.widget.LinearLayoutCompat>
+</android.support.v7.widget.LinearLayoutCompat>

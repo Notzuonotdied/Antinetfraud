@@ -25,7 +25,8 @@ public class StartActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        View view = getLayoutInflater().inflate(R.layout.activity_start, null);
+        View view = getLayoutInflater().inflate(
+                R.layout.activity_start, null);
         /* *
          * 自定义启动页面的特效
          * AlphaAnimation(float fromAlpha, float toAlpha)

@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v4.widget.CursorAdapter;
 import android.support.v4.widget.SimpleCursorAdapter;
+import android.support.v7.widget.AppCompatTextView;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
@@ -21,7 +22,7 @@ import butterknife.ButterKnife;
 public class SearchActivity extends Activity {
 
     @BindView(R.id.search_clear)
-    TextView searchClear;
+    AppCompatTextView searchClear;
     @BindView(R.id.search_listView)
     MyListView searchListView;
     @BindView(R.id.my_search_view)

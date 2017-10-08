@@ -1,13 +1,12 @@
 package com.jiketuandui.antinetfraud.Activity.UtilActivity;
 
-import android.app.Activity;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.AppCompatTextView;
+import android.support.v7.widget.ContentFrameLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
-import android.widget.FrameLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.cjj.MaterialRefreshLayout;
@@ -22,7 +21,18 @@ import com.jiketuandui.antinetfraud.Util.NetWorkUtils;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ToTagsListActivity extends Activity {
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
+public class ToTagsListActivity extends AppCompatActivity {
+    @BindView(R.id.back)
+    ContentFrameLayout tagsBack;
+    @BindView(R.id.tags_title)
+    AppCompatTextView tagsTitle;
+    @BindView(R.id.tags_recyclerView)
+    RecyclerView tagsRecyclerView;
+    @BindView(R.id.tags_refresh)
+    MaterialRefreshLayout tagsRefresh;
     private int readPage;
     private int tagId;
     private int category;
@@ -30,32 +40,23 @@ public class ToTagsListActivity extends Activity {
     private boolean isNeedtoRefresh = false;
     private ListContentAdapter mListContentAdapter;
     private List<ListContent> mListContents = new ArrayList<>();
-    private FrameLayout tagsback;
-    private TextView tagstitle;
-    private RecyclerView tagsrecyclerView;
-    private MaterialRefreshLayout tagsrefresh;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_to_tags_list);
+        ButterKnife.bind(this);
         readPage = 1;
         tagId = getIntent().getExtras().getInt(MyApplication.getInstance().getTAGSID());
         category = getIntent().getExtras().getInt(MyApplication.getInstance().getCATEGORY());
         initView();
-        initLintener();
+        initListener();
     }
 
-    private void initLintener() {
-        this.tagsback.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
+    private void initListener() {
+        this.tagsBack.setOnClickListener(view -> finish());
 
-        tagsrefresh.setMaterialRefreshListener(new MaterialRefreshListener() {
+        tagsRefresh.setMaterialRefreshListener(new MaterialRefreshListener() {
             @Override
             public void onRefresh(MaterialRefreshLayout materialRefreshLayout) {
                 materialRefreshLayout.finishRefreshLoadMore();
@@ -79,20 +80,16 @@ public class ToTagsListActivity extends Activity {
     }
 
     private void initView() {
-        this.mListContentAdapter = new ListContentAdapter(ToTagsListActivity.this, mListContents,false);
-        this.tagsrefresh = (MaterialRefreshLayout) findViewById(R.id.tags_refresh);
-        this.tagsrecyclerView = (RecyclerView) findViewById(R.id.tags_recyclerView);
-        this.tagstitle = (TextView) findViewById(R.id.tags_title);
-        this.tagsback = (FrameLayout) findViewById(R.id.tags_back);
-        this.tagsrecyclerView.setLayoutManager(new LinearLayoutManager(ToTagsListActivity.this,
+        this.mListContentAdapter = new ListContentAdapter(ToTagsListActivity.this, mListContents, false);
+        this.tagsRecyclerView.setLayoutManager(new LinearLayoutManager(ToTagsListActivity.this,
                 LinearLayoutManager.VERTICAL, false));
-        this.tagsrecyclerView.setAdapter(mListContentAdapter);
+        this.tagsRecyclerView.setAdapter(mListContentAdapter);
         // 如果是第一次刷新就启动一次刷新
         if (isFirstRefresh) {
-            tagsrefresh.autoRefresh();
+            tagsRefresh.autoRefresh();
             isFirstRefresh = false;
         }
-        this.tagstitle.setText(MyApplication.getInstance().getTabBigTitle()[tagId]);
+        this.tagsTitle.setText(MyApplication.getInstance().getTabBigTitle()[tagId]);
     }
 
     /**
@@ -128,7 +125,7 @@ public class ToTagsListActivity extends Activity {
                 mListContentAdapter.setData(mListContents);
                 mListContentAdapter.notifyDataSetChanged();
             }
-            tagsrefresh.finishRefresh();
+            tagsRefresh.finishRefresh();
         }
     }
 
@@ -164,18 +161,18 @@ public class ToTagsListActivity extends Activity {
             if (ListContents == null) {
                 if (!isNeedtoRefresh) {
                     Toast.makeText(ToTagsListActivity.this, "已到底部~", Toast.LENGTH_SHORT).show();
-                    tagsrefresh.finishRefreshLoadMore();
+                    tagsRefresh.finishRefreshLoadMore();
                     return;
                 }
                 isNeedtoRefresh = true;
-                tagsrefresh.finishRefreshLoadMore();
+                tagsRefresh.finishRefreshLoadMore();
                 return;
             }
             if (!MyApplication.getInstance().isContainLists(mListContentAdapter, ListContents)) {
                 mListContentAdapter.addData(ListContents);
                 mListContentAdapter.notifyDataSetChanged();
             }
-            tagsrefresh.finishRefreshLoadMore();
+            tagsRefresh.finishRefreshLoadMore();
         }
     }
 }

@@ -7,6 +7,8 @@ import android.app.Activity;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.v7.widget.AppCompatButton;
+import android.support.v7.widget.AppCompatEditText;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -16,6 +18,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 
+import com.cjj.CircleProgressBar;
 import com.jiketuandui.antinetfraud.R;
 import com.jiketuandui.antinetfraud.Util.MyApplication;
 
@@ -32,15 +35,15 @@ public class RegisterActivity extends Activity {
     @BindView(R.id.account)
     AutoCompleteTextView mAccountView;
     @BindView(R.id.password)
-    EditText mPasswordView;
+    AppCompatEditText mPasswordView;
     @BindView(R.id.login_progress)
-    View mProgressView;
+    CircleProgressBar mProgressView;
     @BindView(R.id.login_form)
     View mLoginFormView;
     @BindView(R.id.register)
-    Button mRegisterButton;
+    AppCompatButton mRegisterButton;
     @BindView(R.id.confirm)
-    EditText mConfirm;
+    AppCompatEditText mConfirm;
     /**
      * Keep track of the login task to ensure we can cancel it if requested.
      */

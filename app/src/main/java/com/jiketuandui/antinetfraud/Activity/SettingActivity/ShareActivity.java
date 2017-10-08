@@ -3,13 +3,13 @@ package com.jiketuandui.antinetfraud.Activity.SettingActivity;
 import android.app.Activity;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v7.widget.AppCompatButton;
+import android.support.v7.widget.AppCompatEditText;
+import android.support.v7.widget.AppCompatSpinner;
+import android.support.v7.widget.ContentFrameLayout;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.FrameLayout;
-import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.jiketuandui.antinetfraud.R;
@@ -21,15 +21,15 @@ import butterknife.ButterKnife;
 public class ShareActivity extends Activity {
 
     @BindView(R.id.tags_back)
-    FrameLayout tagsBack;
+    ContentFrameLayout tagsBack;
     @BindView(R.id.share_title)
-    EditText shareTitle;
+    AppCompatEditText shareTitle;
     @BindView(R.id.share_type)
-    Spinner shareType;
+    AppCompatSpinner shareType;
     @BindView(R.id.share_content)
-    EditText shareContent;
+    AppCompatEditText shareContent;
     @BindView(R.id.post)
-    Button post;
+    AppCompatButton post;
 
     private String allContent;
     private int type = 1;

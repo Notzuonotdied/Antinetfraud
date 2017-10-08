@@ -4,12 +4,12 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.AppCompatTextView;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.daimajia.androidanimations.library.Techniques;
@@ -25,7 +25,6 @@ import com.jiketuandui.antinetfraud.Util.NetWorkUtils;
 import com.jiketuandui.antinetfraud.View.CFontTitleTextView;
 import com.jiketuandui.antinetfraud.View.MyListView;
 import com.jiketuandui.antinetfraud.View.banner.BannerBaseView;
-import com.jiketuandui.antinetfraud.View.banner.BannerViewOnClickListener;
 import com.jiketuandui.antinetfraud.View.banner.MainBannerView;
 import com.jiketuandui.antinetfraud.View.banner.bean.BaseBannerBean;
 
@@ -38,8 +37,8 @@ import fm.jiecao.jcvideoplayer_lib.JCVideoPlayer;
 public class MainTabClasscial extends Fragment implements NetBroadcastReceiver.netEventHandler {
 
     private RelativeLayout bannerContent;
-    private TextView tv_01;
-    private TextView tv_02;
+    private AppCompatTextView tv_01;
+    private AppCompatTextView tv_02;
     private CFontTitleTextView title;
 
     /**
@@ -79,8 +78,8 @@ public class MainTabClasscial extends Fragment implements NetBroadcastReceiver.n
         bannerContent = (RelativeLayout) view.findViewById(R.id.search_banner_cont);
 
         MyListView listView = (MyListView) view.findViewById(R.id.listview);
-        this.tv_01 = (TextView) view.findViewById(R.id.tv_01);
-        this.tv_02 = (TextView) view.findViewById(R.id.tv_02);
+        this.tv_01 = (AppCompatTextView) view.findViewById(R.id.tv_01);
+        this.tv_02 = (AppCompatTextView) view.findViewById(R.id.tv_02);
         this.title = (CFontTitleTextView) view.findViewById(R.id.main_header_tv);
 
         VideoListAdapter adapterVideoList = new VideoListAdapter(getActivity());
