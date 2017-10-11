@@ -46,7 +46,7 @@
         <item>电信诈骗</item>
         <item>网络诈骗</item>
     </string-array>
-    <string name="edit_hint">\u3000写下您想说的言语~</string>
+    <string name="edit_hint">写下您想说的言语~</string>
     <string name="submit">提交</string>
 
     <string name="setting_person">个人设置</string>

@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@mipmap/bg"
     android:gravity="center_horizontal"
     android:orientation="vertical"
     tools:context="com.jiketuandui.antinetfraud.Activity.UserActivity.RegisterActivity">
@@ -46,94 +45,69 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_margin="16dp"
-        android:background="@mipmap/bg"
         android:gravity="center_vertical"
         fresco:actualImageScaleType="fitXY"
         fresco:placeholderImage="@mipmap/head_image"
         fresco:roundedCornerRadius="55dp"
-        fresco:roundingBorderColor="@color/color_background"
+        fresco:roundingBorderColor="@color/color_white"
         fresco:roundingBorderWidth="3dp" />
 
     <android.support.v7.widget.LinearLayoutCompat
         android:id="@+id/login_form"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:background="@drawable/input_bg"
+        android:layout_marginLeft="55dp"
+        android:layout_marginRight="55dp"
+        android:layout_marginBottom="55dp"
         android:orientation="vertical">
 
-        <android.support.design.widget.TextInputLayout
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/account"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:digits="@string/filter_vcode"
+            android:drawableLeft="@mipmap/login_icon_account"
+            android:drawablePadding="8dp"
+            android:hint="@string/prompt_account"
+            android:inputType="textPhonetic"
+            android:paddingLeft="15dp" />
 
-            <AutoCompleteTextView
-                android:id="@+id/account"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:digits="@string/filter_vcode"
-                android:drawableLeft="@mipmap/login_icon_account"
-                android:drawablePadding="8dp"
-                android:hint="@string/prompt_account"
-                android:inputType="textPhonetic"
-                android:maxLines="1"
-                android:paddingLeft="15dp"
-                android:singleLine="true" />
 
-        </android.support.design.widget.TextInputLayout>
-
-        <android.support.design.widget.TextInputLayout
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/password"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:drawableLeft="@mipmap/login_icon_password"
+            android:drawablePadding="8dp"
+            android:hint="@string/prompt_password"
+            android:imeActionId="@+id/login"
+            android:imeActionLabel="@string/action_sign_in_short"
+            android:imeOptions="actionUnspecified"
+            android:inputType="textPassword"
+            android:paddingLeft="15dp" />
 
-            <EditText
-                android:id="@+id/password"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:drawableLeft="@mipmap/login_icon_password"
-                android:drawablePadding="8dp"
-                android:hint="@string/prompt_password"
-                android:imeActionId="@+id/login"
-                android:imeActionLabel="@string/action_sign_in_short"
-                android:imeOptions="actionUnspecified"
-                android:inputType="textPassword"
-                android:maxLines="1"
-                android:paddingLeft="15dp"
-                android:singleLine="true" />
 
-        </android.support.design.widget.TextInputLayout>
-
-        <android.support.design.widget.TextInputLayout
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/confirm"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <android.support.v7.widget.AppCompatEditText
-                android:id="@+id/confirm"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:drawableLeft="@mipmap/login_icon_password"
-                android:drawablePadding="8dp"
-                android:hint="@string/confirm_password"
-                android:imeActionId="@+id/login"
-                android:imeActionLabel="@string/action_sign_in_short"
-                android:imeOptions="actionUnspecified"
-                android:inputType="textPassword"
-                android:maxLines="1"
-                android:paddingLeft="15dp"
-                android:singleLine="true" />
-
-        </android.support.design.widget.TextInputLayout>
+            android:layout_height="wrap_content"
+            android:drawableLeft="@mipmap/login_icon_password"
+            android:drawablePadding="8dp"
+            android:hint="@string/confirm_password"
+            android:imeActionId="@+id/login"
+            android:imeActionLabel="@string/action_sign_in_short"
+            android:imeOptions="actionUnspecified"
+            android:inputType="textPassword"
+            android:paddingLeft="15dp" />
 
         <android.support.v7.widget.AppCompatButton
             android:id="@+id/register"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="2dp"
+            android:layout_margin="5dp"
             android:background="@color/color_header_title"
             android:gravity="center"
-            android:text="@string/register"
-            android:textColor="@color/color_background"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+            android:text="@string/register" />
 
     </android.support.v7.widget.LinearLayoutCompat>
 </android.support.v7.widget.LinearLayoutCompat>

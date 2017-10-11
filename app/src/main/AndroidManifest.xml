@@ -52,6 +52,13 @@
             android:name=".Activity.AnnounceAcitivity.AnnounceActivity"
             android:windowSoftInputMode="stateHidden|stateAlwaysHidden" />
         <activity android:name=".Activity.AnnounceAcitivity.AnnounceDetailActivity" />
+        <activity android:name=".Activity.UserActivity.RegisterActivity" />
+        <activity android:name=".Activity.SettingActivity.HistoryDetailActivity" />
+        <activity android:name=".Activity.SettingActivity.CollectionDetailActivity" />
+
+        <service
+            android:name=".Service.NetworkStateService"
+            android:enabled="true" />
 
         <receiver
             android:name=".Service.NetBroadcastReceiver"
@@ -61,14 +68,6 @@
                 <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
             </intent-filter>
         </receiver>
-
-        <service
-            android:name=".Service.NetworkStateService"
-            android:enabled="true" />
-
-        <activity android:name=".Activity.UserActivity.RegisterActivity" />
-        <activity android:name=".Activity.SettingActivity.HistoryDetailActivity" />
-        <activity android:name=".Activity.SettingActivity.CollectionDetailActivity" />
     </application>
 
 </manifest>

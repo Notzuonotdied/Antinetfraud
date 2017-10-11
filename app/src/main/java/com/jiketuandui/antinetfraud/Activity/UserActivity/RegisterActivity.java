@@ -33,7 +33,7 @@ public class RegisterActivity extends Activity {
 
     // UI
     @BindView(R.id.account)
-    AutoCompleteTextView mAccountView;
+    AppCompatEditText mAccountView;
     @BindView(R.id.password)
     AppCompatEditText mPasswordView;
     @BindView(R.id.login_progress)

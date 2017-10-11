@@ -47,76 +47,38 @@
             android:orientation="vertical">
 
 
-            <TableLayout
+            <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/share_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:stretchColumns="1">
+                android:hint="@string/title_hint"
+                android:inputType="textPhonetic"
+                android:maxLines="1"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title" />
 
-                <TableRow>
 
-                    <android.support.v7.widget.AppCompatTextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="?attr/actionBarSize"
-                        android:gravity="center"
-                        android:text="@string/title"
-                        android:textColor="@color/color_content"
-                        android:textSize="18sp" />
-
-                    <android.support.design.widget.TextInputLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                        <android.support.v7.widget.AppCompatEditText
-                            android:id="@+id/share_title"
-                            android:layout_width="match_parent"
-                            android:layout_height="?attr/actionBarSize"
-                            android:hint="@string/title_hint"
-                            android:inputType="textPhonetic"
-                            android:maxLines="1"
-                            android:singleLine="true" />
-                    </android.support.design.widget.TextInputLayout>
-
-                </TableRow>
-
-                <TableRow>
-
-                    <android.support.v7.widget.AppCompatTextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="?attr/actionBarSize"
-                        android:gravity="center"
-                        android:text="@string/type"
-                        android:textColor="@color/color_content"
-                        android:textSize="18sp" />
-
-                    <android.support.v7.widget.AppCompatSpinner
-                        android:id="@+id/share_type"
-                        android:layout_width="match_parent"
-                        android:layout_height="?attr/actionBarSize"
-                        android:background="@drawable/shape_drop_down_normal"
-                        android:dropDownSelector="@color/color_white"
-                        android:entries="@array/type_spinner"
-                        android:popupBackground="@color/color_white" />
-                </TableRow>
-            </TableLayout>
-
-            <android.support.design.widget.TextInputLayout
+            <android.support.v7.widget.AppCompatSpinner
+                android:id="@+id/share_type"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_drop_down_normal"
+                android:dropDownSelector="@color/color_white"
+                android:elevation="3dp"
+                android:entries="@array/type_spinner"
+                android:popupBackground="@color/color_white"
+                android:textAppearance="@style/TextAppearance.AppCompat.Widget.TextView.SpinnerItem"
+                tools:targetApi="lollipop" />
 
-                <android.support.v7.widget.AppCompatEditText
-                    android:id="@+id/share_content"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:enabled="true"
-                    android:gravity="start"
-                    android:hint="@string/edit_hint"
-                    android:inputType="textMultiLine"
-                    android:maxLines="8"
-                    android:minLines="3"
-                    android:padding="@dimen/activity_horizontal_margin"
-                    android:scrollbars="vertical" />
 
-            </android.support.design.widget.TextInputLayout>
+            <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/share_content"
+                android:layout_width="match_parent"
+                android:layout_height="350dp"
+                android:enabled="true"
+                android:gravity="top"
+                android:hint="@string/edit_hint"
+                android:inputType="textMultiLine"
+                android:scrollbars="vertical" />
 
 
             <android.support.v7.widget.AppCompatButton
