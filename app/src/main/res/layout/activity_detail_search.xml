@@ -36,6 +36,12 @@
             android:background="@color/color_white" />
     </android.support.v7.widget.LinearLayoutCompat>
 
+    <View
+        android:layout_marginBottom="1dp"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="@drawable/toolbar_shadow" />
+
     <android.support.v7.widget.AppCompatTextView
         android:id="@+id/search_null"
         android:layout_width="match_parent"
