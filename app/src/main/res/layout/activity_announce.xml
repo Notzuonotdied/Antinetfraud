@@ -8,34 +8,10 @@
     android:orientation="vertical"
     tools:context="com.jiketuandui.antinetfraud.Activity.AnnounceAcitivity.AnnounceActivity">
 
-    <android.support.v7.widget.LinearLayoutCompat
+    <com.jiketuandui.antinetfraud.View.ToolBarLayout
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:orientation="horizontal">
-
-        <android.support.v7.widget.ContentFrameLayout
-            android:id="@+id/announce_back"
-            android:layout_width="50dp"
-            android:layout_height="match_parent">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:background="@mipmap/arrow_left"
-                android:foregroundGravity="center" />
-        </android.support.v7.widget.ContentFrameLayout>
-
-        <com.jiketuandui.antinetfraud.View.CFontTitleTextView
-            style="@style/CFontTitleTextViewStyle"
-            android:text="@string/announce_title" />
-
-        <android.support.v7.widget.ContentFrameLayout
-            android:layout_width="50dp"
-            android:layout_height="match_parent">
-
-        </android.support.v7.widget.ContentFrameLayout>
-    </android.support.v7.widget.LinearLayoutCompat>
+        app:text="@string/announce_title" />
 
     <com.cjj.MaterialRefreshLayout
         android:id="@+id/announce_refresh"

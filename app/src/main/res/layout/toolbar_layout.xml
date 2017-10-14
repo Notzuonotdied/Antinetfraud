@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize">
+
+        <com.jiketuandui.antinetfraud.View.CFontTitleTextView
+            android:id="@+id/TitleTextView"
+            style="@style/CFontTitleTextViewStyle"
+            android:text="@string/setting_person_collection" />
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="?attr/actionBarSize"
+            android:layout_height="?attr/actionBarSize"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_arrow_back_black_24dp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:layout_gravity="bottom"
+            android:background="@drawable/toolbar_shadow" />
+    </FrameLayout>
+
+
+</merge>

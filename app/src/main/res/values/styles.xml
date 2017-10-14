@@ -145,7 +145,7 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
         <item name="android:typeface">monospace</item>
-        <item name="android:layout_marginRight">?attr/listPreferredItemHeight</item>
+        <!--<item name="android:layout_marginRight">?attr/actionBarSize</item>-->
         <item name="android:background">@color/color_white</item>
         <item name="android:gravity">center</item>
         <item name="android:textColor">@color/color_header_title</item>

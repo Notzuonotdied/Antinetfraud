@@ -5,7 +5,6 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatTextView;
-import android.support.v7.widget.ContentFrameLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -31,8 +30,6 @@ import butterknife.ButterKnife;
 public class SearchDetailActivity extends AppCompatActivity implements NetBroadcastReceiver.netEventHandler {
     @BindView(R.id.my_search_view)
     MySearchView mySearchView;
-    @BindView(R.id.back)
-    ContentFrameLayout back;
     @BindView(R.id.search_null)
     AppCompatTextView searchNull;
     @BindView(R.id.maintab_search_refresh)
@@ -66,8 +63,6 @@ public class SearchDetailActivity extends AppCompatActivity implements NetBroadc
      * 初始化响应事件
      */
     private void initListener() {
-        this.back.setOnClickListener(view -> finish());
-
         mySearchView.setSearchViewListener(new MySearchView.SearchViewListener() {
             @Override
             public void onSearch(String text) {

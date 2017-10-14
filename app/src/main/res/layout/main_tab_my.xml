@@ -7,6 +7,12 @@
 
     <include layout="@layout/head_setting" />
 
+    <View
+        android:layout_marginBottom="1dp"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="@drawable/toolbar_shadow" />
+
     <!--嵌套ScrollView实现滚动-->
     <ScrollView
         android:layout_width="match_parent"

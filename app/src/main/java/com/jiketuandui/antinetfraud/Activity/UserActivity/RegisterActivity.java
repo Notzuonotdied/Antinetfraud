@@ -13,10 +13,6 @@ import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.inputmethod.EditorInfo;
-import android.widget.AutoCompleteTextView;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.FrameLayout;
 
 import com.cjj.CircleProgressBar;
 import com.jiketuandui.antinetfraud.R;
@@ -62,7 +58,6 @@ public class RegisterActivity extends Activity {
         setContentView(R.layout.activity_register);
         ButterKnife.bind(this);
         initListener();
-        initTagsBack();
     }
 
     private void initListener() {
@@ -74,12 +69,6 @@ public class RegisterActivity extends Activity {
             return false;
         });
         mRegisterButton.setOnClickListener(listener);
-    }
-
-    // 返回键
-    private void initTagsBack() {
-        FrameLayout tagsBack = (FrameLayout) findViewById(R.id.back);
-        tagsBack.setOnClickListener(view -> finish());
     }
 
     /**

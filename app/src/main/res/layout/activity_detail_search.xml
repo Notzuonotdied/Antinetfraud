@@ -36,7 +36,6 @@
             android:background="@color/color_white" />
     </android.support.v7.widget.LinearLayoutCompat>
 
-
     <android.support.v7.widget.AppCompatTextView
         android:id="@+id/search_null"
         android:layout_width="match_parent"

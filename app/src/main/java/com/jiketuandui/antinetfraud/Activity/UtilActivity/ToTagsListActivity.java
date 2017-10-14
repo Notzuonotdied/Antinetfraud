@@ -3,8 +3,6 @@ package com.jiketuandui.antinetfraud.Activity.UtilActivity;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.AppCompatTextView;
-import android.support.v7.widget.ContentFrameLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.Toast;
@@ -17,6 +15,7 @@ import com.jiketuandui.antinetfraud.HTTP.getConnect;
 import com.jiketuandui.antinetfraud.R;
 import com.jiketuandui.antinetfraud.Util.MyApplication;
 import com.jiketuandui.antinetfraud.Util.NetWorkUtils;
+import com.jiketuandui.antinetfraud.View.ToolBarLayout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,10 +24,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class ToTagsListActivity extends AppCompatActivity {
-    @BindView(R.id.back)
-    ContentFrameLayout tagsBack;
     @BindView(R.id.tags_title)
-    AppCompatTextView tagsTitle;
+    ToolBarLayout tagsTitle;
     @BindView(R.id.tags_recyclerView)
     RecyclerView tagsRecyclerView;
     @BindView(R.id.tags_refresh)
@@ -54,7 +51,6 @@ public class ToTagsListActivity extends AppCompatActivity {
     }
 
     private void initListener() {
-        this.tagsBack.setOnClickListener(view -> finish());
 
         tagsRefresh.setMaterialRefreshListener(new MaterialRefreshListener() {
             @Override

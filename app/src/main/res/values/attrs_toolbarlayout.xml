@@ -1,0 +1,11 @@
+<resources>
+
+    <attr name="text" format="string" />
+    <attr name="textColor" format="color" />
+
+    <declare-styleable name="ToolBarLayout">
+        <attr name="text" />
+        <attr name="textColor" />
+    </declare-styleable>
+
+</resources>

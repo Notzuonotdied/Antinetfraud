@@ -4,7 +4,6 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatTextView;
-import android.support.v7.widget.ContentFrameLayout;
 import android.text.Html;
 
 import com.jiketuandui.antinetfraud.Bean.AnnounceContent;
@@ -30,14 +29,6 @@ public class AnnounceDetailActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         LoadingArticle();
-        initTagsBack();
-    }
-
-    // 返回键
-    private void initTagsBack() {
-        ContentFrameLayout tagsBack = (ContentFrameLayout)
-                findViewById(R.id.back);
-        tagsBack.setOnClickListener(view -> finish());
     }
 
     /**

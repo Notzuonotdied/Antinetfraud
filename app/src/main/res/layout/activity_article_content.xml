@@ -74,6 +74,11 @@
                 app:tabTextColor="@android:color/black" />
         </android.support.design.widget.CollapsingToolbarLayout>
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:layout_gravity="bottom"
+            android:background="@drawable/toolbar_shadow" />
     </android.support.design.widget.AppBarLayout>
 
     <android.support.v4.widget.NestedScrollView

@@ -3,10 +3,8 @@ package com.jiketuandui.antinetfraud.Activity.AnnounceAcitivity;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.ContentFrameLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.widget.FrameLayout;
 
 import com.cjj.MaterialRefreshLayout;
 import com.cjj.MaterialRefreshListener;
@@ -23,8 +21,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class AnnounceActivity extends AppCompatActivity {
-    @BindView(R.id.announce_back)
-    ContentFrameLayout back;
     @BindView(R.id.announce_refresh)
     MaterialRefreshLayout materialRefreshLayout;
     private AnnounceAdapter mListContentAdapter;
@@ -58,8 +54,6 @@ public class AnnounceActivity extends AppCompatActivity {
      * 初始化响应事件
      */
     private void initListener() {
-        this.back.setOnClickListener(view -> finish());
-
         materialRefreshLayout.setMaterialRefreshListener(new MaterialRefreshListener() {
             @Override
             public void onRefresh(MaterialRefreshLayout materialRefreshLayout) {

@@ -21,6 +21,12 @@
 
     </com.jiketuandui.antinetfraud.View.MyTabPageIndicator>
 
+    <View
+        android:layout_marginBottom="1dp"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="@drawable/toolbar_shadow" />
+
     <android.support.v4.view.ViewPager
         android:id="@+id/mainTab_hot_viewpager"
         android:layout_width="match_parent"

@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/color_white"
     tools:context="com.jiketuandui.antinetfraud.Activity.AnnounceAcitivity.AnnounceDetailActivity">
 
@@ -11,30 +12,10 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <android.support.v7.widget.LinearLayoutCompat
+        <com.jiketuandui.antinetfraud.View.ToolBarLayout
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/color_white"
-            android:orientation="horizontal">
-
-            <android.support.v7.widget.ContentFrameLayout
-                android:id="@+id/back"
-                android:layout_width="50dp"
-                android:layout_height="match_parent">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:background="@mipmap/arrow_left"
-                    android:foregroundGravity="center" />
-            </android.support.v7.widget.ContentFrameLayout>
-
-            <com.jiketuandui.antinetfraud.View.CFontTitleTextView
-                style="@style/CFontTitleTextViewStyle"
-                android:text="@string/announce_title" />
-
-        </android.support.v7.widget.LinearLayoutCompat>
+            app:text="@string/announce_title" />
 
         <ScrollView
             android:layout_width="match_parent"

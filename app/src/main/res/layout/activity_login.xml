@@ -1,4 +1,5 @@
 <android.support.v7.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:fresco="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,31 +9,10 @@
     android:orientation="vertical"
     tools:context="com.jiketuandui.antinetfraud.Activity.UserActivity.LoginActivity">
 
-    <android.support.v7.widget.LinearLayoutCompat
+    <com.jiketuandui.antinetfraud.View.ToolBarLayout
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="@color/title_color"
-        android:orientation="horizontal">
-
-        <android.support.v7.widget.ContentFrameLayout
-            android:id="@+id/back"
-            android:layout_width="50dp"
-            android:layout_height="match_parent">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:background="@mipmap/arrow_left"
-                android:contentDescription="@string/login"
-                android:foregroundGravity="center" />
-        </android.support.v7.widget.ContentFrameLayout>
-
-        <com.jiketuandui.antinetfraud.View.CFontTitleTextView
-            style="@style/CFontTitleTextViewStyle"
-            android:text="@string/login" />
-
-    </android.support.v7.widget.LinearLayoutCompat>
+        app:text="@string/login" />
 
     <!-- Login progress -->
     <com.cjj.CircleProgressBar
@@ -58,9 +38,9 @@
         android:id="@+id/login_form"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="55dp"
         android:layout_marginLeft="55dp"
         android:layout_marginRight="55dp"
-        android:layout_marginBottom="55dp"
         android:orientation="vertical">
 
 

@@ -8,29 +8,10 @@
     android:orientation="vertical"
     tools:context=".Activity.MainActivity.SearchDetailActivity">
 
-    <LinearLayout
+    <com.jiketuandui.antinetfraud.View.ToolBarLayout
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:orientation="horizontal">
-
-        <android.support.v7.widget.ContentFrameLayout
-            android:id="@+id/back"
-            android:layout_width="50dp"
-            android:layout_height="match_parent">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:background="@mipmap/arrow_left"
-                android:foregroundGravity="center" />
-        </android.support.v7.widget.ContentFrameLayout>
-
-        <com.jiketuandui.antinetfraud.View.CFontTitleTextView
-            style="@style/CFontTitleTextViewStyle"
-            android:text="@string/setting_person_browsing"/>
-        
-    </LinearLayout>
+        app:text="@string/setting_person_browsing" />
 
     <com.cjj.MaterialRefreshLayout
         android:id="@+id/refresh"

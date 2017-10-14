@@ -16,8 +16,6 @@ import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.inputmethod.EditorInfo;
-import android.widget.AutoCompleteTextView;
-import android.widget.FrameLayout;
 import android.widget.Toast;
 
 import com.cjj.CircleProgressBar;
@@ -70,7 +68,6 @@ public class LoginActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         initListener();
-        initTagsBack();
     }
 
     private void initListener() {
@@ -83,12 +80,6 @@ public class LoginActivity extends AppCompatActivity {
             return false;
         });
         mRegisterButton.setOnClickListener(listener);
-    }
-
-    // 返回键
-    private void initTagsBack() {
-        FrameLayout tagsBack = (FrameLayout) findViewById(R.id.back);
-        tagsBack.setOnClickListener(view -> finish());
     }
 
     private void attemptLogin() {

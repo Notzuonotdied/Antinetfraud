@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.AppCompatEditText;
 import android.support.v7.widget.AppCompatSpinner;
-import android.support.v7.widget.ContentFrameLayout;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.AdapterView;
@@ -20,8 +19,6 @@ import butterknife.ButterKnife;
 
 public class ShareActivity extends Activity {
 
-    @BindView(R.id.tags_back)
-    ContentFrameLayout tagsBack;
     @BindView(R.id.share_title)
     AppCompatEditText shareTitle;
     @BindView(R.id.share_type)
@@ -84,7 +81,6 @@ public class ShareActivity extends Activity {
      * 初始化响应事件
      */
     private void initListener() {
-        tagsBack.setOnClickListener(view -> finish());
         shareType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {

@@ -11,13 +11,19 @@
         android:layout_width="match_parent"
         android:layout_height="28dp"
         android:background="@color/color_header"
-        android:orientation="horizontal"/>
+        android:orientation="horizontal" />
+
+    <View
+        android:layout_marginBottom="1dp"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="@drawable/toolbar_shadow" />
 
     <android.support.v4.view.ViewPager
         android:id="@+id/mainTab_viewpager"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:paddingTop="1dp"/>
+        android:paddingTop="1dp" />
 
 </LinearLayout>

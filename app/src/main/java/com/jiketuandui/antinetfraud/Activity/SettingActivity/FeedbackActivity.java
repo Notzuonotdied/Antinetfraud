@@ -7,7 +7,6 @@ import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.AppCompatEditText;
 import android.text.TextUtils;
 import android.view.View;
-import android.widget.FrameLayout;
 import android.widget.Toast;
 
 import com.jiketuandui.antinetfraud.R;
@@ -24,7 +23,6 @@ public class FeedbackActivity extends Activity {
         setContentView(R.layout.activity_feedback);
 
         initView();
-        initBack();
         initListener();
     }
 
@@ -50,11 +48,6 @@ public class FeedbackActivity extends Activity {
         } else {
             new AsyncFeedback().execute(what);
         }
-    }
-
-    private void initBack() {
-        FrameLayout tagsBack = (FrameLayout) findViewById(R.id.back);
-        tagsBack.setOnClickListener(view -> finish());
     }
 
     private void initView() {
