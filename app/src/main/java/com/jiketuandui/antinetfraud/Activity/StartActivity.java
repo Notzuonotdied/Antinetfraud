@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Toast;
 
 import com.jiketuandui.antinetfraud.Activity.MainActivity.MainActivity;
@@ -21,12 +22,20 @@ import com.jiketuandui.antinetfraud.Util.SharedPManager;
  * 这个是软件启动时候,显示动画的Activity
  */
 public class StartActivity extends Activity {
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         View view = getLayoutInflater().inflate(
                 R.layout.activity_start, null);
+
+        Animation up2down = AnimationUtils.loadAnimation(this,
+                R.anim.uptodown);
+        view.findViewById(R.id.startIMG).setAnimation(up2down);
+        Animation up2top = AnimationUtils.loadAnimation(this,
+                R.anim.uptotop);
+        view.findViewById(R.id.startTV).setAnimation(up2top);
         /* *
          * 自定义启动页面的特效
          * AlphaAnimation(float fromAlpha, float toAlpha)
