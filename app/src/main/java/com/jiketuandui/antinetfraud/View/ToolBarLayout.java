@@ -8,6 +8,8 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.LinearLayout;
 
+import com.daimajia.androidanimations.library.Techniques;
+import com.daimajia.androidanimations.library.YoYo;
 import com.jiketuandui.antinetfraud.R;
 
 /**
@@ -28,6 +30,10 @@ public class ToolBarLayout extends LinearLayout {
         LayoutInflater.from(context)
                 .inflate(R.layout.toolbar_layout, this, true);
         title = (CFontTitleTextView) findViewById(R.id.TitleTextView);
+        title.setOnClickListener(v -> YoYo.with(Techniques.Swing)
+                .duration(333)
+                .repeat(6)
+                .playOn(v.findViewById(R.id.TitleTextView)));
         initAttr(context, attrs);
     }
 
