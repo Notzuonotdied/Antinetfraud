@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/AntiNETFraud.iml" filepath="$PROJECT_DIR$/AntiNETFraud.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Antinetfraud.iml" filepath="$PROJECT_DIR$/Antinetfraud.iml" />
       <module fileurl="file://$PROJECT_DIR$/MaterialRefreshLayout/MaterialRefreshLayout.iml" filepath="$PROJECT_DIR$/MaterialRefreshLayout/MaterialRefreshLayout.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
