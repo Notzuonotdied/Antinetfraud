@@ -1,7 +1,5 @@
 package com.jiketuandui.antinetfraud.Activity;
 
-import android.os.AsyncTask;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.TabLayout;
@@ -13,27 +11,30 @@ import android.support.v7.widget.LinearLayoutCompat;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.drawee.interfaces.DraweeController;
 import com.facebook.drawee.view.SimpleDraweeView;
+import com.jiketuandui.antinetfraud.Activity.Fragment.ArticleDetailFragment.ArticleFragment;
+import com.jiketuandui.antinetfraud.Activity.Fragment.ArticleDetailFragment.CommentFragment;
 import com.jiketuandui.antinetfraud.Adapter.ArticleDetailAdapter;
-import com.jiketuandui.antinetfraud.Bean.ArticleContent;
-import com.jiketuandui.antinetfraud.Fragment.ArticleDetailFragment.ArticleFragment;
-import com.jiketuandui.antinetfraud.Fragment.ArticleDetailFragment.CommentFragment;
 import com.jiketuandui.antinetfraud.R;
 import com.jiketuandui.antinetfraud.Service.NetBroadcastReceiver;
 import com.jiketuandui.antinetfraud.Util.MyApplication;
 import com.jiketuandui.antinetfraud.Util.NetWorkUtils;
-import com.jiketuandui.antinetfraud.Util.SharedPManager;
 import com.jiketuandui.antinetfraud.View.WrapContentHeightViewPager;
+import com.jiketuandui.antinetfraud.entity.domain.ArticleDetail;
+import com.jiketuandui.antinetfraud.retrofirt.RetrofitServiceFactory;
+import com.jiketuandui.antinetfraud.retrofirt.rxjava.BaseObserver;
+import com.jiketuandui.antinetfraud.retrofirt.service.ArticleService;
 import com.oguzdev.circularfloatingactionmenu.library.FloatingActionButton;
 import com.oguzdev.circularfloatingactionmenu.library.FloatingActionMenu;
 import com.oguzdev.circularfloatingactionmenu.library.SubActionButton;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
 
 /**
  * 文章内容显示
@@ -43,23 +44,31 @@ public class ArticleContentActivity extends AppCompatActivity
         implements NetBroadcastReceiver.netEventHandler {
 
     @BindView(R.id.article_title)
-    AppCompatTextView article_title;
+    AppCompatTextView articleTitle;
     @BindView(R.id.article_info)
-    AppCompatTextView article_info;
+    AppCompatTextView articleInfo;
     @BindView(R.id.article_time)
-    AppCompatTextView article_time;
+    AppCompatTextView articleTime;
     @BindView(R.id.head_info)
-    LinearLayoutCompat head_info;
+    LinearLayoutCompat headInfo;
     @BindView(R.id.app_bar_layout)
-    AppBarLayout app_bar_layout;
+    AppBarLayout appBarLayout;
     @BindView(R.id.head_layout)
-    SimpleDraweeView head_layout;
+    SimpleDraweeView headLayout;
     @BindView(R.id.toolbar)
     Toolbar mToolbar;
-    private ArticleContent mArticleContent;
+    private ArticleDetail mArticleContent;
     private boolean isCollected;
-    /*这是文章ID*/
+    private ArticleService articleService = RetrofitServiceFactory.ARTICLE_SERVICE;
+    /**
+     * 这是文章ID
+     */
     private int articleId;
+
+    public int dp2px() {
+        float scale = getResources().getDisplayMetrics().density;
+        return (int) ((float) 66 * scale + 0.5f);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,11 +79,12 @@ public class ArticleContentActivity extends AppCompatActivity
         // 根据ID获取文章的内容
         articleId = this.getIntent().getExtras().getInt(MyApplication.getInstance().getCONTENTID());
         Log.i("Notzuonotdied", "articleId = " + articleId);
-        isCollected = false; // false表示没有被收藏，true表示被收藏
+        // false表示没有被收藏，true表示被收藏
+        isCollected = false;
         // 注册
         NetBroadcastReceiver.mListeners.add(this);
         // 读取文章
-        LoadingArticle();
+        loadingArticle();
         // 初始化监听事件
         initListener();
         // 初始化悬浮按钮
@@ -82,22 +92,25 @@ public class ArticleContentActivity extends AppCompatActivity
     }
 
     private void initFragment(String articleContent) {
-        WrapContentHeightViewPager mViewPager = (WrapContentHeightViewPager) findViewById(R.id.viewpager);
+        WrapContentHeightViewPager mViewPager = findViewById(R.id.viewpager);
         ArticleDetailAdapter viewPagerAdapter = new ArticleDetailAdapter(getSupportFragmentManager());
-        // ————————————————————————————————————————————新建ArticleFragment
+        // ——————————————————————新建ArticleFragment
         ArticleFragment articleFragment = new ArticleFragment();
         Bundle bundle = new Bundle();
         bundle.putString(MyApplication.getInstance().getARTICLECONTENT(), articleContent);
         articleFragment.setArguments(bundle);
-        //————————————————————————————————————————————新建CommentFragment
+        //——————————————————————新建CommentFragment
         CommentFragment commentFragment = new CommentFragment();
         bundle = new Bundle();
-        bundle.putString(MyApplication.getInstance().getARTICLEID(), mArticleContent.getId());
+        bundle.putString(MyApplication.getInstance().getARTICLEID(),
+                String.valueOf(mArticleContent.getId()));
         commentFragment.setArguments(bundle);
         // _________________________________________
-        viewPagerAdapter.addFragment(articleFragment);//添加Fragment
+        // 添加Fragment
+        viewPagerAdapter.addFragment(articleFragment);
         viewPagerAdapter.addFragment(commentFragment);
-        mViewPager.setAdapter(viewPagerAdapter);//设置适配器
+        // 设置适配器
+        mViewPager.setAdapter(viewPagerAdapter);
         // ViewPager切换时NestedScrollView滑动到顶部
         mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
@@ -116,7 +129,7 @@ public class ArticleContentActivity extends AppCompatActivity
             }
         });
 
-        TabLayout mTabLayout = (TabLayout) findViewById(R.id.tabLayout);
+        TabLayout mTabLayout = findViewById(R.id.tabLayout);
         //给TabLayout添加Tab
         mTabLayout.addTab(mTabLayout.newTab().setText(MyApplication.getInstance().getArticleTitle()[0]));
         mTabLayout.addTab(mTabLayout.newTab().setText(MyApplication.getInstance().getArticleTitle()[1]));
@@ -128,7 +141,7 @@ public class ArticleContentActivity extends AppCompatActivity
     public void onNetChange() {
         if (MyApplication.getInstance().getNetWorkState() != NetWorkUtils.NET_TYPE_NO_NETWORK &&
                 mArticleContent == null) {
-            LoadingArticle();
+            loadingArticle();
         }
     }
 
@@ -147,12 +160,12 @@ public class ArticleContentActivity extends AppCompatActivity
      */
     private void initFloatButton() {
         // 悬浮按钮
-        ImageView icon = new ImageView(this); // Create an icon
+        ImageView icon = new ImageView(this);
         icon.setImageResource(R.mipmap.home);
-        final FloatingActionButton actionButton = new FloatingActionButton.Builder(this)
+        final FloatingActionButton actionButton = new FloatingActionButton
+                .Builder(this)
                 .setContentView(icon)
                 .build();
-        actionButton.setAlpha((float) 0.7);
         SubActionButton.Builder itemBuilder = new SubActionButton.Builder(this);
 
         ImageView itemIconP = new ImageView(this);
@@ -168,153 +181,169 @@ public class ArticleContentActivity extends AppCompatActivity
 
         final String phoneID = ((MyApplication) getApplication()).getMAC();
         final FloatingActionMenu actionMenu = new FloatingActionMenu.Builder(this)
-                .addSubActionView(praise, 100, 100)
-                .addSubActionView(collect, 100, 100)
-                .addSubActionView(comment, 100, 100)
+                .addSubActionView(praise, dp2px(), dp2px())
+                .addSubActionView(collect, dp2px(), dp2px())
+                .addSubActionView(comment, dp2px(), dp2px())
                 .attachTo(actionButton)
                 .build();
         praise.setOnClickListener(v -> {
-            new AsyncPraise().execute(mArticleContent.getId());
+            articleService.praise(articleId)
+                    .subscribe(new BaseObserver<>(this, "点赞成功"));
             actionMenu.close(true);
         });
         collect.setOnClickListener(v -> {
-            new AsyncCollect().execute(mArticleContent.getId());
+            articleService.praise(articleId)
+                    .subscribe(new BaseObserver<>(this, "收藏成功"));
             actionMenu.close(true);
         });
-        comment.setOnClickListener(v -> {
-            MyApplication.getInstance()
-                    .instanceGetComment()
-                    .showCommentDialog(ArticleContentActivity.this, String.valueOf(articleId), phoneID);
-            actionMenu.close(true);
-        });
+//        comment.setOnClickListener(v -> {
+//            MyApplication.getInstance()
+//                    .instanceGetComment()
+//                    .showCommentDialog(ArticleContentActivity.this, String.valueOf(articleId), phoneID);
+//            actionMenu.close(true);
+//        });
     }
 
     /**
      * 获取文章内容
      */
-    private void LoadingArticle() {
-        new LoadArticle().execute(articleId);
+    private void loadingArticle() {
+        articleService.getArticleDetail(articleId)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .map(dataBeanResult -> {
+                    // 将Image URL补全
+                    dataBeanResult.getData().setImage(RetrofitServiceFactory.IMAGE_URL +
+                            dataBeanResult.getData().getImage());
+                    return dataBeanResult;
+                })
+                .subscribe(new BaseObserver<ArticleDetail>(this) {
+                    @Override
+                    protected void onHandleSuccess(ArticleDetail articleDetail) {
+                        initAppBarLayout(articleDetail);
+                        // 初始化Fragment
+                        initFragment(articleDetail.getContent());
+                    }
+                });
+        // 更新文章的阅读量
+        articleService.updateReading(articleId)
+                .subscribe(new BaseObserver<ArticleDetail>(this) {
+                    @Override
+                    protected void onHandleSuccess(ArticleDetail articleDetail) {
+
+                    }
+                });
     }
 
     /**
      * 设置View一些内容
      */
-    private void initAppBarLayout(ArticleContent articleContent) {
-        if (articleContent == null) {
-            return;
-        }
-        mArticleContent = articleContent;
-        article_title.setText(mArticleContent.getTitle());
-        article_info.setText(mArticleContent.getInfo());
-        article_time.setText(mArticleContent.getCreatetime());
+    private void initAppBarLayout(ArticleDetail articleDetail) {
+        mArticleContent = articleDetail;
+        articleTitle.setText(mArticleContent.getTitle());
+        String info = "阅读:" + articleDetail.getReading() +
+                "次,点赞:" + articleDetail.getPraise() + "次";
+        articleInfo.setText(info);
+        articleTime.setText(mArticleContent.getCreated_at());
         // 设置头图
-        if (Build.VERSION.SDK_INT >= 16) {
-            DraweeController controller = Fresco.newDraweeControllerBuilder()
-                    .setUri(mArticleContent.getImagelink())
-                    .setTapToRetryEnabled(true)
-                    .setOldController(head_layout.getController())
-                    .build();
-            head_layout.setController(controller);
-        } else {
-            DraweeController controller = Fresco.newDraweeControllerBuilder()
-                    .setUri(mArticleContent.getImagelink())
-                    .setTapToRetryEnabled(true)
-                    .setOldController(head_layout.getController())
-                    .build();
-            head_layout.setController(controller);
-        }
+        DraweeController controller = Fresco.newDraweeControllerBuilder()
+                .setUri(mArticleContent.getImage())
+                .setTapToRetryEnabled(true)
+                .setOldController(headLayout.getController())
+                .build();
+        headLayout.setController(controller);
     }
 
-    private class LoadArticle extends AsyncTask<Integer, Integer, ArticleContent> {
+//    private class LoadArticle extends AsyncTask<Integer, Integer, ArticleContent> {
+//
+//        private String mUid = null;
+//
+//        @Override
+//        protected void onProgressUpdate(Integer... values) {
+//            //mProgressBar.setProgress(values[0]);// 每次更新进度条
+//        }
+//
+//        @Override// 在子线程执行
+//        protected ArticleContent doInBackground(Integer... integers) {
+//            ArticleContent mAContent = ((MyApplication) getApplication()).instanceConnect()
+//                    .setArticleURL(integers[0]);
+//            // 判断用户是否登陆，假如登陆了，就提交用户的浏览历史
+//            if (isLogin() && mAContent != null) {
+//                ((MyApplication) getApplication()).instancepostAccount()
+//                        .postReadHistory("uid=" + mUid + "&article_id=" + mAContent.getId());
+//            }
+//            if (mAContent != null) {
+//                isCollected = ((MyApplication) getApplication()).isContain(mAContent.getId());
+//            }
+//            return mAContent;
+//        }
+//
+//        @Override// 在主线程执行
+//        protected void onPostExecute(ArticleContent articleContent) {
+//            initAppBarLayout(articleContent);
+//            // 初始化Fragment
+//            initFragment(articleContent.getContent());
+//        }
 
-        private String mUid = null;
+//        /**
+//         * 判断是否登陆，并且存在uid
+//         */
+//        private boolean isLogin() {
+//            SharedPManager sharedPManager = new SharedPManager(ArticleContentActivity.this);
+//            if (sharedPManager.isContains(MyApplication.getInstance().getUid())) {
+//                mUid = sharedPManager.getString(MyApplication.getInstance().getUid(), "0");
+//                return true;
+//            }
+//            return false;
+//        }
+//    }
 
-        @Override
-        protected void onProgressUpdate(Integer... values) {
-            //mProgressBar.setProgress(values[0]);// 每次更新进度条
-        }
-
-        @Override// 在子线程执行
-        protected ArticleContent doInBackground(Integer... integers) {
-            ArticleContent mAContent = ((MyApplication) getApplication()).instanceConnect()
-                    .setArticleURL(integers[0]);
-            // 判断用户是否登陆，假如登陆了，就提交用户的浏览历史
-            if (isLogin() && mAContent != null) {
-                ((MyApplication) getApplication()).instancepostAccount()
-                        .postReadHistory("uid=" + mUid + "&article_id=" + mAContent.getId());
-            }
-            if (mAContent != null) {
-                isCollected = ((MyApplication) getApplication()).isContain(mAContent.getId());
-            }
-            return mAContent;
-        }
-
-        @Override// 在主线程执行
-        protected void onPostExecute(ArticleContent articleContent) {
-            initAppBarLayout(articleContent);
-            // 初始化Fragment
-            initFragment(articleContent.getContent());
-        }
-
-        /**
-         * 判断是否登陆，并且存在uid
-         */
-        private boolean isLogin() {
-            SharedPManager sharedPManager = new SharedPManager(ArticleContentActivity.this);
-            if (sharedPManager.isContains(MyApplication.getInstance().getUid())) {
-                mUid = sharedPManager.getString(MyApplication.getInstance().getUid(), "0");
-                return true;
-            }
-            return false;
-        }
-    }
-
-    private class AsyncPraise extends AsyncTask<String, Void, Boolean> {
-        @Override
-        protected Boolean doInBackground(String... strings) {
-            return ((MyApplication) getApplication()).instancePraise().setPraiseGet(strings[0]);
-        }
-
-        @Override
-        protected void onPostExecute(Boolean aBoolean) {
-            if (aBoolean) {
-                mArticleContent.setPraise(String.valueOf(Integer.valueOf(mArticleContent.getPraise()) + 1));
-                article_info.setText(mArticleContent.getInfo());
-                Toast.makeText(ArticleContentActivity.this, "点赞成功~", Toast.LENGTH_SHORT).show();
-            }
-            super.onPostExecute(aBoolean);
-        }
-    }
-
-    private class AsyncCollect extends AsyncTask<String, Void, Boolean> {
-        @Override
-        protected Boolean doInBackground(String... strings) {
-            // false表示没有被收藏，true表示被收藏
-            if (isCollected) {// true
-                isCollected = false;
-                return ((MyApplication) getApplication()).instancepostAccount().postCancleCollection(
-                        "uid=" + new SharedPManager(ArticleContentActivity.this)
-                                .getString(MyApplication.getInstance().getUid(), "0")
-                                + "&&article_id=" + strings[0]);
-            } else {// false
-                isCollected = true;
-                return ((MyApplication) getApplication()).instancepostAccount().postCollection(
-                        "uid=" + new SharedPManager(ArticleContentActivity.this)
-                                .getString(MyApplication.getInstance().getUid(), "0")
-                                + "&&article_id=" + strings[0]);
-            }
-        }
-
-        @Override
-        protected void onPostExecute(Boolean aBoolean) {
-            if (aBoolean && !isCollected) {
-                Toast.makeText(ArticleContentActivity.this, "取消收藏成功~", Toast.LENGTH_SHORT).show();
-            } else {
-                Toast.makeText(ArticleContentActivity.this, "收藏成功~", Toast.LENGTH_SHORT).show();
-            }
-            // 重置判断缓存
-            ((MyApplication) getApplication()).initCache();
-            super.onPostExecute(aBoolean);
-        }
-    }
+//    private class AsyncPraise extends AsyncTask<String, Void, Boolean> {
+//        @Override
+//        protected Boolean doInBackground(String... strings) {
+//            return ((MyApplication) getApplication()).instancePraise().setPraiseGet(strings[0]);
+//        }
+//
+//        @Override
+//        protected void onPostExecute(Boolean aBoolean) {
+//            if (aBoolean) {
+//                mArticleContent.setPraise(String.valueOf(Integer.valueOf(mArticleContent.getPraise()) + 1));
+//                articleInfo.setText(mArticleContent.getInfo());
+//                Toast.makeText(ArticleContentActivity.this, "点赞成功~", Toast.LENGTH_SHORT).show();
+//            }
+//            super.onPostExecute(aBoolean);
+//        }
+//    }
+//
+//    private class AsyncCollect extends AsyncTask<String, Void, Boolean> {
+//        @Override
+//        protected Boolean doInBackground(String... strings) {
+//            // false表示没有被收藏，true表示被收藏
+//            if (isCollected) {// true
+//                isCollected = false;
+//                return ((MyApplication) getApplication()).instancepostAccount().postCancleCollection(
+//                        "uid=" + new SharedPManager(ArticleContentActivity.this)
+//                                .getString(MyApplication.getInstance().getUid(), "0")
+//                                + "&&article_id=" + strings[0]);
+//            } else {// false
+//                isCollected = true;
+//                return ((MyApplication) getApplication()).instancepostAccount().postCollection(
+//                        "uid=" + new SharedPManager(ArticleContentActivity.this)
+//                                .getString(MyApplication.getInstance().getUid(), "0")
+//                                + "&&article_id=" + strings[0]);
+//            }
+//        }
+//
+//        @Override
+//        protected void onPostExecute(Boolean aBoolean) {
+//            if (aBoolean && !isCollected) {
+//                Toast.makeText(ArticleContentActivity.this, "取消收藏成功~", Toast.LENGTH_SHORT).show();
+//            } else {
+//                Toast.makeText(ArticleContentActivity.this, "收藏成功~", Toast.LENGTH_SHORT).show();
+//            }
+//            // 重置判断缓存
+//            ((MyApplication) getApplication()).initCache();
+//            super.onPostExecute(aBoolean);
+//        }
+//    }
 }

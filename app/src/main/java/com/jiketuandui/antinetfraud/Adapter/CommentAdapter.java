@@ -5,8 +5,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.jiketuandui.antinetfraud.Bean.CommentInfo;
-import com.jiketuandui.antinetfraud.Holder.CommentHolder;
+import com.jiketuandui.antinetfraud.HTTP.Bean.CommentInfo;
+import com.jiketuandui.antinetfraud.Adapter.Holder.CommentHolder;
 import com.jiketuandui.antinetfraud.R;
 
 import java.util.ArrayList;

@@ -46,9 +46,9 @@ public class VideoListAdapter extends BaseAdapter {
             viewHolder = new ViewHolder();
             LayoutInflater mInflater = LayoutInflater.from(context);
             convertView = mInflater.inflate(R.layout.item_videoview, null);
-            viewHolder.jcVideoPlayerCover = (SimpleDraweeView) convertView.findViewById(R.id.videoplayer);
-            viewHolder.jcVideoPlayerTitle = (TextView) convertView.findViewById(R.id.jcVideoPlayerTitle);
-            viewHolder.video = (FrameLayout) convertView.findViewById(R.id.video);
+            viewHolder.jcVideoPlayerCover = convertView.findViewById(R.id.videoplayer);
+            viewHolder.jcVideoPlayerTitle = convertView.findViewById(R.id.jcVideoPlayerTitle);
+            viewHolder.video = convertView.findViewById(R.id.video);
             convertView.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) convertView.getTag();

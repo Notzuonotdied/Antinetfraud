@@ -1,6 +1,5 @@
 package com.jiketuandui.antinetfraud.Activity.SettingActivity;
 
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -9,14 +8,11 @@ import android.support.v7.widget.RecyclerView;
 import com.cjj.MaterialRefreshLayout;
 import com.cjj.MaterialRefreshListener;
 import com.jiketuandui.antinetfraud.Adapter.ListContentAdapter;
-import com.jiketuandui.antinetfraud.Bean.ArticleContent;
-import com.jiketuandui.antinetfraud.Bean.CollectionArticle;
-import com.jiketuandui.antinetfraud.Bean.ListContent;
 import com.jiketuandui.antinetfraud.R;
 import com.jiketuandui.antinetfraud.Service.NetBroadcastReceiver;
 import com.jiketuandui.antinetfraud.Util.MyApplication;
 import com.jiketuandui.antinetfraud.Util.NetWorkUtils;
-import com.jiketuandui.antinetfraud.Util.SharedPManager;
+import com.jiketuandui.antinetfraud.entity.domain.ArticleList;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +21,7 @@ public class CollectionDetailActivity extends AppCompatActivity implements NetBr
 
     private MaterialRefreshLayout materialRefreshLayout;
     private ListContentAdapter mListContentAdapter;
-    private List<ListContent> mListContents = new ArrayList<>();
+    private List<ArticleList.DataBean> mListContents = new ArrayList<>();
     private boolean isFirstRefresh = true;
 
     @Override
@@ -54,7 +50,7 @@ public class CollectionDetailActivity extends AppCompatActivity implements NetBr
             public void onRefresh(MaterialRefreshLayout materialRefreshLayout) {
                 materialRefreshLayout.finishRefreshLoadMore();
                 if (NetWorkUtils.isConnectNET(CollectionDetailActivity.this)) {
-                    new initDataTask().execute();
+//                    new initDataTask().execute();
                 } else {
                     materialRefreshLayout.finishRefresh();
                 }
@@ -64,7 +60,7 @@ public class CollectionDetailActivity extends AppCompatActivity implements NetBr
             public void onRefreshLoadMore(MaterialRefreshLayout materialRefreshLayout) {
                 materialRefreshLayout.finishRefresh();
                 if (NetWorkUtils.isConnectNET(CollectionDetailActivity.this)) {
-                    new LoadMoreDataTask().execute();
+//                    new LoadMoreDataTask().execute();
                 } else {
                     materialRefreshLayout.finishRefreshLoadMore();
                 }
@@ -76,9 +72,9 @@ public class CollectionDetailActivity extends AppCompatActivity implements NetBr
      * 初始化View
      */
     private void initView() {
-        this.materialRefreshLayout = (MaterialRefreshLayout) findViewById(R.id.refresh);
+        this.materialRefreshLayout = findViewById(R.id.refresh);
         mListContentAdapter = new ListContentAdapter(CollectionDetailActivity.this, mListContents, true, 1);
-        RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+        RecyclerView mRecyclerView = findViewById(R.id.recyclerView);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(CollectionDetailActivity.this,
                 LinearLayoutManager.VERTICAL, false));
         mRecyclerView.setAdapter(mListContentAdapter);
@@ -105,78 +101,78 @@ public class CollectionDetailActivity extends AppCompatActivity implements NetBr
     /**
      * 初始化数据
      */
-    private class initDataTask extends AsyncTask<Void, Void, List<ListContent>> {
-
-        @Override
-        protected List<ListContent> doInBackground(Void... voids) {
-            List<CollectionArticle> mCollectionArticle =
-                    ((MyApplication) getApplication()).instancepostAccount().getCollection(
-                            new SharedPManager(CollectionDetailActivity.this)
-                                    .getString(MyApplication.getInstance().getUid(), null));
-            List<ListContent> mListContents = new ArrayList<>();
-            ListContent listContent;
-            if (mCollectionArticle != null && mCollectionArticle.size() != 0) {
-                for (CollectionArticle collectionArticle : mCollectionArticle) {
-                    ArticleContent articleContent = ((MyApplication) getApplication())
-                            .instanceConnect()
-                            .setArticleURL(Integer.valueOf(collectionArticle.getArticle_id()));
-                    if (articleContent != null) {
-                        listContent = new ListContent();
-//                        Log.i("Notzuonotdied", "articleContent title = " +
-//                                articleContent.getTitle());
-                        listContent.setContent(articleContent.getContent());
-                        listContent.setCreatetime(articleContent.getCreatetime());
-                        listContent.setId(articleContent.getId());
-                        listContent.setTitle(articleContent.getTitle());
-                        listContent.setImagelink(articleContent.getImagelink());
-                        listContent.setPraise(articleContent.getPraise());
-                        listContent.setSource(articleContent.getSource());
-                        listContent.setReading(articleContent.getReading());
-                        listContent.setTagid(articleContent.getTagid());
-                        mListContents.add(listContent);
-                    }
-                }
-            }
-            return mListContents;
-        }
-
-        @Override
-        protected void onPostExecute(List<ListContent> mListContents) {
-            super.onPostExecute(mListContents);
-            if (mListContents != null) {
-                mListContentAdapter.setData(mListContents);
-                mListContentAdapter.notifyDataSetChanged();
-            }
-            materialRefreshLayout.finishRefresh();
-        }
-    }
-
-    /**
-     * 加载更多数据
-     */
-    private class LoadMoreDataTask extends AsyncTask<Void, Void, List<ListContent>> {
-
-        @Override
-        protected List<ListContent> doInBackground(Void... voids) {
-            if (mListContentAdapter.getData().size() == 0) {
-                return null;
-            }
-            // 这里需要添加执行代码
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(List<ListContent> ListContents) {
-            super.onPostExecute(ListContents);
-            if (ListContents == null) {
-                materialRefreshLayout.finishRefreshLoadMore();
-                return;
-            }
-            if (!MyApplication.getInstance().isContainLists(mListContentAdapter, ListContents)) {
-                mListContentAdapter.addData(ListContents);
-                mListContentAdapter.notifyDataSetChanged();
-            }
-            materialRefreshLayout.finishRefreshLoadMore();
-        }
-    }
+//    private class initDataTask extends AsyncTask<Void, Void, List<ListContent>> {
+//
+//        @Override
+//        protected List<ListContent> doInBackground(Void... voids) {
+//            List<CollectionArticle> mCollectionArticle =
+//                    ((MyApplication) getApplication()).instancepostAccount().getCollection(
+//                            new SharedPManager(CollectionDetailActivity.this)
+//                                    .getString(MyApplication.getInstance().getUid(), null));
+//            List<ListContent> mListContents = new ArrayList<>();
+//            ListContent listContent;
+//            if (mCollectionArticle != null && mCollectionArticle.size() != 0) {
+//                for (CollectionArticle collectionArticle : mCollectionArticle) {
+//                    ArticleContent articleContent = ((MyApplication) getApplication())
+//                            .instanceConnect()
+//                            .setArticleURL(Integer.valueOf(collectionArticle.getArticle_id()));
+//                    if (articleContent != null) {
+//                        listContent = new ListContent();
+////                        Log.i("Notzuonotdied", "articleContent title = " +
+////                                articleContent.getTitle());
+//                        listContent.setContent(articleContent.getContent());
+//                        listContent.setCreatetime(articleContent.getCreatetime());
+//                        listContent.setId(articleContent.getId());
+//                        listContent.setTitle(articleContent.getTitle());
+//                        listContent.setImagelink(articleContent.getImagelink());
+//                        listContent.setPraise(articleContent.getPraise());
+//                        listContent.setSource(articleContent.getSource());
+//                        listContent.setReading(articleContent.getReading());
+//                        listContent.setTagid(articleContent.getTagid());
+//                        mListContents.add(listContent);
+//                    }
+//                }
+//            }
+//            return mListContents;
+//        }
+//
+//        @Override
+//        protected void onPostExecute(List<ListContent> mListContents) {
+//            super.onPostExecute(mListContents);
+//            if (mListContents != null) {
+//                mListContentAdapter.setData(mListContents);
+//                mListContentAdapter.notifyDataSetChanged();
+//            }
+//            materialRefreshLayout.finishRefresh();
+//        }
+//    }
+//
+//    /**
+//     * 加载更多数据
+//     */
+//    private class LoadMoreDataTask extends AsyncTask<Void, Void, List<ListContent>> {
+//
+//        @Override
+//        protected List<ListContent> doInBackground(Void... voids) {
+//            if (mListContentAdapter.getData().size() == 0) {
+//                return null;
+//            }
+//            // 这里需要添加执行代码
+//            return null;
+//        }
+//
+//        @Override
+//        protected void onPostExecute(List<ListContent> ListContents) {
+//            super.onPostExecute(ListContents);
+//            if (ListContents == null) {
+//                materialRefreshLayout.finishRefreshLoadMore();
+//                return;
+//            }
+//            if (!MyApplication.getInstance().isContainLists(mListContentAdapter, ListContents)) {
+//                mListContentAdapter.addData(ListContents);
+//                mListContentAdapter.notifyDataSetChanged();
+//            }
+//            materialRefreshLayout.finishRefreshLoadMore();
+//        }
+//    }
 }

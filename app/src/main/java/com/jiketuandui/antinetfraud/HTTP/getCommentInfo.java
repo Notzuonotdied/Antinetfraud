@@ -1,7 +1,6 @@
 package com.jiketuandui.antinetfraud.HTTP;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.os.AsyncTask;
 import android.text.TextUtils;
 import android.util.Log;
@@ -13,7 +12,7 @@ import com.eminayar.panter.enums.Animation;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
-import com.jiketuandui.antinetfraud.Bean.CommentInfo;
+import com.jiketuandui.antinetfraud.HTTP.Bean.CommentInfo;
 import com.jiketuandui.antinetfraud.R;
 import com.jiketuandui.antinetfraud.Util.MyApplication;
 import com.jiketuandui.antinetfraud.Util.SharedPManager;

@@ -56,10 +56,6 @@
         <activity android:name=".Activity.SettingActivity.HistoryDetailActivity" />
         <activity android:name=".Activity.SettingActivity.CollectionDetailActivity" />
 
-        <service
-            android:name=".Service.NetworkStateService"
-            android:enabled="true" />
-
         <receiver
             android:name=".Service.NetBroadcastReceiver"
             android:enabled="true"

@@ -207,7 +207,7 @@ public class MyRecyclerView extends RecyclerView {
         headerLayout.addView(headerView, RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
         headerLayout.setGravity(Gravity.BOTTOM);
 
-        status = (TextView) refreshView.findViewById(R.id.status);
+        status = refreshView.findViewById(R.id.status);
         headerView.post(() -> {
             headerViewHeight = headerView.getHeight();
             RelativeLayout.LayoutParams l = (RelativeLayout.LayoutParams) headerView.getLayoutParams();

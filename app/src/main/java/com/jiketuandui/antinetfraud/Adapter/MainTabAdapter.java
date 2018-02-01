@@ -5,13 +5,15 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.jiketuandui.antinetfraud.Fragment.MainPageFragment.MainTabNews;
+import com.jiketuandui.antinetfraud.Activity.Fragment.MainPageFragment.MainTabNews;
 import com.jiketuandui.antinetfraud.Util.MyApplication;
 
 
 /**
- * Created by Notzuonotdied on 2016/7/31.
  * 这个是主页的PageAdapter
+ *
+ * @author Notzuonotdied
+ * @date 2016/7/31
  */
 public class MainTabAdapter extends FragmentPagerAdapter {
 
@@ -24,11 +26,11 @@ public class MainTabAdapter extends FragmentPagerAdapter {
      */
     @Override
     public Fragment getItem(int position) {
-        MainTabNews mainTab_news = new MainTabNews();
+        MainTabNews mainTabNews = new MainTabNews();
         Bundle mBundle = new Bundle();
         mBundle.putInt(MyApplication.getInstance().getMAINPAGEPOSITON(), position);
-        mainTab_news.setArguments(mBundle);
-        return mainTab_news;
+        mainTabNews.setArguments(mBundle);
+        return mainTabNews;
     }
 
     @Override

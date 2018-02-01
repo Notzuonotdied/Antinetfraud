@@ -6,7 +6,7 @@ import android.util.Log;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
-import com.jiketuandui.antinetfraud.Bean.AnnounceContent;
+import com.jiketuandui.antinetfraud.HTTP.Bean.AnnounceContent;
 
 import java.io.IOException;
 import java.lang.reflect.Type;

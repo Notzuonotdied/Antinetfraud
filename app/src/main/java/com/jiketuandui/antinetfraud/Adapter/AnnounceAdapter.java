@@ -9,9 +9,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.jiketuandui.antinetfraud.Activity.AnnounceAcitivity.AnnounceDetailActivity;
-import com.jiketuandui.antinetfraud.Bean.AnnounceContent;
-import com.jiketuandui.antinetfraud.Holder.AnnounceListHolder;
-import com.jiketuandui.antinetfraud.Interface.AnnounceListOnClickListener;
+import com.jiketuandui.antinetfraud.HTTP.Bean.AnnounceContent;
+import com.jiketuandui.antinetfraud.Adapter.Holder.AnnounceListHolder;
+import com.jiketuandui.antinetfraud.Adapter.Interface.AnnounceListOnClickListener;
 import com.jiketuandui.antinetfraud.R;
 import com.jiketuandui.antinetfraud.Util.MyApplication;
 import com.jiketuandui.antinetfraud.Util.NetWorkUtils;

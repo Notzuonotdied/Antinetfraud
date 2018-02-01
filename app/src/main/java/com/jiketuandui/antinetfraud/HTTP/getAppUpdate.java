@@ -11,7 +11,7 @@ import android.widget.Toast;
 import com.flyco.animation.BounceEnter.BounceTopEnter;
 import com.flyco.animation.SlideExit.SlideBottomExit;
 import com.flyco.dialog.widget.MaterialDialog;
-import com.jiketuandui.antinetfraud.Bean.UpdateInfo;
+import com.jiketuandui.antinetfraud.HTTP.Bean.UpdateInfo;
 import com.jiketuandui.antinetfraud.Util.transTime;
 
 import java.io.File;

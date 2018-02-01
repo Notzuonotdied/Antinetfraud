@@ -10,11 +10,9 @@ import android.view.WindowManager;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.jiketuandui.antinetfraud.Adapter.AnnounceAdapter;
 import com.jiketuandui.antinetfraud.Adapter.CommentAdapter;
-import com.jiketuandui.antinetfraud.Adapter.ListContentAdapter;
-import com.jiketuandui.antinetfraud.Bean.AnnounceContent;
-import com.jiketuandui.antinetfraud.Bean.CollectionArticle;
-import com.jiketuandui.antinetfraud.Bean.CommentInfo;
-import com.jiketuandui.antinetfraud.Bean.ListContent;
+import com.jiketuandui.antinetfraud.HTTP.Bean.AnnounceContent;
+import com.jiketuandui.antinetfraud.HTTP.Bean.CollectionArticle;
+import com.jiketuandui.antinetfraud.HTTP.Bean.CommentInfo;
 import com.jiketuandui.antinetfraud.HTTP.getAnnouncement;
 import com.jiketuandui.antinetfraud.HTTP.getCommentInfo;
 import com.jiketuandui.antinetfraud.HTTP.getConnect;
@@ -31,52 +29,86 @@ import java.util.UUID;
  */
 public class MyApplication extends Application {
 
-    private static MyApplication myApplication;
     /**
      * 用户注册时候返回的Token
      */
-    private String mToken;
+    private static final String TOKEN;
     /**
      * 用户的名称
      */
-    private String username;
+    private static final String USERNAME;
     /**
      * 用户注册的ID
      */
-    private String uid;
+    private static final String UID;
     /**
-     * 当前ViewPgaeIndication的子项的position
+     * 当前ViewPageIndication的子项的position
      */
-    private String MAINPAGEPOSITON;
-    private String MAINPAGEPOSITONHOT;
-    private String SEARCHSTRING;
-    private String TAGSID;
-    private String CATEGORY;
-    /**
-     * 当前的Content的id
-     */
-    private String CONTENTID;
+    private static final String MAIN_PAGE_POSITION;
+    private static final String MAIN_PAGE_POSITION_HOT;
+    private static final String SEARCH_STRING;
+    private static final String TAGS_ID;
+    private static final String CATEGORY;
     /**
      * 当前的Content的id
      */
-    private String ANNOUNCEID;
+    private static final String CONTENT_ID;
+    /**
+     * 当前的Content的id
+     */
+    private static final String ANNOUNCE_ID;
     /**
      * 当前文章的ID
      */
-    private String ARTICLEID;
+    private static final String ARTICLE_ID;
     /**
      * 当前的文章的Markdown格式内容
      */
-    private String ARTICLECONTENT;
+    private static final String ARTICLE_CONTENT;
+    private static final String[] TAB_TITLE;
+    private static final String[] TAB_BIG_TITLE;
+    private static final String[] TAB_BIG_TITLE_HOT;
+    private static final String[] HEADER_TEXT_VIEW;
+    private static final String[] ARTICLE_TITLE;
+    private static MyApplication myApplication;
+
+    // 初始化Field
+    static {
+        TOKEN = "TOKEN";
+        USERNAME = "USERNAME";
+        UID = "UID";
+        MAIN_PAGE_POSITION = "MainPagePosition";
+        MAIN_PAGE_POSITION_HOT = "MainPagePositionHot";
+        SEARCH_STRING = "SearchString";
+        TAGS_ID = "TagsId";
+        CATEGORY = "Category";
+        CONTENT_ID = "ContentId";
+        ANNOUNCE_ID = "AnnounceId";
+        ARTICLE_CONTENT = "ArticleContent";
+        ARTICLE_ID = "ArticleId";
+        TAB_TITLE = new String[]{
+                "最新", "奖励", "诱惑", "信息", "通知", "传销", "投资",
+                "短信", "通讯", "工具", "病毒", "充值", "交易", "钓鱼", "伪造", "其他"
+        };
+        TAB_BIG_TITLE = new String[]{
+                "最新消息", "网络诈骗", "电信诈骗", "小小贴士"
+        };
+        TAB_BIG_TITLE_HOT = new String[]{
+                "总排行榜", "电信诈骗", "网络诈骗", "小小贴士"
+        };
+        HEADER_TEXT_VIEW = new String[]{
+                "网络诈骗防范科普网", "热门案例排行榜",
+                "案例搜索", "个人设置"
+        };
+        ARTICLE_TITLE = new String[]{
+                "文章详情", "评论列表"
+        };
+    }
+
     /**
      * 当前网络状态
      */
     private int mNetWorkState;
-    private String[] TabTitle;
-    private String[] TabBigTitle;
-    private String[] TabBigTitleHot;
-    private String[] HeaderTextView;
-    private String[] ArticleTitle;
     /**
      * 判断是否登录了
      */
@@ -94,11 +126,6 @@ public class MyApplication extends Application {
      */
     private List<CollectionArticle> collectionArticles;
 
-    public MyApplication() {
-        /*初始化变量*/
-        initField();
-    }
-
     /**
      * 单例模式
      */
@@ -114,15 +141,15 @@ public class MyApplication extends Application {
     }
 
     public String getARTICLEID() {
-        return ARTICLEID;
+        return ARTICLE_ID;
     }
 
     public String getARTICLECONTENT() {
-        return ARTICLECONTENT;
+        return ARTICLE_CONTENT;
     }
 
     public String[] getArticleTitle() {
-        return ArticleTitle;
+        return ARTICLE_TITLE;
     }
 
     public boolean getLogin() {
@@ -134,31 +161,31 @@ public class MyApplication extends Application {
     }
 
     public String getToken() {
-        return mToken;
+        return TOKEN;
     }
 
     public String getUsername() {
-        return username;
+        return USERNAME;
     }
 
     public String getUid() {
-        return uid;
+        return UID;
     }
 
     public String getMAINPAGEPOSITON() {
-        return MAINPAGEPOSITON;
+        return MAIN_PAGE_POSITION;
     }
 
     public String getMAINPAGEPOSITONHOT() {
-        return MAINPAGEPOSITONHOT;
+        return MAIN_PAGE_POSITION_HOT;
     }
 
     public String getSEARCHSTRING() {
-        return SEARCHSTRING;
+        return SEARCH_STRING;
     }
 
     public String getTAGSID() {
-        return TAGSID;
+        return TAGS_ID;
     }
 
     public String getCATEGORY() {
@@ -166,11 +193,11 @@ public class MyApplication extends Application {
     }
 
     public String getCONTENTID() {
-        return CONTENTID;
+        return CONTENT_ID;
     }
 
     public String getANNOUNCEID() {
-        return ANNOUNCEID;
+        return ANNOUNCE_ID;
     }
 
     public int getNetWorkState() {
@@ -182,42 +209,42 @@ public class MyApplication extends Application {
     }
 
     public String[] getTabTitle() {
-        return TabTitle;
+        return TAB_TITLE;
     }
 
     public String[] getTabBigTitle() {
-        return TabBigTitle;
+        return TAB_BIG_TITLE;
     }
 
     public String[] getTabBigTitleHot() {
-        return TabBigTitleHot;
+        return TAB_BIG_TITLE_HOT;
     }
 
     public String[] getHeaderTextView() {
-        return HeaderTextView;
+        return HEADER_TEXT_VIEW;
     }
 
-    /**
-     * 判断是否重复
-     */
-    public boolean isContainLists(ListContentAdapter mListContentAdapter,
-                                  List<ListContent> ListContents) {
-        for (ListContent ml : ListContents) {
-            for (int i = 0; i < mListContentAdapter.getData().size(); i++) {
-                if (mListContentAdapter.getData().get(i).getId().equals(ml.getId())) {
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
+//    /**
+//     * 判断是否重复
+//     */
+//    public boolean isContainLists(ListContentAdapter mListContentAdapter,
+//                                  List<ListContent> listContents) {
+//        for (ListContent ml : listContents) {
+//            for (int i = 0; i < mListContentAdapter.getData().size(); i++) {
+//                if (mListContentAdapter.getData().get(i).getId().equals(ml.getId())) {
+//                    return true;
+//                }
+//            }
+//        }
+//        return false;
+//    }
 
     /**
      * 判断是否重复
      */
     public boolean isContainLists(AnnounceAdapter mListContentAdapter,
-                                  List<AnnounceContent> ListContents) {
-        for (AnnounceContent ml : ListContents) {
+                                  List<AnnounceContent> listContents) {
+        for (AnnounceContent ml : listContents) {
             for (int i = 0; i < mListContentAdapter.getData().size(); i++) {
                 if (mListContentAdapter.getData().get(i).getId().equals(ml.getId())) {
                     return true;
@@ -231,8 +258,8 @@ public class MyApplication extends Application {
      * 判断是否重复
      */
     public boolean isContainComment(CommentAdapter mListContentAdapter,
-                                    List<CommentInfo> ListContents) {
-        for (CommentInfo ml : ListContents) {
+                                    List<CommentInfo> listContents) {
+        for (CommentInfo ml : listContents) {
             for (int i = 0; i < mListContentAdapter.getData().size(); i++) {
                 if (mListContentAdapter.getData().get(i).getId().equals(ml.getId())) {
                     return true;
@@ -250,64 +277,21 @@ public class MyApplication extends Application {
         initNETService();
         /*初始化获取屏幕的宽度和高度*/
         initScreenWidth();
-        /*初始化Tag标签列表*/
-        initTagsList();
         /*初始化缓存数据*/
         initCache();
         super.onCreate();
     }
 
-    /**
-     * 初始化Field
-     */
-    private void initField() {
-        mToken = "TOKEN";
-        username = "USERNAME";
-        uid = "UID";
-        MAINPAGEPOSITON = "MainPagePosition";
-        MAINPAGEPOSITONHOT = "MainPagePositionHot";
-        SEARCHSTRING = "SearchString";
-        TAGSID = "TagsId";
-        CATEGORY = "Category";
-        CONTENTID = "ContentId";
-        ANNOUNCEID = "AnnounceId";
-        ARTICLECONTENT = "ArticleContent";
-        ARTICLEID = "ArticleId";
-        TabTitle = new String[]{
-                "最新", "奖励", "诱惑", "信息", "通知", "传销", "投资",
-                "短信", "通讯", "工具", "病毒", "充值", "交易", "钓鱼", "伪造", "其他"
-        };
-        TabBigTitle = new String[]{
-                "最新消息", "网络诈骗", "电信诈骗", "小小贴士"
-        };
-        TabBigTitleHot = new String[]{
-                "总排行榜", "电信诈骗", "网络诈骗", "小小贴士"
-        };
-        HeaderTextView = new String[]{
-                "网络诈骗防范科普网", "热门案例排行榜",
-                "案例搜索", "个人设置"
-        };
-        ArticleTitle = new String[]{
-                "文章详情", "评论列表"
-        };
-    }
-
     public void initLoginState() {
         SharedPManager sp = new SharedPManager(MyApplication.this);
-        isLogin = sp.getString(mToken, null) != null;
+        isLogin = sp.getString(TOKEN, null) != null;
     }
 
     /**
      * 初始化Service进行监听网络
      */
     public void initNETService() {
-//        Intent i = new Intent(this, NetworkStateService.class);
-//        startService(i);
         mNetWorkState = NetWorkUtils.getNetWorkState(MyApplication.this);
-    }
-
-    private void initTagsList() {
-
     }
 
     /**
@@ -317,6 +301,7 @@ public class MyApplication extends Application {
         DisplayMetrics metrics = new DisplayMetrics();
         WindowManager windowManager = (WindowManager)
                 this.getSystemService(Context.WINDOW_SERVICE);
+        assert windowManager != null;
         windowManager.getDefaultDisplay().getMetrics(metrics);
         myScreenHeight = metrics.heightPixels;
         myScreenWidth = metrics.widthPixels;
@@ -391,7 +376,7 @@ public class MyApplication extends Application {
     public String getUniquePseudoID() {
         String serial;
 
-        String m_szDevIDShort = "233" +
+        String mSzdevidshort = "233" +
                 Build.BOARD.length() % 10 + Build.BRAND.length() % 10 +
                 Build.DEVICE.length() % 10 + Build.USER.length() % 10 +
                 Build.DISPLAY.length() % 10 + Build.HOST.length() % 10 +
@@ -401,13 +386,14 @@ public class MyApplication extends Application {
         try {
             serial = android.os.Build.class.getField("SERIAL").get(null).toString();
             //API>=9 使用serial号
-            return new UUID(m_szDevIDShort.hashCode(), serial.hashCode()).toString();
+            return new UUID(mSzdevidshort.hashCode(), serial.hashCode()).toString();
         } catch (Exception exception) {
-            //serial需要一个初始化
-            serial = "serial"; // 随便一个初始化
+            // serial需要一个初始化
+            // 随便一个初始化
+            serial = "serial";
         }
         //使用硬件信息拼凑出来的15位号码
-        return new UUID(m_szDevIDShort.hashCode(), serial.hashCode()).toString();
+        return new UUID(mSzdevidshort.hashCode(), serial.hashCode()).toString();
     }
 
     /**
@@ -420,9 +406,9 @@ public class MyApplication extends Application {
     /**
      * 检查文章ID是否在
      */
-    public boolean isContain(String ID) {
+    public boolean isContain(String id) {
         for (CollectionArticle c : collectionArticles) {
-            if (c.getArticle_id().equals(ID)) {
+            if (c.getArticle_id().equals(id)) {
                 return true;
             }
         }
@@ -435,9 +421,9 @@ public class MyApplication extends Application {
         protected Boolean doInBackground(Void... params) {
             collectionArticles = instancepostAccount().getCollection(
                     new SharedPManager(MyApplication.this)
-                            .getString(uid, null));
+                            .getString(UID, null));
 //            historyArticles = instancepostAccount().getBrowserHistory(
-//                    new SharedPManager(MyApplication.this).getString(MyApplication.uid, null));
+//                    new SharedPManager(MyApplication.this).getString(MyApplication.UID, null));
             return collectionArticles != null /*&& historyArticles != null*/;
         }
     }

@@ -9,14 +9,15 @@ import android.widget.Toast;
 import com.jiketuandui.antinetfraud.Activity.UtilActivity.NetWorkErrorActivity;
 
 /**
- * Created by Notzuonotdied on 2016/10/31.
  * 网络状态判断
+ *
+ * @author Notzuonotdied
+ * @date 2016/10/31
  */
 public class NetWorkUtils {
+    public static final int NET_TYPE_NO_NETWORK = -1;
     private static final int NET_TYPE_WIFI = 1;
     private static final int NET_TYPE_MOBILE = 0;
-    public static final int NET_TYPE_NO_NETWORK = -1;
-
     public Context context = null;
 
     public NetWorkUtils() {
@@ -52,6 +53,7 @@ public class NetWorkUtils {
     public static boolean isConnectWIFI() {
         final ConnectivityManager conManage = (ConnectivityManager)
                 getApplication().getSystemService(Context.CONNECTIVITY_SERVICE);
+        assert conManage != null;
         NetworkInfo networkInfo = conManage.getActiveNetworkInfo();
         int netType = networkInfo != null ? networkInfo.getType() : -1;
         return netType == ConnectivityManager.TYPE_WIFI && networkInfo.isConnected();
@@ -62,6 +64,7 @@ public class NetWorkUtils {
         ConnectivityManager connectivityManager = (ConnectivityManager) context
                 .getSystemService(Context.CONNECTIVITY_SERVICE);
 
+        assert connectivityManager != null;
         NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
         if (activeNetworkInfo != null && activeNetworkInfo.isConnected()) {
 

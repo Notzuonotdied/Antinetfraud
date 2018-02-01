@@ -12,10 +12,10 @@ import android.widget.Button;
 import com.flyco.animation.Attention.Swing;
 import com.flyco.animation.SlideExit.SlideBottomExit;
 import com.flyco.dialog.widget.NormalDialog;
-import com.jiketuandui.antinetfraud.Fragment.MainPageFragment.MainTab;
-import com.jiketuandui.antinetfraud.Fragment.MainPageFragment.MainTabClasscial;
-import com.jiketuandui.antinetfraud.Fragment.MainPageFragment.MainTabHotNews;
-import com.jiketuandui.antinetfraud.Fragment.MainPageFragment.MainTabSetting;
+import com.jiketuandui.antinetfraud.Activity.Fragment.MainPageFragment.MainTab;
+import com.jiketuandui.antinetfraud.Activity.Fragment.MainPageFragment.MainTabClasscial;
+import com.jiketuandui.antinetfraud.Activity.Fragment.MainPageFragment.MainTabHotNews;
+import com.jiketuandui.antinetfraud.Activity.Fragment.MainPageFragment.MainTabSetting;
 import com.jiketuandui.antinetfraud.HTTP.getAppUpdate;
 import com.jiketuandui.antinetfraud.R;
 import com.jiketuandui.antinetfraud.View.ContentViewPager;
@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
     /**
      * List 用于存放四个Fragment
      */
-    private List<Fragment> content_list;
+    private List<Fragment> contentList;
     private ContentViewPager mContentViewPager;
     /**
      * 底部的四个控件的响应事件
@@ -39,16 +39,20 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onClick(View view) {
             switch (view.getId()) {
-                case R.id.id_bottom_home:// 主页
+                // 主页
+                case R.id.id_bottom_home:
                     mContentViewPager.setCurrentItem(0);
                     break;
-                case R.id.id_bottom_hot:// 热点
+                // 热点
+                case R.id.id_bottom_hot:
                     mContentViewPager.setCurrentItem(1);
                     break;
-                case R.id.id_bottom_Search:// 搜索
+                // 搜索
+                case R.id.id_bottom_Search:
                     mContentViewPager.setCurrentItem(2);
                     break;
-                case R.id.id_bottom_my:// 我的
+                // 我的
+                case R.id.id_bottom_my:
                     mContentViewPager.setCurrentItem(3);
                     break;
                 default:
@@ -74,27 +78,32 @@ public class MainActivity extends AppCompatActivity {
      * 初始化各个Fragment
      */
     private void initFragment() {
-        content_list = new ArrayList<>();
+        contentList = new ArrayList<>();
         MainTab mainTab = new MainTab();
-        content_list.add(mainTab);// 主页
-        //content_list.add(new MainTabHot());// 热点
-        content_list.add(new MainTabHotNews());// 热点
-        content_list.add(new MainTabClasscial());// 搜索
-        content_list.add(new MainTabSetting());// 我的
+        // 主页
+        contentList.add(mainTab);
+        // 热点
+        //contentList.add(new MainTabHot());
+        // 热点
+        contentList.add(new MainTabHotNews());
+        // 搜索
+        contentList.add(new MainTabClasscial());
+        // 我的
+        contentList.add(new MainTabSetting());
 
-        mContentViewPager = (ContentViewPager) findViewById(R.id.id_viewpager);
+        mContentViewPager = findViewById(R.id.id_viewpager);
         // 预加载一页的内容
         mContentViewPager.setOffscreenPageLimit(1);
         // 设置Adapter
         mContentViewPager.setAdapter(new FragmentPagerAdapter(getSupportFragmentManager()) {
             @Override
             public Fragment getItem(int position) {
-                return content_list.get(position);
+                return contentList.get(position);
             }
 
             @Override
             public int getCount() {
-                return content_list.size();
+                return contentList.size();
             }
         });
     }
@@ -103,14 +112,14 @@ public class MainActivity extends AppCompatActivity {
      * 初始化头部的一些控件和空间对应的响应事件
      */
     private void initView() {
-        if (content_list == null) {
+        if (contentList == null) {
             return;
         }
         // 初始化
-        Button mTabTextView = (Button) findViewById(R.id.id_bottom_home);
-        Button mTabHotTextView = (Button) findViewById(R.id.id_bottom_hot);
-        Button mTabSearchTextView = (Button) findViewById(R.id.id_bottom_Search);
-        Button mTabMyTextView = (Button) findViewById(R.id.id_bottom_my);
+        Button mTabTextView = findViewById(R.id.id_bottom_home);
+        Button mTabHotTextView = findViewById(R.id.id_bottom_hot);
+        Button mTabSearchTextView = findViewById(R.id.id_bottom_Search);
+        Button mTabMyTextView = findViewById(R.id.id_bottom_my);
 
         // 设置监听事件
         mTabTextView.setOnClickListener(listener);
@@ -122,21 +131,20 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         final NormalDialog dialog = new NormalDialog(this);
-        dialog.content("亲,真的要走吗?")//
-                .style(NormalDialog.STYLE_TWO)//
-                .titleTextSize(23)//
-                .btnText("继续看看", "残忍退出")//
-                .btnTextColor(Color.parseColor("#00BDD0"), Color.parseColor("#D4D4D4"))//
-                .btnTextSize(16f, 16f)//
-                .showAnim(new Swing())//
-                .dismissAnim(new SlideBottomExit())//
+        dialog.content("亲,真的要走吗?")
+                .style(NormalDialog.STYLE_TWO)
+                .titleTextSize(23)
+                .btnText("继续看看", "残忍退出")
+                .btnTextColor(Color.parseColor("#00BDD0"),
+                        Color.parseColor("#D4D4D4"))
+                .btnTextSize(16f, 16f)
+                .showAnim(new Swing())
+                .dismissAnim(new SlideBottomExit())
                 .show();
 
-        dialog.setOnBtnClickL(
-                dialog::dismiss,
-                () -> {
-                    dialog.superDismiss();
-                    finish();
-                });
+        dialog.setOnBtnClickL(dialog::dismiss, () -> {
+            dialog.superDismiss();
+            finish();
+        });
     }
 }

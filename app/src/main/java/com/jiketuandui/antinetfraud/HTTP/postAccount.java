@@ -5,9 +5,9 @@ import android.text.TextUtils;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
-import com.jiketuandui.antinetfraud.Bean.AccountInfo;
-import com.jiketuandui.antinetfraud.Bean.CollectionArticle;
-import com.jiketuandui.antinetfraud.Bean.HistoryArticle;
+import com.jiketuandui.antinetfraud.HTTP.Bean.AccountInfo;
+import com.jiketuandui.antinetfraud.HTTP.Bean.CollectionArticle;
+import com.jiketuandui.antinetfraud.HTTP.Bean.HistoryArticle;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;

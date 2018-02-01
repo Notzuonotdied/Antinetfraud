@@ -46,9 +46,9 @@ public class MySearchView extends LinearLayout implements View.OnClickListener {
     }
 
     private void initViews() {
-        etInput = (EditText) findViewById(R.id.search_et_input);
-        ivDelete = (ImageView) findViewById(R.id.search_iv_delete);
-        btnSearch = (Button) findViewById(R.id.search_btn);
+        etInput = findViewById(R.id.search_et_input);
+        ivDelete = findViewById(R.id.search_iv_delete);
+        btnSearch = findViewById(R.id.search_btn);
 
         ivDelete.setOnClickListener(this);
         btnSearch.setOnClickListener(this);

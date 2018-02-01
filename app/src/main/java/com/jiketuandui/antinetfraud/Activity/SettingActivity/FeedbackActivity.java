@@ -51,8 +51,8 @@ public class FeedbackActivity extends Activity {
     }
 
     private void initView() {
-        this.editText = (AppCompatEditText) findViewById(R.id.feedback);
-        this.post = (AppCompatButton) findViewById(R.id.post);
+        this.editText = findViewById(R.id.feedback);
+        this.post = findViewById(R.id.post);
     }
 
     private class AsyncFeedback extends AsyncTask<String, Void, Boolean> {

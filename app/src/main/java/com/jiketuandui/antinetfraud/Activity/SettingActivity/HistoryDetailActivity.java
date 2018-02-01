@@ -9,14 +9,14 @@ import android.support.v7.widget.RecyclerView;
 import com.cjj.MaterialRefreshLayout;
 import com.cjj.MaterialRefreshListener;
 import com.jiketuandui.antinetfraud.Adapter.ListContentAdapter;
-import com.jiketuandui.antinetfraud.Bean.ArticleContent;
-import com.jiketuandui.antinetfraud.Bean.HistoryArticle;
-import com.jiketuandui.antinetfraud.Bean.ListContent;
+import com.jiketuandui.antinetfraud.HTTP.Bean.ArticleContent;
+import com.jiketuandui.antinetfraud.HTTP.Bean.HistoryArticle;
 import com.jiketuandui.antinetfraud.R;
 import com.jiketuandui.antinetfraud.Service.NetBroadcastReceiver;
 import com.jiketuandui.antinetfraud.Util.MyApplication;
 import com.jiketuandui.antinetfraud.Util.NetWorkUtils;
 import com.jiketuandui.antinetfraud.Util.SharedPManager;
+import com.jiketuandui.antinetfraud.entity.domain.ArticleList;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +24,7 @@ import java.util.List;
 public class HistoryDetailActivity extends AppCompatActivity implements NetBroadcastReceiver.netEventHandler {
     private MaterialRefreshLayout materialRefreshLayout;
     private ListContentAdapter mListContentAdapter;
-    private List<ListContent> mListContents = new ArrayList<>();
+    private List<ArticleList.DataBean> mListContents = new ArrayList<>();
     private boolean isFirstRefresh = true;
 
     @Override
@@ -69,9 +69,10 @@ public class HistoryDetailActivity extends AppCompatActivity implements NetBroad
      * 初始化View
      */
     private void initView() {
-        this.materialRefreshLayout = (MaterialRefreshLayout) findViewById(R.id.refresh);
-        RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
-        mListContentAdapter = new ListContentAdapter(HistoryDetailActivity.this, mListContents, true, 1);
+        this.materialRefreshLayout = findViewById(R.id.refresh);
+        RecyclerView mRecyclerView = findViewById(R.id.recyclerView);
+        mListContentAdapter = new ListContentAdapter(HistoryDetailActivity.this,
+                mListContents, true, 1);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(HistoryDetailActivity.this,
                 LinearLayoutManager.VERTICAL, false));
         mRecyclerView.setAdapter(mListContentAdapter);
@@ -98,32 +99,32 @@ public class HistoryDetailActivity extends AppCompatActivity implements NetBroad
     /**
      * 初始化数据
      */
-    private class initDataTask extends AsyncTask<Void, Void, List<ListContent>> {
+    private class initDataTask extends AsyncTask<Void, Void, List<ArticleList.DataBean>> {
 
         @Override
-        protected List<ListContent> doInBackground(Void... voids) {
+        protected List<ArticleList.DataBean> doInBackground(Void... voids) {
             List<HistoryArticle> mHistoryContents =
                     ((MyApplication) getApplication()).instancepostAccount().getBrowserHistory(
                             new SharedPManager(HistoryDetailActivity.this)
                                     .getString(MyApplication.getInstance().getUid(), null));
-            List<ListContent> mListContents = new ArrayList<>();
-            ListContent listContent;
+            List<ArticleList.DataBean> mListContents = new ArrayList<>();
+            ArticleList.DataBean listContent;
             if (mHistoryContents != null && mHistoryContents.size() != 0) {
                 for (HistoryArticle historyArticle : mHistoryContents) {
                     ArticleContent articleContent = ((MyApplication) getApplication())
                             .instanceConnect()
                             .setArticleURL(Integer.valueOf(historyArticle.getArticle_id()));
                     if (articleContent != null) {
-                        listContent = new ListContent();
+                        listContent = new ArticleList.DataBean();
                         listContent.setContent(articleContent.getContent());
-                        listContent.setCreatetime(articleContent.getCreatetime());
-                        listContent.setId(articleContent.getId());
+                        listContent.setCreated_at(articleContent.getCreatetime());
+                        listContent.setId(Integer.valueOf(articleContent.getId()));
                         listContent.setTitle(articleContent.getTitle());
-                        listContent.setImagelink(articleContent.getImagelink());
-                        listContent.setPraise(articleContent.getPraise());
+                        listContent.setImage(articleContent.getImagelink());
+                        // listContent.setPraise(articleContent.getPraise());
                         listContent.setSource(articleContent.getSource());
-                        listContent.setReading(articleContent.getReading());
-                        listContent.setTagid(articleContent.getTagid());
+                        // listContent.setReading(articleContent.getReading());
+                        listContent.setTag_id(Integer.valueOf(articleContent.getTagid()));
                         mListContents.add(listContent);
                     }
                 }
@@ -132,7 +133,7 @@ public class HistoryDetailActivity extends AppCompatActivity implements NetBroad
         }
 
         @Override
-        protected void onPostExecute(List<ListContent> mListContents) {
+        protected void onPostExecute(List<ArticleList.DataBean> mListContents) {
             super.onPostExecute(mListContents);
             if (mListContents != null) {
                 mListContentAdapter.setData(mListContents);
@@ -145,10 +146,10 @@ public class HistoryDetailActivity extends AppCompatActivity implements NetBroad
     /**
      * 加载更多数据
      */
-    private class LoadMoreDataTask extends AsyncTask<Void, Void, List<ListContent>> {
+    private class LoadMoreDataTask extends AsyncTask<Void, Void, List<ArticleList.DataBean>> {
 
         @Override
-        protected List<ListContent> doInBackground(Void... voids) {
+        protected List<ArticleList.DataBean> doInBackground(Void... voids) {
             if (mListContentAdapter.getData().size() == 0) {
                 return null;
             }
@@ -157,16 +158,16 @@ public class HistoryDetailActivity extends AppCompatActivity implements NetBroad
         }
 
         @Override
-        protected void onPostExecute(List<ListContent> ListContents) {
+        protected void onPostExecute(List<ArticleList.DataBean> ListContents) {
             super.onPostExecute(ListContents);
             if (ListContents == null) {
                 materialRefreshLayout.finishRefreshLoadMore();
                 return;
             }
-            if (!MyApplication.getInstance().isContainLists(mListContentAdapter, ListContents)) {
-                mListContentAdapter.addData(ListContents);
-                mListContentAdapter.notifyDataSetChanged();
-            }
+//            if (!MyApplication.getInstance().isContainLists(mListContentAdapter, ListContents)) {
+//                mListContentAdapter.addData(ListContents);
+//                mListContentAdapter.notifyDataSetChanged();
+//            }
             materialRefreshLayout.finishRefreshLoadMore();
         }
     }

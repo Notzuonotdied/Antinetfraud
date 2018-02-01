@@ -65,7 +65,7 @@ public class SearchActivity extends Activity {
         });
 
         searchListView.setOnItemClickListener((adapterView, view, i, l) -> {
-            TextView tv = (TextView) view.findViewById(R.id.text_history);
+            TextView tv = view.findViewById(R.id.text_history);
             mySearchView.setInputString(tv.getText().toString());
         });
     }

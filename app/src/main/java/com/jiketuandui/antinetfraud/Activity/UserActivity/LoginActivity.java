@@ -19,7 +19,7 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.Toast;
 
 import com.cjj.CircleProgressBar;
-import com.jiketuandui.antinetfraud.Bean.AccountInfo;
+import com.jiketuandui.antinetfraud.HTTP.Bean.AccountInfo;
 import com.jiketuandui.antinetfraud.R;
 import com.jiketuandui.antinetfraud.Util.MyApplication;
 import com.jiketuandui.antinetfraud.Util.SharedPManager;

@@ -9,10 +9,12 @@ import android.support.v7.widget.RecyclerView;
 import com.cjj.MaterialRefreshLayout;
 import com.cjj.MaterialRefreshListener;
 import com.jiketuandui.antinetfraud.Adapter.AnnounceAdapter;
-import com.jiketuandui.antinetfraud.Bean.AnnounceContent;
+import com.jiketuandui.antinetfraud.HTTP.Bean.AnnounceContent;
 import com.jiketuandui.antinetfraud.R;
 import com.jiketuandui.antinetfraud.Util.MyApplication;
 import com.jiketuandui.antinetfraud.Util.NetWorkUtils;
+import com.jiketuandui.antinetfraud.retrofirt.RetrofitServiceFactory;
+import com.jiketuandui.antinetfraud.retrofirt.service.AnnounceService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +28,7 @@ public class AnnounceActivity extends AppCompatActivity {
     private AnnounceAdapter mListContentAdapter;
     private List<AnnounceContent> mListContents = new ArrayList<>();
     private boolean isFirstRefresh = true;
+    private AnnounceService service = RetrofitServiceFactory.ANNOUNCE_SERVICE;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,7 +85,7 @@ public class AnnounceActivity extends AppCompatActivity {
      */
     private void initView() {
         mListContentAdapter = new AnnounceAdapter(AnnounceActivity.this, mListContents);
-        RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.announce_recyclerView);
+        RecyclerView mRecyclerView = findViewById(R.id.announce_recyclerView);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(AnnounceActivity.this,
                 LinearLayoutManager.VERTICAL, false));
         mRecyclerView.setAdapter(mListContentAdapter);

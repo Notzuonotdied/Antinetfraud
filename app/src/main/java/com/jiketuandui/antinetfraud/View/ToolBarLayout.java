@@ -13,7 +13,8 @@ import com.daimajia.androidanimations.library.YoYo;
 import com.jiketuandui.antinetfraud.R;
 
 /**
- * Created by wangyu on 17-10-14.
+ * @author wangyu
+ * @date 17-10-14
  * 自定义ToolBar。
  */
 
@@ -29,7 +30,7 @@ public class ToolBarLayout extends LinearLayout {
         super(context, attrs);
         LayoutInflater.from(context)
                 .inflate(R.layout.toolbar_layout, this, true);
-        title = (CFontTitleTextView) findViewById(R.id.TitleTextView);
+        title = findViewById(R.id.TitleTextView);
         title.setOnClickListener(v -> YoYo.with(Techniques.Swing)
                 .duration(333)
                 .repeat(6)
@@ -55,9 +56,7 @@ public class ToolBarLayout extends LinearLayout {
             typedArray.recycle();
         }
 
-
-        findViewById(R.id.back).setOnClickListener(
-                v -> ((Activity) context).finish());
+        findViewById(R.id.back).setOnClickListener(v -> ((Activity) context).finish());
     }
 
 }

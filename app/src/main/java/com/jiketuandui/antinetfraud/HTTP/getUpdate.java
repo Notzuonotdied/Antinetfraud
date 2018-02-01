@@ -8,7 +8,7 @@ import android.support.annotation.Nullable;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
-import com.jiketuandui.antinetfraud.Bean.UpdateInfo;
+import com.jiketuandui.antinetfraud.HTTP.Bean.UpdateInfo;
 import com.jiketuandui.antinetfraud.Util.getVersion;
 
 import java.io.BufferedReader;

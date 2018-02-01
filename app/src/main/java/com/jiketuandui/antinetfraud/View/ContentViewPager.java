@@ -6,10 +6,12 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 
 /**
- * Created by Notzuonotdied on 2016/7/31.
  * 主页的四个Fragment的对应的ViewPager
  * 不可以滑动，但是可以setCurrentItem的ViewPager。
  * 至于什么要设置他不能滑动,是因为多个滑动时间会导致滑动功能冲突并且失效
+ *
+ * @author Notzuonotdied
+ * @date 2016/7/31
  */
 public class ContentViewPager extends ViewPager {
     /**
@@ -52,8 +54,9 @@ public class ContentViewPager extends ViewPager {
         super.setCurrentItem(item, smoothScroll);
     }
 
-    @Override
-    public void setCurrentItem(int item) {
-        super.setCurrentItem(item, false);//表示切换的时候，不需要切换时间。
-    }
+//    @Override
+//    public void setCurrentItem(int item) {
+//        //表示切换的时候，不需要切换时间。
+//        super.setCurrentItem(item, false);
+//    }
 }
