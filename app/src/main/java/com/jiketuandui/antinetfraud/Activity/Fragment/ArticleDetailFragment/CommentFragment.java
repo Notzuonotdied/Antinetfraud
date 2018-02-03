@@ -1,21 +1,17 @@
 package com.jiketuandui.antinetfraud.Activity.Fragment.ArticleDetailFragment;
 
-import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import com.jiketuandui.antinetfraud.Adapter.CommentAdapter;
-import com.jiketuandui.antinetfraud.HTTP.Bean.CommentInfo;
 import com.jiketuandui.antinetfraud.R;
-import com.jiketuandui.antinetfraud.Util.MyApplication;
-
-import java.util.List;
+import com.jiketuandui.antinetfraud.Util.Constants;
 
 /**
  * 评论
@@ -30,14 +26,14 @@ public class CommentFragment extends Fragment {
     private boolean isFirst;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_comment, null);
         initField();
         initView(view);
         initListener();
         if (isFirst) {
-            new AsyncComment(true).execute();
+//            new AsyncComment(true).execute();
         }
         return view;
     }
@@ -64,17 +60,17 @@ public class CommentFragment extends Fragment {
 //                }, 1666);
 //            }
 //        });
-        recyclerView.setLoadingListener(new XRecyclerView.LoadingListener() {
-            @Override
-            public void onRefresh() {
-                new AsyncComment(true).execute();
-            }
-
-            @Override
-            public void onLoadMore() {
-                new AsyncComment(false).execute();
-            }
-        });
+//        recyclerView.setLoadingListener(new XRecyclerView.LoadingListener() {
+//            @Override
+//            public void onRefresh() {
+//                new AsyncComment(true).execute();
+//            }
+//
+//            @Override
+//            public void onLoadMore() {
+//                new AsyncComment(false).execute();
+//            }
+//        });
     }
 
     private void initView(View view) {
@@ -87,43 +83,43 @@ public class CommentFragment extends Fragment {
     }
 
     private void initField() {
-        articleID = this.getArguments().getString(MyApplication.getInstance().getARTICLEID());
+        articleID = this.getArguments().getString(Constants.ARTICLE_ID);
         // isRefresh = true;
         isFirst = true;
     }
 
-    private class AsyncComment extends AsyncTask<Void, Void, List<CommentInfo>> {
-
-        private boolean isRefresh;
-
-        public AsyncComment(boolean isRefresh) {
-            this.isRefresh = isRefresh;
-        }
-
-        @Override
-        protected List<CommentInfo> doInBackground(Void... params) {
-            return MyApplication.getInstance().instanceGetComment().getComment(articleID);
-        }
-
-        @Override
-        protected void onPostExecute(List<CommentInfo> commentInfo) {
-            if (commentInfo != null) {
-                Log.i("Notzuonotdied", "commentInfo.size()" + commentInfo.size());
-                if (isRefresh) {
-                    myAdapter.setData(commentInfo);
-                } else {
-                    //myAdapter.addData(commentInfo);
-                    myAdapter.setData(commentInfo);
-                }
-                isFirst = false;
-                myAdapter.notifyDataSetChanged();
-            }
-            if (isRefresh) {
-                recyclerView.refreshComplete();
-            } else {
-                recyclerView.loadMoreComplete();
-            }
-            super.onPostExecute(commentInfo);
-        }
-    }
+//    private class AsyncComment extends AsyncTask<Void, Void, List<CommentInfo>> {
+//
+//        private boolean isRefresh;
+//
+//        public AsyncComment(boolean isRefresh) {
+//            this.isRefresh = isRefresh;
+//        }
+//
+//        @Override
+//        protected List<CommentInfo> doInBackground(Void... params) {
+//            return MyApplication.getInstance().instanceGetComment().getComment(articleID);
+//        }
+//
+//        @Override
+//        protected void onPostExecute(List<CommentInfo> commentInfo) {
+//            if (commentInfo != null) {
+//                Log.i("Notzuonotdied", "commentInfo.size()" + commentInfo.size());
+//                if (isRefresh) {
+//                    myAdapter.setData(commentInfo);
+//                } else {
+//                    //myAdapter.addData(commentInfo);
+//                    myAdapter.setData(commentInfo);
+//                }
+//                isFirst = false;
+//                myAdapter.notifyDataSetChanged();
+//            }
+//            if (isRefresh) {
+//                recyclerView.refreshComplete();
+//            } else {
+//                recyclerView.loadMoreComplete();
+//            }
+//            super.onPostExecute(commentInfo);
+//        }
+//    }
 }

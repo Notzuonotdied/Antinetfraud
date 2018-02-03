@@ -26,6 +26,11 @@ import java.util.List;
 import butterknife.ButterKnife;
 
 
+/**
+ * 入口Activity
+ *
+ * @author wangyu
+ */
 public class MainActivity extends AppCompatActivity {
     /**
      * List 用于存放四个Fragment

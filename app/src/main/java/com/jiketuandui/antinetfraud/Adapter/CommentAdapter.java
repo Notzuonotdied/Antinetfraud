@@ -5,8 +5,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.jiketuandui.antinetfraud.HTTP.Bean.CommentInfo;
 import com.jiketuandui.antinetfraud.Adapter.Holder.CommentHolder;
+import com.jiketuandui.antinetfraud.HTTP.Bean.CommentInfo;
 import com.jiketuandui.antinetfraud.R;
 
 import java.util.ArrayList;
@@ -14,7 +14,9 @@ import java.util.List;
 
 /**
  * 文章内容显示页面的评论Fragment的Adapter
- * Created by wangyu on 17-3-24.
+ *
+ * @author wangyu
+ * @date 17-3-24
  */
 
 public class CommentAdapter extends RecyclerView.Adapter<CommentHolder> {

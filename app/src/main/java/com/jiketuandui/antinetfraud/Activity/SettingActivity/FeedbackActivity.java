@@ -1,17 +1,19 @@
 package com.jiketuandui.antinetfraud.Activity.SettingActivity;
 
 import android.app.Activity;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.AppCompatEditText;
 import android.text.TextUtils;
 import android.view.View;
-import android.widget.Toast;
 
 import com.jiketuandui.antinetfraud.R;
-import com.jiketuandui.antinetfraud.Util.MyApplication;
 
+/**
+ * 反馈
+ *
+ * @author wangyu
+ */
 public class FeedbackActivity extends Activity {
 
     private AppCompatEditText editText;
@@ -46,7 +48,7 @@ public class FeedbackActivity extends Activity {
         if (cancel) {
             focusView.requestFocus();
         } else {
-            new AsyncFeedback().execute(what);
+//            new AsyncFeedback().execute(what);
         }
     }
 
@@ -55,21 +57,21 @@ public class FeedbackActivity extends Activity {
         this.post = findViewById(R.id.post);
     }
 
-    private class AsyncFeedback extends AsyncTask<String, Void, Boolean> {
-
-        @Override
-        protected Boolean doInBackground(String... strings) {
-            return ((MyApplication) getApplication()).instancepostAccount().postFeedback("content="
-                    + strings[0]);
-        }
-
-        @Override
-        protected void onPostExecute(Boolean aBoolean) {
-            if (aBoolean) {
-                Toast.makeText(FeedbackActivity.this, "反馈成功~", Toast.LENGTH_SHORT).show();
-                finish();
-            }
-            super.onPostExecute(aBoolean);
-        }
-    }
+//    private class AsyncFeedback extends AsyncTask<String, Void, Boolean> {
+//
+//        @Override
+//        protected Boolean doInBackground(String... strings) {
+//            return ((MyApplication) getApplication()).instancepostAccount().postFeedback("content="
+//                    + strings[0]);
+//        }
+//
+//        @Override
+//        protected void onPostExecute(Boolean aBoolean) {
+//            if (aBoolean) {
+//                Toast.makeText(FeedbackActivity.this, "反馈成功~", Toast.LENGTH_SHORT).show();
+//                finish();
+//            }
+//            super.onPostExecute(aBoolean);
+//        }
+//    }
 }

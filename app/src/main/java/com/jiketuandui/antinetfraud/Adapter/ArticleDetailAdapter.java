@@ -4,13 +4,19 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.jiketuandui.antinetfraud.Util.MyApplication;
+import com.jiketuandui.antinetfraud.Util.Constants;
 
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 文章内容详情页
+ *
+ * @author wangyu
+ */
 public class ArticleDetailAdapter extends FragmentPagerAdapter {
-    private final List<Fragment> mFragments = new ArrayList<>();//添加的Fragment的集合
+    // 添加的Fragment的集合
+    private final List<Fragment> mFragments = new ArrayList<>();
 
     public ArticleDetailAdapter(FragmentManager fm) {
         super(fm);
@@ -30,11 +36,11 @@ public class ArticleDetailAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        return MyApplication.getInstance().getArticleTitle().length;
+        return Constants.ARTICLE_TITLE.length;
     }
 
     @Override
     public CharSequence getPageTitle(int position) {
-        return MyApplication.getInstance().getArticleTitle()[position];
+        return Constants.ARTICLE_TITLE[position];
     }
 }

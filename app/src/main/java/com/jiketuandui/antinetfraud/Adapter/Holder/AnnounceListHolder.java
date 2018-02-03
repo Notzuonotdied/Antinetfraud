@@ -42,7 +42,7 @@ public class AnnounceListHolder extends RecyclerView.ViewHolder implements View.
     @Override
     public void onClick(View view) {
         if (announceListOnClickListener != null) {
-            announceListOnClickListener.OnItemClickListener(getAdapterPosition());
+            announceListOnClickListener.onItemClickListener(getAdapterPosition());
         }
     }
 }

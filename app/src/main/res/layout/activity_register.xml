@@ -13,15 +13,6 @@
         android:layout_height="?attr/actionBarSize"
         app:text="@string/register" />
 
-    <!-- Login progress -->
-    <com.cjj.CircleProgressBar
-        android:id="@+id/login_progress"
-        style="?android:attr/progressBarStyleLarge"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:visibility="gone" />
-
     <ImageView
         android:layout_width="240dp"
         android:layout_height="120dp"
@@ -46,8 +37,8 @@
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
             android:digits="@string/filter_vcode"
-            android:drawableLeft="@drawable/ic_account_circle_white_24dp"
             android:drawablePadding="12dp"
+            android:drawableStart="@drawable/ic_account_circle_white_24dp"
             android:hint="@string/prompt_account"
             android:inputType="textPhonetic"
             android:maxLines="1"
@@ -61,10 +52,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
-            android:drawableLeft="@drawable/ic_lock_open_white_24dp"
             android:drawablePadding="12dp"
+            android:drawableStart="@drawable/ic_lock_open_white_24dp"
             android:hint="@string/prompt_password"
-            android:imeActionId="@+id/login"
             android:imeActionLabel="@string/action_sign_in_short"
             android:imeOptions="actionUnspecified"
             android:inputType="textPassword"
@@ -79,13 +69,28 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
-            android:drawableLeft="@drawable/ic_lock_open_white_24dp"
             android:drawablePadding="12dp"
+            android:drawableStart="@drawable/ic_lock_open_white_24dp"
             android:hint="@string/confirm_password"
-            android:imeActionId="@+id/login"
             android:imeActionLabel="@string/action_sign_in_short"
             android:imeOptions="actionUnspecified"
             android:inputType="textPassword"
+            android:maxLines="1"
+            android:padding="8dp"
+            android:textColor="@color/color_white"
+            android:textColorHint="@color/color_white" />
+
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:drawablePadding="12dp"
+            android:drawableStart="@drawable/ic_email_24dp"
+            android:hint="@string/email"
+            android:imeActionLabel="@string/action_sign_in_short"
+            android:imeOptions="actionUnspecified"
+            android:inputType="textEmailAddress"
             android:maxLines="1"
             android:padding="8dp"
             android:textColor="@color/color_white"
@@ -98,7 +103,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:background="@drawable/login_background"
-            android:clickable="true"
             android:gravity="center"
             android:text="@string/register"
             android:textAllCaps="false"

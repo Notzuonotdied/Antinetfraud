@@ -13,7 +13,9 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 public class User {
-    private String userId;
-    private String username;
-    private String nickname;
+
+    private String name;
+    private String email;
+    private String token;
+    private String id;
 }

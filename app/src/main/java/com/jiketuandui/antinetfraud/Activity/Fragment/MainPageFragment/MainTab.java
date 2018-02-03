@@ -1,7 +1,7 @@
 package com.jiketuandui.antinetfraud.Activity.Fragment.MainPageFragment;
 
+import android.content.Context;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -20,22 +20,28 @@ import com.flyco.dialog.widget.MaterialDialog;
 import com.jiketuandui.antinetfraud.Activity.AnnounceAcitivity.AnnounceActivity;
 import com.jiketuandui.antinetfraud.Activity.MainActivity.SearchActivity;
 import com.jiketuandui.antinetfraud.Adapter.MainTabAdapter;
-import com.jiketuandui.antinetfraud.HTTP.Bean.AnnounceContent;
 import com.jiketuandui.antinetfraud.R;
 import com.jiketuandui.antinetfraud.Service.NetBroadcastReceiver;
-import com.jiketuandui.antinetfraud.Util.MyApplication;
 import com.jiketuandui.antinetfraud.Util.NetWorkUtils;
 import com.jiketuandui.antinetfraud.View.CFontTitleTextView;
 import com.jiketuandui.antinetfraud.View.MyTabPageIndicator;
+import com.jiketuandui.antinetfraud.entity.domain.AnnounceDetail;
+import com.jiketuandui.antinetfraud.entity.domain.AnnounceList;
+import com.jiketuandui.antinetfraud.retrofirt.RetrofitServiceFactory;
+import com.jiketuandui.antinetfraud.retrofirt.rxjava.BaseObserver;
+import com.jiketuandui.antinetfraud.retrofirt.service.AnnounceService;
 
 import java.lang.reflect.Field;
-import java.util.List;
+
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
 
 
-public class MainTab extends Fragment implements NetBroadcastReceiver.netEventHandler {
+public class MainTab extends Fragment implements NetBroadcastReceiver.NetEventHandler {
 
     private boolean isAvailable;
     private MaterialDialog dialog;
+    private AnnounceService announceService = RetrofitServiceFactory.ANNOUNCE_SERVICE;
 
     /**
      * 因为要在Fragment中嵌套使用ViewPager,所以需要进行初始化一些变量
@@ -118,7 +124,42 @@ public class MainTab extends Fragment implements NetBroadcastReceiver.netEventHa
     private void showDialog() {
         dialog = new MaterialDialog(getContext());
         if (isAvailable) {
-            new AsyncAnnounce().execute("/api/noticelist");
+            Context context = getContext().getApplicationContext();
+            announceService.getAnnounceList(1)
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(new BaseObserver<AnnounceList>(context) {
+                        @Override
+                        protected void onHandleSuccess(AnnounceList announceList) {
+                            announceService
+                                    .getAnnounceDetail(announceList.getData().get(0).getId())
+                                    .subscribeOn(Schedulers.io())
+                                    .observeOn(AndroidSchedulers.mainThread())
+                                    .subscribe(new BaseObserver<AnnounceDetail>(context) {
+                                        @Override
+                                        protected void onHandleSuccess(AnnounceDetail announceDetail) {
+                                            String content = announceDetail.getContent();
+                                            if (content.length() > 200) {
+                                                content = content.substring(0, 200)
+                                                        .concat("……");
+                                            }
+                                            dialog // 设置Dialog的属性
+                                                    .title("网站公告")
+                                                    // 设置内容
+                                                    .content(announceList.getData().get(0).getTitle() + ":" +
+                                                            announceList.getData().get(0).getCreated_at() + "\n\u3000\u3000" +
+                                                            content + "\n\u3000\u3000")
+                                                    // 设置按钮文本
+                                                    .btnText("更多", "确定")
+                                                    // 设置进入动画
+                                                    .showAnim(new BounceTopEnter())
+                                                    // 设置退出动画
+                                                    .dismissAnim(new SlideBottomExit())
+                                                    .show();
+                                        }
+                                    });
+                        }
+                    });
         }
         dialog.setOnBtnClickL(() -> {
                     Intent intent = new Intent(getActivity(), AnnounceActivity.class);
@@ -130,34 +171,6 @@ public class MainTab extends Fragment implements NetBroadcastReceiver.netEventHa
     @Override
     public void onNetChange() {
         isAvailable = NetWorkUtils.getNetWorkState(getActivity()) == NetWorkUtils.NET_TYPE_NO_NETWORK;
-    }
-
-    private class AsyncAnnounce extends AsyncTask<String, Void, List<AnnounceContent>> {
-        @Override
-        protected List<AnnounceContent> doInBackground(String... params) {
-            return ((MyApplication) getActivity().getApplication())
-                    .instanceAnnouncement().getAnnounceList();
-        }
-
-        @Override
-        protected void onPostExecute(List<AnnounceContent> announceContents) {
-            if (announceContents != null) {
-                dialog // 设置Dialog的属性
-                        .title("网站公告")
-                        // 设置内容
-                        .content(announceContents.get(0).getTitle() + ":" +
-                                announceContents.get(0).getCreated_at() + "\n\u3000\u3000" +
-                                announceContents.get(0).getContent() + "\n\u3000\u3000")
-                        // 设置按钮文本
-                        .btnText("更多", "确定")
-                        // 设置进入动画
-                        .showAnim(new BounceTopEnter())
-                        // 设置退出动画
-                        .dismissAnim(new SlideBottomExit())
-                        .show();
-            }
-            super.onPostExecute(announceContents);
-        }
     }
 
 }

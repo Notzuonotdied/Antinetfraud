@@ -7,8 +7,6 @@ import static java.util.Locale.US;
 
 /**
  * Created by Notzuonotdied on 2016/8/15.
- * <p>
- * <p>
  * 将UNIX时间转换为正常的时间
  */
 public class transTime {

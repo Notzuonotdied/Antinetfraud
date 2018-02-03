@@ -6,7 +6,6 @@ import com.jiketuandui.antinetfraud.entity.domain.ArticleList;
 import com.jiketuandui.antinetfraud.entity.dto.Result;
 
 import io.reactivex.Observable;
-import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
@@ -65,18 +64,25 @@ public interface ArticleService {
 
 
     /**
-     * 案例收藏
+     * 分类案例返回
      *
-     * @param userId    用户ID
-     * @param sign      签名凭证
-     * @param timeStamp 时间戳
-     * @param articleId 文章ID
-     * @return 返回案例收藏监察者
+     * @param tagId 标签ID
+     * @param page  页码
+     * @return 返回改标签下文章列表的监察者
      */
-    @POST("/auth/article/collection")
-    @FormUrlEncoded
-    Observable<Result<ArticleDetail>> collect(@Field("id") int userId,
-                                              @Field("sign") String sign,
-                                              @Field("timestamp") String timeStamp,
-                                              @Field("article_id") String articleId);
+    @GET("article/tag/{id}")
+    Observable<Result<ArticleList>> getArticleListByTag(@Path("id") int tagId,
+                                                        @Query("page") int page);
+
+    /**
+     * 案例搜索
+     *
+     * @param keyWord 搜索关键字
+     * @param page    页码
+     * @return 返回关键字搜索返回文章列表的监察者
+     */
+    @GET("article/search/{keyword}")
+    Observable<Result<ArticleList>> search(@Path("keyword") String keyWord,
+                                           @Query("page") int page);
+
 }

@@ -12,13 +12,18 @@ import android.widget.TextView;
 
 import com.jiketuandui.antinetfraud.R;
 import com.jiketuandui.antinetfraud.SQL.RecordSQLiteOpenHelper;
-import com.jiketuandui.antinetfraud.Util.MyApplication;
+import com.jiketuandui.antinetfraud.Util.Constants;
 import com.jiketuandui.antinetfraud.View.MyListView;
 import com.jiketuandui.antinetfraud.View.MySearchView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+/**
+ * 搜索内容页面
+ *
+ * @author wangyu
+ */
 public class SearchActivity extends Activity {
 
     @BindView(R.id.search_clear)
@@ -45,12 +50,12 @@ public class SearchActivity extends Activity {
         mySearchView.setSearchViewListener(new MySearchView.SearchViewListener() {
             @Override
             public void onSearch(String text) {
-                searchfunction(text);
+                searchFunction(text);
             }
 
             @Override
             public void onQueryTextSubmit(String text) {
-                searchfunction(text);
+                searchFunction(text);
             }
 
             @Override
@@ -86,8 +91,8 @@ public class SearchActivity extends Activity {
     /**
      * 搜索的动作
      */
-    private void searchfunction(String text) {
-        if (!text.equals("")) {
+    private void searchFunction(String text) {
+        if (!"".equals(text)) {
             // 按完搜索键后将当前查询的关键字保存起来,如果该关键字已经存在就不执行保存
             boolean hasData = helper.hasData(text.trim());
             if (!hasData) {
@@ -98,7 +103,7 @@ public class SearchActivity extends Activity {
             Intent intent = new Intent(SearchActivity.this,
                     SearchDetailActivity.class);
             Bundle bundle = new Bundle();
-            bundle.putString(MyApplication.getInstance().getSEARCHSTRING(), text);
+            bundle.putString(Constants.SEARCH_STRING, text);
             intent.putExtras(bundle);
             startActivity(intent);
         }

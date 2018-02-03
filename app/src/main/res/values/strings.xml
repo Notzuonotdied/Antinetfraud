@@ -86,14 +86,17 @@
     <string name="prompt_account">账户</string>
     <string name="prompt_password">密码</string>
     <string name="confirm_password">重新输入密码</string>
+    <string name="email">邮箱</string>
     <string name="action_sign_in">登陆</string>
     <string name="action_register">注册</string>
     <string name="action_sign_in_short">一键登陆</string>
     <string name="error_invalid_account">用户名太短了</string>
+    <string name="error_invalid_email">邮箱无效，请重新输入</string>
     <string name="error_password_required">密码不能为空</string>
     <string name="error_invalid_password">密码太短了</string>
     <string name="error_incorrect_password">密码出错</string>
     <string name="error_field_required">账号不能为空</string>
+    <string name="error_email_required">邮箱不能为空</string>
     <string name="error_confirm_password">两次密码不对应</string>
     <string name="error_feedback_empty">请输入内容</string>
     <string name="permission_rationale">"Contacts permissions are needed for providing email

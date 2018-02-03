@@ -5,6 +5,11 @@ import android.os.Bundle;
 
 import com.jiketuandui.antinetfraud.R;
 
+/**
+ * 关于
+ *
+ * @author wangyu
+ */
 public class AboutActivity extends Activity {
 
     @Override

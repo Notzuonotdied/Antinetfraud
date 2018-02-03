@@ -18,8 +18,7 @@ public class MainTabHotNews extends MainTabNews {
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        initData(false);
-        return initView(inflater, R.layout.main_tab_hot_news, false);
+        return initView(inflater, R.layout.main_tab_hot_news, true, false);
     }
 
 }

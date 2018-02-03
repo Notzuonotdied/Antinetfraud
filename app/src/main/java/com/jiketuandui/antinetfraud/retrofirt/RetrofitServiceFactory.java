@@ -6,6 +6,8 @@ import com.jiketuandui.antinetfraud.BuildConfig;
 import com.jiketuandui.antinetfraud.retrofirt.serializer.DateDeserializer;
 import com.jiketuandui.antinetfraud.retrofirt.service.AnnounceService;
 import com.jiketuandui.antinetfraud.retrofirt.service.ArticleService;
+import com.jiketuandui.antinetfraud.retrofirt.service.OtherService;
+import com.jiketuandui.antinetfraud.retrofirt.service.UserService;
 
 import java.util.Date;
 
@@ -16,7 +18,7 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
 
-import static com.jiketuandui.antinetfraud.Util.AppConstants.DATA_FORMAT;
+import static com.jiketuandui.antinetfraud.Util.Constants.DATA_FORMAT;
 
 /**
  * 获取Retrofit Service工具类
@@ -38,6 +40,10 @@ public class RetrofitServiceFactory {
             getHttpService(AnnounceService.class);
     public static final ArticleService ARTICLE_SERVICE =
             getHttpService(ArticleService.class);
+    public static final UserService USER_SERVICE =
+            getHttpService(UserService.class);
+    public static final OtherService OTHER_SERVICE =
+            getHttpService(OtherService.class);
 
     /**
      * 构建Http网络请求服务

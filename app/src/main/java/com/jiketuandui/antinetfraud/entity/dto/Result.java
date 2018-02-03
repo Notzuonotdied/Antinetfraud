@@ -15,9 +15,12 @@ public class Result<T> {
     private String message;
     private String title;
     private T data;
+    private T user;
     private T articles;
     private T article;
     private T notices;
+    private T info;
+    private T notice;
     private String tag;
 
     public boolean isSuccess() {
@@ -35,6 +38,12 @@ public class Result<T> {
             return article;
         } else if (notices != null) {
             return notices;
+        } else if (user != null) {
+            return user;
+        } else if (info != null) {
+            return info;
+        } else if (notice != null) {
+            return notice;
         }
         return data;
     }

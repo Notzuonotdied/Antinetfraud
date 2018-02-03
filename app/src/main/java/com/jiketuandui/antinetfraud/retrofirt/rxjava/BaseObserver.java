@@ -41,22 +41,21 @@ public class BaseObserver<T> implements Observer<Result<T>> {
     @Override
     public void onNext(Result<T> tResult) {
         Log.i(TAG, "onNext: " + tResult.toString());
-        if (tResult.isSuccess() && hint != null) {
-            Toast.makeText(mContext.getApplicationContext(), hint, Toast.LENGTH_SHORT).show();
-        }
         if (tResult.isSuccess() && tResult.getData() != null) {
+            if (hint != null) {
+                Toast.makeText(mContext.getApplicationContext(), hint,
+                        Toast.LENGTH_SHORT).show();
+            }
             T t = tResult.getData();
             onHandleSuccess(t);
         } else {
-            // TODO onError
+            onHandleFailure(tResult.getMessage());
         }
     }
 
     @Override
     public void onError(Throwable e) {
         Log.e(TAG, "error:" + e.toString());
-        String errorMsg = e.toString();
-        Toast.makeText(mContext, errorMsg, Toast.LENGTH_LONG).show();
     }
 
     @Override
@@ -70,6 +69,15 @@ public class BaseObserver<T> implements Observer<Result<T>> {
      * @param t 回调参数
      */
     protected void onHandleSuccess(T t) {
+
+    }
+
+    /**
+     * 当网络请求失败的时候回调
+     *
+     * @param message 回调参数
+     */
+    protected void onHandleFailure(String message) {
 
     }
 

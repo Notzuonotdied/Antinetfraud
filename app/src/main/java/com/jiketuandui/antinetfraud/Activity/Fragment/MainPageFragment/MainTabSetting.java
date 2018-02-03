@@ -2,6 +2,7 @@ package com.jiketuandui.antinetfraud.Activity.Fragment.MainPageFragment;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.AppCompatTextView;
 import android.support.v7.widget.LinearLayoutCompat;
@@ -32,14 +33,16 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
- * 2016年9月10日 23:38:32
  * 设置页面的编写
+ *
+ * @author wangyu
+ * @date 2016年9月10日 23:38:32
  */
 public class MainTabSetting extends Fragment {
     @BindView(R.id.setting_pieces_delete)
-    LinearLayoutCompat setting_pieces_delete;
+    LinearLayoutCompat settingPiecesDelete;
     @BindView(R.id.setting_cache_size)
-    AppCompatTextView setting_cache_size;
+    AppCompatTextView settingCacheSize;
     @BindView(R.id.lc_holder_image)
     SimpleDraweeView accountPic;
     @BindView(R.id.setting_pieces_account)
@@ -61,32 +64,40 @@ public class MainTabSetting extends Fragment {
 
     private View.OnClickListener listener = view -> {
         switch (view.getId()) {
-            case R.id.setting_pieces_idea:// 意见反馈
+            // 意见反馈
+            case R.id.setting_pieces_idea:
                 gotoActivity(FeedbackActivity.class);
                 break;
-            case R.id.setting_pieces_about:// 关于
+            // 关于
+            case R.id.setting_pieces_about:
                 gotoActivity(AboutActivity.class);
                 break;
-            case R.id.setting_pieces_delete:// 清除缓存
+            // 清除缓存
+            case R.id.setting_pieces_delete:
                 ImagePipeline imagePipeline = Fresco.getImagePipeline();
                 imagePipeline.clearCaches();
-                setting_cache_size.setText(getFormatSize());
+                settingCacheSize.setText(getFormatSize());
                 break;
-            case R.id.setting_share:// 分享经历
+            // 分享经历
+            case R.id.setting_share:
                 gotoActivity(ShareActivity.class);
                 break;
-            case R.id.setting_pieces_update:// app更新
+            // app更新
+            case R.id.setting_pieces_update:
                 getAppUpdate update = new getAppUpdate(getContext(), true);
                 update.startUpdate();
                 break;
-            case R.id.setting_pieces_account: // 账号信息
-                LogIn();
+            // 账号信息
+            case R.id.setting_pieces_account:
+                logIn();
                 break;
             case R.id.setting_pieces_history:
                 startActivity(new Intent(getActivity(), HistoryDetailActivity.class));
                 break;
             case R.id.setting_pieces_collection:
                 startActivity(new Intent(getActivity(), CollectionDetailActivity.class));
+                break;
+            default:
                 break;
         }
     };
@@ -124,7 +135,7 @@ public class MainTabSetting extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.main_tab_my, container, false);
         ButterKnife.bind(this, view);
         initStatus();
@@ -137,16 +148,16 @@ public class MainTabSetting extends Fragment {
         return view;
     }
 
-    private void LogIn() {
-        if (!MyApplication.getInstance().getLogin()) {
-            startActivity(new Intent(getActivity(), LoginActivity.class));
-        } else {
+    private void logIn() {
+        if (MyApplication.getInstance().isLogin()) {
             Toast.makeText(getActivity(), getString(R.string.success), Toast.LENGTH_SHORT).show();
+        } else {
+            startActivity(new Intent(getActivity(), LoginActivity.class));
         }
     }
 
     private void initStatus() {
-        if (MyApplication.getInstance().getLogin()) {
+        if (MyApplication.getInstance().isLogin()) {
             this.status.setText(getString(R.string.logged));
         } else {
             this.status.setText(getString(R.string.not_logged_in));
@@ -163,8 +174,8 @@ public class MainTabSetting extends Fragment {
      * 初始化View的行为事件
      */
     private void initListener() {
-        setting_cache_size.setText(getFormatSize());
-        setting_pieces_delete.setOnClickListener(listener);
+        settingCacheSize.setText(getFormatSize());
+        settingPiecesDelete.setOnClickListener(listener);
         setAbout.setOnClickListener(listener);
         setIdea.setOnClickListener(listener);
         setShare.setOnClickListener(listener);
@@ -177,15 +188,17 @@ public class MainTabSetting extends Fragment {
     /**
      * 跳转Activity
      */
-    private void gotoActivity(Class<?> ActivityClass) {
-        Intent intent = new Intent(getActivity(), ActivityClass);
+    private void gotoActivity(Class<?> activityClass) {
+        Intent intent = new Intent(getActivity(), activityClass);
         startActivity(intent);
     }
 
-    @Override // 重置缓存数据
+    /**
+     * 重置缓存数据
+     */
+    @Override
     public void onHiddenChanged(boolean hidden) {
         super.onHiddenChanged(hidden);
-        setting_cache_size.setText(!hidden ? getFormatSize() : "0.0B");
-
+        settingCacheSize.setText(!hidden ? getFormatSize() : "0.0B");
     }
 }

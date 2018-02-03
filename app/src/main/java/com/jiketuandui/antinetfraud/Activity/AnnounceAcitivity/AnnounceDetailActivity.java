@@ -1,18 +1,27 @@
 package com.jiketuandui.antinetfraud.Activity.AnnounceAcitivity;
 
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatTextView;
 import android.text.Html;
 
-import com.jiketuandui.antinetfraud.HTTP.Bean.AnnounceContent;
 import com.jiketuandui.antinetfraud.R;
-import com.jiketuandui.antinetfraud.Util.MyApplication;
+import com.jiketuandui.antinetfraud.Util.Constants;
+import com.jiketuandui.antinetfraud.entity.domain.AnnounceDetail;
+import com.jiketuandui.antinetfraud.retrofirt.RetrofitServiceFactory;
+import com.jiketuandui.antinetfraud.retrofirt.rxjava.BaseObserver;
+import com.jiketuandui.antinetfraud.retrofirt.service.AnnounceService;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
 
+/**
+ * @author wangyu
+ * @date 2018年02月02日10:17:18
+ * @describe 公告详情页面
+ */
 public class AnnounceDetailActivity extends AppCompatActivity {
 
     @BindView(R.id.announce_title)
@@ -21,6 +30,7 @@ public class AnnounceDetailActivity extends AppCompatActivity {
     AppCompatTextView announceTime;
     @BindView(R.id.announce_content)
     AppCompatTextView announceContent;
+    private AnnounceService announceService = RetrofitServiceFactory.ANNOUNCE_SERVICE;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,28 +46,18 @@ public class AnnounceDetailActivity extends AppCompatActivity {
      */
     private void loadingArticle() {
         // 根据ID获取公告的内容
-        new LoadArticle().execute(
-                this.getIntent().getExtras().getString(MyApplication.getInstance().getANNOUNCEID())
-        );
-    }
-
-    private class LoadArticle extends AsyncTask<String, Integer, AnnounceContent> {
-
-        // 在子线程执行
-        @Override
-        protected AnnounceContent doInBackground(String... strings) {
-            return ((MyApplication) getApplication()).instanceAnnouncement()
-                    .getAnnounce(strings[0]);
-        }
-
-        // 在主线程执行
-        @Override
-        protected void onPostExecute(AnnounceContent articleContents) {
-            if (articleContents != null) {
-                announceTitle.setText(Html.fromHtml(articleContents.getTitle()));
-                announceTime.setText(Html.fromHtml(articleContents.getCreated_at()));
-                announceContent.setText(Html.fromHtml(articleContents.getContent()));
-            }
-        }
+        Bundle bundle = getIntent().getExtras();
+        assert bundle != null;
+        announceService.getAnnounceDetail(bundle.getInt(Constants.ANNOUNCE_ID))
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new BaseObserver<AnnounceDetail>(this) {
+                    @Override
+                    protected void onHandleSuccess(AnnounceDetail announceDetail) {
+                        announceTitle.setText(Html.fromHtml(announceDetail.getTitle()));
+                        announceTime.setText(Html.fromHtml(announceDetail.getCreated_at()));
+                        announceContent.setText(Html.fromHtml(announceDetail.getContent()));
+                    }
+                });
     }
 }

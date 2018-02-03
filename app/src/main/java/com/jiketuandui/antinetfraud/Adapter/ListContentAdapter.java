@@ -18,7 +18,7 @@ import com.jiketuandui.antinetfraud.Activity.UtilActivity.ToTagsListActivity;
 import com.jiketuandui.antinetfraud.Adapter.Holder.ListContentHolder;
 import com.jiketuandui.antinetfraud.Adapter.Interface.ListContentOnClickListener;
 import com.jiketuandui.antinetfraud.R;
-import com.jiketuandui.antinetfraud.Util.MyApplication;
+import com.jiketuandui.antinetfraud.Util.Constants;
 import com.jiketuandui.antinetfraud.Util.NetWorkUtils;
 import com.jiketuandui.antinetfraud.entity.domain.ArticleList;
 
@@ -37,7 +37,6 @@ public class ListContentAdapter extends RecyclerView.Adapter<ListContentHolder> 
     private List<ArticleList.DataBean> mListContents;
     private Context context;
     private boolean isOpenTop;
-    private int category;
     /**
      * 设置列表项的响应事件
      */
@@ -47,8 +46,7 @@ public class ListContentAdapter extends RecyclerView.Adapter<ListContentHolder> 
             if (NetWorkUtils.isConnectNET(context)) {
                 Intent intent = new Intent(context, ArticleContentActivity.class);
                 Bundle mBundle = new Bundle();
-                mBundle.putInt(MyApplication.getInstance().getCONTENTID(),
-                        mListContents.get(position).getId());
+                mBundle.putInt(Constants.CONTENT_ID, mListContents.get(position).getId());
                 intent.putExtras(mBundle);
                 context.startActivity(intent);
             }
@@ -59,11 +57,8 @@ public class ListContentAdapter extends RecyclerView.Adapter<ListContentHolder> 
             if (NetWorkUtils.isConnectNET(context)) {
                 Intent intent = new Intent(context, ToTagsListActivity.class);
                 Bundle mBundle = new Bundle();
-                mBundle.putInt(MyApplication.getInstance().getTAGSID(),
+                mBundle.putInt(Constants.TAGS_ID,
                         mListContents.get(position).getTag_id());
-                if (category != 0) {
-                    mBundle.putInt(MyApplication.getInstance().getCATEGORY(), category);
-                }
                 intent.putExtras(mBundle);
                 context.startActivity(intent);
             }
@@ -71,24 +66,7 @@ public class ListContentAdapter extends RecyclerView.Adapter<ListContentHolder> 
     };
 
     /**
-     * 初始化列表项目
-     *
-     * @param mListContents 内容列表
-     * @param isOpenTop     是否开启顶部，true为开启，false为不开启
-     * @param category      判断是那种类型的，1是正常排序，2是热门案例排序
-     */
-    public ListContentAdapter(Context context,
-                              List<ArticleList.DataBean> mListContents,
-                              boolean isOpenTop,
-                              int category) {
-        this.mListContents = mListContents;
-        this.context = context;
-        this.isOpenTop = isOpenTop;
-        this.category = category;
-    }
-
-    /**
-     * Instantiates a new List content adapter.
+     * 初始化内容适配器
      *
      * @param mListContents 内容列表
      * @param isOpenTop     是否开启顶部，true为开启，false为不开启
@@ -99,7 +77,6 @@ public class ListContentAdapter extends RecyclerView.Adapter<ListContentHolder> 
         this.mListContents = mListContents;
         this.context = context;
         this.isOpenTop = isOpenTop;
-        this.category = 0;
     }
 
     /**
@@ -125,7 +102,10 @@ public class ListContentAdapter extends RecyclerView.Adapter<ListContentHolder> 
         this.mListContents.addAll(mDates);
     }
 
-    @Override// 创建新View，被LayoutManager所调用
+    /**
+     * 创建新View，被LayoutManager所调用
+     */
+    @Override
     public ListContentHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater
                 .from(parent.getContext())
@@ -139,12 +119,15 @@ public class ListContentAdapter extends RecyclerView.Adapter<ListContentHolder> 
         return new ListContentHolder(view);
     }
 
-    @Override //将数据与界面进行绑定的操作
+    /**
+     * 将数据与界面进行绑定的操作
+     */
+    @Override
     public void onBindViewHolder(ListContentHolder holder, int position) {
         // 设置博文的名称
         holder.holderTitle.setText(mListContents.get(position).getTitle());
         // 设置博文的信息
-        holder.holderTip.setText(mListContents.get(position).getContent());
+        holder.holderTip.setText(mListContents.get(position).getCreated_at());
         // 设置博文的图片
         DraweeController controller = Fresco.newDraweeControllerBuilder()
                 .setUri(Uri.parse(mListContents.get(position).getImage()))
@@ -170,13 +153,12 @@ public class ListContentAdapter extends RecyclerView.Adapter<ListContentHolder> 
         // 设置来源
         holder.holderSource.setText(mListContents.get(position).getSource());
         // 设置顶部的标签
-        holder.topTag.setText(MyApplication.getInstance()
-                .getTabBigTitle()[mListContents.get(position).getTag_id()]);
+        holder.topTag.setText(Constants.TAB_BIG_TITLE[mListContents.get(position).getTag_id()]);
         // 设置响应事件
         holder.setItemOnClickListener(mListListener);
     }
 
-    @Override//获取数据的数量
+    @Override
     public int getItemCount() {
         return mListContents.size();
     }

@@ -35,7 +35,7 @@
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
                     fresco:fadeDuration="1000"
                     fresco:placeholderImage="@mipmap/ic_launcher"
                     fresco:roundWithOverlayColor="@color/color_white"
@@ -47,10 +47,10 @@
                     android:id="@+id/top_tag"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:drawableRight="@mipmap/rightinfo"
+                    android:drawableEnd="@mipmap/rightinfo"
                     android:gravity="center_vertical"
-                    android:paddingLeft="6dp"
-                    android:paddingRight="18dp"
+                    android:paddingEnd="18dp"
+                    android:paddingStart="6dp"
                     android:text="@string/app_name"
                     android:textColor="@color/color_content"
                     android:textSize="14sp" />
@@ -84,9 +84,9 @@
                     android:id="@+id/bottom"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_toRightOf="@id/lc_holder_image"
+                    android:layout_toEndOf="@id/lc_holder_image"
                     android:orientation="vertical"
-                    android:paddingLeft="5dp">
+                    android:paddingStart="5dp">
 
                     <!--标题-->
                     <TextView

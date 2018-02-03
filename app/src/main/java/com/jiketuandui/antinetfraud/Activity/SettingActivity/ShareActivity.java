@@ -1,7 +1,6 @@
 package com.jiketuandui.antinetfraud.Activity.SettingActivity;
 
 import android.app.Activity;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.AppCompatEditText;
@@ -9,14 +8,22 @@ import android.support.v7.widget.AppCompatSpinner;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.Toast;
 
 import com.jiketuandui.antinetfraud.R;
-import com.jiketuandui.antinetfraud.Util.MyApplication;
+import com.jiketuandui.antinetfraud.retrofirt.RetrofitServiceFactory;
+import com.jiketuandui.antinetfraud.retrofirt.rxjava.BaseObserver;
+import com.jiketuandui.antinetfraud.retrofirt.service.OtherService;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
 
+/**
+ * 投稿
+ *
+ * @author wangyu
+ */
 public class ShareActivity extends Activity {
 
     @BindView(R.id.share_title)
@@ -28,8 +35,8 @@ public class ShareActivity extends Activity {
     @BindView(R.id.post)
     AppCompatButton post;
 
-    private String allContent;
     private int type = 1;
+    private OtherService otherService = RetrofitServiceFactory.OTHER_SERVICE;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,10 +77,11 @@ public class ShareActivity extends Activity {
         if (cancel) {
             focusView.requestFocus();
         } else {
-            allContent = "title=" + shareTitle.getText().toString() +
-                    "&&type=" + String.valueOf(type) +
-                    "&&content=" + shareContent.getText().toString();
-            new postShare().execute();
+            otherService.contribute(shareTitle.getText().toString(), type,
+                    shareContent.getText().toString())
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(new BaseObserver<>(this, "投稿成功！"));
         }
     }
 
@@ -97,26 +105,5 @@ public class ShareActivity extends Activity {
             }
         });
         post.setOnClickListener(v -> initData());
-    }
-
-    /**
-     * post
-     */
-    private class postShare extends AsyncTask<Void, Void, Boolean> {
-        @Override
-        protected Boolean doInBackground(Void... params) {
-            return ((MyApplication) getApplication()).getPostShareContent().post(allContent);
-        }
-
-        @Override
-        protected void onPostExecute(Boolean aBoolean) {
-            if (aBoolean) {
-                Toast.makeText(ShareActivity.this, "分享成功~", Toast.LENGTH_SHORT).show();
-                finish();
-            } else {
-                Toast.makeText(ShareActivity.this, "出错了~", Toast.LENGTH_SHORT).show();
-            }
-            super.onPostExecute(aBoolean);
-        }
     }
 }

@@ -47,6 +47,7 @@
                 android:elevation="3dp"
                 android:entries="@array/type_spinner"
                 android:popupBackground="@color/color_white"
+                android:spinnerMode="dialog"
                 android:textAppearance="@style/TextAppearance.AppCompat.Widget.TextView.SpinnerItem"
                 tools:targetApi="lollipop" />
 

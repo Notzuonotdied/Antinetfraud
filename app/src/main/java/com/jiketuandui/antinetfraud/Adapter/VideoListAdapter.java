@@ -17,7 +17,7 @@ import fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard;
 
 public class VideoListAdapter extends BaseAdapter {
 
-    int[] videoIndexs = {0, 1, 2, 3, 4};
+    int[] videoIndex = {0, 1, 2, 3, 4};
     Context context;
 
     public VideoListAdapter(Context context) {
@@ -26,7 +26,7 @@ public class VideoListAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return videoIndexs.length;
+        return videoIndex.length;
     }
 
     @Override
