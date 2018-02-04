@@ -12,6 +12,7 @@ import android.view.animation.AnimationUtils;
 import com.jiketuandui.antinetfraud.activity.main.MainActivity;
 import com.jiketuandui.antinetfraud.R;
 import com.jiketuandui.antinetfraud.Util.MyApplication;
+import com.jiketuandui.antinetfraud.Util.StatusBarUtil;
 
 /**
  * 这个是软件启动时候,显示动画的Activity
@@ -26,6 +27,8 @@ public class StartActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
+        StatusBarUtil.StatusBarLightMode(this);
+
         View view = getLayoutInflater().inflate(
                 R.layout.activity_start, null);
 

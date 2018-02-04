@@ -10,7 +10,6 @@ import android.support.v7.widget.AppCompatTextView;
 import android.support.v7.widget.LinearLayoutCompat;
 import android.support.v7.widget.Toolbar;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.blankj.utilcode.util.TimeUtils;
 import com.blankj.utilcode.util.ToastUtils;
@@ -29,6 +28,7 @@ import com.jiketuandui.antinetfraud.Util.NetWorkUtils;
 import com.jiketuandui.antinetfraud.View.WrapContentHeightViewPager;
 import com.jiketuandui.antinetfraud.activity.article.detail.ArticleFragment;
 import com.jiketuandui.antinetfraud.activity.article.detail.CommentFragment;
+import com.jiketuandui.antinetfraud.Util.StatusBarUtil;
 import com.jiketuandui.antinetfraud.entity.domain.ArticleDetail;
 import com.jiketuandui.antinetfraud.entity.domain.ArticleList;
 import com.jiketuandui.antinetfraud.entity.domain.User;
@@ -86,6 +86,7 @@ public class ArticleContentActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_article_content);
         ButterKnife.bind(this);
+        StatusBarUtil.StatusBarLightMode(this);
 
         // 根据ID获取文章的内容
         articleId = this.getIntent().getExtras().getInt(Constants.CONTENT_ID);

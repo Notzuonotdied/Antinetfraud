@@ -17,55 +17,44 @@ import java.io.File;
 
 public class ToastCallback implements CheckCallback, DownloadCallback {
 
-    Toast mToast;
-
-    public ToastCallback() {
-        ToastUtils.showShort("");
-    }
-
-    private void show(String message) {
-        mToast.setText(message);
-        mToast.show();
-    }
-
     @Override
     public void onCheckStart() {
-        show("启动更新任务");
+        ToastUtils.showShort("启动更新任务");
     }
 
     @Override
     public void hasUpdate(Update update) {
-        show("检测到有更新");
+        ToastUtils.showShort("检测到有更新");
     }
 
     @Override
     public void noUpdate() {
-        show("检测到没有更新");
+        ToastUtils.showShort("检测到没有更新");
     }
 
     @Override
     public void onCheckError(Throwable t) {
-        show("更新检查失败：" + t.getMessage());
+        ToastUtils.showShort("更新检查失败：" + t.getMessage());
     }
 
     @Override
     public void onUserCancel() {
-        show("用户取消更新");
+        ToastUtils.showShort("用户取消更新");
     }
 
     @Override
     public void onCheckIgnore(Update update) {
-        show("用户忽略此版本更新");
+        ToastUtils.showShort("用户忽略此版本更新");
     }
 
     @Override
     public void onDownloadStart() {
-        show("开始下载");
+        ToastUtils.showShort("开始下载");
     }
 
     @Override
     public void onDownloadComplete(File file) {
-        show("下载完成");
+        ToastUtils.showShort("下载完成");
     }
 
     @Override
@@ -75,6 +64,6 @@ public class ToastCallback implements CheckCallback, DownloadCallback {
 
     @Override
     public void onDownloadError(Throwable t) {
-        show("下载失败");
+        ToastUtils.showShort("下载失败");
     }
 }

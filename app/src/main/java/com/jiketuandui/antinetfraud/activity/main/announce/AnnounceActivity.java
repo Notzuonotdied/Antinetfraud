@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.widget.Toast;
 
 import com.blankj.utilcode.util.ToastUtils;
 import com.cjj.MaterialRefreshLayout;
@@ -12,6 +11,7 @@ import com.cjj.MaterialRefreshListener;
 import com.jiketuandui.antinetfraud.Adapter.AnnounceAdapter;
 import com.jiketuandui.antinetfraud.R;
 import com.jiketuandui.antinetfraud.Util.NetWorkUtils;
+import com.jiketuandui.antinetfraud.Util.StatusBarUtil;
 import com.jiketuandui.antinetfraud.entity.domain.AnnounceList;
 import com.jiketuandui.antinetfraud.entity.dto.Result;
 import com.jiketuandui.antinetfraud.retrofirt.RetrofitServiceFactory;
@@ -54,6 +54,8 @@ public class AnnounceActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_announce);
         ButterKnife.bind(this);
+        StatusBarUtil.StatusBarLightMode(this);
+
         initView();
         setViewAttr();
     }

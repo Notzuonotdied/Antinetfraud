@@ -15,6 +15,7 @@ import com.jiketuandui.antinetfraud.SQL.RecordSQLiteOpenHelper;
 import com.jiketuandui.antinetfraud.Util.Constants;
 import com.jiketuandui.antinetfraud.View.MyListView;
 import com.jiketuandui.antinetfraud.View.MySearchView;
+import com.jiketuandui.antinetfraud.Util.StatusBarUtil;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -34,12 +35,13 @@ public class SearchActivity extends Activity {
     MySearchView mySearchView;
     private RecordSQLiteOpenHelper helper;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
         ButterKnife.bind(this);
+        StatusBarUtil.StatusBarLightMode(this);
+
         helper = new RecordSQLiteOpenHelper(SearchActivity.this);
         updateAdapter("");
         initListener();

@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/color_white"
+    android:fitsSystemWindows="true"
     android:orientation="vertical"
     tools:context="com.jiketuandui.antinetfraud.activity.main.SearchActivity">
 
@@ -17,9 +18,9 @@
         android:textSize="20sp" />
 
     <View
-        android:layout_marginBottom="1dp"
         android:layout_width="match_parent"
         android:layout_height="5dp"
+        android:layout_marginBottom="1dp"
         android:background="@drawable/toolbar_shadow" />
 
     <!--搜索-->

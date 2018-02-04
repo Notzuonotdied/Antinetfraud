@@ -12,6 +12,7 @@ import android.view.inputmethod.EditorInfo;
 import com.blankj.utilcode.util.RegexUtils;
 import com.jiketuandui.antinetfraud.R;
 import com.jiketuandui.antinetfraud.Util.MyApplication;
+import com.jiketuandui.antinetfraud.Util.StatusBarUtil;
 import com.jiketuandui.antinetfraud.entity.domain.User;
 import com.jiketuandui.antinetfraud.retrofirt.RetrofitServiceFactory;
 import com.jiketuandui.antinetfraud.retrofirt.rxjava.BaseObserver;
@@ -61,6 +62,8 @@ public class RegisterActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         ButterKnife.bind(this);
+        StatusBarUtil.StatusBarLightMode(this);
+
         initListener();
     }
 

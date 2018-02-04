@@ -13,6 +13,7 @@ import com.jiketuandui.antinetfraud.Service.NetBroadcastReceiver;
 import com.jiketuandui.antinetfraud.Util.Constants;
 import com.jiketuandui.antinetfraud.Util.RefreshUtil;
 import com.jiketuandui.antinetfraud.View.MySearchView;
+import com.jiketuandui.antinetfraud.Util.StatusBarUtil;
 import com.jiketuandui.antinetfraud.retrofirt.RetrofitServiceFactory;
 import com.jiketuandui.antinetfraud.retrofirt.service.ArticleService;
 
@@ -41,6 +42,7 @@ public class SearchDetailActivity extends AppCompatActivity implements NetBroadc
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_search);
         ButterKnife.bind(this);
+        StatusBarUtil.StatusBarLightMode(this);
 
         helper = new RecordSQLiteOpenHelper(SearchDetailActivity.this);
         inputString = getIntent().getExtras().getString(Constants.SEARCH_STRING);

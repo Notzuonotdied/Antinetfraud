@@ -8,6 +8,7 @@ import android.text.TextUtils;
 import android.view.View;
 
 import com.jiketuandui.antinetfraud.R;
+import com.jiketuandui.antinetfraud.Util.StatusBarUtil;
 import com.jiketuandui.antinetfraud.retrofirt.RetrofitServiceFactory;
 import com.jiketuandui.antinetfraud.retrofirt.rxjava.BaseObserver;
 import com.jiketuandui.antinetfraud.retrofirt.service.OtherService;
@@ -30,6 +31,7 @@ public class FeedbackActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_feedback);
+        StatusBarUtil.StatusBarLightMode(this);
 
         initView();
         initListener();

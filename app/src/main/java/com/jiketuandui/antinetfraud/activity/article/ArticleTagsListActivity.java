@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import com.jiketuandui.antinetfraud.R;
 import com.jiketuandui.antinetfraud.Util.Constants;
 import com.jiketuandui.antinetfraud.Util.RefreshUtil;
+import com.jiketuandui.antinetfraud.Util.StatusBarUtil;
 import com.jiketuandui.antinetfraud.retrofirt.RetrofitServiceFactory;
 import com.jiketuandui.antinetfraud.retrofirt.service.ArticleService;
 
@@ -21,6 +22,8 @@ public class ArticleTagsListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_to_tags_list);
+        StatusBarUtil.StatusBarLightMode(this);
+
         RefreshUtil refreshUtil = new RefreshUtil(this);
         refreshUtil.materialRefreshLayout = findViewById(R.id.tags_refresh);
         refreshUtil.tagsRecyclerView = findViewById(R.id.tags_recyclerView);

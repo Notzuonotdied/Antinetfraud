@@ -19,6 +19,7 @@ import com.jiketuandui.antinetfraud.activity.main.page.MainTabSetting;
 import com.jiketuandui.antinetfraud.activity.setting.update.getAppUpdate;
 import com.jiketuandui.antinetfraud.R;
 import com.jiketuandui.antinetfraud.View.ContentViewPager;
+import com.jiketuandui.antinetfraud.Util.StatusBarUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -71,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         ButterKnife.bind(this);
+        StatusBarUtil.StatusBarLightMode(this);
 
         setContentView(R.layout.activity_main);
         initFragment();

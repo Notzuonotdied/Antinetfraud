@@ -7,6 +7,7 @@ import com.jiketuandui.antinetfraud.R;
 import com.jiketuandui.antinetfraud.Service.NetBroadcastReceiver;
 import com.jiketuandui.antinetfraud.Util.MyApplication;
 import com.jiketuandui.antinetfraud.Util.RefreshUtil;
+import com.jiketuandui.antinetfraud.Util.StatusBarUtil;
 import com.jiketuandui.antinetfraud.retrofirt.RetrofitServiceFactory;
 import com.jiketuandui.antinetfraud.retrofirt.service.UserService;
 
@@ -23,6 +24,8 @@ public class CollectionDetailActivity extends AppCompatActivity implements NetBr
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_collection);
+        StatusBarUtil.StatusBarLightMode(this);
+
         refreshUtil = new RefreshUtil(this);
         refreshUtil.materialRefreshLayout = findViewById(R.id.refresh);
         refreshUtil.tagsRecyclerView = findViewById(R.id.recyclerView);

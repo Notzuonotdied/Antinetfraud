@@ -7,6 +7,7 @@ import android.text.Html;
 
 import com.jiketuandui.antinetfraud.R;
 import com.jiketuandui.antinetfraud.Util.Constants;
+import com.jiketuandui.antinetfraud.Util.StatusBarUtil;
 import com.jiketuandui.antinetfraud.entity.domain.AnnounceDetail;
 import com.jiketuandui.antinetfraud.retrofirt.RetrofitServiceFactory;
 import com.jiketuandui.antinetfraud.retrofirt.rxjava.BaseObserver;
@@ -37,6 +38,7 @@ public class AnnounceDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_announce_detail);
         ButterKnife.bind(this);
+        StatusBarUtil.StatusBarLightMode(this);
 
         loadingArticle();
     }

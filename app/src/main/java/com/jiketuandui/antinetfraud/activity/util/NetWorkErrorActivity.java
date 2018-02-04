@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 import com.jiketuandui.antinetfraud.R;
+import com.jiketuandui.antinetfraud.Util.StatusBarUtil;
 
 /**
  * 2016年11月2日 20:58:20
@@ -15,6 +16,7 @@ public class NetWorkErrorActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_net_work_error);
+        StatusBarUtil.StatusBarLightMode(this);
     }
 
 }

@@ -77,6 +77,7 @@ public class MainTabSetting extends Fragment {
                 ImagePipeline imagePipeline = Fresco.getImagePipeline();
                 imagePipeline.clearCaches();
                 settingCacheSize.setText(getFormatSize());
+                ToastUtils.showShort("清除缓存成功～");
                 break;
             // 分享经历
             case R.id.setting_share:

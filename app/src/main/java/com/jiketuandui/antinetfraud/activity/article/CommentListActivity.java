@@ -7,6 +7,7 @@ import com.jiketuandui.antinetfraud.R;
 import com.jiketuandui.antinetfraud.Util.Constants;
 import com.jiketuandui.antinetfraud.Util.RefreshUtil;
 import com.jiketuandui.antinetfraud.View.myRecyclerView.MyItemDecoration;
+import com.jiketuandui.antinetfraud.Util.StatusBarUtil;
 import com.jiketuandui.antinetfraud.retrofirt.RetrofitServiceFactory;
 import com.jiketuandui.antinetfraud.retrofirt.service.ArticleService;
 
@@ -22,6 +23,8 @@ public class CommentListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_to_tags_list);
+        StatusBarUtil.StatusBarLightMode(this);
+
         Bundle bundle = getIntent().getExtras();
         int articleId = bundle.getInt(Constants.ARTICLE_ID);
 

@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.AdapterView;
 
 import com.jiketuandui.antinetfraud.R;
+import com.jiketuandui.antinetfraud.Util.StatusBarUtil;
 import com.jiketuandui.antinetfraud.retrofirt.RetrofitServiceFactory;
 import com.jiketuandui.antinetfraud.retrofirt.rxjava.BaseObserver;
 import com.jiketuandui.antinetfraud.retrofirt.service.OtherService;
@@ -42,6 +43,8 @@ public class ShareActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_share);
+        StatusBarUtil.StatusBarLightMode(this);
+
         ButterKnife.bind(this);
         initListener();
     }
