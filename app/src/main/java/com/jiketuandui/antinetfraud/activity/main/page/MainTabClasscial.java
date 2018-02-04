@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import com.blankj.utilcode.util.ToastUtils;
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
 import com.jiketuandui.antinetfraud.activity.article.ArticleContentActivity;
@@ -60,10 +61,10 @@ public class MainTabClasscial extends Fragment implements NetBroadcastReceiver.N
     private View.OnClickListener tvListener = view -> {
         switch (view.getId()) {
             case R.id.tv_01:
-                Toast.makeText(getContext(), "正在抓紧开发中~", Toast.LENGTH_SHORT).show();
+                ToastUtils.showShort("正在抓紧开发中~");
                 break;
             case R.id.tv_02:
-                Toast.makeText(getContext(), "正在抓紧开发中~", Toast.LENGTH_SHORT).show();
+                ToastUtils.showShort("正在抓紧开发中~");
                 break;
             case R.id.main_header_tv:
                 YoYo.with(Techniques.Swing)

@@ -3,6 +3,8 @@ package com.jiketuandui.antinetfraud.activity.setting.update;
 import android.content.Context;
 import android.widget.Toast;
 
+import com.blankj.utilcode.util.ToastUtils;
+
 import org.lzh.framework.updatepluginlib.base.CheckCallback;
 import org.lzh.framework.updatepluginlib.base.DownloadCallback;
 import org.lzh.framework.updatepluginlib.model.Update;
@@ -17,8 +19,8 @@ public class ToastCallback implements CheckCallback, DownloadCallback {
 
     Toast mToast;
 
-    public ToastCallback(Context context) {
-        this.mToast = Toast.makeText(context, "", Toast.LENGTH_SHORT);
+    public ToastCallback() {
+        ToastUtils.showShort("");
     }
 
     private void show(String message) {

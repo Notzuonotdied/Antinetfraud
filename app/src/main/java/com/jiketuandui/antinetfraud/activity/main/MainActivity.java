@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         initFragment();
         initView();
-        new getAppUpdate(MainActivity.this, false).startUpdate();
+        new getAppUpdate(false).startUpdate();
     }
 
     /**

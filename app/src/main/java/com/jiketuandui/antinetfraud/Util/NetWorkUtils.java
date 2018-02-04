@@ -6,6 +6,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.widget.Toast;
 
+import com.blankj.utilcode.util.ToastUtils;
 import com.jiketuandui.antinetfraud.activity.util.NetWorkErrorActivity;
 
 /**
@@ -42,7 +43,7 @@ public class NetWorkUtils {
         if (networkInfo != null && networkInfo.isAvailable()) {
             return true;
         } else {
-            Toast.makeText(context, "断网了，请检查网络~", Toast.LENGTH_SHORT).show();
+            ToastUtils.showShort("断网了，请检查网络~");
             return false;
         }
     }

@@ -9,7 +9,6 @@ import android.support.v7.widget.LinearLayoutCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.blankj.utilcode.util.ToastUtils;
 import com.daimajia.androidanimations.library.Techniques;
@@ -17,7 +16,6 @@ import com.daimajia.androidanimations.library.YoYo;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.facebook.imagepipeline.core.ImagePipeline;
-import com.jiketuandui.antinetfraud.activity.setting.update.getAppUpdate;
 import com.jiketuandui.antinetfraud.R;
 import com.jiketuandui.antinetfraud.Util.MyApplication;
 import com.jiketuandui.antinetfraud.View.CFontTitleTextView;
@@ -26,6 +24,7 @@ import com.jiketuandui.antinetfraud.activity.setting.CollectionDetailActivity;
 import com.jiketuandui.antinetfraud.activity.setting.FeedbackActivity;
 import com.jiketuandui.antinetfraud.activity.setting.HistoryDetailActivity;
 import com.jiketuandui.antinetfraud.activity.setting.ShareActivity;
+import com.jiketuandui.antinetfraud.activity.setting.update.getAppUpdate;
 import com.jiketuandui.antinetfraud.activity.setting.user.LoginActivity;
 
 import java.math.BigDecimal;
@@ -85,7 +84,7 @@ public class MainTabSetting extends Fragment {
                 break;
             // app更新
             case R.id.setting_pieces_update:
-                getAppUpdate update = new getAppUpdate(getContext(), true);
+                getAppUpdate update = new getAppUpdate(true);
                 update.startUpdate();
                 break;
             // 账号信息
@@ -93,14 +92,14 @@ public class MainTabSetting extends Fragment {
                 logIn();
                 break;
             case R.id.setting_pieces_history:
-                if (MyApplication.getInstance().getUser() != null) {
+                if (MyApplication.getInstance().getUser() == null) {
                     ToastUtils.showShort("请登录～");
                 } else {
                     startActivity(new Intent(getActivity(), HistoryDetailActivity.class));
                 }
                 break;
             case R.id.setting_pieces_collection:
-                if (MyApplication.getInstance().getUser() != null) {
+                if (MyApplication.getInstance().getUser() == null) {
                     ToastUtils.showShort("请登录～");
                 } else {
                     startActivity(new Intent(getActivity(), CollectionDetailActivity.class));
@@ -158,14 +157,10 @@ public class MainTabSetting extends Fragment {
     }
 
     private void logIn() {
-        if (MyApplication.getInstance().isLogin()) {
-            Toast.makeText(getActivity(), getString(R.string.success), Toast.LENGTH_SHORT).show();
-        } else {
-            Intent intent = new Intent();
-            intent.setClass(getActivity(), LoginActivity.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-            startActivity(new Intent(getActivity(), LoginActivity.class));
-        }
+        Intent intent = new Intent();
+        intent.setClass(getActivity(), LoginActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+        startActivity(new Intent(getActivity(), LoginActivity.class));
     }
 
     private void initStatus() {

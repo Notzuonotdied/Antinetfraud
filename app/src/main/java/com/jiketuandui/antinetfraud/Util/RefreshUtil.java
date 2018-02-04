@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Toast;
 
+import com.blankj.utilcode.util.ToastUtils;
 import com.cjj.MaterialRefreshLayout;
 import com.cjj.MaterialRefreshListener;
 import com.jiketuandui.antinetfraud.Adapter.CommentAdapter;
@@ -422,8 +423,7 @@ public class RefreshUtil {
 
     public void show(String message) {
         if (context != null) {
-            Toast.makeText(context.getApplicationContext(),
-                    message, Toast.LENGTH_SHORT).show();
+            ToastUtils.showShort(message);
         }
     }
 

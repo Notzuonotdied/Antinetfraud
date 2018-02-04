@@ -17,6 +17,9 @@ import com.jiketuandui.antinetfraud.retrofirt.RetrofitServiceFactory;
 import com.jiketuandui.antinetfraud.retrofirt.rxjava.BaseObserver;
 import com.jiketuandui.antinetfraud.retrofirt.service.UserService;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -167,7 +170,12 @@ public class RegisterActivity extends Activity {
                         @Override
                         protected void onHandleSuccess(User user) {
                             MyApplication.getInstance().storageData(user);
-                            finish();
+                            new Timer().schedule(new TimerTask() {
+                                @Override
+                                public void run() {
+                                    finish();
+                                }
+                            }, 1000);
                         }
                     });
         }

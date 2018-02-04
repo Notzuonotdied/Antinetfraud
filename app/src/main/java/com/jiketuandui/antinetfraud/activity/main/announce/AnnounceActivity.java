@@ -6,6 +6,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.Toast;
 
+import com.blankj.utilcode.util.ToastUtils;
 import com.cjj.MaterialRefreshLayout;
 import com.cjj.MaterialRefreshListener;
 import com.jiketuandui.antinetfraud.Adapter.AnnounceAdapter;
@@ -144,7 +145,7 @@ public class AnnounceActivity extends AppCompatActivity {
                         ++readPage;
                         if (announceList.getNext_page_url() == null) {
                             if (!isNeed2Refresh) {
-                                Toast.makeText(AnnounceActivity.this, "已到底部~", Toast.LENGTH_SHORT).show();
+                                ToastUtils.showShort("已到底部~");
                                 materialRefreshLayout.finishRefreshLoadMore();
                                 return;
                             }

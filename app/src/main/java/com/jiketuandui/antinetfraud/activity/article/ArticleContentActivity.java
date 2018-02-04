@@ -215,8 +215,7 @@ public class ArticleContentActivity extends AppCompatActivity
                     .subscribe(new BaseObserver<ArticleList>(this, "收藏成功") {
                         @Override
                         protected void onHandleFailure(String message) {
-                            Toast.makeText(ArticleContentActivity.this,
-                                    message, Toast.LENGTH_SHORT).show();
+                            ToastUtils.showShort(message);
                         }
                     });
             actionMenu.close(true);
@@ -251,8 +250,7 @@ public class ArticleContentActivity extends AppCompatActivity
                     @Override
                     public void onError(Throwable e) {
                         super.onError(e);
-                        Toast.makeText(ArticleContentActivity.this,
-                                "评论失败", Toast.LENGTH_SHORT).show();
+                        ToastUtils.showShort("评论失败");
                     }
                 });
     }

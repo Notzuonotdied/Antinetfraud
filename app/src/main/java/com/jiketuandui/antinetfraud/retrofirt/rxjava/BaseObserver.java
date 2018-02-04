@@ -2,14 +2,12 @@ package com.jiketuandui.antinetfraud.retrofirt.rxjava;
 
 import android.content.Context;
 import android.util.Log;
-import android.widget.Toast;
 
-import com.google.gson.Gson;
+import com.blankj.utilcode.util.ToastUtils;
 import com.jiketuandui.antinetfraud.entity.dto.Result;
 
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
-import okhttp3.ResponseBody;
 
 
 /**
@@ -46,10 +44,25 @@ public class BaseObserver<T> implements Observer<Result<T>> {
     @Override
     public void onNext(Result<T> tResult) {
         Log.i(TAG, "onNext: " + tResult.toString());
-        if (tResult.isSuccess() && hint != null && mContext != null) {
-            Toast.makeText(mContext.getApplicationContext(), hint,
-                    Toast.LENGTH_SHORT).show();
+        switch (tResult.getCode()) {
+            case 401:
+                ToastUtils.showShort("用户身份失效，请重新登陆！");
+                break;
+            case 200:
+                if (hint != null && mContext != null) {
+                    ToastUtils.showShort(hint);
+                }
+                break;
+            case 404:
+                ToastUtils.showShort("没有数据喔～");
+                break;
+            case 500:
+                ToastUtils.showShort("错误！");
+                break;
+            default:
+                break;
         }
+
         if (tResult.isSuccess() && tResult.getData() != null) {
             T t = tResult.getData();
             onHandleSuccess(t);
@@ -84,15 +97,5 @@ public class BaseObserver<T> implements Observer<Result<T>> {
      */
     protected void onHandleFailure(String message) {
 
-    }
-
-    private String getErrorMessage(ResponseBody responseBody) {
-        try {
-            Gson gson = new Gson();
-            Result result = gson.fromJson(responseBody.string(), Result.class);
-            return result.toErrorString();
-        } catch (Exception e) {
-            return e.getMessage();
-        }
     }
 }

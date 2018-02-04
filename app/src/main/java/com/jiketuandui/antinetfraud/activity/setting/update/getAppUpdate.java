@@ -23,9 +23,9 @@ public class getAppUpdate {
     private ToastCallback callback;
     private boolean isOpenToast;
 
-    public getAppUpdate(Context context, boolean isOpenToast) {
+    public getAppUpdate(boolean isOpenToast) {
         requestStoragePermission();
-        callback = new ToastCallback(context);
+        callback = new ToastCallback();
         this.isOpenToast = isOpenToast;
     }
 
