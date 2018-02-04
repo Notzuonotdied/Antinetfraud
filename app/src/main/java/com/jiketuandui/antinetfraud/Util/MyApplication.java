@@ -162,9 +162,10 @@ public class MyApplication extends Application {
 
     public String getSign(long millis, String auth) {
         // token+当前时间的unix时间戳+api的路由
-        String string = EncryptUtils.encryptMD5ToString(getUser().getToken()
-                + millis + auth);
-        return EncryptUtils.encryptMD5ToString(string);
+        Log.i(TAG, "getSign: token->" + user.getToken() +
+                ", millis->" + millis + ", auth->" + auth);
+        return EncryptUtils.encryptMD5ToString(user.getToken() + millis + auth)
+                .toLowerCase();
     }
 
     public long getMillis() {

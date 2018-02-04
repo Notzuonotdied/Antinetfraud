@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,8 +12,8 @@ import android.widget.LinearLayout;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.drawee.generic.GenericDraweeHierarchy;
 import com.facebook.drawee.interfaces.DraweeController;
-import com.jiketuandui.antinetfraud.Activity.ArticleContentActivity;
-import com.jiketuandui.antinetfraud.Activity.UtilActivity.ToTagsListActivity;
+import com.jiketuandui.antinetfraud.activity.article.ArticleContentActivity;
+import com.jiketuandui.antinetfraud.activity.article.ArticleTagsListActivity;
 import com.jiketuandui.antinetfraud.Adapter.Holder.ListContentHolder;
 import com.jiketuandui.antinetfraud.Adapter.Interface.ListContentOnClickListener;
 import com.jiketuandui.antinetfraud.R;
@@ -33,9 +32,7 @@ import java.util.List;
  * @author Notzuonotdied
  * @date 2016/8/1
  */
-public class ListContentAdapter extends RecyclerView.Adapter<ListContentHolder> {
-    private List<ArticleList.DataBean> mListContents;
-    private Context context;
+public class ListContentAdapter extends BaseAdapter<ArticleList.DataBean, ListContentHolder> {
     private boolean isOpenTop;
     /**
      * 设置列表项的响应事件
@@ -55,7 +52,7 @@ public class ListContentAdapter extends RecyclerView.Adapter<ListContentHolder> 
         @Override
         public void onTopClickListener(int position) {
             if (NetWorkUtils.isConnectNET(context)) {
-                Intent intent = new Intent(context, ToTagsListActivity.class);
+                Intent intent = new Intent(context, ArticleTagsListActivity.class);
                 Bundle mBundle = new Bundle();
                 mBundle.putInt(Constants.TAGS_ID,
                         mListContents.get(position).getTag_id());
@@ -77,29 +74,6 @@ public class ListContentAdapter extends RecyclerView.Adapter<ListContentHolder> 
         this.mListContents = mListContents;
         this.context = context;
         this.isOpenTop = isOpenTop;
-    }
-
-    /**
-     * 添加博客文章摘要信息的List集合
-     * 追加模式
-     */
-    public void addData(List<ArticleList.DataBean> mDates) {
-        this.mListContents.addAll(mDates);
-    }
-
-    /**
-     * 获取博客文章摘要信息的List集合
-     */
-    public List<ArticleList.DataBean> getData() {
-        return this.mListContents;
-    }
-
-    /**
-     * 清空后添加
-     */
-    public void setData(List<ArticleList.DataBean> mDates) {
-        this.mListContents.clear();
-        this.mListContents.addAll(mDates);
     }
 
     /**
@@ -156,10 +130,5 @@ public class ListContentAdapter extends RecyclerView.Adapter<ListContentHolder> 
         holder.topTag.setText(Constants.TAB_BIG_TITLE[mListContents.get(position).getTag_id()]);
         // 设置响应事件
         holder.setItemOnClickListener(mListListener);
-    }
-
-    @Override
-    public int getItemCount() {
-        return mListContents.size();
     }
 }

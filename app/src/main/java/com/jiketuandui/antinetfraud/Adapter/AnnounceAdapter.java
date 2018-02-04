@@ -3,12 +3,11 @@ package com.jiketuandui.antinetfraud.Adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.jiketuandui.antinetfraud.Activity.AnnounceAcitivity.AnnounceDetailActivity;
+import com.jiketuandui.antinetfraud.activity.main.announce.AnnounceDetailActivity;
 import com.jiketuandui.antinetfraud.Adapter.Holder.AnnounceListHolder;
 import com.jiketuandui.antinetfraud.Adapter.Interface.AnnounceListOnClickListener;
 import com.jiketuandui.antinetfraud.R;
@@ -22,26 +21,20 @@ import java.util.List;
  * @author wangyu
  * @date 2017年3月9日 20:47:21
  */
-public class AnnounceAdapter extends RecyclerView.Adapter<AnnounceListHolder> {
+public class AnnounceAdapter extends BaseAdapter<AnnounceList.DataBean, AnnounceListHolder> {
 
-    private List<AnnounceList.DataBean> mListContents;
     private LayoutInflater mLayoutInflater;
-    private Context context;
     /**
      * 设置列表项的响应事件
      */
-    private AnnounceListOnClickListener mListListener = new AnnounceListOnClickListener() {
-        @Override
-        public void onItemClickListener(int position) {
-            if (NetWorkUtils.isConnectNET(context)) {
-                Intent intent = new Intent(context, AnnounceDetailActivity.class);
-                Bundle mBundle = new Bundle();
-                mBundle.putInt(Constants.ANNOUNCE_ID, mListContents.get(position).getId());
-                intent.putExtras(mBundle);
-                context.startActivity(intent);
-            }
+    private AnnounceListOnClickListener mListListener = position -> {
+        if (NetWorkUtils.isConnectNET(context)) {
+            Intent intent = new Intent(context, AnnounceDetailActivity.class);
+            Bundle mBundle = new Bundle();
+            mBundle.putInt(Constants.ANNOUNCE_ID, mListContents.get(position).getId());
+            intent.putExtras(mBundle);
+            context.startActivity(intent);
         }
-
     };
 
     /**
@@ -53,29 +46,6 @@ public class AnnounceAdapter extends RecyclerView.Adapter<AnnounceListHolder> {
         this.mListContents = mListContents;
         this.mLayoutInflater = LayoutInflater.from(context);
         this.context = context;
-    }
-
-    /**
-     * 添加博客文章摘要信息的List集合
-     * 追加模式
-     */
-    public void addData(List<AnnounceList.DataBean> mDatas) {
-        this.mListContents.addAll(mDatas);
-    }
-
-    /**
-     * 获取List集合
-     */
-    public List<AnnounceList.DataBean> getData() {
-        return this.mListContents;
-    }
-
-    /**
-     * 清空后添加
-     */
-    public void setData(List<AnnounceList.DataBean> mDatas) {
-        this.mListContents.clear();
-        this.mListContents.addAll(mDatas);
     }
 
     /**
@@ -96,13 +66,5 @@ public class AnnounceAdapter extends RecyclerView.Adapter<AnnounceListHolder> {
         holder.announceTime.setText(mListContents.get(position).getCreated_at());
         // 设置响应事件
         holder.setItemOnClickListener(mListListener);
-    }
-
-    /**
-     * 获取数据的数量
-     */
-    @Override
-    public int getItemCount() {
-        return mListContents.size();
     }
 }

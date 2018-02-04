@@ -7,14 +7,18 @@ import android.content.pm.PackageManager;
 import com.jiketuandui.antinetfraud.R;
 
 /**
- * Created by Notzuonotdied on 2016/11/10.
+ * @author Notzuonotdied
+ * @data 2016/11/10
+ * @describe 获取版本号
  */
 public class getVersion {
 
-    public static int getVersionCode(Context context)//获取版本号(内部识别号)
-    {
+    /**
+     * 获取版本号(内部识别号)
+     */
+    public static int getVersionCode(Context context) {
         try {
-            PackageInfo pi=context.getPackageManager().getPackageInfo(context.getPackageName(), 0);
+            PackageInfo pi = context.getPackageManager().getPackageInfo(context.getPackageName(), 0);
             return pi.versionCode;
         } catch (PackageManager.NameNotFoundException e) {
             // TODO Auto-generated catch block
@@ -23,10 +27,12 @@ public class getVersion {
         }
     }
 
-    public static String getAndroidVersion(Context context)//获取版本号
-    {
+    /**
+     * 获取版本号
+     */
+    public static String getAndroidVersion(Context context) {
         try {
-            PackageInfo pi=context.getPackageManager().getPackageInfo(context.getPackageName(), 0);
+            PackageInfo pi = context.getPackageManager().getPackageInfo(context.getPackageName(), 0);
             return pi.versionName;
         } catch (PackageManager.NameNotFoundException e) {
             // TODO Auto-generated catch block

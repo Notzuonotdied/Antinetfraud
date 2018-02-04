@@ -23,6 +23,11 @@ public class BaseObserver<T> implements Observer<Result<T>> {
     private Context mContext;
     private String hint;
 
+    public BaseObserver() {
+        this.mContext = null;
+        this.hint = null;
+    }
+
     public BaseObserver(Context context) {
         this.mContext = context.getApplicationContext();
         this.hint = null;
@@ -41,11 +46,11 @@ public class BaseObserver<T> implements Observer<Result<T>> {
     @Override
     public void onNext(Result<T> tResult) {
         Log.i(TAG, "onNext: " + tResult.toString());
+        if (tResult.isSuccess() && hint != null && mContext != null) {
+            Toast.makeText(mContext.getApplicationContext(), hint,
+                    Toast.LENGTH_SHORT).show();
+        }
         if (tResult.isSuccess() && tResult.getData() != null) {
-            if (hint != null) {
-                Toast.makeText(mContext.getApplicationContext(), hint,
-                        Toast.LENGTH_SHORT).show();
-            }
             T t = tResult.getData();
             onHandleSuccess(t);
         } else {

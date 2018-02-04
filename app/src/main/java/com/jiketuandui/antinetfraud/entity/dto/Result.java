@@ -9,7 +9,6 @@ import lombok.NoArgsConstructor;
  * @author wangyu
  */
 @Data
-@NoArgsConstructor
 public class Result<T> {
     private Integer code;
     private String message;
@@ -21,6 +20,10 @@ public class Result<T> {
     private T notices;
     private T info;
     private T notice;
+    private T comments;
+    private T collections;
+    private T histories;
+    private T app;
     private String tag;
 
     public boolean isSuccess() {
@@ -44,6 +47,14 @@ public class Result<T> {
             return info;
         } else if (notice != null) {
             return notice;
+        } else if (comments != null) {
+            return comments;
+        } else if (collections != null) {
+            return collections;
+        } else if (histories != null) {
+            return histories;
+        } else if (app != null) {
+            return app;
         }
         return data;
     }

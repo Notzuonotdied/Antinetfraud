@@ -6,7 +6,7 @@
     android:background="@drawable/login_gradients"
     android:gravity="center_horizontal"
     android:orientation="vertical"
-    tools:context="com.jiketuandui.antinetfraud.Activity.UserActivity.RegisterActivity">
+    tools:context=".activity.setting.user.RegisterActivity">
 
     <com.jiketuandui.antinetfraud.View.ToolBarLayout
         android:layout_width="match_parent"

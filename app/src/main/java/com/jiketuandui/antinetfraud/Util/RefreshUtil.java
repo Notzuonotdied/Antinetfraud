@@ -8,9 +8,12 @@ import android.widget.Toast;
 
 import com.cjj.MaterialRefreshLayout;
 import com.cjj.MaterialRefreshListener;
+import com.jiketuandui.antinetfraud.Adapter.CommentAdapter;
 import com.jiketuandui.antinetfraud.Adapter.ListContentAdapter;
 import com.jiketuandui.antinetfraud.View.ToolBarLayout;
 import com.jiketuandui.antinetfraud.entity.domain.ArticleList;
+import com.jiketuandui.antinetfraud.entity.domain.CommentList;
+import com.jiketuandui.antinetfraud.entity.domain.UserReadingList;
 import com.jiketuandui.antinetfraud.entity.dto.Result;
 import com.jiketuandui.antinetfraud.retrofirt.RetrofitServiceFactory;
 import com.jiketuandui.antinetfraud.retrofirt.rxjava.BaseObserver;
@@ -46,15 +49,31 @@ public class RefreshUtil {
      */
     private boolean isOpenTop = false;
     private ListContentAdapter mListContentAdapter;
+    private CommentAdapter commentAdapter;
+    private List<CommentList.DataBean> comments = new ArrayList<>();
     private List<ArticleList.DataBean> mListContents = new ArrayList<>();
     private Context context;
     private RefreshInterface refreshInterface;
     private Response response;
+    /**
+     * 判断使用的Adapter，Holder，Bean的类型。
+     * 0——默认是案例相关的
+     * 1——是评论相关的
+     */
+    private int type;
 
     public RefreshUtil(Context context) {
         this.context = context;
         this.readPage = 1;
         this.tagId = 0;
+        this.type = 0;
+    }
+
+    public RefreshUtil(Context context, int type) {
+        this.context = context;
+        this.readPage = 1;
+        this.tagId = 0;
+        this.type = type;
     }
 
     public void setResponse(Response response) {
@@ -107,10 +126,18 @@ public class RefreshUtil {
     }
 
     public void initViewAttr() {
-        this.mListContentAdapter = new ListContentAdapter(context, mListContents, isOpenTop);
+        if (type == 0) {
+            this.mListContentAdapter = new ListContentAdapter(context, mListContents, isOpenTop);
+        } else {
+            this.commentAdapter = new CommentAdapter(context, comments);
+        }
         this.tagsRecyclerView.setLayoutManager(new LinearLayoutManager(context,
                 LinearLayoutManager.VERTICAL, false));
-        this.tagsRecyclerView.setAdapter(mListContentAdapter);
+        if (type == 0) {
+            this.tagsRecyclerView.setAdapter(mListContentAdapter);
+        } else {
+            this.tagsRecyclerView.setAdapter(commentAdapter);
+        }
         // 如果是第一次刷新就启动一次刷新
         if (isFirstRefresh) {
             materialRefreshLayout.autoRefresh();
@@ -133,7 +160,7 @@ public class RefreshUtil {
                     }
                     return articleListResult;
                 })
-                .subscribe(new BaseObserver<ArticleList>(context.getApplicationContext()) {
+                .subscribe(new BaseObserver<ArticleList>() {
                     @Override
                     protected void onHandleSuccess(ArticleList articleList) {
                         // 填充容器并刷新页面的列表项数据
@@ -146,8 +173,14 @@ public class RefreshUtil {
                     @Override
                     protected void onHandleFailure(String message) {
                         super.onHandleFailure(message);
-                        Toast.makeText(context.getApplicationContext(), message,
-                                Toast.LENGTH_SHORT).show();
+                        show(message);
+                        materialRefreshLayout.finishRefresh();
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        super.onError(e);
+                        show("好像网络异常了～");
                         materialRefreshLayout.finishRefresh();
                     }
                 });
@@ -163,7 +196,7 @@ public class RefreshUtil {
                     }
                     return articleListResult;
                 })
-                .subscribe(new BaseObserver<ArticleList>(context.getApplicationContext()) {
+                .subscribe(new BaseObserver<ArticleList>() {
                     @Override
                     protected void onHandleSuccess(ArticleList articleList) {
                         ++readPage;
@@ -189,10 +222,200 @@ public class RefreshUtil {
                     @Override
                     protected void onHandleFailure(String message) {
                         super.onHandleFailure(message);
+                        show(message);
                         materialRefreshLayout.finishRefreshLoadMore();
                         if (response != null) {
                             response.onFailure();
                         }
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        super.onError(e);
+                        show("好像网络异常了～");
+                        materialRefreshLayout.finishRefreshLoadMore();
+                    }
+                });
+    }
+
+    private List<ArticleList.DataBean> changeData(UserReadingList userReadingList) {
+        List<ArticleList.DataBean> articles = new ArrayList<>();
+
+        for (UserReadingList.DataBean dataBean : userReadingList.getData()) {
+            ArticleList.DataBean articleDataBean = new ArticleList.DataBean();
+            articleDataBean.setId(dataBean.getArticle_id());
+            articleDataBean.setImage(dataBean.getImage());
+            articleDataBean.setTag_name(dataBean.getTag());
+            articleDataBean.setCreated_at(dataBean.getUpdated_at());
+            articleDataBean.setTag_id(dataBean.getTag_id());
+            articleDataBean.setSource(dataBean.getSource());
+            articleDataBean.setTitle(dataBean.getTitle());
+            articles.add(articleDataBean);
+        }
+
+        return articles;
+    }
+
+    public void onUserRefresh(Observable<Result<UserReadingList>> articleList) {
+        readPage = 1;
+        articleList.subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .map(articleListResult -> {
+                    // 将Image URL补全
+                    for (UserReadingList.DataBean dataBean : articleListResult.getData().getData()) {
+                        dataBean.setImage(RetrofitServiceFactory.IMAGE_URL + dataBean.getImage());
+                    }
+                    return articleListResult;
+                })
+                .subscribe(new BaseObserver<UserReadingList>() {
+                    @Override
+                    protected void onHandleSuccess(UserReadingList userReadingList) {
+                        // 填充容器并刷新页面的列表项数据
+                        isNeed2Refresh = true;
+                        mListContentAdapter.setData(changeData(userReadingList));
+                        mListContentAdapter.notifyDataSetChanged();
+                        materialRefreshLayout.finishRefresh();
+                    }
+
+                    @Override
+                    protected void onHandleFailure(String message) {
+                        super.onHandleFailure(message);
+                        show(message);
+                        materialRefreshLayout.finishRefresh();
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        super.onError(e);
+                        show("好像网络异常了～");
+                        materialRefreshLayout.finishRefresh();
+                    }
+                });
+    }
+
+    public void onUserLoadMore(Observable<Result<UserReadingList>> articleList) {
+        articleList.subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .map(articleListResult -> {
+                    // 将Image URL补全
+                    for (UserReadingList.DataBean dataBean : articleListResult.getData().getData()) {
+                        dataBean.setImage(RetrofitServiceFactory.IMAGE_URL + dataBean.getImage());
+                    }
+                    return articleListResult;
+                })
+                .subscribe(new BaseObserver<UserReadingList>() {
+                    @Override
+                    protected void onHandleSuccess(UserReadingList userReadingList) {
+                        ++readPage;
+                        if (userReadingList.getNext_page_url() == null) {
+                            if (!isNeed2Refresh) {
+                                show("已到底部~");
+                                materialRefreshLayout.finishRefreshLoadMore();
+                                return;
+                            }
+                            isNeed2Refresh = true;
+                            materialRefreshLayout.finishRefreshLoadMore();
+                            return;
+                        }
+                        mListContentAdapter.addData(changeData(userReadingList));
+                        mListContentAdapter.notifyDataSetChanged();
+                        materialRefreshLayout.finishRefreshLoadMore();
+
+                        if (response != null) {
+                            response.onSuccess();
+                        }
+                    }
+
+                    @Override
+                    protected void onHandleFailure(String message) {
+                        super.onHandleFailure(message);
+                        show(message);
+                        materialRefreshLayout.finishRefreshLoadMore();
+                        if (response != null) {
+                            response.onFailure();
+                        }
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        super.onError(e);
+                        show("好像网络异常了～");
+                        materialRefreshLayout.finishRefreshLoadMore();
+                    }
+                });
+    }
+
+    public void onComRefresh(Observable<Result<CommentList>> articleList) {
+        readPage = 1;
+        articleList.subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new BaseObserver<CommentList>() {
+                    @Override
+                    protected void onHandleSuccess(CommentList commentList) {
+                        // 填充容器并刷新页面的列表项数据
+                        isNeed2Refresh = true;
+                        commentAdapter.setData(commentList.getData());
+                        commentAdapter.notifyDataSetChanged();
+                        materialRefreshLayout.finishRefresh();
+                    }
+
+                    @Override
+                    protected void onHandleFailure(String message) {
+                        super.onHandleFailure(message);
+                        show(message);
+                        materialRefreshLayout.finishRefresh();
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        super.onError(e);
+                        show("好像网络异常了～");
+                        materialRefreshLayout.finishRefresh();
+                    }
+                });
+    }
+
+    public void onComLoadMore(Observable<Result<CommentList>> articleList) {
+        articleList.subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new BaseObserver<CommentList>() {
+                    @Override
+                    protected void onHandleSuccess(CommentList commentList) {
+                        ++readPage;
+                        if (commentList.getNext_page_url() == null) {
+                            if (!isNeed2Refresh) {
+                                show("已到底部~");
+                                materialRefreshLayout.finishRefreshLoadMore();
+                                return;
+                            }
+                            isNeed2Refresh = true;
+                            materialRefreshLayout.finishRefreshLoadMore();
+                            return;
+                        }
+                        commentAdapter.addData(commentList.getData());
+                        commentAdapter.notifyDataSetChanged();
+                        materialRefreshLayout.finishRefreshLoadMore();
+
+                        if (response != null) {
+                            response.onSuccess();
+                        }
+                    }
+
+                    @Override
+                    protected void onHandleFailure(String message) {
+                        super.onHandleFailure(message);
+                        show(message);
+                        materialRefreshLayout.finishRefreshLoadMore();
+                        if (response != null) {
+                            response.onFailure();
+                        }
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        super.onError(e);
+                        show("好像网络异常了～");
+                        materialRefreshLayout.finishRefreshLoadMore();
                     }
                 });
     }
@@ -220,9 +443,25 @@ public class RefreshUtil {
      * 自动刷新
      */
     public void onNetChange() {
-        if (MyApplication.NetWorkState != NetWorkUtils.NET_TYPE_NO_NETWORK &&
-                mListContents != null && mListContents.size() == 0) {
-            materialRefreshLayout.autoRefresh();
+        switch (type) {
+            case 0:
+                if (MyApplication.NetWorkState != NetWorkUtils.NET_TYPE_NO_NETWORK &&
+                        mListContents != null && mListContents.size() == 0) {
+                    materialRefreshLayout.autoRefresh();
+                }
+                break;
+            case 1:
+                if (MyApplication.NetWorkState != NetWorkUtils.NET_TYPE_NO_NETWORK &&
+                        comments != null && comments.size() == 0) {
+                    materialRefreshLayout.autoRefresh();
+                }
+                break;
+            default:
+                if (MyApplication.NetWorkState != NetWorkUtils.NET_TYPE_NO_NETWORK &&
+                        mListContents != null && mListContents.size() == 0) {
+                    materialRefreshLayout.autoRefresh();
+                }
+                break;
         }
     }
 
@@ -230,16 +469,41 @@ public class RefreshUtil {
      * 自动刷新
      */
     public void onNetChangeOnSearch(String inputString) {
-        if (MyApplication.NetWorkState != NetWorkUtils.NET_TYPE_NO_NETWORK
-                && mListContents != null
-                && mListContents.size() == 0
-                && inputString != null) {
-            materialRefreshLayout.autoRefresh();
+        switch (type) {
+            case 0:
+                if (MyApplication.NetWorkState != NetWorkUtils.NET_TYPE_NO_NETWORK
+                        && mListContents != null
+                        && mListContents.size() == 0
+                        && inputString != null) {
+                    materialRefreshLayout.autoRefresh();
+                }
+                break;
+            case 1:
+                if (MyApplication.NetWorkState != NetWorkUtils.NET_TYPE_NO_NETWORK
+                        && comments != null
+                        && comments.size() == 0
+                        && inputString != null) {
+                    materialRefreshLayout.autoRefresh();
+                }
+                break;
+            default:
+                if (MyApplication.NetWorkState != NetWorkUtils.NET_TYPE_NO_NETWORK
+                        && mListContents != null
+                        && mListContents.size() == 0
+                        && inputString != null) {
+                    materialRefreshLayout.autoRefresh();
+                }
+                break;
         }
+
     }
 
     public void clearData() {
-        mListContents.clear();
+        if (type == 0) {
+            mListContents.clear();
+        } else {
+            comments.clear();
+        }
         mListContentAdapter.notifyDataSetChanged();
         readPage = 1;
     }

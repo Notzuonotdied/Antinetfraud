@@ -1,14 +1,22 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activity.Fragment.ArticleDetailFragment.CommentFragment">
+    android:orientation="vertical">
 
-    <com.jcodecraeer.xrecyclerview.XRecyclerView
+    <android.support.v7.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
-    </com.jcodecraeer.xrecyclerview.XRecyclerView>
+    </android.support.v7.widget.RecyclerView>
 
-</FrameLayout>
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/look_more"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@color/color_start"
+        android:visibility="gone"
+        android:text="查看更多"
+        android:textColor="@color/color_white" />
+</LinearLayout>

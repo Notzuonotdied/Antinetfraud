@@ -3,10 +3,10 @@ package com.jiketuandui.antinetfraud.retrofirt.service;
 
 import com.jiketuandui.antinetfraud.entity.domain.ArticleDetail;
 import com.jiketuandui.antinetfraud.entity.domain.ArticleList;
+import com.jiketuandui.antinetfraud.entity.domain.CommentList;
 import com.jiketuandui.antinetfraud.entity.dto.Result;
 
 import io.reactivex.Observable;
-import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
@@ -85,4 +85,14 @@ public interface ArticleService {
     Observable<Result<ArticleList>> search(@Path("keyword") String keyWord,
                                            @Query("page") int page);
 
+    /**
+     * 获取案例评论列表
+     *
+     * @param articleId 评论文章ID
+     * @param page      页号
+     * @return 返回关键字搜索返回文章列表的监察者
+     */
+    @GET("/comment/show/{id}")
+    Observable<Result<CommentList>> getCommentList(@Path("id") int articleId,
+                                                   @Query("page") int page);
 }

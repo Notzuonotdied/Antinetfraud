@@ -3,6 +3,7 @@ package com.jiketuandui.antinetfraud.retrofirt.service;
 
 import com.jiketuandui.antinetfraud.entity.domain.ArticleList;
 import com.jiketuandui.antinetfraud.entity.domain.User;
+import com.jiketuandui.antinetfraud.entity.domain.UserReadingList;
 import com.jiketuandui.antinetfraud.entity.dto.Result;
 
 import io.reactivex.Observable;
@@ -84,12 +85,31 @@ public interface UserService {
      * @param id        用户ID
      * @param sign      签名凭证
      * @param timestamp 当前时间
+     * @param page      页号
      * @return 返回用户浏览历史的监察者
      */
     @GET("/auth/history/")
-    Observable<Result<ArticleList>> getHistory(@Field("id") String id,
-                                               @Field("sign") String sign,
-                                               @Field("timestamp") long timestamp);
+    Observable<Result<UserReadingList>> getHistory(@Query("id") String id,
+                                                   @Query("sign") String sign,
+                                                   @Query("timestamp") long timestamp,
+                                                   @Query("page") int page);
+
+
+    /**
+     * 保存用户的浏览历史
+     *
+     * @param id        用户ID
+     * @param sign      签名凭证
+     * @param timestamp 当前时间
+     * @param articleId 文章ID
+     * @return 返回用户浏览历史的监察者
+     */
+    @POST("/auth/article/read")
+    @FormUrlEncoded
+    Observable<Result<UserReadingList>> saveHistory(@Field("id") String id,
+                                                    @Field("sign") String sign,
+                                                    @Field("timestamp") long timestamp,
+                                                    @Field("article_id") int articleId);
 
     /**
      * 案例收藏
@@ -113,12 +133,14 @@ public interface UserService {
      * @param id        用户ID
      * @param sign      签名凭证
      * @param timestamp 当前时间
+     * @param page      页号
      * @return 返回用户收藏列表的监察者
      */
     @GET("/auth/collection/")
-    Observable<Result<ArticleList>> getCollection(@Query("id") String id,
-                                                  @Query("sign") String sign,
-                                                  @Query("timestamp") long timestamp);
+    Observable<Result<UserReadingList>> getCollection(@Query("id") String id,
+                                                      @Query("sign") String sign,
+                                                      @Query("timestamp") long timestamp,
+                                                      @Query("page") int page);
 
     /**
      * 用户评论
