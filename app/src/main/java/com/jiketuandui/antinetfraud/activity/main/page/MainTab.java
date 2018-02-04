@@ -7,6 +7,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -146,9 +147,9 @@ public class MainTab extends Fragment implements NetBroadcastReceiver.NetEventHa
                                             dialog // 设置Dialog的属性
                                                     .title("网站公告")
                                                     // 设置内容
-                                                    .content(announceList.getData().get(0).getTitle() + ":" +
+                                                    .content(Html.fromHtml(announceList.getData().get(0).getTitle() + ":" +
                                                             announceList.getData().get(0).getCreated_at() + "\n\u3000\u3000" +
-                                                            content + "\n\u3000\u3000")
+                                                            content + "\n\u3000\u3000").toString())
                                                     // 设置按钮文本
                                                     .btnText("更多", "确定")
                                                     // 设置进入动画
