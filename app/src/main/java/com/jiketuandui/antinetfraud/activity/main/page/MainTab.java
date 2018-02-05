@@ -125,18 +125,17 @@ public class MainTab extends Fragment implements NetBroadcastReceiver.NetEventHa
     private void showDialog() {
         dialog = new MaterialDialog(getContext());
         if (isAvailable) {
-            Context context = getContext().getApplicationContext();
             announceService.getAnnounceList(1)
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe(new BaseObserver<AnnounceList>(context) {
+                    .subscribe(new BaseObserver<AnnounceList>() {
                         @Override
                         protected void onHandleSuccess(AnnounceList announceList) {
                             announceService
                                     .getAnnounceDetail(announceList.getData().get(0).getId())
                                     .subscribeOn(Schedulers.io())
                                     .observeOn(AndroidSchedulers.mainThread())
-                                    .subscribe(new BaseObserver<AnnounceDetail>(context) {
+                                    .subscribe(new BaseObserver<AnnounceDetail>() {
                                         @Override
                                         protected void onHandleSuccess(AnnounceDetail announceDetail) {
                                             String content = announceDetail.getContent();

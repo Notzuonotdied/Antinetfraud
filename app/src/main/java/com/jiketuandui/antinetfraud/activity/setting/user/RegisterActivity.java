@@ -68,13 +68,6 @@ public class RegisterActivity extends Activity {
     }
 
     private void initListener() {
-        mPasswordView.setOnEditorActionListener((textView, id, keyEvent) -> {
-            if (id == R.id.login || id == EditorInfo.IME_NULL) {
-                attemptLogin();
-                return true;
-            }
-            return false;
-        });
         mRegisterButton.setOnClickListener(listener);
     }
 

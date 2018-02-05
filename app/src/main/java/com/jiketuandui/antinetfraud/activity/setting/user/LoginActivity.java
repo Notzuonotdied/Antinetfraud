@@ -73,13 +73,6 @@ public class LoginActivity extends AppCompatActivity {
 
     private void initListener() {
         mSignInButton.setOnClickListener(listener);
-        mPasswordView.setOnEditorActionListener((textView, id, keyEvent) -> {
-            if (id == R.id.login || id == EditorInfo.IME_NULL) {
-                attemptLogin();
-                return true;
-            }
-            return false;
-        });
         mRegisterButton.setOnClickListener(listener);
     }
 

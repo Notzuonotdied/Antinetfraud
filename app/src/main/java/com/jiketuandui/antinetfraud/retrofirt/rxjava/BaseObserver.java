@@ -54,7 +54,7 @@ public class BaseObserver<T> implements Observer<Result<T>> {
                 }
                 break;
             case 404:
-                ToastUtils.showShort("没有数据喔～");
+                // ToastUtils.showShort("没有数据喔～");
                 break;
             case 500:
                 ToastUtils.showShort("错误！");

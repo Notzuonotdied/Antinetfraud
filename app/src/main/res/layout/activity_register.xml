@@ -27,7 +27,6 @@
         android:id="@+id/login_form"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="55dp"
         android:layout_marginLeft="55dp"
         android:layout_marginRight="55dp"
         android:orientation="vertical">
@@ -35,7 +34,7 @@
         <android.support.v7.widget.AppCompatEditText
             android:id="@+id/account"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="?attr/actionBarSize"
             android:background="@android:color/transparent"
             android:digits="@string/filter_vcode"
             android:drawablePadding="12dp"
@@ -51,7 +50,7 @@
         <android.support.v7.widget.AppCompatEditText
             android:id="@+id/password"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="?attr/actionBarSize"
             android:background="@android:color/transparent"
             android:drawablePadding="12dp"
             android:drawableStart="@drawable/ic_lock_open_white_24dp"
@@ -68,7 +67,7 @@
         <android.support.v7.widget.AppCompatEditText
             android:id="@+id/confirm"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="?attr/actionBarSize"
             android:background="@android:color/transparent"
             android:drawablePadding="12dp"
             android:drawableStart="@drawable/ic_lock_open_white_24dp"
@@ -84,7 +83,7 @@
         <android.support.v7.widget.AppCompatEditText
             android:id="@+id/email"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="?attr/actionBarSize"
             android:background="@android:color/transparent"
             android:drawablePadding="12dp"
             android:drawableStart="@drawable/ic_email_24dp"
@@ -102,7 +101,7 @@
             style="@style/Base.TextAppearance.AppCompat.Body1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="16dp"
             android:background="@drawable/login_background"
             android:gravity="center"
             android:text="@string/register"
