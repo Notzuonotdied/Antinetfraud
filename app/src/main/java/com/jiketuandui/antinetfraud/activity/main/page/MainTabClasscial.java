@@ -155,7 +155,7 @@ public class MainTabClasscial extends Fragment implements NetBroadcastReceiver.N
 
     @Override
     public void onPause() {
-//        JCVideoPlayer.releaseAllVideos();
+        JCVideoPlayer.releaseAllVideos();
         super.onPause();
     }
 

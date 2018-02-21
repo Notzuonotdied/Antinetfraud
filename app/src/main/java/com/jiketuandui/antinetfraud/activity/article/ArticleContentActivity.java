@@ -203,7 +203,7 @@ public class ArticleContentActivity extends AppCompatActivity
         });
         collect.setOnClickListener(v -> {
             User user = MyApplication.getInstance().getUser();
-            if (MyApplication.getInstance().getUser() != null) {
+            if (!MyApplication.getInstance().isLogin()) {
                 ToastUtils.showShort("请登录～");
                 return;
             }
@@ -236,7 +236,7 @@ public class ArticleContentActivity extends AppCompatActivity
     }
 
     private void postComment(String content) {
-        if (MyApplication.getInstance().getUser() != null) {
+        if (!MyApplication.getInstance().isLogin()) {
             ToastUtils.showShort("请登录～");
             return;
         }
